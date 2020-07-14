@@ -88,8 +88,8 @@ backup:
   type: git
   message: backup my blog of https://github.com/Fengjing95/Fengjing95.github.io/
   repository:
-    github: https://github.com/honjun/honjun.github.io.git,backup
-    # coding: https://git.coding.net/hojun/hojun.git,backup
+    # github: https://github.com/honjun/honjun.github.io.git,backup
+    coding: https://gitee.com/liuhao1108/F-blog.git
 
 #RSS
 feed:
