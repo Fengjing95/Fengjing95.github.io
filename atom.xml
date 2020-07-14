@@ -3,11 +3,11 @@
   <title>前端小枫</title>
   
   
-  <link href="/f-blog/atom.xml" rel="self"/>
+  <link href="/atom.xml" rel="self"/>
   
-  <link href="http://liuhao1108.gitee.io/f-blog/"/>
-  <updated>2020-07-13T12:13:10.592Z</updated>
-  <id>http://liuhao1108.gitee.io/f-blog/</id>
+  <link href="/"/>
+  <updated>2020-07-14T07:34:13.452Z</updated>
+  <id>/</id>
   
   <author>
     <name>小枫</name>
@@ -17,9 +17,60 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>VS Code 快捷键</title>
+    <link href="/2020/07/14/VS%20Code%20%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
+    <id>/2020/07/14/VS Code 快捷键/</id>
+    <published>2020-07-14T07:29:20.384Z</published>
+    <updated>2020-07-14T07:34:13.452Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;VS-Code-快捷键&quot;&gt;&lt;a href=&quot;#VS-Code-快捷键&quot; class=&quot;headerlink&quot; title=&quot;VS Code 快捷键&quot;&gt;&lt;/a&gt;VS Code 快捷键&lt;/h1&gt;&lt;p&gt;打开一个新窗口 Ctrl+Shift+N&lt;/p&gt;
+&lt;p&gt;关闭窗口
+        
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="/2020/07/14/hello-world/"/>
+    <id>/2020/07/14/hello-world/</id>
+    <published>2020-07-14T07:29:20.383Z</published>
+    <updated>2020-07-14T07:38:02.451Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;2020-07-13-博客诞生&quot;&gt;&lt;a href=&quot;#2020-07-13-博客诞生&quot; class=&quot;headerlink&quot; title=&quot;2020-07-13 博客诞生&quot;&gt;&lt;/a&gt;2020-07-13
+        
+      
+    
+    </summary>
+    
+      <category term="生活" scheme="/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="hello" scheme="/tags/hello/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Hexo-Theme-Sakura</title>
-    <link href="http://liuhao1108.gitee.io/f-blog/2018/12/12/Hexo-Theme-Sakura/"/>
-    <id>http://liuhao1108.gitee.io/f-blog/2018/12/12/Hexo-Theme-Sakura/</id>
+    <link href="/2018/12/12/Hexo-Theme-Sakura/"/>
+    <id>/2018/12/12/Hexo-Theme-Sakura/</id>
     <published>2018-12-12T14:16:01.000Z</published>
     <updated>2020-07-13T12:13:10.592Z</updated>
     
@@ -29,12 +80,12 @@
     
     </summary>
     
-      <category term="技术" scheme="http://liuhao1108.gitee.io/f-blog/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="web" scheme="http://liuhao1108.gitee.io/f-blog/tags/web/"/>
+      <category term="web" scheme="/tags/web/"/>
     
-      <category term="悦读" scheme="http://liuhao1108.gitee.io/f-blog/tags/%E6%82%A6%E8%AF%BB/"/>
+      <category term="悦读" scheme="/tags/%E6%82%A6%E8%AF%BB/"/>
     
   </entry>
   
