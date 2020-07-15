@@ -8,10 +8,10 @@ authorAbout: 一个好奇的人
 authorDesc: 一个好奇的人
 categories: 技术
 comments: true
-tags: 
-keywords: 
-description: 
-photos: 
+tags: 工具
+keywords: 快捷键
+description: VSCode常用快捷键汇集
+photos: https://ae01.alicdn.com/kf/H481a591222bf40f4b12f9a84712a1d1cc.jpg
 ---
 # VS Code 快捷键
 
