@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">Category: 生活 | 前端小枫</title>
+  <title itemprop="name">Typora图片自动上传到图床 | 前端小枫</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -383,105 +383,161 @@
   </div>
 </header>
 
-      
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
 <div class="pattern-center-blank"></div>
-<div class="pattern-center ">
-  <div class="pattern-attachment-img">
-    <img data-src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/banner/writing.jpg" class="lazyload" onerror="imgError(this,3)" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://gitee.com/liuhao1108/picGoCDN/raw/master/img/typora-icon.png);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/typora-icon.png">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      Typora图片自动上传到图床</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="">小枫</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2020-7-15<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
   </div>
-  <header class="pattern-header ">
-    <h1 class="cat-title">生活</h1>
-    <span class="cat-des">
-      <p>live</p>
-    </span>
-  </header>
-</div>
+
 <div id="content" class="site-content">
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
-      
-  <!-- 首页默认取最最新文章集 -->
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/07/14/hello-world/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h1 id="Typora图片自动上传到图床"><a href="#Typora图片自动上传到图床" class="headerlink" title="Typora图片自动上传到图床"></a>Typora图片自动上传到图床</h1><p>你是否还在为找不到可靠的图床而烦恼</p>
+<p>是否害怕图床网站关闭资源丢失</p>
+<p>是否担心资源不能管理而发愁</p>
+<p><strong>今天他来了</strong></p>
+<h2 id="1-下载安装picGo"><a href="#1-下载安装picGo" class="headerlink" title="1 下载安装picGo"></a>1 下载安装picGo</h2><p>地址在<a href="https://github.com/Molunerfinn/PicGo/releases" target="_blank" rel="noopener">这里</a>，根据需要的版本进行下载</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200715191952303.png" alt="image-20200715191952303"></p>
+<p>下载完成后进行安装</p>
+<p>安装完之后在桌面右下角图标打开picGo详细界面</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200715192408100.png" alt="image-20200715192408100"></p>
+<h2 id="2-配置picGo图床-gitee"><a href="#2-配置picGo图床-gitee" class="headerlink" title="2 配置picGo图床+gitee"></a>2 配置picGo图床+gitee</h2><p>picGo支持多个图床</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200715193844116.png" alt="image-20200715193844116"></p>
+<p>这里主要说一下gitee</p>
+<p>搜索插件gitee（<strong>需要安装Node环境</strong>）</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200715194024555.png" alt="image-20200715194024555"></p>
+<p>据说是两个都可以，我只试过了gitee，安装好之后在上面的图床列表里就会出现gitee图床</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200715194130651.png" alt="image-20200715194130651"></p>
+<p>这里是配置信息</p>
+<blockquote>
+<p>owner：gitee用户名</p>
+<p>repo：gitee仓库名</p>
+<p>path：路径，存放到根目录可以不用写</p>
+<p>token：gitee个人令牌</p>
+<p>message：可以不写</p>
+</blockquote>
+<p>关于gitee个人令牌的获取</p>
+<p>点开gitee的设置，在左侧栏找到私人令牌，然后点击生成新令牌</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200715194445782.png" alt="image-20200715194445782"></p>
+<p>描述可以随便写一下，然后点击确认会生成一个token</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200715194606276.png" alt="image-20200715194606276"></p>
+<p>将token复制到picGo中就可以了</p>
+<h2 id="3-配置Typora-picGo"><a href="#3-配置Typora-picGo" class="headerlink" title="3 配置Typora+picGo"></a>3 配置Typora+picGo</h2><p>在Typora的偏好设置中将插入图片改为上传图片，上传服务修改为picGo App，并选择到安装目录</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200715193003780.png" alt="image-20200715193003780"></p>
+<p>点击验证</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200715193212970.png" alt="image-20200715193212970"></p>
+<p>如果出现false情况，看一下连接中的端口号，然后到picGo的设置中找到Server服务</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200715193456911.png" alt="image-20200715193456911"></p>
+<p>将端口号修改一致</p>
+<p>然后保存，再试一下验证</p>
+
         </div>
-        <img width="150" height="150" src="https://ae01.alicdn.com/kf/H4d3fee369ddb41488a102c04471604d2x.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/07/14/hello-world/">
-    Hello World</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-7-14</div>
-    <p>
-    纪念博客创建</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/07/14/hello-world/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+        
+          
+            <div class="post-nepre full next">
+          
+            <a href="/2020/07/15/ES6笔记/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://ae01.alicdn.com/kf/H5aff3b00be9642e5aafff775358bae53m.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://ae01.alicdn.com/kf/H5aff3b00be9642e5aafff775358bae53m.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                Hello World</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "AdzOvpXTwwf3KAX23DOds5C9-gzGzoHsz",
+        appKey: "olX1MHfMtrQcmemwl5lLmu4a",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
 
-
-      <div class="clearer">
-      </div>
-    </main>
-    <!--  -->
-    
-  </div>
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg" itemprop="image" alt="小枫" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author">小枫</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>一个好奇的人</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
 </div>
 
-<!-- 
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/07/14/hello-world/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://ae01.alicdn.com/kf/H4d3fee369ddb41488a102c04471604d2x.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/07/14/hello-world/">
-    Hello World</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-7-14</div>
-    <p>
-    纪念博客创建</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/07/14/hello-world/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
 
- -->
+
     </div>    
     <div class="ins-search">
     <div class="ins-search-mask"></div>
