@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-07-22T07:35:48.083Z</updated>
+  <updated>2020-07-22T08:57:39.828Z</updated>
   <id>/</id>
   
   <author>
@@ -17,11 +17,31 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>思途实训day2</title>
+    <link href="/2020/07/22/STDay%202/"/>
+    <id>/2020/07/22/STDay 2/</id>
+    <published>2020-07-22T08:57:04.870Z</published>
+    <updated>2020-07-22T08:57:39.828Z</updated>
+    
+    <summary type="html">
+    
+      中享思途实训第二天
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="思途实训" scheme="/tags/%E6%80%9D%E9%80%94%E5%AE%9E%E8%AE%AD/"/>
+    
+  </entry>
+  
+  <entry>
     <title>思途实训day1</title>
     <link href="/2020/07/22/STDay%201/"/>
     <id>/2020/07/22/STDay 1/</id>
     <published>2020-07-22T07:27:01.446Z</published>
-    <updated>2020-07-22T07:35:48.083Z</updated>
+    <updated>2020-07-22T07:38:21.191Z</updated>
     
     <summary type="html">
     
