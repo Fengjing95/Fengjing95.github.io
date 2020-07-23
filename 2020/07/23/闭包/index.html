@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">Tag: js | 前端小枫</title>
+  <title itemprop="name">JS中的闭包 | 前端小枫</title>
   
   <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -464,130 +464,186 @@
   </div>
 </header>
 
-      
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
 <div class="pattern-center-blank"></div>
-<div class="pattern-center ">
-  <div class="pattern-attachment-img">
-    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200722153746570.png" class="lazyload" onerror="imgError(this,3)" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200723133122739.png);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200723133122739.png">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      JS中的闭包</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="">小枫</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2020-7-23<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
   </div>
-  <header class="pattern-header ">
-    <h1 class="cat-title">js</h1>
-  </header>
-</div>
+
 <div id="content" class="site-content">
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <blockquote>
+<p>​    闭包就是可以创建一个独立的环境，每个闭包里面的环境都是独立的，互不干扰。闭包会发生内存泄漏，每次外部函数执行的时 候，外部函数的引用地址不同，都会重新创建一个新的地址。但凡是当前活动对象中有被内部子集引用的数据，那么这个时候，这个数据不删除，保留一根指针给内部活动对象。</p>
+</blockquote>
+<p>  相信你看了这段鬼话，80%会感到懵逼，看完下面的内容再回来看这句话，相信你就可以理解了。</p>
+<p>函数的作用域</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200723133332013.png" alt="image-20200723133332013"></p>
+<p>在全局环境中定义了title变量和show方法，当执行show方法时，开辟出一块内存，如果在show方法内部调用context是可以正常执行的，当show执行完的时候，show中定义的context变量不被保留，这时外部调用context就会 not defined。</p>
+<p>数据的作用默认就是在函数体内</p>
+<p>数据向下流动，只会向子级传递，不会向父级传递</p>
+<p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="img"></p>
+<p>当show方法执行完之后，内存被释放，执行多个show方法相当于多次开辟了内存</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200723133349064.png" alt="image-20200723133349064"></p>
+<p>如果在show方法中再定义一个head方法，再执行，此时的内存结构如图所示，head方法时show方法内部的，show执行时为head开辟一块内存；<strong>那多次调用show方法会一直调用那一个head方法么？不是的！！！多次</strong>调用show方法会开辟多块内存，他们之间是没有关系的。</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200723133409467.png" alt="image-20200723133409467"></p>
+<p>这个例子更能清楚的说明，按照常理，第一次调用++n之后变成了2，但是这里第二次调用结果还是2，这就说明了两次调用创建了两次</p>
+<p>那么怎么让n一直被使用呢，这时你应该想起来开头有一句话</p>
+<blockquote>
+<p>但凡是当前活动对象中有被内部子集引用的数据，那么这个时候，这个数据不删除，保留一根指针给内部活动对象。</p>
+</blockquote>
+<p>当数据一直被使用时就会保留下来，那么怎么让他一直被使用呢？</p>
+<p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="img"></p>
+<p>将sum方法作为返回值赋值给a，这时候，feng中的数据就会一直被使用，直到a销毁，这时候多次调用a方法，n就会累加</p>
+<p>如果再赋值给b，这就又开辟了一块内存，与a无关n又重新开始计算，结果如下：</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200723133422096.png" alt="image-20200723133422096"></p>
+<p>这时候你又想起了开头还有一句话：</p>
+<blockquote>
+<p>每次外部函数执行的时 候，外部函数的引用地址不同，都会重新创建一个新的地址</p>
+</blockquote>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200723133432044.png" alt="image-20200723133432044"></p>
+<p>如果在sum中在添加一个function，这样再执行两次a结果是什么呢？</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200723133443346.png" alt="image-20200723133443346"></p>
+<p>你没有看错，其实很简单，这跟之前一样，相当于在a中开辟了两块不相关的内存，那么怎么让m累加呢？也很简单，再把show返回出去</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200723133455918.png" alt="image-20200723133455918"></p>
+<p>这时再创建b，打印结果依旧是2 3 2 3</p>
+<p>利用闭包选择数组区间</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200723133523770.png" alt="image-20200723133523770"></p>
+<p>由于过滤函数一直在调用between的子函数，所以a，b也被保留了下来</p>
+<p>闭包会造成内存泄漏</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200723133551508.png" alt="image-20200723133551508"></p>
+<p>这段代码的意思是点击div会触发打印descript属性，因为事件处理函数是一直存在的，所以每个item在使用完成之后都会保存，而且都是不同的内存区域，对于复杂对象来说是非常浪费内存的</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200723133605481.png" alt="image-20200723133605481"></p>
+<p>那么怎么解决闭包带来的内存泄漏呢</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200723133617980.png" alt="image-20200723133617980"></p>
+<p>在使用完之后给item项赋空值</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200723133630316.png" alt="image-20200723133630316"></p>
+<p>这样就可以解决不必要的内存浪费</p>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2020/07/23/异步轮询/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200723135235506.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200723135235506.png">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                JS异步轮询</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+          
+            <div class="post-nepre half next">
+          
+            <a href="/2020/07/22/STDay 2/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200722153529693.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200722153529693.png">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                思途实训day2</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
       
-  <!-- 首页默认取最最新文章集 -->
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/07/23/异步轮询/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200723135235506.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/07/23/异步轮询/">
-    JS异步轮询</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-7-23</div>
-    <p>
-    JS异步深入理解</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/07/23/异步轮询/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/07/23/闭包/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200723133122739.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/07/23/闭包/">
-    JS中的闭包</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-7-23</div>
-    <p>
-    一篇文章带你了解JS闭包</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/07/23/闭包/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/07/15/ES6笔记/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/es6.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/07/15/ES6笔记/">
-    ES6笔记</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-7-15</div>
-    <p>
-    ECMAScript6学习笔记</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/07/15/ES6笔记/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "AdzOvpXTwwf3KAX23DOds5C9-gzGzoHsz",
+        appKey: "olX1MHfMtrQcmemwl5lLmu4a",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
 
-
-      <div class="clearer">
-      </div>
-    </main>
-    <!--  -->
-    
-  </div>
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg" itemprop="image" alt="小枫" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author">小枫</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>前端小白</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
 </div>
+
+
+
     </div>    
     <div class="ins-search">
     <div class="ins-search-mask"></div>

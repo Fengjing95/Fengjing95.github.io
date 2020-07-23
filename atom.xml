@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-07-22T08:57:39.828Z</updated>
+  <updated>2020-07-23T05:52:50.933Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,46 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JS异步轮询</title>
+    <link href="/2020/07/23/%E5%BC%82%E6%AD%A5%E8%BD%AE%E8%AF%A2/"/>
+    <id>/2020/07/23/异步轮询/</id>
+    <published>2020-07-23T05:50:43.924Z</published>
+    <updated>2020-07-23T05:52:50.933Z</updated>
+    
+    <summary type="html">
+    
+      JS异步深入理解
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="js" scheme="/tags/js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JS中的闭包</title>
+    <link href="/2020/07/23/%E9%97%AD%E5%8C%85/"/>
+    <id>/2020/07/23/闭包/</id>
+    <published>2020-07-23T05:28:46.515Z</published>
+    <updated>2020-07-23T05:36:52.742Z</updated>
+    
+    <summary type="html">
+    
+      一篇文章带你了解JS闭包
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="js" scheme="/tags/js/"/>
+    
+  </entry>
   
   <entry>
     <title>思途实训day2</title>
