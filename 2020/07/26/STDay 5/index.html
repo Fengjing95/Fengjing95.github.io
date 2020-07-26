@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">思途实训day4 | 前端小枫</title>
+  <title itemprop="name">思途实训day5 | 前端小枫</title>
   
   <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -474,7 +474,7 @@
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      思途实训day4</h1>
+      思途实训day5</h1>
       <p class="entry-census">
         <span>
           <a href="">
@@ -486,7 +486,7 @@
         </span>
         <span class="bull">
         ·</span>
-        2020-7-24<span class="bull">
+        2020-7-26<span class="bull">
         ·</span>
       <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
@@ -500,22 +500,83 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1 id="Day4"><a href="#Day4" class="headerlink" title="Day4"></a>Day4</h1><h2 id="旋转-透明度"><a href="#旋转-透明度" class="headerlink" title="旋转+透明度"></a>旋转+透明度</h2><pre><code class="css">div {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: solid 3px #409eff;
-    transition: 0.5s;
-    opacity: 0.5;
-}
-div:hover {
-    transform: rotate(200deg);
-    opacity: 1;
+          <h1 id="Day-5"><a href="#Day-5" class="headerlink" title="Day 5"></a>Day 5</h1><p>引入js尽量放在body标签的最后，先加载静态标签，再加载js脚本</p>
+<blockquote>
+<p>jQuery表达式必须有分号</p>
+</blockquote>
+<h2 id="jQuery"><a href="#jQuery" class="headerlink" title="jQuery"></a>jQuery</h2><h3 id="改变元素样式"><a href="#改变元素样式" class="headerlink" title="改变元素样式"></a>改变元素样式</h3><pre><code class="js">(() =&gt; {
+    $(&#39;div&#39;).css({&#39;color&#39;: &#39;red&#39;});
+})()
+</code></pre>
+<h3 id="click事件"><a href="#click事件" class="headerlink" title="click事件"></a>click事件</h3><pre><code class="js">$(function () {
+    $(&#39;button&#39;).click(() =&gt; {
+        $(&#39;div&#39;).css({&#39;color&#39;: &#39;red&#39;});
+    });
+});
+</code></pre>
+<h4 id="导航栏颜色修改"><a href="#导航栏颜色修改" class="headerlink" title="导航栏颜色修改"></a>导航栏颜色修改</h4><p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/siblings.gif" alt="siblings"></p>
+<pre><code class="html">&lt;ul id=&quot;nav-ul&quot; onclick=&quot;navHandle()&quot;&gt;
+    &lt;li id=&quot;li1&quot;&gt;首页&lt;/li&gt;
+    &lt;li id=&quot;li2&quot;&gt;所有宝贝&lt;/li&gt;
+    &lt;li id=&quot;li3&quot;&gt;每周一上新&lt;/li&gt;
+    &lt;li id=&quot;li4&quot;&gt;生活馆&lt;/li&gt;
+    &lt;li id=&quot;li5&quot;&gt;特惠&lt;/li&gt;
+    &lt;li id=&quot;li6&quot;&gt;礼品区&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+<pre><code class="js">function navHandle() {
+    var nodeId = window.event.target.id;
+    // console.log(node);
+    $(&#39;#&#39; + nodeId).css({
+        &#39;color&#39;: &#39;#d62cc0&#39;
+    }).siblings().css({
+        &#39;color&#39;: &#39;#ffffff&#39;
+    });
 }
 </code></pre>
-<p>今日收获。。。就是个透明<code>opacity</code></p>
-<h2 id="成果"><a href="#成果" class="headerlink" title="成果"></a>成果</h2><p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/fehelper-127-0-0-1-8848-shop-index-html-1595589732038.png" alt="fehelper-127-0-0-1-8848-shop-index-html-1595589732038"></p>
+<blockquote>
+<p>siblings()方法返回被选中元素的同级元素</p>
+</blockquote>
+<h3 id="鼠标经过和移出"><a href="#鼠标经过和移出" class="headerlink" title="鼠标经过和移出"></a>鼠标经过和移出</h3><pre><code class="js">$(function() {
+    $(&#39;#mouse&#39;).mouseenter(() =&gt; {
+        $(&#39;#mouse&#39;).css({
+            &#39;background&#39;: &#39;red&#39;
+        });
+    });
+});
+$(function() {
+    $(&#39;#mouse&#39;).mouseleave(() =&gt; {
+        $(&#39;#mouse&#39;).css({
+            &#39;background&#39;: &#39;#409eff&#39;
+        });
+    });
+});
+</code></pre>
+<h4 id="淡入淡出效果"><a href="#淡入淡出效果" class="headerlink" title="淡入淡出效果"></a>淡入淡出效果</h4><pre><code class="js">$(function() {
+    $(&#39;.b-f-1&#39;).mouseenter(() =&gt; {
+        $(&#39;#black1&#39;).fadeOut(500);
+    });
+});
+$(function() {
+    $(&#39;.b-f-1&#39;).mouseleave(() =&gt; {
+        $(&#39;#black1&#39;).fadeIn(300);
+    });
+});
+</code></pre>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/fadein.gif" alt="fadein"></p>
+<h4 id="滑动效果"><a href="#滑动效果" class="headerlink" title="滑动效果"></a>滑动效果</h4><p>slideDown、slideUp</p>
+<pre><code class="js">$(function() {
+    $(&#39;div&#39;).mouseenter(() =&gt; {
+        $(&#39;div&#39;).slideDown(1000);
+    });
+});
+$(function() {
+    $(&#39;div&#39;).mouseleave(() =&gt; {
+        $(&#39;div&#39;).slideUp(1000);
+    });
+});
+</code></pre>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>今天大概复习了一下jQuery，很多东西都忘了，需要再看一下</p>
 
         </div>
         <!-- .entry-content -->
@@ -544,28 +605,11 @@ div:hover {
       <div class="toc" style="background: none;"></div>
       <section class="post-squares nextprev">
         
-          
-            <div class="post-nepre half previous">
-          
-            <a href="/2020/07/26/STDay 5/" rel="prev">
-              <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200722153529693.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200722153529693.png">
-              </div>
-              <span class="label">
-              Previous Post</span>
-              <div class="info">
-                <h3>
-                思途实训day5</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
         
           
-            <div class="post-nepre half next">
+            <div class="post-nepre full next">
           
-            <a href="/2020/07/24/STDay 3/" rel="next">
+            <a href="/2020/07/24/STDay 4/" rel="next">
               <div class="background">
                 <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200722153529693.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200722153529693.png">
               </div>
@@ -573,7 +617,7 @@ div:hover {
               Next Post</span>
               <div class="info">
                 <h3>
-                思途实训day3</h3>
+                思途实训day4</h3>
                 <hr>
               </div>
             </a>
