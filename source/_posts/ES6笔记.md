@@ -1,5 +1,5 @@
 ---
-title:  Hello World
+title:  ES6笔记
 date: {{ date }}
 author: 小枫
 avatar: https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg
@@ -11,7 +11,7 @@ comments: true
 tags: js
 keywords: js, ES
 description: ECMAScript6学习笔记
-photos: https://ae01.alicdn.com/kf/H5aff3b00be9642e5aafff775358bae53m.jpg
+photos: https://gitee.com/liuhao1108/picGoCDN/raw/master/img/es6.jpg
 ---
 # ES6笔记
 
@@ -105,7 +105,7 @@ show(14,2,3,4,5);
 
 多余的参数将会由args接收
 
-![](C:\Users\刘浩\Desktop\笔记\图片\...args.png)
+![](https://gitee.com/liuhao1108/picGoCDN/raw/master/img/...args.png)
 
 **展开数组**
 

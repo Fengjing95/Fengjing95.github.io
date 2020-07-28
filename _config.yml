@@ -79,7 +79,7 @@ theme: Sakura
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  # repo: https://gitee.com/liuhao1108/F-blog # https://github.com/TJ-XiaJiaHao/TJ-XiaJiaHao.github.io
+  # repo: https://gitee.com/liuhao1108/feng.git # https://github.com/TJ-XiaJiaHao/TJ-XiaJiaHao.github.io
   repo: https://github.com/Fengjing95/Fengjing95.github.io/ # https://github.com/TJ-XiaJiaHao/TJ-XiaJiaHao.github.io
   branch: master
 

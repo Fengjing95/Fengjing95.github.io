@@ -11,7 +11,7 @@ comments: true
 tags: 工具
 keywords: 快捷键
 description: VSCode常用快捷键汇集
-photos: https://ae01.alicdn.com/kf/H481a591222bf40f4b12f9a84712a1d1cc.jpg
+photos: https://gitee.com/liuhao1108/picGoCDN/raw/master/img/vscode.jpg
 ---
 # VS Code 快捷键
 
@@ -60,8 +60,3 @@ photos: https://ae01.alicdn.com/kf/H481a591222bf40f4b12f9a84712a1d1cc.jpg
 查找替换 Ctrl+H
 
 整个文件夹中查找 Ctrl+Shift+F
-``` java
-public void init() {
-    
-}
-```
