@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">JS异步轮询 | 前端小枫</title>
+  <title itemprop="name">JS递归、闭包、作用域链 | 前端小枫</title>
   
   <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -470,11 +470,11 @@
 
   <div class="pattern-center single-center">
     <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200723135235506.png);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200723135235506.png">
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200723133122739.png);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200723133122739.png">
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      JS异步轮询</h1>
+      JS递归、闭包、作用域链</h1>
       <p class="entry-census">
         <span>
           <a href="">
@@ -486,7 +486,7 @@
         </span>
         <span class="bull">
         ·</span>
-        2020-7-23<span class="bull">
+        2020-7-31<span class="bull">
         ·</span>
       <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
@@ -500,197 +500,185 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1 id="异步轮询"><a href="#异步轮询" class="headerlink" title="异步轮询"></a>异步轮询</h1><h2 id="异步"><a href="#异步" class="headerlink" title="异步"></a>异步</h2><p>先来看一个例子</p>
-<pre><code class="js">console.log(&#39;start&#39;)
-setTimeout(() =&gt; {
-    console.log(&#39;setTimeout&#39;)
-}, 4000)
-console.log(&#39;end&#39;)
+          <h1 id="JS递归、闭包、作用域链"><a href="#JS递归、闭包、作用域链" class="headerlink" title="JS递归、闭包、作用域链"></a>JS递归、闭包、作用域链</h1><h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><h3 id="常规的递归函数"><a href="#常规的递归函数" class="headerlink" title="常规的递归函数"></a>常规的递归函数</h3><pre><code class="js">function func(number) {
+    if (number &lt;= 1) {
+        return 1;
+    }
+    else {
+        return number * func(number - 1);
+    }
+}
+console.log(func(4));    // 24
 </code></pre>
-<p>这段代码的执行顺序是什么，你可能想到的结果是</p>
-<blockquote>
-<p>start </p>
-<p>setTimeout </p>
-<p>end</p>
+<p>这是一个非常常见的递归函数，但是有一种情况会使得此方法出现错误。</p>
+<pre><code class="js">var func2 = func;
+func = null;
+console.log(func2(4));
+</code></pre>
+<p>将递归函数赋值给一个变量，然后把原函数赋值为null，这时候再调用就会报错</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200730225021398.png" alt="image-20200730225021398"></p>
+<p>这是因为function属于引用类型，赋值时通过指针指向原函数，原函数发生改变，调用时就会出错</p>
+<h3 id="使用callee"><a href="#使用callee" class="headerlink" title="使用callee"></a>使用callee</h3><p>在上面的情况下，使用<code>arguments.callee</code>就可以解决，<code>arguments.callee</code>是一个指向正在执行函数的指针，将经典递归做以下改动</p>
+<pre><code class="js">function func(number) {
+    if (number &lt;= 1) {
+        return 1;
+    }
+    else {
+        return number * arguments.callee(number - 1);
+    }
+}
+console.log(func(4));    //24
+</code></pre>
+<p>使用指针进行递归，无论怎么调用函数都不会出错，但是，<strong>在严格模式下使用arguments.callee会报错</strong></p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200730225603025.png" alt="image-20200730225603025"></p>
+<h3 id="命名函数表达式"><a href="#命名函数表达式" class="headerlink" title="命名函数表达式"></a>命名函数表达式</h3><p>以上两种方法都存在这不同程度的缺陷，使用命名函数表达式可以达到指针的效果，亦可以同时运行在严格模式和非严格模式下</p>
+<pre><code class="js">var func2 = (function func(number) {
+    if (number &lt;= 1) {
+        return 1;
+    }
+    else {
+        return number * func(number - 1);
+    }
+});
+var func3 = func2;
+func2 = null;
+console.log(func3(4));
+</code></pre>
+<p>这时依旧可以正常显示结果</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200730230341955.png" alt="image-20200730230341955"></p>
+<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><blockquote>
+<p>闭包就是可以创建一个独立的环境，每个闭包里面的环境都是独立的，互不干扰。闭包会发生内存泄漏，每次外部函数执行的时候，外部函数的引用地址不同，都会重新创建一个新的地址。但凡是当前活动对象中有被内部子集引用的数据，那么这个时候，这个数据不删除，保留一根指针给内部活动对象。</p>
 </blockquote>
-<p>但是，js是单线程的，不会因为一个任务而被阻塞，异步操作将会被放到队列中，等主线程执行完第一轮任务，然后再执行队列中的任务</p>
-<p>这里稍微扯一下栈和队列</p>
-<h3 id="栈（stack）"><a href="#栈（stack）" class="headerlink" title="栈（stack）"></a>栈（stack）</h3><p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200723134020606.png" alt="image-20200723134020606"></p>
-<p>栈是一种先进后出的数据结构，可以理解为一个桶，先放进的东西在最低下，后放的东西在最外面，外面的取完了之后才能拿出最先放进去的东西；</p>
-<h3 id="队列（queue）"><a href="#队列（queue）" class="headerlink" title="队列（queue）"></a>队列（queue）</h3><p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200723134037360.png" alt="image-20200723134037360"></p>
-<p>队列是一种先进先出的数据结构，可以看做一个管道，先进的先出，后进的后出</p>
-<p>回到正题，上面的例子中setTimeout是一个异步操作，被放到了队列中，当主线程执行完成之后再来执行队列中的任务，所以答案应该是</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200723134050845.png" alt="image-20200723134050845"></p>
-<p>在js的队列中有两种划分，一种是<strong>宏任务</strong>（<strong>macrotask queue</strong>），一种是<strong>微任务</strong>（<strong>microtask queue</strong>），每一个事件循环（Event Loop）都有一个微任务，会有一个或多个宏任务，每一次事件循环都会<code>首先执行微任务执行完后从宏任务取出一个加入到微任务然后执行</code>，直至队列中所有的任务执行结束</p>
-<p><strong>宏任务</strong></p>
-<ul>
-<li>script(整体代码)</li>
-<li>setTimeout</li>
-<li>setInterval</li>
-<li>I/O</li>
-<li>UI交互事件</li>
-<li>postMessage</li>
-<li>MessageChannel</li>
-<li>setImmediate(Node.js 环境)</li>
-</ul>
-<p><strong>微任务</strong></p>
-<ul>
-<li>Promise.then</li>
-<li>Object.observe</li>
-<li>MutaionObserver</li>
-<li>process.nextTick(Node.js 环境)</li>
-</ul>
-<h2 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h2><p>异步原理看完了，下面开始Promise</p>
-<pre><code class="js">  let promise = new Promise((resolve, reject) =&gt; {
-    // resolve(&quot;成功&quot;)
-    // reject(&quot;失败&quot;)
-  })
-  console.log(promise)
-</code></pre>
-<p>先来看一下Promise对象的结构</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200723134434556.png" alt="image-20200723134434556"></p>
-<p>当没有任何操作的时候，Promise对象的状态时pending，值是undefinded</p>
-<p>当在Promise中调用resolve之后，状态变为resolved，值是成功</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200723134448544.png" alt="image-20200723134448544"></p>
-<p>当调用reject的时候，状态变为rejected，值是失败</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200723134457497.png" alt="image-20200723134457497"></p>
-<p>pending就是未决，resolve可以理解为成功，reject可以理解为拒绝</p>
-<p>Promise的状态是不可逆的，resolve和reject同时出现，先执行的决定状态，后执行的不生效</p>
-<p>下面这三种方法可以触发Promise.then的错误方法</p>
-<ul>
-<li>throw new Error(‘fail’)</li>
-<li>reject(‘fail’)</li>
-<li>错误操作（默认，类似try/catch）</li>
-</ul>
-<h3 id="链式调用"><a href="#链式调用" class="headerlink" title="链式调用"></a>链式调用</h3><pre><code class="js">console.log(&#39;start&#39;)
-let promise = new Promise((resolve, reject) =&gt; {
-    console.log(&#39;promise&#39;)
-    resolve(&quot;success&quot;)
-    // reject(&quot;faild&quot;)
-}).then(value =&gt; {
-    console.log(value+1)
-    return value
-}, reason =&gt; {
-    console.log(reason)
-}).then(value =&gt; {
-    console.log(value+2)
-}, reason =&gt; {
-    console.log(reason)
-})
-console.log(&#39;end&#39;)
-</code></pre>
-<p>打印结果为</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200723134559383.png" alt="image-20200723134559383"></p>
-<p>Promise会将返回值作为.then()的参数传递下去，而且两个.then是在主线程执行完成之后才执行的，这里被放到了微任务（不是并列的，当执行第一个.then的时候第二个.then才会被放到微任务），如果不调用resolve或者reject，微任务是不创建的</p>
-<p><strong>每一个Promise.then也是一个Promise</strong></p>
-<h3 id="状态中转"><a href="#状态中转" class="headerlink" title="状态中转"></a>状态中转</h3><pre><code class="js">let promiseErr = new Promise((resolve, reject) =&gt; {
-    reject(&#39;faild&#39;)
-})
+<p>上面的递归最后一种方法就可以理解为一个闭包</p>
+<h3 id="闭包与变量"><a href="#闭包与变量" class="headerlink" title="闭包与变量"></a>闭包与变量</h3><p>经典的示例</p>
+<pre><code class="js">function newArray() {
+    var result = new Array();
+    for (var i = 0; i &lt; 10; i++) {
+        result[i] = function () {
+            return i;
+        }
+    }
+    return result;
+}
+var newArr = newArray();
 
-let promise = new Promise((resolve, reject) =&gt; {
-    resolve(promiseErr)
-}).then(value =&gt; {
-    console.log(&#39;value:&#39;+value)
-}, reason =&gt; {
-    console.log(&#39;err:&#39;+reason);
-})
-</code></pre>
-<p>这里promise虽然调用了resolve，但是返回的状态却是promiseErr的，所以他的结果是</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200723134642995.png" alt="image-20200723134642995"></p>
-<p>.then是对它前一个Promise对象的操作</p>
-<h3 id="错误捕获"><a href="#错误捕获" class="headerlink" title="错误捕获"></a>错误捕获</h3><p>这样每一个then都有两个方法，过于繁琐，可以在then中只写成功方法，在最后使用catch方法捕获错误</p>
-<pre><code class="js">let promise = new Promise((resolve, reject) =&gt; {
-    resolve()
-}).then(v =&gt; {
-    console.log(&#39;p1&#39;)
-    throw new Error(&#39;fail&#39;)
-}).then(v =&gt; {
-    console.log(&#39;p2&#39;)
-}).catch(err =&gt; {
-    console.log(err)
-}).then(v =&gt; {
-    console.log(&#39;p3&#39;)
-}).then(v =&gt; {
-    console.log(&#39;p4&#39;)
-})
-</code></pre>
-<p>结果为</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200723134735926.png" alt="image-20200723134735926"></p>
-<p>有结果可以看出，发生错误的地方到catch之间的代码不会执行，catch返回值也是一个Promise对象</p>
-<h2 id="async-await"><a href="#async-await" class="headerlink" title="async/await"></a>async/await</h2><p>了解了Promise之后，async/await就很容易了，它其实就是Promise的语法糖</p>
-<pre><code class="js">async function asyncFunc() {
-    return &quot;asunc&quot;
+for (var i = 0; i &lt; 10; i++) {
+    console.log(newArr[i]());
 }
+// 10,10,10,10,10,10,10,10,10,10
+</code></pre>
+<p>乍一看好像是for循环中每次循环将0-9赋值给数组的每一项，其实并不是，因为当前的newArray()正在执行，每个函数作用域链都保存着newArray()的活动对象，所以for循环中每次都是引用的同一个变量i，for循环结束之后，i是10，所以每个函数内部的i都是10。</p>
+<p>再将返回i的函数包在一个匿名函数中，就可以达到互不影响的效果</p>
+<pre><code class="js">function newArray() {
+    var result = new Array();
+    for (var i = 0; i &lt; 10; i++) {
+        result[i] = function (num: number) {
+            return function () {
+                return num;
+            };
+        }(i)
+    }
+    return result;
+}
+var newArr = newArray();
+for (var i = 0; i &lt; 10; i++) {
+    console.log(newArr[i]());
+}
+</code></pre>
+<p>结果如下</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200731104250987.png" alt="image-20200731104250987"></p>
+<p>在for循环中,自调用函数立即执行,获取实时地i赋值给num. 循环结束之后,返回result，在自调用函数执行之后，他的作用域就被销毁了，不会再被其他操作影响</p>
+<h3 id="this对象"><a href="#this对象" class="headerlink" title="this对象"></a>this对象</h3><pre><code class="js">// 非严格模式
+var arg = &#39;window&#39;;
+var object = {
+    arg: &#39;object&#39;,
+    getArg: function () {
+        return function () {
+            return this.arg;
+        };
+    }
+};
+console.log(object.getArg()());    //window
+</code></pre>
+<p>为什么结果会是window呢，来看一下最后一行</p>
+<pre><code class="js">// object.getArg()()相当于
+var val = object.getArg();
+val();
+</code></pre>
+<p>把getArg返回的方法赋值给了val变量，然后执行函数。因为val在全局中，所以获得的arg是全局中的arg</p>
+<p><strong>解决方法</strong></p>
+<h4 id="1-传递this指向"><a href="#1-传递this指向" class="headerlink" title="1 传递this指向"></a>1 传递this指向</h4><pre><code class="js">var arg = &#39;window&#39;;
+var object = {
+    arg: &#39;object&#39;,
+    getArg: function () {
+        var _this = this;
+        return function () {
+            return _this.arg;
+        };
+    }
+};
+console.log(object.getArg()());
+</code></pre>
+<p>将object的this传递到getArg之内，然后使用这个引用值获取arg</p>
+<h4 id="2-箭头函数"><a href="#2-箭头函数" class="headerlink" title="2 箭头函数"></a>2 箭头函数</h4><p>也就是lambda表达式</p>
+<pre><code class="js">var arg: string = &#39;window&#39;;
 
-let result = asyncFunc()
-console.log(result);
+var object = {
+    arg: &#39;object&#39;,
+    getArg: function () {
+        return () =&gt; {
+            return this.arg
+        }
+    }
+}
+console.log(object.getArg()());
 </code></pre>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200723134849722.png" alt="image-20200723134849722"></p>
-<p>从结果看出，async方法返回的也是一个Promise对象</p>
-<p>来看看下面这个例子</p>
-<pre><code class="js">function p() {
-    console.log(&#39;p&#39;)
-}
-async function func() {
-    await p();
-    console.log(&#39;OK&#39;)
-}
-console.log(&#39;start&#39;)
-func()
-console.log(&#39;end&#39;)
-// start
-// p
-// end
-// OK
+<p>箭头函数的一大特点就是不改变this的指向</p>
+<h3 id="内存泄漏"><a href="#内存泄漏" class="headerlink" title="内存泄漏"></a>内存泄漏</h3><p>闭包的缺陷在于会造成内存泄露，<strong>当前活动对象中有被内部子集引用的数据，那么这个时候，这个数据不删除</strong>，比如通过node结点给html元素添加点击事件的时候，当事件添加完之后，存储node结点的变量会一直占用内存，造成内存泄漏</p>
+<pre><code class="js">var divNode = document.getElementById(&#39;box&#39;);
+divNode.onclick = function () {
+    alert(&#39;click&#39;);
+};
 </code></pre>
-<p>用知乎上看到过一个例子来解释，可以将</p>
-<pre><code class="js">async function func() {
-    await p();
-    console.log(&#39;OK&#39;)
-}
+<p>存储divNode的内存将会无法释放也无法使用，怎么解决呢</p>
+<p>在添加完事件之后将divNode手动赋值为空</p>
+<pre><code class="js">var divNode = document.getElementById(&#39;box&#39;);
+divNode.onclick = function () {
+    alert(&#39;click&#39;);
+};
+divNode = null;
 </code></pre>
-<p>理解为</p>
-<pre><code class="js">function func() {
-    return Promise.resolve(p()).then(() =&gt; {
-        console.log(&#39;OK&#39;)
-    })
-}
-</code></pre>
-<p>console.log(‘OK’)被分配到微任务中等待下一轮轮询</p>
-<p>来看一个综合案例</p>
-<pre><code class="js">async function async1() {
-    console.log(&#39;async1 start&#39;)
-    await async2()
-    console.log(&#39;async1 end&#39;)
-}
-async function async2() {
-    console.log(&#39;async2&#39;)
-}
-console.log(&#39;script start&#39;)
-setTimeout(function () {
-    console.log(&#39;settimeout&#39;)
-})
-async1()
-new Promise(function (resolve) {
-    console.log(&#39;promise1&#39;)
-    resolve()
-}).then(function () {
-    console.log(&#39;promise2&#39;)
-})
-console.log(&#39;script end&#39;)
-</code></pre>
-<p>输出结果是</p>
-<blockquote>
-<p>script start </p>
-<p>async1 start</p>
-<p>async2 </p>
-<p>promise1 </p>
-<p>script end </p>
-<p>async1 end </p>
-<p>promise2 </p>
-<p>settimeout</p>
+<h2 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h2><h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><blockquote>
+<p>作用域是在运行时代码中的某些特定部分中变量，函数和对象的可访问性。换句话说，作用域决定了代码区块中变量和其他资源的可见性。</p>
 </blockquote>
-<p>你做对了么(๑´ㅂ`๑) </p>
+<h4 id="全局作用域"><a href="#全局作用域" class="headerlink" title="全局作用域"></a>全局作用域</h4><p>一般全局作用域有以下几种情况</p>
+<ul>
+<li>最外层函数和最外层函数外面定义的变量拥有全局作用域</li>
+<li>所有未直接定义的变量</li>
+<li>所有window对象</li>
+</ul>
+<h4 id="函数作用域"><a href="#函数作用域" class="headerlink" title="函数作用域"></a>函数作用域</h4><p>声明在函数内部的变量，函数作用域一般只有代码片段中可以访问，比如函数内部</p>
+<p>例如</p>
+<pre><code class="js">function func1(a) {
+    var b = a * 2;
+    function func2(c) {
+        console.log(a, b, c);
+    }
+    func2(b * 2);
+}
+func1(2)
+</code></pre>
+<p>这段代码中存在3个作用域</p>
+<ul>
+<li>全局作用域，标识符func1</li>
+<li>作用域func1，标识符a，b，func2</li>
+<li>作用域func2，标识符c</li>
+</ul>
+<h3 id="作用域链-1"><a href="#作用域链-1" class="headerlink" title="作用域链"></a>作用域链</h3><blockquote>
+<p>由多级作用域连续引用形成的链式结果，掌管一切变量的使用顺序： 先在局部找，没有，就延作用域向父级作用域找。</p>
+<p><strong>可以向上搜索，但不可以向下搜索</strong></p>
+</blockquote>
+<p>这种一层一层的关系，就是 作用域链 。</p>
 
         </div>
         <!-- .entry-content -->
@@ -719,36 +707,19 @@ console.log(&#39;script end&#39;)
       <div class="toc" style="background: none;"></div>
       <section class="post-squares nextprev">
         
-          
-            <div class="post-nepre half previous">
-          
-            <a href="/2020/07/24/STDay 3/" rel="prev">
-              <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200722153529693.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200722153529693.png">
-              </div>
-              <span class="label">
-              Previous Post</span>
-              <div class="info">
-                <h3>
-                思途实训day3</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
         
           
-            <div class="post-nepre half next">
+            <div class="post-nepre full next">
           
-            <a href="/2020/07/23/闭包/" rel="next">
+            <a href="/2020/07/28/Express+MySQL实现增删查改/" rel="next">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200723133122739.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200723133122739.png">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200728215938329.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200728215938329.png">
               </div>
               <span class="label">
               Next Post</span>
               <div class="info">
                 <h3>
-                JS中的闭包</h3>
+                Express+MySQL实现增删查改</h3>
                 <hr>
               </div>
             </a>
