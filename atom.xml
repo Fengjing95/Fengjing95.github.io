@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://fengjing95.github.io/"/>
-  <updated>2020-07-31T06:16:16.925Z</updated>
+  <updated>2020-07-31T14:15:52.093Z</updated>
   <id>https://fengjing95.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Vue刷新页面</title>
+    <link href="https://fengjing95.github.io/2020/07/31/Vue%E9%A1%B5%E9%9D%A2%E5%88%B7%E6%96%B0%E6%96%B9%E6%B3%95/"/>
+    <id>https://fengjing95.github.io/2020/07/31/Vue页面刷新方法/</id>
+    <published>2020-07-31T14:14:47.733Z</published>
+    <updated>2020-07-31T14:15:52.093Z</updated>
+    
+    <summary type="html">
+    
+      Vue刷新页面的三种方式
+    
+    </summary>
+    
+      <category term="随想" scheme="https://fengjing95.github.io/categories/%E9%9A%8F%E6%83%B3/"/>
+    
+    
+      <category term="vue" scheme="https://fengjing95.github.io/tags/vue/"/>
+    
+  </entry>
   
   <entry>
     <title>Vue点击切换导航栏样式</title>

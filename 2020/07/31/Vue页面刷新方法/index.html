@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">Tag: vue | 前端小枫</title>
+  <title itemprop="name">Vue刷新页面 | 前端小枫</title>
   
   <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -464,97 +464,193 @@
   </div>
 </header>
 
-      
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
 <div class="pattern-center-blank"></div>
-<div class="pattern-center ">
-  <div class="pattern-attachment-img">
-    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/vue-background.jpg" class="lazyload" onerror="imgError(this,3)" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://gitee.com/liuhao1108/picGoCDN/raw/master/img/vue-p.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/vue-p.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      Vue刷新页面</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="">小枫</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2020-7-31<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
   </div>
-  <header class="pattern-header ">
-    <h1 class="cat-title">vue</h1>
-  </header>
-</div>
+
 <div id="content" class="site-content">
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h1 id="Vue页面刷新方法"><a href="#Vue页面刷新方法" class="headerlink" title="Vue页面刷新方法"></a>Vue页面刷新方法</h1><p>在编写提交表单的时候，当表单提交上之后清空当前表单</p>
+<p>开始的时候我想的是表单提交成功之后data中表单中有关表单内容的变量重新赋空值，但是这样太过麻烦</p>
+<p>偶然间在一篇博客中发现可以通过路由跳转当前路由来清空页面</p>
+<p>然后就想着搜集一下有没有其他方法，搜集之后总结在这里了</p>
+<h2 id="路由跳转"><a href="#路由跳转" class="headerlink" title="路由跳转"></a>路由跳转</h2><pre><code class="js">this.$http.put(`/admin/problem`, newObj).then(res =&gt; {
+    if (res) {
+        this.$message.success(`上传成功`)
+    }
+}).then(() =&gt; {
+    //初始化界面数据
+    this.$router.go(0)
+})
+</code></pre>
+<p>通过<code>this.$router.go(0)</code>来刷新页面</p>
+<p><code>location.reload()</code>也可以实现刷新页面</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ录屏20200731211754 00_00_00-00_00_30.gif" alt="QQ录屏20200731211754 00_00_00-00_00_30"></p>
+<h2 id="通过空白组件刷新"><a href="#通过空白组件刷新" class="headerlink" title="通过空白组件刷新"></a>通过空白组件刷新</h2><p>将上传成功之后的回调修改</p>
+<pre><code class="js">this.$http.put(`/admin/problem`, newObj).then(res =&gt; {
+    if (res) {
+        this.$message.success(`上传成功`)
+    }
+}).then(() =&gt; {
+    //初始化界面数据
+    this.$router.replace({
+         path: &#39;/admin/back&#39;,
+         name: &#39;back&#39;
+     })
+})
+</code></pre>
+<p>然后创建一个新的空白组件back.vue，script部分如下</p>
+<pre><code class="js">// 用于刷新页面，没有实际意义
+export default {
+    name: &quot;Back&quot;,
+    data() {
+        this.$router.replace({
+            path: &#39;/admin/uploadProblem&#39;,
+            name: &#39;UploadProblem&#39;
+        })
+        return {
+
+        }
+    }
+}
+</code></pre>
+<p>效果如下，网上说会有路由的改变过程，我没有发现。。。</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ录屏20200731213658 00_00_00-00_00_30.gif" alt="QQ录屏20200731213658 00_00_00-00_00_30"></p>
+<h2 id="provide-inject-组合"><a href="#provide-inject-组合" class="headerlink" title="provide / inject 组合"></a>provide / inject 组合</h2><p>先修改一下app.vue，通过provide传递reload方法</p>
+<pre><code class="js">export default {
+    provide() {
+        return {
+            reload: this.reload()
+        }
+    },
+    name: &quot;Back&quot;,
+    data() {
+        return {
+            isRouterAlive: true
+        }
+    },
+    methods: {
+        reload() {
+            this.isRouterAlive = false
+            this.$nextTick(function() {
+                this.isRouterAlive = true
+            })
+        }
+    }
+}
+</code></pre>
+<p>在需要重新加载的页面通过 <code>inject: [&#39;reload&#39;],</code>接收方法（网上叫它‘注入依赖’），然后就可以在方法中调用 <code>this.reload()</code></p>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+        
+          
+            <div class="post-nepre full next">
+          
+            <a href="/2020/07/31/Vue点击切换导航栏样式/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/vue-p.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/vue-p.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                Vue点击切换导航栏样式</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
       
-  <!-- 首页默认取最最新文章集 -->
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/07/31/Vue页面刷新方法/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/vue-p.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/07/31/Vue页面刷新方法/">
-    Vue刷新页面</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-7-31</div>
-    <p>
-    Vue刷新页面的三种方式</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/07/31/Vue页面刷新方法/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/07/31/Vue点击切换导航栏样式/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/vue-p.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/07/31/Vue点击切换导航栏样式/">
-    Vue点击切换导航栏样式</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-7-31</div>
-    <p>
-    非常简单的切换导航栏样式</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/07/31/Vue点击切换导航栏样式/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "AdzOvpXTwwf3KAX23DOds5C9-gzGzoHsz",
+        appKey: "olX1MHfMtrQcmemwl5lLmu4a",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
 
-
-      <div class="clearer">
-      </div>
-    </main>
-    <!--  -->
-    
-  </div>
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg" itemprop="image" alt="小枫" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author">小枫</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>前端小白</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
 </div>
+
+
+
     </div>    
     <div class="ins-search">
     <div class="ins-search-mask"></div>
