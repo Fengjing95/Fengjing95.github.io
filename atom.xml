@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://fengjing95.github.io/"/>
-  <updated>2020-07-31T04:16:17.891Z</updated>
+  <updated>2020-07-31T06:16:16.925Z</updated>
   <id>https://fengjing95.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Vue点击切换导航栏样式</title>
+    <link href="https://fengjing95.github.io/2020/07/31/Vue%E7%82%B9%E5%87%BB%E5%88%87%E6%8D%A2%E5%AF%BC%E8%88%AA%E6%A0%8F%E6%A0%B7%E5%BC%8F/"/>
+    <id>https://fengjing95.github.io/2020/07/31/Vue点击切换导航栏样式/</id>
+    <published>2020-07-31T06:09:30.441Z</published>
+    <updated>2020-07-31T06:16:16.925Z</updated>
+    
+    <summary type="html">
+    
+      非常简单的切换导航栏样式
+    
+    </summary>
+    
+      <category term="随想" scheme="https://fengjing95.github.io/categories/%E9%9A%8F%E6%83%B3/"/>
+    
+    
+      <category term="vue" scheme="https://fengjing95.github.io/tags/vue/"/>
+    
+  </entry>
   
   <entry>
     <title>JS递归、闭包、作用域链</title>
