@@ -320,9 +320,9 @@
                       </li>
                     
                       <li>
-                        <a href="/categories/转载/">
+                        <a href="/categories/笔记/">
                           <i class="fa fa-book" aria-hidden="true"></i>
-                          转载
+                          笔记
                         </a>
                       </li>
                     
@@ -605,7 +605,23 @@ console.log(object.getArg()());    //window
 var val = object.getArg();
 val();
 </code></pre>
-<p>把getArg返回的方法赋值给了val变量，然后执行函数。因为val在全局中，所以获得的arg是全局中的arg</p>
+<p>把getArg返回的方法赋值给了val变量，然后执行函数。因为val在全局中，所以获得的arg是全局中的arg<br>还有一种情况会出现问题</p>
+<pre><code class="js">var arg = &#39;window&#39;;
+var object = {
+    arg: &#39;object&#39;,
+    getArg: function () {
+           return this.arg;
+    }
+};
+</code></pre>
+<ul>
+<li>object.getArg()    // object</li>
+<li>object.getArg()  // object</li>
+<li>(object.getArg = object.getArg)()  // window</li>
+</ul>
+<p>第一种方法简单的调用了object的方法；第二种方法引用了object的方法，this对象能够维持；但是第三种是一个赋值语句，赋值语句是有返回值的，也就是等号右边，所以这里引用了方法，但不是object内部而是指向window</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200802084112306.png" alt="image-20200802084112306"></p>
+<p>从这张图就可以看出赋值语句其实是有返回值的</p>
 <p><strong>解决方法</strong></p>
 <h4 id="1-传递this指向"><a href="#1-传递this指向" class="headerlink" title="1 传递this指向"></a>1 传递this指向</h4><pre><code class="js">var arg = &#39;window&#39;;
 var object = {
@@ -989,9 +1005,9 @@ func1(2)
               </li>
             
               <li>
-                <a href="/categories/转载/">
+                <a href="/categories/笔记/">
                   <i class="fa fa-book" aria-hidden="true"></i>
-                  转载
+                  笔记
                 </a>
               </li>
             

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://fengjing95.github.io/"/>
-  <updated>2020-08-01T14:01:28.214Z</updated>
+  <updated>2020-08-02T06:13:59.998Z</updated>
   <id>https://fengjing95.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Less预编译使用</title>
+    <link href="https://fengjing95.github.io/2020/08/02/Less%E9%A2%84%E7%BC%96%E8%AF%91/"/>
+    <id>https://fengjing95.github.io/2020/08/02/Less预编译/</id>
+    <published>2020-08-02T06:11:51.895Z</published>
+    <updated>2020-08-02T06:13:59.998Z</updated>
+    
+    <summary type="html">
+    
+      使用Less加快css样式开发速度
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://fengjing95.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="css" scheme="https://fengjing95.github.io/tags/css/"/>
+    
+  </entry>
   
   <entry>
     <title>动态控制输入框数量</title>
@@ -101,7 +121,7 @@
     <link href="https://fengjing95.github.io/2020/07/31/JS%E9%80%92%E5%BD%92%E3%80%81%E9%97%AD%E5%8C%85%E3%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/"/>
     <id>https://fengjing95.github.io/2020/07/31/JS递归、闭包、作用域链/</id>
     <published>2020-07-31T04:14:58.555Z</published>
-    <updated>2020-07-31T04:16:17.891Z</updated>
+    <updated>2020-08-02T00:42:52.409Z</updated>
     
     <summary type="html">
     
@@ -301,7 +321,7 @@
     <link href="https://fengjing95.github.io/2020/07/15/ES6%E7%AC%94%E8%AE%B0/"/>
     <id>https://fengjing95.github.io/2020/07/15/ES6笔记/</id>
     <published>2020-07-15T07:24:55.780Z</published>
-    <updated>2020-07-18T11:12:44.926Z</updated>
+    <updated>2020-08-02T06:22:10.833Z</updated>
     
     <summary type="html">
     
@@ -309,7 +329,7 @@
     
     </summary>
     
-      <category term="技术" scheme="https://fengjing95.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="笔记" scheme="https://fengjing95.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
     
     
       <category term="js" scheme="https://fengjing95.github.io/tags/js/"/>
