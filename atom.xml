@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://fengjing95.github.io/"/>
-  <updated>2020-08-02T06:13:59.998Z</updated>
+  <updated>2020-08-02T11:11:39.247Z</updated>
   <id>https://fengjing95.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>let、const和var的区别</title>
+    <link href="https://fengjing95.github.io/2020/08/02/let%E3%80%81const%E5%92%8Cvar/"/>
+    <id>https://fengjing95.github.io/2020/08/02/let、const和var/</id>
+    <published>2020-08-02T11:09:59.170Z</published>
+    <updated>2020-08-02T11:11:39.247Z</updated>
+    
+    <summary type="html">
+    
+      对比let、const和var的区别
+    
+    </summary>
+    
+      <category term="技术" scheme="https://fengjing95.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="js" scheme="https://fengjing95.github.io/tags/js/"/>
+    
+  </entry>
   
   <entry>
     <title>Less预编译使用</title>
