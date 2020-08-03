@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">let、const和var的区别 | 前端小枫</title>
+  <title itemprop="name">JS正则表达式 | 前端小枫</title>
   
   <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -470,11 +470,11 @@
 
   <div class="pattern-center single-center">
     <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200802190902667.png);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200802190902667.png">
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200804002806175.png);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200804002806175.png">
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      let、const和var的区别</h1>
+      JS正则表达式</h1>
       <p class="entry-census">
         <span>
           <a href="">
@@ -486,7 +486,7 @@
         </span>
         <span class="bull">
         ·</span>
-        2020-8-2<span class="bull">
+        2020-8-4<span class="bull">
         ·</span>
       <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
@@ -500,61 +500,172 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1 id="let、const和var"><a href="#let、const和var" class="headerlink" title="let、const和var"></a>let、const和var</h1><h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>var作用于全局，先来看一个例子</p>
-<pre><code class="js">for (var i = 0; i &lt; 5; i++) {
-    var a = 1;
+          <h1 id="JS正则表达式"><a href="#JS正则表达式" class="headerlink" title="JS正则表达式"></a>JS正则表达式</h1><h2 id="创建正则的两种方式："><a href="#创建正则的两种方式：" class="headerlink" title="创建正则的两种方式："></a>创建正则的两种方式：</h2><ol>
+<li>创建字面量正则表达式，使用//包裹</li>
+</ol>
+<pre><code class="js">let reg = /\w/
+</code></pre>
+<ol start="2">
+<li>创建正则表达式对象，使用new RegExp()</li>
+</ol>
+<pre><code class="js">let reg = new RegExp(/\w/)
+</code></pre>
+<h2 id="选择符"><a href="#选择符" class="headerlink" title="选择符 |"></a>选择符 |</h2><p>“I” 左右两边匹配到一个就算是true</p>
+<pre><code class="js">let str = &#39;张三：010-1568413，李四：020-1586640&#39;
+let reg = /(010|020)\-\d{7,8}/
+console.log(reg.test(str)); // true
+</code></pre>
+<h2 id="转义"><a href="#转义" class="headerlink" title="转义"></a>转义</h2><p>在字符串中\d和d是一样的</p>
+<pre><code class="js">console.log(&#39;\d&#39; === &#39;d&#39;) // true
+</code></pre>
+<p>在创建字面量的时候直接使用//创建，或者在字符串中转义</p>
+<pre><code class="js">let str = &#39;123.abc&#39;
+let reg = &quot;\\d+\\.\\w+&quot;
+let reg2 = /\d+\.\w+/
+console.log(str.match(reg));
+console.log(str.match(reg2));
+</code></pre>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200804001329080.png" alt="image-20200804001329080"></p>
+<h2 id="边界"><a href="#边界" class="headerlink" title="边界"></a>边界</h2><p>以^开始，以$结束，可用于检测网址开头和文件后缀</p>
+<h3 id="开始边界"><a href="#开始边界" class="headerlink" title="^开始边界"></a>^开始边界</h3><pre><code class="js">let str = &#39;http:www.easyremember.cn&#39;
+let reg = /^https?:www\..+/
+console.log(reg.test(str));  // true
+</code></pre>
+<h3 id="结束边界"><a href="#结束边界" class="headerlink" title="$结束边界"></a>$结束边界</h3><pre><code class="js">let str = &#39;C://Users/All Users/abc.txt&#39;
+let str2 = &#39;C://Users/All Users/abc.log&#39;
+let reg = /\.txt$/
+console.log(reg.test(str));  // true
+console.log(reg.test(str2));  // false
+</code></pre>
+<h2 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h2><p>\w：所有的字母、数字、下划线</p>
+<p>\W：所有的非数字、字母、下划线</p>
+<p>\d：所有的数字</p>
+<p>\D：所有的非数字</p>
+<p>\s：所有的空白字符，换行、空格等</p>
+<p>\S：所有的非空白字符</p>
+<p>.：除换行以外的任意字符</p>
+<p>模式修饰符</p>
+<p>i：不区分大小写</p>
+<p>g：全局匹配</p>
+<p>y：从lastIndex开始匹配</p>
+<p>u：处理UTF-16编码字符</p>
+<p>m：多行处理</p>
+<p>s：单行处理，忽略换行符</p>
+<h2 id="原子表"><a href="#原子表" class="headerlink" title="原子表"></a>原子表</h2><table>
+<thead>
+<tr>
+<th>原子表</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[]</td>
+<td>只匹配其中的一个原子</td>
+</tr>
+<tr>
+<td>[^]</td>
+<td>只匹配”除了”其中字符的任意一个原子</td>
+</tr>
+<tr>
+<td>[0-9]</td>
+<td>匹配0-9任何一个数字</td>
+</tr>
+<tr>
+<td>[a-z]</td>
+<td>匹配小写a-z任何一个字母</td>
+</tr>
+<tr>
+<td>[A-Z]</td>
+<td>匹配大写A-Z任何一个字母</td>
+</tr>
+</tbody>
+</table>
+<p>Tips:<br>\d == [0-9]</p>
+<p>\D == [^0-9]</p>
+<h2 id="原子组"><a href="#原子组" class="headerlink" title="原子组"></a>原子组</h2><p>使用（）包裹</p>
+<p>引用分组：引用之前原子组匹配到的内容，\1\2……</p>
+<pre><code class="js">let str = &#39;abc123.c123&#39;
+let reg = /([a-z]\d+)\.\1/g
+console.log(str.match(reg));    // [&quot;c123.123&quot;]
+</code></pre>
+<p>分组别名</p>
+<p>为不同分组命名，使用?&lt;&gt;命名，使用$&lt;&gt;引用</p>
+<pre><code class="js">let str = &#39;abc123.c123&#39;
+let reg = /(?&lt;init&gt;[a-z]\d+)\.\1/g
+// console.log(str.match(reg));
+console.log(str.replace(reg, `&lt;p&gt;$&lt;init&gt;&lt;/p&gt;`));
+</code></pre>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200804001610247.png" alt="image-20200804001610247"></p>
+<h2 id="重复"><a href="#重复" class="headerlink" title="重复"></a>重复</h2><p>+：重复一次或多次</p>
+<p>*：重复零次或多次</p>
+<p>?：重复零次或一次</p>
+<p>{n}：重复n次</p>
+<p>{n,}：重复n次或更多次</p>
+<p>{n,m}：重复n次到m次</p>
+<pre><code class="js">let str = &#39;1234&#39;
+let reg = /\d/
+let reg2 = /\d+/let reg3 = /^\d{1,2}$/
+console.log(str.match(reg));
+console.log(str.match(reg2));
+console.log(reg3.test(str));
+</code></pre>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200804001720566.png" alt="image-20200804001720566"></p>
+<h2 id="字符方法"><a href="#字符方法" class="headerlink" title="字符方法"></a>字符方法</h2><h3 id="search"><a href="#search" class="headerlink" title="search"></a>search</h3><p>返回要搜索内容的索引，没有返回-1</p>
+<pre><code class="js">let str = &#39;abcdef&#39;
+console.log(str.search(&#39;ef&#39;));// 4
+console.log(str.search(/\w/));  // 0
+console.log(str.search(&#39;efg&#39;));  // -1
+</code></pre>
+<h3 id="match"><a href="#match" class="headerlink" title="match"></a>match</h3><p>使用字符串或者正则表达式匹配，返回匹配的内容，匹配不到返回null</p>
+<pre><code class="js">let str = &#39;abcdef&#39;console.log(str.match(&#39;ef&#39;));  // ef
+console.log(str.match(/\w+/));  // abcdef
+</code></pre>
+<h3 id="matchAll："><a href="#matchAll：" class="headerlink" title="matchAll："></a>matchAll：</h3><p>返回一个可迭代对象</p>
+<pre><code class="js">let reg = /&lt;(h[1-6])&gt;[\s\S]+&lt;\/\1&gt;/g
+let str = `&lt;h1&gt;前段小枫&lt;/h1&gt;    
+        &lt;h2&gt;blog.easyremember.cn&lt;/h2&gt;`
+for (let s of str.matchAll(reg)) {  
+    console.log(s);
 }
-
-console.log(a, i);
-// 1 5
 </code></pre>
-<p>跳出了for循环之外a依旧可以访问，用于控制循环的i也能够访问，i=5循环跳出，所以i是5</p>
-<p>再来看一下把var改成const</p>
-<pre><code class="js">for (var i = 0; i &lt; 5; i++) {
-    const a = 1;
-}
-
-console.log(a, i);
-// Uncaught ReferenceError: a is not defined
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200804001946007.png" alt="image-20200804001946007"></p>
+<h3 id="split："><a href="#split：" class="headerlink" title="split："></a>split：</h3><p>使用字符分割字符串</p>
+<pre><code class="js">let str = &#39;abc/def/123&#39;
+console.log(str.split(&#39;/&#39;));
+// [&quot;abc&quot;,&quot;def&quot;,&quot;123&quot;]
 </code></pre>
-<p>这时a是块级作用域，除了循环之后就访问不到了，再来看i，把i改成const声明</p>
-<p> <code>Uncaught TypeError: Assignment to constant variable.</code></p>
-<p>const属于常量，赋值之后不能改变，这里应该用let，let是变量</p>
-<h2 id="重复声明"><a href="#重复声明" class="headerlink" title="重复声明"></a>重复声明</h2><pre><code class="js">var b = 1;
-var b = 2;
-console.log(b);
-// 2
+<h3 id="replace"><a href="#replace" class="headerlink" title="replace"></a>replace</h3><p>替换字符为</p>
+<pre><code class="js">let str = &#39;abc/def/123&#39;  
+console.log(str.replace(/\W/g, &#39;-&#39;));  
+// abc-def-123
 </code></pre>
-<p>用var可以重复声明，再来试一下const</p>
-<pre><code class="js">const b = 1;
-const b = 2;
-console.log(b);
-// Uncaught SyntaxError: Identifier &#39;b&#39; has already been declared
+<h2 id="正则方法"><a href="#正则方法" class="headerlink" title="正则方法"></a>正则方法</h2><h3 id="test"><a href="#test" class="headerlink" title="test"></a>test</h3><p>检测字符串是否符合要求，返回值是一个布尔值</p>
+<h3 id="exec"><a href="#exec" class="headerlink" title="exec"></a>exec</h3><p>不使用全局匹配与match相同，使用全局匹配会匹配完全部字符串，返回结果是一个可迭代对象</p>
+<pre><code class="js">let reg = /&lt;(h[1-6])&gt;[\s\S]+&lt;\/\1&gt;/g
+let str = `&lt;h1&gt;前段小枫&lt;/h1&gt;
+    &lt;h2&gt;blog.easyremember.cn&lt;/h2&gt;`
+console.log(reg.exec(str));
+console.log(reg.exec(str));
 </code></pre>
-<p>可以看出const不可以重复声明，再来试一下let</p>
-<pre><code class="js">let b = 1;
-let b = 2;
-console.log(b);
-// Uncaught SyntaxError: Identifier &#39;b&#39; has already been declared
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200804002125371.png" alt="image-20200804002125371"></p>
+<h2 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h2><h3 id="exp"><a href="#exp" class="headerlink" title="?=exp"></a>?=exp</h3><p>相当于if，但是是后置的例如</p>
+<pre><code class="html">&lt;main&gt;  中国努力建设有中国特色社会主义&lt;/main&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;  
+    let reg = /中国(?=特色)/  
+    let str = document.querySelector(&#39;main&#39;)  
+    str.innerHTML = str.innerHTML.replace(reg, &#39;&lt;a href=&quot;&quot;&gt;中国&lt;/a&gt;&#39;)
+&lt;/script&gt;
 </code></pre>
-<p>由此可以看出，const和let不可以重复声明</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>cosnt和let是ES6新出的块级作用域，不可以重复声明，此外</p>
-<pre><code class="js">const b;
-b = 2;
-console.log(b);
-// Uncaught SyntaxError: Missing initializer in const declaration
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200804002217729.png" alt="image-20200804002217729"></p>
+<h3 id="lt-exp"><a href="#lt-exp" class="headerlink" title="?&lt;=exp"></a>?&lt;=exp</h3><p>前置断言</p>
+<pre><code class="js">let reg = /(?&lt;=有)中国/
+let str = document.querySelector(&#39;main&#39;)
+str.innerHTML = str.innerHTML.replace(reg, &#39;&lt;a href=&quot;&quot;&gt;中国&lt;/a&gt;&#39;)
 </code></pre>
-<p>const不可以先声明后赋值，let可以</p>
-<p>上面说到const不可以重新赋值，有一种情况例外</p>
-<pre><code class="js">const b = {
-    a: &#39;a&#39;
-};
-b.a = &#39;b&#39;;
-console.log(b);
-</code></pre>
-<p>来看一下结果</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200802190723555.png" alt="image-20200802190723555"></p>
-<p>可以看到值已经发生了改变</p>
+<p>效果跟前面的?=效果是一样的</p>
+<h3 id="exp-1"><a href="#exp-1" class="headerlink" title="?!exp"></a>?!exp</h3><p>后面不能出现exp匹配到的内容</p>
+<h3 id="lt-exp-1"><a href="#lt-exp-1" class="headerlink" title="?&lt;!exp"></a>?&lt;!exp</h3><p>前面不能出现exp匹配到的内容</p>
 
         </div>
         <!-- .entry-content -->
@@ -583,36 +694,19 @@ console.log(b);
       <div class="toc" style="background: none;"></div>
       <section class="post-squares nextprev">
         
-          
-            <div class="post-nepre half previous">
-          
-            <a href="/2020/08/04/JS正则表达式/" rel="prev">
-              <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200804002806175.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200804002806175.png">
-              </div>
-              <span class="label">
-              Previous Post</span>
-              <div class="info">
-                <h3>
-                JS正则表达式</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
         
           
-            <div class="post-nepre half next">
+            <div class="post-nepre full next">
           
-            <a href="/2020/08/02/Less预编译/" rel="next">
+            <a href="/2020/08/02/let、const和var/" rel="next">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200802141348317.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200802141348317.png">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200802190902667.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200802190902667.png">
               </div>
               <span class="label">
               Next Post</span>
               <div class="info">
                 <h3>
-                Less预编译使用</h3>
+                let、const和var的区别</h3>
                 <hr>
               </div>
             </a>
