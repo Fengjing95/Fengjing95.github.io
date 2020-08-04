@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://fengjing95.github.io/"/>
-  <updated>2020-08-03T16:32:24.560Z</updated>
+  <updated>2020-08-04T13:45:42.022Z</updated>
   <id>https://fengjing95.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Vue组件通信</title>
+    <link href="https://fengjing95.github.io/2020/08/04/Vue%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1/"/>
+    <id>https://fengjing95.github.io/2020/08/04/Vue组件通信/</id>
+    <published>2020-08-04T13:44:18.572Z</published>
+    <updated>2020-08-04T13:45:42.022Z</updated>
+    
+    <summary type="html">
+    
+      Vue组件之间传递数据的方式
+    
+    </summary>
+    
+      <category term="技术" scheme="https://fengjing95.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="vue" scheme="https://fengjing95.github.io/tags/vue/"/>
+    
+  </entry>
   
   <entry>
     <title>JS正则表达式</title>
@@ -393,26 +413,6 @@
     
     
       <category term="工具" scheme="https://fengjing95.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="https://fengjing95.github.io/2020/07/14/hello-world/"/>
-    <id>https://fengjing95.github.io/2020/07/14/hello-world/</id>
-    <published>2020-07-14T07:29:20.383Z</published>
-    <updated>2020-07-15T09:59:41.550Z</updated>
-    
-    <summary type="html">
-    
-      纪念博客创建
-    
-    </summary>
-    
-      <category term="生活" scheme="https://fengjing95.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="hello" scheme="https://fengjing95.github.io/tags/hello/"/>
     
   </entry>
   
