@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://fengjing95.github.io/"/>
-  <updated>2020-08-04T13:45:42.022Z</updated>
+  <updated>2020-08-06T15:28:43.822Z</updated>
   <id>https://fengjing95.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>TypeScript学习笔记</title>
+    <link href="https://fengjing95.github.io/2020/08/06/TypeScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>https://fengjing95.github.io/2020/08/06/TypeScript学习笔记/</id>
+    <published>2020-08-06T15:25:45.926Z</published>
+    <updated>2020-08-06T15:28:43.822Z</updated>
+    
+    <summary type="html">
+    
+      TypeScript 是 JavaScript 的一个超集，支持 ECMAScript 6 标准
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://fengjing95.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="js" scheme="https://fengjing95.github.io/tags/js/"/>
+    
+  </entry>
   
   <entry>
     <title>Vue组件通信</title>
@@ -393,26 +413,6 @@
     
     
       <category term="js" scheme="https://fengjing95.github.io/tags/js/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>VS Code 快捷键</title>
-    <link href="https://fengjing95.github.io/2020/07/14/VS%20Code%20%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
-    <id>https://fengjing95.github.io/2020/07/14/VS Code 快捷键/</id>
-    <published>2020-07-14T07:29:20.384Z</published>
-    <updated>2020-07-18T11:11:16.205Z</updated>
-    
-    <summary type="html">
-    
-      VSCode常用快捷键汇集
-    
-    </summary>
-    
-      <category term="技术" scheme="https://fengjing95.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="工具" scheme="https://fengjing95.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   
