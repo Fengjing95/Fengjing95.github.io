@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://fengjing95.github.io/"/>
-  <updated>2020-08-06T15:28:43.822Z</updated>
+  <updated>2020-08-10T06:34:43.719Z</updated>
   <id>https://fengjing95.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Express中使用Sequelize实现ORM</title>
+    <link href="https://fengjing95.github.io/2020/08/10/Express%E4%B8%AD%E4%BD%BF%E7%94%A8Sequelize%E5%AE%9E%E7%8E%B0ORM/"/>
+    <id>https://fengjing95.github.io/2020/08/10/Express中使用Sequelize实现ORM/</id>
+    <published>2020-08-10T06:33:37.962Z</published>
+    <updated>2020-08-10T06:34:43.719Z</updated>
+    
+    <summary type="html">
+    
+      Express中使用Sequelize实现ORM
+    
+    </summary>
+    
+      <category term="技术" scheme="https://fengjing95.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="Node" scheme="https://fengjing95.github.io/tags/Node/"/>
+    
+  </entry>
   
   <entry>
     <title>TypeScript学习笔记</title>
@@ -393,26 +413,6 @@
     
     
       <category term="工具" scheme="https://fengjing95.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ES6笔记</title>
-    <link href="https://fengjing95.github.io/2020/07/15/ES6%E7%AC%94%E8%AE%B0/"/>
-    <id>https://fengjing95.github.io/2020/07/15/ES6笔记/</id>
-    <published>2020-07-15T07:24:55.780Z</published>
-    <updated>2020-08-02T06:22:10.833Z</updated>
-    
-    <summary type="html">
-    
-      ECMAScript6学习笔记
-    
-    </summary>
-    
-      <category term="笔记" scheme="https://fengjing95.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="js" scheme="https://fengjing95.github.io/tags/js/"/>
     
   </entry>
   

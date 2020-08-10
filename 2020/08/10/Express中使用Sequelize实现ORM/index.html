@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">archive_a | 前端小枫</title>
+  <title itemprop="name">Express中使用Sequelize实现ORM | 前端小枫</title>
   
   <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -464,364 +464,396 @@
   </div>
 </header>
 
-      <div class="blank" style="padding-top: 75px;">
-</div>
-<div id="content" class="site-content">
-  <div id="main">
-    <header class="page-header">
-      <h1 class="cat-title">
-      归档</h1>
-      <span class="cat-des">
-        <p>
-        Archives</p>
-      </span>
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://gitee.com/liuhao1108/picGoCDN/raw/master/img/sequelize.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/sequelize.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      Express中使用Sequelize实现ORM</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="">小枫</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2020-8-10<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
-    <div id="main-part">
-      <article class="art">
-        <div class="art-main">
-          <div class="art-content">
-            <div id="archives">
-              <p style="text-align:right;">
-                [<span id="al_expand_collapse" style="cursor: s-resize;">
-                全部展开/收缩</span>
-              ]</p>
-              
-              
-              
-              
-              
-                
-                <h3 class="al_year">2020年</h3>
-              
-              
-                
-                <ul class="al_mon_list">
-                  <li class="al_li">
-                    <span class="al_mon" style="cursor: s-resize;">
-                      08月(<span id="post-num">
-                      3</span>
-                    篇文章)</span>
-                    <ul class="al_post_list" style="">
-              
-                      <li>
-                        <a href="/2020/08/10/Express中使用Sequelize实现ORM/">
-                          <span style="color:#0bf;">
-                          10日14:33:37</span>
-                          Express中使用Sequelize实现ORM
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2020/08/06/TypeScript学习笔记/">
-                          <span style="color:#0bf;">
-                          06日23:25:45</span>
-                          TypeScript学习笔记
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2020/08/04/Vue组件通信/">
-                          <span style="color:#0bf;">
-                          04日21:44:18</span>
-                          Vue组件通信
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2020/08/04/JS正则表达式/">
-                          <span style="color:#0bf;">
-                          04日00:26:08</span>
-                          JS正则表达式
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2020/08/02/let、const和var/">
-                          <span style="color:#0bf;">
-                          02日19:09:59</span>
-                          let、const和var的区别
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2020/08/02/Less预编译/">
-                          <span style="color:#0bf;">
-                          02日14:11:51</span>
-                          Less预编译使用
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2020/08/01/动态控制输入框/">
-                          <span style="color:#0bf;">
-                          01日22:00:17</span>
-                          动态控制输入框数量
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2020/08/01/Vue子路由常见的问题/">
-                          <span style="color:#0bf;">
-                          01日18:38:09</span>
-                          Vue绑定不到组件
-                        </a>
-                      </li>
-                      
-                    </ul>
-                  </li>
-                </ul>
-              
-              
-              
-              
-              
-              
-                
-                <ul class="al_mon_list">
-                  <li class="al_li">
-                    <span class="al_mon" style="cursor: s-resize;">
-                      07月(<span id="post-num">
-                      3</span>
-                    篇文章)</span>
-                    <ul class="al_post_list" style="">
-              
-                      <li>
-                        <a href="/2020/07/31/Vue页面刷新方法/">
-                          <span style="color:#0bf;">
-                          31日22:14:47</span>
-                          Vue刷新页面
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2020/07/31/Vue点击切换导航栏样式/">
-                          <span style="color:#0bf;">
-                          31日14:09:30</span>
-                          Vue点击切换导航栏样式
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2020/07/31/JS递归、闭包、作用域链/">
-                          <span style="color:#0bf;">
-                          31日12:14:58</span>
-                          JS递归、闭包、作用域链
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2020/07/28/Express+MySQL实现增删查改/">
-                          <span style="color:#0bf;">
-                          28日21:56:38</span>
-                          Express+MySQL实现增删查改
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2020/07/26/STDay 5/">
-                          <span style="color:#0bf;">
-                          26日21:40:01</span>
-                          思途实训day5
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2020/07/24/STDay 4/">
-                          <span style="color:#0bf;">
-                          24日19:29:57</span>
-                          思途实训day4
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2020/07/24/STDay 3/">
-                          <span style="color:#0bf;">
-                          24日09:17:51</span>
-                          思途实训day3
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2020/07/23/异步轮询/">
-                          <span style="color:#0bf;">
-                          23日13:50:43</span>
-                          JS异步轮询
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2020/07/23/闭包/">
-                          <span style="color:#0bf;">
-                          23日13:28:46</span>
-                          JS中的闭包
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2020/07/22/STDay 2/">
-                          <span style="color:#0bf;">
-                          22日16:57:04</span>
-                          思途实训day2
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2020/07/22/STDay 1/">
-                          <span style="color:#0bf;">
-                          22日15:27:01</span>
-                          思途实训day1
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2020/07/15/Typora图片自动上传到图床/">
-                          <span style="color:#0bf;">
-                          15日19:50:22</span>
-                          Typora图片自动上传到图床
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2020/07/15/ES6笔记/">
-                          <span style="color:#0bf;">
-                          15日15:24:55</span>
-                          ES6笔记
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2020/07/14/VS Code 快捷键/">
-                          <span style="color:#0bf;">
-                          14日15:29:20</span>
-                          VS Code 快捷键
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2020/07/14/hello-world/">
-                          <span style="color:#0bf;">
-                          14日15:29:20</span>
-                          Hello World
-                        </a>
-                      </li>
-                      
-                    </ul>
-                  </li>
-                </ul>
-              
-              
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h1 id="Express中使用Sequelize实现ORM"><a href="#Express中使用Sequelize实现ORM" class="headerlink" title="Express中使用Sequelize实现ORM"></a>Express中使用Sequelize实现ORM</h1><h2 id="起步"><a href="#起步" class="headerlink" title="起步"></a>起步</h2><p>第一步当然是环境，首先使用Express生成器安装express环境</p>
+<pre><code class="shell">express myapp    // myapp，你自己的项目名称（需要全局安装express）
+npm install
+</code></pre>
+<p>然后安装sequelize</p>
+<pre><code class="shell">npm install --save sequelize
+npm install --save mysql2    // 驱动，这里主要说mysql，其他的类型见官网文档
+</code></pre>
+<h2 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h2><p>连接到数据库必须有sequelize实例，实例化方法如下</p>
+<pre><code class="js">const connect = new DB(&#39;dbname&#39;, &#39;username&#39;, &#39;password&#39;, {
+    host: &#39;localhost&#39;,
+    dialect: &#39;mysql&#39;
+})
+</code></pre>
+<p>配置好实例之后可以使用<code>.authenticate()</code>来测试连接</p>
+<pre><code class="js">connect.authenticate().then(() =&gt; {
+    console.log(&#39;连接成功&#39;)
+}).catch(error =&gt; {
+    console.error(&#39;连接失败:&#39;, error);
+})
+</code></pre>
+<p>关闭连接</p>
+<blockquote>
+<p>默认情况下，Sequelize将使连接保持打开状态，并对所有查询使用相同的连接。如果需要关闭连接，请调用<code>sequelize.close()</code>（它是异步的并返回Promise）</p>
+</blockquote>
+<h2 id="模型基础"><a href="#模型基础" class="headerlink" title="模型基础"></a>模型基础</h2><h3 id="定义模型"><a href="#定义模型" class="headerlink" title="定义模型"></a>定义模型</h3><blockquote>
+<p>模型是Sequelize的本质。模型是代表数据库中表的抽象。在Sequelize中，它是扩展Model的类</p>
+</blockquote>
+<p>使用<code>sequelize.define</code>方法来定义模型，sequelize会根据定义的模型名称的复数自动建表</p>
+<pre><code class="js">const Book = connect.define(&#39;Book&#39;, {
+    bookName: DB.STRING,    // 属性名： 数据类型
+    bookCounts: DB.INTEGER,
+    detail: DB.STRING,
+}, {
+    timestamps: false    // 自动生成createAt和updateAt
+})
+</code></pre>
+<p>此外也可以直接提供表名</p>
+<pre><code class="js">sequelize.define(&#39;Book&#39;, {
+  // ... attributes
+}, {
+  tableName: &#39;literature&#39;
+});
+</code></pre>
+<p>更多数据类型：</p>
+<pre><code class="js">// CHAR
+Sequelize.STRING                      // VARCHAR(255)
+Sequelize.STRING(1234)                // VARCHAR(1234)
+Sequelize.STRING.BINARY               // VARCHAR BINARY
+Sequelize.TEXT                        // TEXT
+Sequelize.TEXT(&#39;tiny&#39;)                // TINYTEXT
+// NUMBER
+Sequelize.INTEGER                     // INTEGER
+Sequelize.BIGINT                      // BIGINT
+Sequelize.BIGINT(11)                  // BIGINT(11)
+Sequelize.FLOAT                       // FLOAT
+Sequelize.FLOAT(11)                   // FLOAT(11)
+Sequelize.FLOAT(11, 10)               // FLOAT(11,10)
+Sequelize.DOUBLE                      // DOUBLE
+Sequelize.DOUBLE(11)                  // DOUBLE(11)
+Sequelize.DOUBLE(11, 10)              // DOUBLE(11,10)
+Sequelize.DECIMAL                     // DECIMAL
+Sequelize.DECIMAL(10, 2)              // DECIMAL(10,2)
+// TIME
+Sequelize.DATE                        // mysql / sqlite 为 DATETIME, postgres 为带时区的 TIMESTAMP
+Sequelize.DATE(6)                     // DATETIME(6) 适用 mysql 5.6.4+. 小数秒支持最多6位精度
+Sequelize.DATEONLY                    // DATE 不带时间.
+// BOOLEAN
+Sequelize.BOOLEAN                     // TINYINT(1)
+//ENUM
+Sequelize.ENUM(&#39;value 1&#39;, &#39;value 2&#39;)  // 一个允许值为&#39;value 1&#39;和&#39;value 2&#39;的ENUM
+// blob
+Sequelize.BLOB                        // BLOB (PostgreSQL 为 bytea)
+Sequelize.BLOB(&#39;tiny&#39;)                // TINYBLOB (PostgreSQL 为 bytea. 其余参数是 medium 和 long)
+// GEOMETRY
+Sequelize.GEOMETRY                    // Spatial 列. 仅 PostgreSQL (带有 PostGIS) 或 MySQL.
+Sequelize.GEOMETRY(&#39;POINT&#39;)           // 带有 geometry 类型的 spatial 列. 仅 PostgreSQL (带有 PostGIS) 或 MySQL.
+Sequelize.GEOMETRY(&#39;POINT&#39;, 4326)     // 具有 geometry 类型和 SRID 的 spatial 列. 仅 PostgreSQL (带有 PostGIS) 或 MySQL.
+// unsigned 和 zerofill 属性
+Sequelize.INTEGER.UNSIGNED              // INTEGER UNSIGNED
+Sequelize.INTEGER(11).UNSIGNED          // INTEGER(11) UNSIGNED
+Sequelize.INTEGER(11).ZEROFILL          // INTEGER(11) ZEROFILL
+Sequelize.INTEGER(11).ZEROFILL.UNSIGNED // INTEGER(11) UNSIGNED ZEROFILL
+Sequelize.INTEGER(11).UNSIGNED.ZEROFILL // INTEGER(11) UNSIGNED ZEROFILL
+</code></pre>
+<blockquote>
+<p>数据类型来源，掘金，云影sky的<a href="https://juejin.im/post/6844903897673269255" target="_blank" rel="noopener">详细易用的 Sequelize 解读</a></p>
+</blockquote>
+<h3 id="模型同步"><a href="#模型同步" class="headerlink" title="模型同步"></a>模型同步</h3><p>使用model.async()方法来将模型与数据库同步</p>
+<ul>
+<li><code>User.sync()</code> -如果不存在则创建表（如果已经存在则不执行任何操作）</li>
+<li><code>User.sync({ force: true })</code> -这将创建表，如果该表已经存在，则将其首先删除</li>
+<li><code>User.sync({ alter: true })</code> -这将检查数据库中表的当前状态（它具有哪些列，它们的数据类型等），然后在表中进行必要的更改以使其与模型匹配</li>
+</ul>
+<h3 id="创建模型实例"><a href="#创建模型实例" class="headerlink" title="创建模型实例"></a>创建模型实例</h3><p>使用<code>model.build</code>方法来创建模型实例</p>
+<pre><code class="js">const jsBook = Book.build({
+    bookName: &#39;你不知道的JS&#39;,
+    bookCounts: 3,
+    detail: &#39;JS 进阶系列&#39;,
+})
+</code></pre>
+<p>上面的创建实例之后使用<code>jsBook.save();</code>方法来保存到数据库</p>
+<h2 id="模型查询"><a href="#模型查询" class="headerlink" title="模型查询"></a>模型查询</h2><h3 id="INSERT查询"><a href="#INSERT查询" class="headerlink" title="INSERT查询"></a>INSERT查询</h3><p>上面的模型保存还有一种简便方法，直接使用<code>model.create</code>方法，直接保存到数据库</p>
+<pre><code class="js">Book.create({
+    bookName: &#39;你不知道的JS&#39;,
+    bookCounts: 3,
+    detail: &#39;JS 进阶系列&#39;,
+})
+</code></pre>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200810110734948.png" alt="image-20200810110734948"></p>
+<p>可以看到数据库中已经生成了这条记录</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200810113908645.png" alt="image-20200810113908645"></p>
+<p>控制太可以看到sql语句</p>
+<h3 id="SELECT查询"><a href="#SELECT查询" class="headerlink" title="SELECT查询"></a>SELECT查询</h3><h4 id="find查询"><a href="#find查询" class="headerlink" title="find查询"></a>find查询</h4><p>使用<code>findAll</code>方法查询整个表</p>
+<pre><code class="js">Book.findAll()
+</code></pre>
+<p>效果图</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200810114828228.png" alt="image-20200810114828228"></p>
+<p>可以使用<code>attributes</code>选项来进行列查询，数组中列出要查询的字段名</p>
+<pre><code class="js">Book.findAll({
+    attributes: [&#39;id&#39;, &#39;bookName&#39;],
+})
+</code></pre>
+<p>效果图</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200810115039418.png" alt="image-20200810115039418"></p>
+<p>使用<code>exclude</code>删除一些选定的属性</p>
+<pre><code class="js">Book.findAll({
+    attributes: { exclude: [&#39;bookCounts&#39;] },
+})
+</code></pre>
+<p>效果图</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200810115403040.png" alt="image-20200810115403040"></p>
+<h5 id="其他find查询"><a href="#其他find查询" class="headerlink" title="其他find查询"></a>其他find查询</h5><ul>
+<li><p>findByPk：使用提供的主键仅从表中获得一个条目</p>
+</li>
+<li><p>findOne：获取它找到的第一个条目（如果提供的话，它满足可选的查询选项）</p>
+</li>
+<li><p>findOrCreate：查询不到实例就创建一个，返回值是实例（查到的或者创建的）和一个布尔值（创建为true）</p>
+</li>
+<li><p>findAndCountAll：查询并计数，有两个返回值，一个是查询到的记录另一个是count</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200810142105550.png" alt="image-20200810142105550"></p>
+</li>
+</ul>
+<h4 id="where子句"><a href="#where子句" class="headerlink" title="where子句"></a>where子句</h4><p>使用<code>where</code>选项可以进行where查询</p>
+<pre><code class="js">Book.findAll({
+    where: {
+        bookName: &#39;你不知道的JS&#39;,
+        id: 1
+    }
+})
+// SELECT * FROM books WHERE bookName = &#39;你不知道的JS&#39; AND id = 1;
+</code></pre>
+<p>效果如图</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200810125605150.png" alt="image-20200810125605150"></p>
+<p>有了AND就有OR，使用<code>Op.or</code>来进行or操作</p>
+<pre><code class="js">Book.findAll({
+    where: {
+        bookName: &#39;你不知道的JS&#39;,
+        id: {
+            [Op.or]: [1, 2]
+        }
+    }
+})
+// SELECT * FROM books WHERE bookName = &#39;你不知道的JS&#39; AND (id = 1 OR id = 2);
+</code></pre>
+<p>效果图</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200810133131211.png" alt="image-20200810133131211"></p>
+<p>AND也可以使用Op.and来操作，但是易读性不强（不常用）</p>
+<pre><code class="js">Book.findAll({
+    where: {
+        [Op.and]: [
+            { bookName: &#39;你不知道的JS&#39; },
+            {
+                id: {
+                    [Op.or]: [1, 2]
+                }
+            }
+        ]
+    }
+})
+</code></pre>
+<p><strong>sequelize提供了更多运算</strong></p>
+<pre><code class="js">const { Op } = require(&quot;sequelize&quot;);
+Post.findAll({
+  where: {
+    [Op.and]: [{ a: 5 }, { b: 6 }],            // (a = 5) AND (b = 6)
+    [Op.or]: [{ a: 5 }, { b: 6 }],             // (a = 5) OR (b = 6)
+    someAttribute: {
+      // Basics
+      [Op.eq]: 3,                              // = 3
+      [Op.ne]: 20,                             // != 20
+      [Op.is]: null,                           // IS NULL
+      [Op.not]: true,                          // IS NOT TRUE
+      [Op.or]: [5, 6],                         // (someAttribute = 5) OR (someAttribute = 6)
+
+      // Using dialect specific column identifiers (PG in the following example):
+      [Op.col]: &#39;user.organization_id&#39;,        // = &quot;user&quot;.&quot;organization_id&quot;
+
+      // Number comparisons
+      [Op.gt]: 6,                              // &gt; 6
+      [Op.gte]: 6,                             // &gt;= 6
+      [Op.lt]: 10,                             // &lt; 10
+      [Op.lte]: 10,                            // &lt;= 10
+      [Op.between]: [6, 10],                   // BETWEEN 6 AND 10
+      [Op.notBetween]: [11, 15],               // NOT BETWEEN 11 AND 15
+
+      // Other operators
+
+      [Op.all]: sequelize.literal(&#39;SELECT 1&#39;), // &gt; ALL (SELECT 1)
+
+      [Op.in]: [1, 2],                         // IN [1, 2]
+      [Op.notIn]: [1, 2],                      // NOT IN [1, 2]
+
+      [Op.like]: &#39;%hat&#39;,                       // LIKE &#39;%hat&#39;
+      [Op.notLike]: &#39;%hat&#39;,                    // NOT LIKE &#39;%hat&#39;
+      [Op.startsWith]: &#39;hat&#39;,                  // LIKE &#39;hat%&#39;
+      [Op.endsWith]: &#39;hat&#39;,                    // LIKE &#39;%hat&#39;
+      [Op.substring]: &#39;hat&#39;,                   // LIKE &#39;%hat%&#39;
+      [Op.iLike]: &#39;%hat&#39;,                      // ILIKE &#39;%hat&#39; (case insensitive) (PG only)
+      [Op.notILike]: &#39;%hat&#39;,                   // NOT ILIKE &#39;%hat&#39;  (PG only)
+      [Op.regexp]: &#39;^[h|a|t]&#39;,                 // REGEXP/~ &#39;^[h|a|t]&#39; (MySQL/PG only)
+      [Op.notRegexp]: &#39;^[h|a|t]&#39;,              // NOT REGEXP/!~ &#39;^[h|a|t]&#39; (MySQL/PG only)
+      [Op.iRegexp]: &#39;^[h|a|t]&#39;,                // ~* &#39;^[h|a|t]&#39; (PG only)
+      [Op.notIRegexp]: &#39;^[h|a|t]&#39;,             // !~* &#39;^[h|a|t]&#39; (PG only)
+
+      [Op.any]: [2, 3],                        // ANY ARRAY[2, 3]::INTEGER (PG only)
+
+      // In Postgres, Op.like/Op.iLike/Op.notLike can be combined to Op.any:
+      [Op.like]: { [Op.any]: [&#39;cat&#39;, &#39;hat&#39;] }  // LIKE ANY ARRAY[&#39;cat&#39;, &#39;hat&#39;]
+
+      // There are more postgres-only range operators, see below
+    }
+  }
+});
+</code></pre>
+<h3 id="UPDATE查询"><a href="#UPDATE查询" class="headerlink" title="UPDATE查询"></a>UPDATE查询</h3><p>使用<code>model.update</code>方法来进行数据更新</p>
+<pre><code class="js">Book.update({
+    bookCounts: 5
+}, {
+    where: {
+        id: 2
+    }
+})
+// UPDATE books SET bookCounts =5 WHERE id = 2;
+</code></pre>
+<p>修改后的数据如下</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200810134545193.png" alt="image-20200810134545193"></p>
+<h3 id="DELETE查询"><a href="#DELETE查询" class="headerlink" title="DELETE查询"></a>DELETE查询</h3><p>使用<code>model.destory</code>方法进行删除操作</p>
+<pre><code class="js">Book.destory({
+    where: {
+        id: 2
+    }
+})
+</code></pre>
+<h3 id="限制和分页"><a href="#限制和分页" class="headerlink" title="限制和分页"></a>限制和分页</h3><p>使用<code>limit</code>和<code>offset</code>选项进行限制/分页</p>
+<ul>
+<li>limit：每一页的记录数量限制</li>
+<li>offset：第几页，从0开始</li>
+</ul>
+<pre><code class="js">Book.findAll({
+    where: {
+        bookName: &#39;你不知道的JS&#39;,
+    }，
+    offset: parseInt(req.query.page) ? parseInt(req.query.page) : 0,
+    limit: 1
+})
+</code></pre>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200810140552684.png" alt="image-20200810140552684"></p>
+<h3 id="实用方法"><a href="#实用方法" class="headerlink" title="实用方法"></a>实用方法</h3><p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200810140836869.png" alt="image-20200810140836869"></p>
+<h2 id="进阶用法"><a href="#进阶用法" class="headerlink" title="进阶用法"></a>进阶用法</h2><p>getter&amp;setter</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200810142713058.png" alt="image-20200810142713058"></p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200810142730547.png" alt="image-20200810142730547"></p>
+<p>事务</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200810142930896.png" alt="image-20200810142930896"></p>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
             </div>
           </div>
         </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
       </article>
-    </div>
-  </div>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+        
+          
+            <div class="post-nepre full next">
+          
+            <a href="/2020/08/06/TypeScript学习笔记/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/typescript.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/typescript.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                TypeScript学习笔记</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "AdzOvpXTwwf3KAX23DOds5C9-gzGzoHsz",
+        appKey: "olX1MHfMtrQcmemwl5lLmu4a",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg" itemprop="image" alt="小枫" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author">小枫</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>前端小白</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
 </div>
+
+
 
     </div>    
     <div class="ins-search">
