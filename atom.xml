@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://fengjing95.github.io/"/>
-  <updated>2020-08-12T06:58:28.180Z</updated>
+  <updated>2020-08-13T06:27:25.562Z</updated>
   <id>https://fengjing95.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>VS Code 实用插件</title>
+    <link href="https://fengjing95.github.io/2020/08/13/VSCode%E4%BD%BF%E7%94%A8%E6%8F%92%E4%BB%B6%E9%9B%86%E5%90%88/"/>
+    <id>https://fengjing95.github.io/2020/08/13/VSCode使用插件集合/</id>
+    <published>2020-08-13T06:25:25.881Z</published>
+    <updated>2020-08-13T06:27:25.562Z</updated>
+    
+    <summary type="html">
+    
+      VSCode提高开发效率的插件集合
+    
+    </summary>
+    
+      <category term="工具" scheme="https://fengjing95.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="工具" scheme="https://fengjing95.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
   
   <entry>
     <title>高级组件provide/inject</title>
@@ -386,26 +406,6 @@
     <summary type="html">
     
       中享思途实训第二天
-    
-    </summary>
-    
-      <category term="生活" scheme="https://fengjing95.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="思途实训" scheme="https://fengjing95.github.io/tags/%E6%80%9D%E9%80%94%E5%AE%9E%E8%AE%AD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>思途实训day1</title>
-    <link href="https://fengjing95.github.io/2020/07/22/STDay%201/"/>
-    <id>https://fengjing95.github.io/2020/07/22/STDay 1/</id>
-    <published>2020-07-22T07:27:01.446Z</published>
-    <updated>2020-07-28T14:13:13.761Z</updated>
-    
-    <summary type="html">
-    
-      中享思途实训第一天
     
     </summary>
     
