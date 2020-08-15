@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://fengjing95.github.io/"/>
-  <updated>2020-08-13T06:32:56.930Z</updated>
+  <updated>2020-08-15T15:17:36.181Z</updated>
   <id>https://fengjing95.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>EggJS学习笔记</title>
+    <link href="https://fengjing95.github.io/2020/08/15/EggJS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>https://fengjing95.github.io/2020/08/15/EggJS学习笔记/</id>
+    <published>2020-08-15T15:14:19.584Z</published>
+    <updated>2020-08-15T15:17:36.181Z</updated>
+    
+    <summary type="html">
+    
+      Egg.js 为企业级框架和应用而生
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://fengjing95.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="Node" scheme="https://fengjing95.github.io/tags/Node/"/>
+    
+  </entry>
   
   <entry>
     <title>VS Code 实用插件</title>
@@ -393,26 +413,6 @@
     
     
       <category term="js" scheme="https://fengjing95.github.io/tags/js/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>思途实训day2</title>
-    <link href="https://fengjing95.github.io/2020/07/22/STDay%202/"/>
-    <id>https://fengjing95.github.io/2020/07/22/STDay 2/</id>
-    <published>2020-07-22T08:57:04.870Z</published>
-    <updated>2020-07-28T14:13:35.489Z</updated>
-    
-    <summary type="html">
-    
-      中享思途实训第二天
-    
-    </summary>
-    
-      <category term="生活" scheme="https://fengjing95.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="思途实训" scheme="https://fengjing95.github.io/tags/%E6%80%9D%E9%80%94%E5%AE%9E%E8%AE%AD/"/>
     
   </entry>
   
