@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://fengjing95.github.io/"/>
-  <updated>2020-08-15T15:17:36.181Z</updated>
+  <updated>2020-08-17T08:45:27.098Z</updated>
   <id>https://fengjing95.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Egg实用中间件</title>
+    <link href="https://fengjing95.github.io/2020/08/17/Egg%E5%B8%B8%E7%94%A8%E7%9A%84%E5%8C%85/"/>
+    <id>https://fengjing95.github.io/2020/08/17/Egg常用的包/</id>
+    <published>2020-08-17T08:17:39.921Z</published>
+    <updated>2020-08-17T08:45:27.098Z</updated>
+    
+    <summary type="html">
+    
+      Egg.js 中实用性较高的中间件
+    
+    </summary>
+    
+      <category term="技术" scheme="https://fengjing95.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="Node" scheme="https://fengjing95.github.io/tags/Node/"/>
+    
+  </entry>
   
   <entry>
     <title>EggJS学习笔记</title>
@@ -386,26 +406,6 @@
     <summary type="html">
     
       JS异步深入理解
-    
-    </summary>
-    
-      <category term="技术" scheme="https://fengjing95.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="js" scheme="https://fengjing95.github.io/tags/js/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JS中的闭包</title>
-    <link href="https://fengjing95.github.io/2020/07/23/%E9%97%AD%E5%8C%85/"/>
-    <id>https://fengjing95.github.io/2020/07/23/闭包/</id>
-    <published>2020-07-23T05:28:46.515Z</published>
-    <updated>2020-07-23T05:36:52.742Z</updated>
-    
-    <summary type="html">
-    
-      一篇文章带你了解JS闭包
     
     </summary>
     
