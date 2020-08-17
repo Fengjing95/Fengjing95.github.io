@@ -741,7 +741,18 @@ exports.ejs = {};
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<p>ejs语法不多赘述，后续会专门出一个笔记，模板文件<strong>一定要放在app下的view目录下</strong></p>
+<p>模板文件<strong>一定要放在app下的view目录下</strong><br>ejs语法：</p>
+<ul>
+<li><code>&lt;%</code> ‘脚本’ 标签，用于流程控制，无输出。</li>
+<li><code>&lt;%_</code> 删除其前面的空格符</li>
+<li><code>&lt;%=</code> 输出数据到模板（输出是转义 HTML 标签）</li>
+<li><code>&lt;%-</code> 输出非转义的数据到模板</li>
+<li><code>&lt;%#</code> 注释标签，不执行、不输出内容</li>
+<li><code>&lt;%%</code> 输出字符串 ‘&lt;%’</li>
+<li><code>%&gt;</code> 一般结束标签</li>
+<li><code>-%&gt;</code> 删除紧随其后的换行符</li>
+<li><code>_%&gt;</code> 将结束标签后面的空格符删除</li>
+</ul>
 <h3 id="controller返回模板并传值"><a href="#controller返回模板并传值" class="headerlink" title="controller返回模板并传值"></a>controller返回模板并传值</h3><pre><code class="typescript">public async user() {
   const { ctx } = this;
   const id: string = ctx.params.id;
