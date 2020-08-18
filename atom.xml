@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://fengjing95.github.io/"/>
-  <updated>2020-08-18T01:15:02.556Z</updated>
+  <updated>2020-08-18T08:16:10.252Z</updated>
   <id>https://fengjing95.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>原生JS实现AJAX</title>
+    <link href="https://fengjing95.github.io/2020/08/18/%E5%8E%9F%E7%94%9FJS%E5%AE%9E%E7%8E%B0AJAX/"/>
+    <id>https://fengjing95.github.io/2020/08/18/原生JS实现AJAX/</id>
+    <published>2020-08-18T08:14:27.923Z</published>
+    <updated>2020-08-18T08:16:10.252Z</updated>
+    
+    <summary type="html">
+    
+      原生JS实现AJAX
+    
+    </summary>
+    
+      <category term="技术" scheme="https://fengjing95.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="js" scheme="https://fengjing95.github.io/tags/js/"/>
+    
+  </entry>
   
   <entry>
     <title>ES6和CommonJS的模块化</title>
@@ -386,26 +406,6 @@
     <summary type="html">
     
       中享思途实训第四天
-    
-    </summary>
-    
-      <category term="生活" scheme="https://fengjing95.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="思途实训" scheme="https://fengjing95.github.io/tags/%E6%80%9D%E9%80%94%E5%AE%9E%E8%AE%AD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>思途实训day3</title>
-    <link href="https://fengjing95.github.io/2020/07/24/STDay%203/"/>
-    <id>https://fengjing95.github.io/2020/07/24/STDay 3/</id>
-    <published>2020-07-24T01:17:51.174Z</published>
-    <updated>2020-07-28T14:13:34.338Z</updated>
-    
-    <summary type="html">
-    
-      中享思途实训第三天
     
     </summary>
     
