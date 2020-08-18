@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://fengjing95.github.io/"/>
-  <updated>2020-08-17T08:45:27.098Z</updated>
+  <updated>2020-08-18T01:15:02.556Z</updated>
   <id>https://fengjing95.github.io/</id>
   
   <author>
@@ -17,11 +17,31 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>ES6和CommonJS的模块化</title>
+    <link href="https://fengjing95.github.io/2020/08/18/ES6&amp;CommonJS/"/>
+    <id>https://fengjing95.github.io/2020/08/18/ES6&amp;CommonJS/</id>
+    <published>2020-08-18T01:10:06.072Z</published>
+    <updated>2020-08-18T01:15:02.556Z</updated>
+    
+    <summary type="html">
+    
+      对比ES6和CommonJS的模块化的差异
+    
+    </summary>
+    
+      <category term="技术" scheme="https://fengjing95.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="js" scheme="https://fengjing95.github.io/tags/js/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Egg实用中间件</title>
     <link href="https://fengjing95.github.io/2020/08/17/Egg%E5%B8%B8%E7%94%A8%E7%9A%84%E5%8C%85/"/>
     <id>https://fengjing95.github.io/2020/08/17/Egg常用的包/</id>
     <published>2020-08-17T08:17:39.921Z</published>
-    <updated>2020-08-17T08:45:27.098Z</updated>
+    <updated>2020-08-17T13:20:11.722Z</updated>
     
     <summary type="html">
     
@@ -393,26 +413,6 @@
     
     
       <category term="思途实训" scheme="https://fengjing95.github.io/tags/%E6%80%9D%E9%80%94%E5%AE%9E%E8%AE%AD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JS异步轮询</title>
-    <link href="https://fengjing95.github.io/2020/07/23/%E5%BC%82%E6%AD%A5%E8%BD%AE%E8%AF%A2/"/>
-    <id>https://fengjing95.github.io/2020/07/23/异步轮询/</id>
-    <published>2020-07-23T05:50:43.924Z</published>
-    <updated>2020-07-23T05:52:50.933Z</updated>
-    
-    <summary type="html">
-    
-      JS异步深入理解
-    
-    </summary>
-    
-      <category term="技术" scheme="https://fengjing95.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="js" scheme="https://fengjing95.github.io/tags/js/"/>
     
   </entry>
   
