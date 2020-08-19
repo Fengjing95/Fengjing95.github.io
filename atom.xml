@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://fengjing95.github.io/"/>
-  <updated>2020-08-18T11:03:43.497Z</updated>
+  <updated>2020-08-19T00:54:16.493Z</updated>
   <id>https://fengjing95.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>原型和原型链</title>
+    <link href="https://fengjing95.github.io/2020/08/19/%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE/"/>
+    <id>https://fengjing95.github.io/2020/08/19/原型和原型链/</id>
+    <published>2020-08-19T00:53:18.162Z</published>
+    <updated>2020-08-19T00:54:16.493Z</updated>
+    
+    <summary type="html">
+    
+      原型和原型链
+    
+    </summary>
+    
+      <category term="技术" scheme="https://fengjing95.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="js" scheme="https://fengjing95.github.io/tags/js/"/>
+    
+  </entry>
   
   <entry>
     <title>vuex入门</title>
@@ -393,26 +413,6 @@
     
     
       <category term="express" scheme="https://fengjing95.github.io/tags/express/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>思途实训day5</title>
-    <link href="https://fengjing95.github.io/2020/07/26/STDay%205/"/>
-    <id>https://fengjing95.github.io/2020/07/26/STDay 5/</id>
-    <published>2020-07-26T13:40:01.320Z</published>
-    <updated>2020-07-28T14:13:30.586Z</updated>
-    
-    <summary type="html">
-    
-      中享思途实训第五天
-    
-    </summary>
-    
-      <category term="生活" scheme="https://fengjing95.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="思途实训" scheme="https://fengjing95.github.io/tags/%E6%80%9D%E9%80%94%E5%AE%9E%E8%AE%AD/"/>
     
   </entry>
   
