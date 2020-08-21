@@ -890,6 +890,96 @@ config.jwt = {
 <p>效果如图</p>
 <p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ录屏20200817161322 00_00_00-00_00_30.gif" alt="QQ录屏20200817161322 00_00_00-00_00_30"></p>
 <h3 id="代码-3"><a href="#代码-3" class="headerlink" title="代码"></a>代码</h3><p>代码已上传码云<a href="https://gitee.com/liuhao1108/egg-study" target="_blank" rel="noopener">#5部分</a></p>
+<h2 id="egg-validate"><a href="#egg-validate" class="headerlink" title="egg-validate"></a>egg-validate</h2><p>egg-validate用于对参数进行检验，比如检验一个用户名是不是字符串<code>ctx.validate({ userName: &#39;string&#39; });</code></p>
+<h3 id="安装及配置-1"><a href="#安装及配置-1" class="headerlink" title="安装及配置"></a>安装及配置</h3><p>运行命令</p>
+<pre><code class="shell">$ npm i egg-validate --save
+</code></pre>
+<p>plugin中开启插件</p>
+<pre><code class="typescript">validate: {
+  enable: true,
+  package: &#39;egg-validate&#39;,
+},
+</code></pre>
+<p>config中配置</p>
+<pre><code class="typescript">// validate, 参数校验器
+config.validate = {
+  convert: true, // 对参数可以使用convertType规则进行类型转换
+  // validateRoot: false,   // 限制被验证值必须是一个对象。
+};
+</code></pre>
+<h3 id="编码-3"><a href="#编码-3" class="headerlink" title="编码"></a>编码</h3><p>编写一个post请求，接收一个对象作为参数</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200821124231323.png" alt="image-20200821124231323"></p>
+<p>（validator需要手动挂载，使用什么方法添加什么规则）</p>
+<pre><code class="typescript">import { Controller } from &#39;egg&#39;;
+// 规则
+const createRule = {
+  name: &#39;string&#39;,
+  age: {
+    type: &#39;number&#39;,
+    min: 0,
+    max: 100,
+  },
+  sex: [ &#39;man&#39;, &#39;woman&#39; ],
+};
+
+export default class PostsController extends Controller {
+  public async index() {
+    const { ctx } = this;
+    ctx.body = &#39;posts index&#39;;
+  }
+
+  public async create() {
+    const { ctx, app } = this;
+    // ctx.validate(createRule, ctx.request.body); // 自动处理错误，422
+    const error = app.validator.validate(createRule, ctx.request.body); // 返回错误信息，开发者处理
+    console.log(error);
+    ctx.status = 201;
+  }
+}
+</code></pre>
+<p>效果如图，当出现错误时返回错误，没有错误error为空，created是自动加的<img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ录屏20200821123806 00_00_00-00_00_30.gif" alt="QQ录屏20200821123806 00_00_00-00_00_30"></p>
+<p>更多规则</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200821124114122.png" alt="image-20200821124114122"></p>
+<h3 id="自定义规则"><a href="#自定义规则" class="headerlink" title="自定义规则"></a>自定义规则</h3><p>使用<code>app.validator.addRule</code>添加更多自定义规则（需要手动挂载）</p>
+<p>例如：</p>
+<pre><code class="typescript"> app.validator.addRule(&#39;newRule&#39;, (rule, value)=&gt;{
+    if (value.length &lt; 3 || value.length &gt; 10) {
+      console.log(&quot;用户名的长度应该在3-10之间&quot;);
+    }
+  });
+</code></pre>
+<p>自定义规则需要单独在一个文件中添加</p>
+<h3 id="代码-4"><a href="#代码-4" class="headerlink" title="代码"></a>代码</h3><p>代码已上传码云<a href="https://gitee.com/liuhao1108/egg-study" target="_blank" rel="noopener">#6部分</a></p>
+<h2 id="egg-cors"><a href="#egg-cors" class="headerlink" title="egg-cors"></a>egg-cors</h2><p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200821132803272.png" alt="image-20200821132803272"></p>
+<p>请求跨域是我们在日常开发中经常碰到的问题</p>
+<p>egg解决跨域也是非常的简单，只要开启egg-cors就行了</p>
+<h3 id="安装及配置-2"><a href="#安装及配置-2" class="headerlink" title="安装及配置"></a>安装及配置</h3><p>运行命令</p>
+<pre><code class="shell">$ npm i egg-cors --save
+</code></pre>
+<p>plugin中开启插件</p>
+<pre><code class="typescript">cors: {
+  enable: true,
+  package: &#39;egg-cors&#39;,
+},
+</code></pre>
+<p>config中配置</p>
+<pre><code class="typescript">  // 关闭csrf
+  config.security = {
+    csrf: {
+      enable: false, // 关闭csrf
+    },
+    domainWhiteList: [ &#39;*&#39; ], // 白名单
+  };
+
+  // CORS
+  config.cors = {
+    origin: &#39;*&#39;,
+    allowMethods: &#39;GET,HEAD,PUT,POST,DELETE,PATCH&#39;,
+  };
+</code></pre>
+<p>然后就可以了</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200821133240161.png" alt="image-20200821133240161"></p>
+<h3 id="代码-5"><a href="#代码-5" class="headerlink" title="代码"></a>代码</h3><p>代码已上传码云<a href="https://gitee.com/liuhao1108/egg-study" target="_blank" rel="noopener">#7部分</a></p>
 
         </div>
         <!-- .entry-content -->

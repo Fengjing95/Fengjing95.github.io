@@ -612,6 +612,62 @@ export default function printDate(): any {
 </code></pre>
 <p>controller已经获取到了表单数据</p>
 <p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200815220805570.png" alt="image-20200815220805570"></p>
+<h3 id="resources"><a href="#resources" class="headerlink" title="resources"></a>resources</h3><p>自动配置RESTful风格API，只需要一行代码<code>router.resources(&#39;posts&#39;, &#39;/api/posts&#39;, controller.posts);</code>，就可以自动生成下面一套API</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Path</th>
+<th>Route Name</th>
+<th>Controller.Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td>/api/posts</td>
+<td>posts</td>
+<td>app.controllers.posts.index</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/api/posts/new</td>
+<td>new_post</td>
+<td>app.controllers.posts.new</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/api/posts/:id</td>
+<td>post</td>
+<td>app.controllers.posts.show</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/api/posts/:id/edit</td>
+<td>edit_post</td>
+<td>app.controllers.posts.edit</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>/api/posts</td>
+<td>posts</td>
+<td>app.controllers.posts.create</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>/api/posts/:id</td>
+<td>post</td>
+<td>app.controllers.posts.update</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>/api/posts/:id</td>
+<td>post</td>
+<td>app.controllers.posts.destroy</td>
+</tr>
+</tbody>
+</table>
+<p>只需要在Controller中实现Action即可</p>
 <h2 id="控制器Controller"><a href="#控制器Controller" class="headerlink" title="控制器Controller"></a>控制器Controller</h2><p>看完路由再来看一下controller，代码如下</p>
 <pre><code class="typescript">import { Controller } from &#39;egg&#39;;
 
@@ -925,6 +981,18 @@ export default function printDate(options: EggAppConfig[&#39;printdate&#39;], ap
 </code></pre>
 <p>服务启动时就会在控制台看到打印出来的日志</p>
 <p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200815153449330.png" alt="image-20200815153449330"></p>
+<h3 id="实用中间件"><a href="#实用中间件" class="headerlink" title="实用中间件"></a>实用中间件</h3><h4 id="csrf中间件"><a href="#csrf中间件" class="headerlink" title="csrf中间件"></a>csrf中间件</h4><pre><code class="typescript">import { Context } from &#39;egg&#39;;
+
+// 自定义的中间件
+export default function auth(): any {
+  return async (ctx: Context, next: () =&gt; Promise&lt;any&gt;) =&gt; {
+    // 设置全局变量
+    ctx.state.csrf = ctx.csrf;
+    await next();
+  };
+}
+</code></pre>
+<p>然后在config中添加中间件<code>config.middleware = [ &#39;auth&#39; ];</code>，就可以在任意页面上获取csrf了</p>
 <h2 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h2><p><code>Cookie</code>是存储在访问者计算机中的变量，可以让同一个浏览器访问同一个域名的时候共享数据</p>
 <h3 id="Egg中Cookie的设置和获取"><a href="#Egg中Cookie的设置和获取" class="headerlink" title="Egg中Cookie的设置和获取"></a>Egg中Cookie的设置和获取</h3><h4 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h4><p><code>ctx.cookies.set(key, value, options)</code></p>
 <pre><code class="typescript">public async add() {
