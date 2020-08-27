@@ -939,7 +939,7 @@ console.log(getFullName({ firstName: &#39;zhang&#39;, lastName: &#39;san&#39; })
 </code></pre>
 <p>在这段代码中，定义了一个FullName接口，方法getFullName参数name要满足这个接口，如果不满足接口定义的规则就会报错</p>
 <p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200804173022419.png" alt="image-20200804173022419"></p>
-<p>并且，参数必须且只能有接口定义的 数据项，如果参数一用对象，name该对象必须包含接口定义的项并且符合数据类型限制</p>
+<p>并且，参数必须且只能有接口定义的数据项，如参数使用对象name，该对象必须包含接口定义的项并且符合数据类型限制</p>
 <p><strong>可以使用 ? 定义可选属性，用法同可选参数</strong></p>
 <h3 id="7-2-函数类型接口"><a href="#7-2-函数类型接口" class="headerlink" title="7.2 函数类型接口"></a>7.2 函数类型接口</h3><p>对方法传入的参数以及返回值进行约束</p>
 <pre><code class="typescript">interface FuncRule {

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://fengjing95.github.io/"/>
-  <updated>2020-08-20T09:55:12.820Z</updated>
+  <updated>2020-08-27T04:16:08.896Z</updated>
   <id>https://fengjing95.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Axios</title>
+    <link href="https://fengjing95.github.io/2020/08/27/Axios/"/>
+    <id>https://fengjing95.github.io/2020/08/27/Axios/</id>
+    <published>2020-08-27T04:14:58.150Z</published>
+    <updated>2020-08-27T04:16:08.896Z</updated>
+    
+    <summary type="html">
+    
+      Axios简单配置
+    
+    </summary>
+    
+      <category term="技术" scheme="https://fengjing95.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="Node" scheme="https://fengjing95.github.io/tags/Node/"/>
+    
+  </entry>
   
   <entry>
     <title>Promise学习笔记</title>
@@ -221,7 +241,7 @@
     <link href="https://fengjing95.github.io/2020/08/06/TypeScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     <id>https://fengjing95.github.io/2020/08/06/TypeScript学习笔记/</id>
     <published>2020-08-06T15:25:45.926Z</published>
-    <updated>2020-08-06T15:28:43.822Z</updated>
+    <updated>2020-08-24T08:36:07.845Z</updated>
     
     <summary type="html">
     
@@ -393,26 +413,6 @@
     
     
       <category term="vue" scheme="https://fengjing95.github.io/tags/vue/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JS递归、闭包、作用域链</title>
-    <link href="https://fengjing95.github.io/2020/07/31/JS%E9%80%92%E5%BD%92%E3%80%81%E9%97%AD%E5%8C%85%E3%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/"/>
-    <id>https://fengjing95.github.io/2020/07/31/JS递归、闭包、作用域链/</id>
-    <published>2020-07-31T04:14:58.555Z</published>
-    <updated>2020-08-02T00:42:52.409Z</updated>
-    
-    <summary type="html">
-    
-      js常见的一些问题
-    
-    </summary>
-    
-      <category term="技术" scheme="https://fengjing95.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="js" scheme="https://fengjing95.github.io/tags/js/"/>
     
   </entry>
   
