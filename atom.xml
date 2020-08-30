@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://fengjing95.github.io/"/>
-  <updated>2020-08-29T11:03:58.960Z</updated>
+  <updated>2020-08-30T08:10:36.163Z</updated>
   <id>https://fengjing95.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Vue组件通信</title>
+    <link href="https://fengjing95.github.io/2020/08/30/Vue%E7%BB%84%E4%BB%B6%E4%B9%8Bslot%E6%8F%92%E6%A7%BD/"/>
+    <id>https://fengjing95.github.io/2020/08/30/Vue组件之slot插槽/</id>
+    <published>2020-08-30T08:09:24.323Z</published>
+    <updated>2020-08-30T08:10:36.163Z</updated>
+    
+    <summary type="html">
+    
+      Vue组件之slot插槽详解
+    
+    </summary>
+    
+      <category term="技术" scheme="https://fengjing95.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="vue" scheme="https://fengjing95.github.io/tags/vue/"/>
+    
+  </entry>
   
   <entry>
     <title>小爱课程表使用手册</title>
@@ -386,26 +406,6 @@
     <summary type="html">
     
       Vue页面中动态控制表单输入框的数量
-    
-    </summary>
-    
-      <category term="随想" scheme="https://fengjing95.github.io/categories/%E9%9A%8F%E6%83%B3/"/>
-    
-    
-      <category term="vue" scheme="https://fengjing95.github.io/tags/vue/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Vue绑定不到组件</title>
-    <link href="https://fengjing95.github.io/2020/08/01/Vue%E5%AD%90%E8%B7%AF%E7%94%B1%E5%B8%B8%E8%A7%81%E7%9A%84%E9%97%AE%E9%A2%98/"/>
-    <id>https://fengjing95.github.io/2020/08/01/Vue子路由常见的问题/</id>
-    <published>2020-08-01T10:38:09.001Z</published>
-    <updated>2020-08-01T10:39:27.068Z</updated>
-    
-    <summary type="html">
-    
-      探究Vue路由组件绑定失败原因
     
     </summary>
     
