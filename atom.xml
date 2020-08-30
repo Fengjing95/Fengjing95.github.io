@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://fengjing95.github.io/"/>
-  <updated>2020-08-30T08:10:36.163Z</updated>
+  <updated>2020-08-30T13:44:01.868Z</updated>
   <id>https://fengjing95.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Vue组件通信</title>
+    <title>Vue插槽组件</title>
     <link href="https://fengjing95.github.io/2020/08/30/Vue%E7%BB%84%E4%BB%B6%E4%B9%8Bslot%E6%8F%92%E6%A7%BD/"/>
     <id>https://fengjing95.github.io/2020/08/30/Vue组件之slot插槽/</id>
     <published>2020-08-30T08:09:24.323Z</published>
-    <updated>2020-08-30T08:10:36.163Z</updated>
+    <updated>2020-08-30T13:44:01.868Z</updated>
     
     <summary type="html">
     
