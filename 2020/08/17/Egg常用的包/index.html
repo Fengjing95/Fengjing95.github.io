@@ -876,7 +876,7 @@ config.jwt = {
   secret: &#39;xiaofeng&#39;,
 };
 </code></pre>
-<h3 id="编码-2"><a href="#编码-2" class="headerlink" title="编码"></a>编码</h3><p>登录页使用post方法提交表单不再列出，主要给出生成token的操作（同样jwt没有index.d.ts，需要手动配置，见前文）</p>
+<h3 id="编码-2"><a href="#编码-2" class="headerlink" title="编码"></a>编码</h3><h4 id="生成"><a href="#生成" class="headerlink" title="生成"></a>生成</h4><p>登录页使用post方法提交表单不再列出，主要给出生成token的操作（同样jwt没有index.d.ts，需要手动配置，见前文）</p>
 <pre><code class="typescript">public async add() {
   const { ctx, app } = this;
   ctx.cookies.set(&#39;username&#39;, ctx.request.body.username);
@@ -889,7 +889,49 @@ config.jwt = {
 </code></pre>
 <p>效果如图</p>
 <p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ录屏20200817161322 00_00_00-00_00_30.gif" alt="QQ录屏20200817161322 00_00_00-00_00_30"></p>
-<h3 id="代码-3"><a href="#代码-3" class="headerlink" title="代码"></a>代码</h3><p>代码已上传码云<a href="https://gitee.com/liuhao1108/egg-study" target="_blank" rel="noopener">#5部分</a></p>
+<h4 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h4><pre><code class="typescript">import { Context } from &#39;egg&#39;;
+
+// 自定义的中间件：验证token
+export default function jwtAuth(options: any): any {
+  return async (ctx: Context, next: () =&gt; Promise&lt;any&gt;) =&gt; {
+    const token = ctx.request.header.authorization;
+    let decode = &#39;&#39;;
+    if (token) {
+      try {
+        // 解码token
+        decode = await ctx.app.jwt.verify(token, options.secret);
+        console.log(&#39;decode======&gt;&#39;, decode);
+        await next();
+      } catch (error) {
+        ctx.status = 401;
+        ctx.body = {
+          message: error.message,
+        };
+        return;
+      }
+    } else {
+      ctx.status = 401;
+      ctx.body = {
+        message: &#39;没有token&#39;,
+      };
+      return;
+    }
+  };
+}
+</code></pre>
+<p>自定义验证token中间件，在路由文件中添加需要token才能访问的路由</p>
+<pre><code class="typescript">import { Application } from &#39;egg&#39;;
+
+export default (app: Application) =&gt; {
+  const { controller, router, middleware } = app;
+
+  const token = middleware.jwtAuth(app.config.jwt);
+
+  router.get(&#39;/news&#39;, token, controller.news.index);
+};
+</code></pre>
+<p>没有获得token访问需要登录的路由时会提示没有token<br><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200903193358548.png" alt="image-20200903193358548"><br>使用接口测试工具绑定一个已经生成的token<br><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200903193520323.png" alt="image-20200903193520323"><br><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200903193558484.png" alt="image-20200903193558484"><br>可以看到成功解析了token</p>
+<h3 id="代码-3"><a href="#代码-3" class="headerlink" title="代码"></a>代码</h3><p>代码已上传码云<a href="https://gitee.com/liuhao1108/egg-study" target="_blank" rel="noopener">#5部分,验证部分在#8</a></p>
 <h2 id="egg-validate"><a href="#egg-validate" class="headerlink" title="egg-validate"></a>egg-validate</h2><p>egg-validate用于对参数进行检验，比如检验一个用户名是不是字符串<code>ctx.validate({ userName: &#39;string&#39; });</code></p>
 <h3 id="安装及配置-1"><a href="#安装及配置-1" class="headerlink" title="安装及配置"></a>安装及配置</h3><p>运行命令</p>
 <pre><code class="shell">$ npm i egg-validate --save
