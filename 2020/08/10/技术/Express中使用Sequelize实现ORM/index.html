@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta name="baidu-site-verification" content="GdMCS2x132">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+  <title itemprop="name">Express中使用Sequelize实现ORM | 前端小枫</title>
+  
+  <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="/css/style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/lib.min.css" media="all">
+  <link rel="stylesheet" href="/css/font.css" media="all">
+  <link rel="stylesheet" href="/css/insight.css" media="all">
+  <link rel="stylesheet" href="/css/jquery.fancybox.min.css" media="all">
+  <link rel="stylesheet" href="/css/zoom.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+  <!--   <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css
+" type="text/css" media="all"> -->
+  <script>
+    /*Initial Variables*/
+    var mashiro_option = new Object();
+    var mashiro_global = new Object();
+    mashiro_option.NProgressON = true;
+    /* 
+     * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+     * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+     */
+    mashiro_option.email_domain = "";
+    mashiro_option.email_name = "";
+    mashiro_option.cookie_version_control = "";
+    mashiro_option.qzone_autocomplete = false;
+    mashiro_option.site_name = "沿途の枫景";
+    mashiro_option.author_name = "枫景";
+    mashiro_option.site_url = "https://fengjing95.github.io";
+    mashiro_option.v_appId = "AdzOvpXTwwf3KAX23DOds5C9-gzGzoHsz";
+    mashiro_option.v_appKey = "olX1MHfMtrQcmemwl5lLmu4a";
+    mashiro_option.mathjax = "0";
+    mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/";
+    mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+
+  // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
+  // mashiro_option.float_player_on = true;
+
+    /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+    var bg = "https://gitee.com/liuhao1108/picGoCDN/raw/master/img/back1.jpg,https://gitee.com/liuhao1108/picGoCDN/raw/master/img/back2.jpg,https://gitee.com/liuhao1108/picGoCDN/raw/master/img/back3.jpg,https://gitee.com/liuhao1108/picGoCDN/raw/master/img/back4.jpg,https://gitee.com/liuhao1108/picGoCDN/raw/master/img/back5.jpg,https://gitee.com/liuhao1108/picGoCDN/raw/master/img/back6.jpg,https://gitee.com/liuhao1108/picGoCDN/raw/master/img/back7.jpg,https://gitee.com/liuhao1108/picGoCDN/raw/master/img/back8.jpg".split(",");
+    var bgindex = Math.floor(Math.random() * bg.length);
+    if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+      alert('朋友，IE浏览器未适配哦~');
+    }
+  </script>
+  <style type="text/css">
+    .hljs-ln {
+      border-collapse: collapse
+    }
+
+    .hljs-ln td {
+      padding: 0
+    }
+
+    .hljs-ln-n:before {
+      content: attr(data-line-number)
+    }
+  </style>
+  <style type="text/css">
+    .site-top .lower nav {
+      display: block !important;
+    }
+
+    .author-profile i,
+    .post-like a,
+    .post-share .show-share,
+    .sub-text,
+    .we-info a,
+    span.sitename,
+    .post-more i:hover,
+    #pagination a:hover,
+    .post-content a:hover,
+    .float-content i:hover {
+      color: #FE9600
+    }
+
+    .feature i,
+    .download,
+    .navigator i:hover,
+    .links ul li:before,
+    .ar-time i,
+    span.ar-circle,
+    .object,
+    .comment .comment-reply-link,
+    .siren-checkbox-radio:checked+.siren-checkbox-radioInput:after {
+      background: #FE9600
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #FE9600
+    }
+
+    .download,
+    .navigator i:hover,
+    .link-title,
+    .links ul li:hover,
+    #pagination a:hover,
+    .comment-respond input[type='submit']:hover {
+      border-color: #FE9600
+    }
+
+    .entry-content a:hover,
+    .site-info a:hover,
+    .comment h4 a,
+    #comments-navi a.prev,
+    #comments-navi a.next,
+    .comment h4 a:hover,
+    .site-top ul li a:hover,
+    .entry-title a:hover,
+    #archives-temp h3,
+    span.page-numbers.current,
+    .sorry li a:hover,
+    .site-title a:hover,
+    i.iconfont.js-toggle-search.iconsearch:hover,
+    .comment-respond input[type='submit']:hover {
+      color: #FE9600
+    }
+
+    .comments .comments-main {
+      display: block !important;
+    }
+
+    .comments .comments-hidden {
+      display: none !important;
+    }
+
+    background-position:center center;
+    background-attachment:inherit;
+    }
+  </style>
+</head></html>
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <div class="scrollbar" id="bar">
+  </div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop filter-dot">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a href="https://fengjing95.github.io">
+          <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>努力做更好的自己！</p>
+        <div class="top-social_v2">
+          <li id="bg-pre">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="https://github.com/Fengjing95" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/social/github.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://weibo.com/5056791657/profile?is_all=1" target="_blank" class="social-github" title="sina">
+                    <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/social/sina.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://music.163.com/#/my/m/music/playlist?id=2069325819" target="_blank" class="social-github" title="wangyiyun">
+                    <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/social/wangyiyun.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://www.zhihu.com/people/feng-jing-28-65" target="_blank" class="social-github" title="zhihu">
+                    <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/social/zhihu.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="email">
+                    <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/social/email.svg">
+                  </a>
+                </li>
+              
+            
+              
+                <li class="wechat">
+                  <a href="/#">
+                    <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/social/wechat.png">
+                  </a>
+                  <div class="wechatInner">
+                    <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/wechat.jpg">
+                  </div>
+                </li>
+              
+            
+          
+          <li id="bg-next">
+            <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style="">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <div id="video-btn" class="loadvideo videolive">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu">
+    </div>
+  </div>
+  <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span>
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink moe-mashiro">
+          <a href="/">
+            <span class="sakurasono">沿途の</span>
+            <span class="shironeko">枫景</span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div>
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+                    归档
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/categories/技术/">
+                          <i class="fa fa-code" aria-hidden="true"></i>
+                          技术
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/生活/">
+                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          生活
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/资源/">
+                          <i class="fa fa-cloud-download" aria-hidden="true"></i>
+                          资源
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/随想/">
+                          <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                          随想
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/笔记/">
+                          <i class="fa fa-book" aria-hidden="true"></i>
+                          笔记
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    清单
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/tags/悦读/">
+                          <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                          书单
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/bangumi/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          番组
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/music/">
+                          <i class="fa fa-headphones" aria-hidden="true"></i>
+                          歌单
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/tags/图集/">
+                          <i class="fa fa-photo" aria-hidden="true"></i>
+                          图集
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/comment/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+                    留言板
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/links/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+                    友人帐
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/donate/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+                    赞赏
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+                    关于
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/about/">
+                          <i class="fa fa-meetup" aria-hidden="true"></i>
+                          我？
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/theme-sakura/">
+                          <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+                          主题
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/lab/">
+                          <i class="fa fa-cogs" aria-hidden="true"></i>
+                          Lab
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/client/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-android faa-vertical" aria-hidden="true"></i>
+                    客户端
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/atom.xml">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+                    RSS
+                  </span>
+                </a>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://gitee.com/liuhao1108/picGoCDN/raw/master/img/sequelize.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/sequelize.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      Express中使用Sequelize实现ORM</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="">小枫</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2020-8-10<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h1 id="Express中使用Sequelize实现ORM"><a href="#Express中使用Sequelize实现ORM" class="headerlink" title="Express中使用Sequelize实现ORM"></a>Express中使用Sequelize实现ORM</h1><h2 id="起步"><a href="#起步" class="headerlink" title="起步"></a>起步</h2><p>第一步当然是环境，首先使用Express生成器安装express环境</p>
+<pre><code class="shell">express myapp    // myapp，你自己的项目名称（需要全局安装express）
+npm install
+</code></pre>
+<p>然后安装sequelize</p>
+<pre><code class="shell">npm install --save sequelize
+npm install --save mysql2    // 驱动，这里主要说mysql，其他的类型见官网文档
+</code></pre>
+<h2 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h2><p>连接到数据库必须有sequelize实例，实例化方法如下</p>
+<pre><code class="js">const connect = new DB(&#39;dbname&#39;, &#39;username&#39;, &#39;password&#39;, {
+    host: &#39;localhost&#39;,
+    dialect: &#39;mysql&#39;
+})
+</code></pre>
+<p>配置好实例之后可以使用<code>.authenticate()</code>来测试连接</p>
+<pre><code class="js">connect.authenticate().then(() =&gt; {
+    console.log(&#39;连接成功&#39;)
+}).catch(error =&gt; {
+    console.error(&#39;连接失败:&#39;, error);
+})
+</code></pre>
+<p>关闭连接</p>
+<blockquote>
+<p>默认情况下，Sequelize将使连接保持打开状态，并对所有查询使用相同的连接。如果需要关闭连接，请调用<code>sequelize.close()</code>（它是异步的并返回Promise）</p>
+</blockquote>
+<h2 id="模型基础"><a href="#模型基础" class="headerlink" title="模型基础"></a>模型基础</h2><h3 id="定义模型"><a href="#定义模型" class="headerlink" title="定义模型"></a>定义模型</h3><blockquote>
+<p>模型是Sequelize的本质。模型是代表数据库中表的抽象。在Sequelize中，它是扩展Model的类</p>
+</blockquote>
+<p>使用<code>sequelize.define</code>方法来定义模型，sequelize会根据定义的模型名称的复数自动建表</p>
+<pre><code class="js">const Book = connect.define(&#39;Book&#39;, {
+    bookName: DB.STRING,    // 属性名： 数据类型
+    bookCounts: DB.INTEGER,
+    detail: DB.STRING,
+}, {
+    timestamps: false    // 自动生成createAt和updateAt
+})
+</code></pre>
+<p>此外也可以直接提供表名</p>
+<pre><code class="js">sequelize.define(&#39;Book&#39;, {
+  // ... attributes
+}, {
+  tableName: &#39;literature&#39;
+});
+</code></pre>
+<p>更多数据类型：</p>
+<pre><code class="js">// CHAR
+Sequelize.STRING                      // VARCHAR(255)
+Sequelize.STRING(1234)                // VARCHAR(1234)
+Sequelize.STRING.BINARY               // VARCHAR BINARY
+Sequelize.TEXT                        // TEXT
+Sequelize.TEXT(&#39;tiny&#39;)                // TINYTEXT
+// NUMBER
+Sequelize.INTEGER                     // INTEGER
+Sequelize.BIGINT                      // BIGINT
+Sequelize.BIGINT(11)                  // BIGINT(11)
+Sequelize.FLOAT                       // FLOAT
+Sequelize.FLOAT(11)                   // FLOAT(11)
+Sequelize.FLOAT(11, 10)               // FLOAT(11,10)
+Sequelize.DOUBLE                      // DOUBLE
+Sequelize.DOUBLE(11)                  // DOUBLE(11)
+Sequelize.DOUBLE(11, 10)              // DOUBLE(11,10)
+Sequelize.DECIMAL                     // DECIMAL
+Sequelize.DECIMAL(10, 2)              // DECIMAL(10,2)
+// TIME
+Sequelize.DATE                        // mysql / sqlite 为 DATETIME, postgres 为带时区的 TIMESTAMP
+Sequelize.DATE(6)                     // DATETIME(6) 适用 mysql 5.6.4+. 小数秒支持最多6位精度
+Sequelize.DATEONLY                    // DATE 不带时间.
+// BOOLEAN
+Sequelize.BOOLEAN                     // TINYINT(1)
+//ENUM
+Sequelize.ENUM(&#39;value 1&#39;, &#39;value 2&#39;)  // 一个允许值为&#39;value 1&#39;和&#39;value 2&#39;的ENUM
+// blob
+Sequelize.BLOB                        // BLOB (PostgreSQL 为 bytea)
+Sequelize.BLOB(&#39;tiny&#39;)                // TINYBLOB (PostgreSQL 为 bytea. 其余参数是 medium 和 long)
+// GEOMETRY
+Sequelize.GEOMETRY                    // Spatial 列. 仅 PostgreSQL (带有 PostGIS) 或 MySQL.
+Sequelize.GEOMETRY(&#39;POINT&#39;)           // 带有 geometry 类型的 spatial 列. 仅 PostgreSQL (带有 PostGIS) 或 MySQL.
+Sequelize.GEOMETRY(&#39;POINT&#39;, 4326)     // 具有 geometry 类型和 SRID 的 spatial 列. 仅 PostgreSQL (带有 PostGIS) 或 MySQL.
+// unsigned 和 zerofill 属性
+Sequelize.INTEGER.UNSIGNED              // INTEGER UNSIGNED
+Sequelize.INTEGER(11).UNSIGNED          // INTEGER(11) UNSIGNED
+Sequelize.INTEGER(11).ZEROFILL          // INTEGER(11) ZEROFILL
+Sequelize.INTEGER(11).ZEROFILL.UNSIGNED // INTEGER(11) UNSIGNED ZEROFILL
+Sequelize.INTEGER(11).UNSIGNED.ZEROFILL // INTEGER(11) UNSIGNED ZEROFILL
+</code></pre>
+<blockquote>
+<p>数据类型来源，掘金，云影sky的<a href="https://juejin.im/post/6844903897673269255" target="_blank" rel="noopener">详细易用的 Sequelize 解读</a></p>
+</blockquote>
+<h3 id="模型同步"><a href="#模型同步" class="headerlink" title="模型同步"></a>模型同步</h3><p>使用model.async()方法来将模型与数据库同步</p>
+<ul>
+<li><code>User.sync()</code> -如果不存在则创建表（如果已经存在则不执行任何操作）</li>
+<li><code>User.sync({ force: true })</code> -这将创建表，如果该表已经存在，则将其首先删除</li>
+<li><code>User.sync({ alter: true })</code> -这将检查数据库中表的当前状态（它具有哪些列，它们的数据类型等），然后在表中进行必要的更改以使其与模型匹配</li>
+</ul>
+<h3 id="创建模型实例"><a href="#创建模型实例" class="headerlink" title="创建模型实例"></a>创建模型实例</h3><p>使用<code>model.build</code>方法来创建模型实例</p>
+<pre><code class="js">const jsBook = Book.build({
+    bookName: &#39;你不知道的JS&#39;,
+    bookCounts: 3,
+    detail: &#39;JS 进阶系列&#39;,
+})
+</code></pre>
+<p>上面的创建实例之后使用<code>jsBook.save();</code>方法来保存到数据库</p>
+<h2 id="模型查询"><a href="#模型查询" class="headerlink" title="模型查询"></a>模型查询</h2><h3 id="INSERT查询"><a href="#INSERT查询" class="headerlink" title="INSERT查询"></a>INSERT查询</h3><p>上面的模型保存还有一种简便方法，直接使用<code>model.create</code>方法，直接保存到数据库</p>
+<pre><code class="js">Book.create({
+    bookName: &#39;你不知道的JS&#39;,
+    bookCounts: 3,
+    detail: &#39;JS 进阶系列&#39;,
+})
+</code></pre>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200810110734948.png" alt="image-20200810110734948"></p>
+<p>可以看到数据库中已经生成了这条记录</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200810113908645.png" alt="image-20200810113908645"></p>
+<p>控制台可以看到sql语句</p>
+<h3 id="SELECT查询"><a href="#SELECT查询" class="headerlink" title="SELECT查询"></a>SELECT查询</h3><h4 id="find查询"><a href="#find查询" class="headerlink" title="find查询"></a>find查询</h4><p>使用<code>findAll</code>方法查询整个表</p>
+<pre><code class="js">Book.findAll()
+</code></pre>
+<p>效果图</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200810114828228.png" alt="image-20200810114828228"></p>
+<p>可以使用<code>attributes</code>选项来进行列查询，数组中列出要查询的字段名</p>
+<pre><code class="js">Book.findAll({
+    attributes: [&#39;id&#39;, &#39;bookName&#39;],
+})
+</code></pre>
+<p>效果图</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200810115039418.png" alt="image-20200810115039418"></p>
+<p>使用<code>exclude</code>删除一些选定的属性</p>
+<pre><code class="js">Book.findAll({
+    attributes: { exclude: [&#39;bookCounts&#39;] },
+})
+</code></pre>
+<p>效果图</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200810115403040.png" alt="image-20200810115403040"></p>
+<h5 id="其他find查询"><a href="#其他find查询" class="headerlink" title="其他find查询"></a>其他find查询</h5><ul>
+<li><p>findByPk：使用提供的主键仅从表中获得一个条目</p>
+</li>
+<li><p>findOne：获取它找到的第一个条目（如果提供的话，它满足可选的查询选项）</p>
+</li>
+<li><p>findOrCreate：查询不到实例就创建一个，返回值是实例（查到的或者创建的）和一个布尔值（创建为true）</p>
+</li>
+<li><p>findAndCountAll：查询并计数，有两个返回值，一个是查询到的记录另一个是count</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200810142105550.png" alt="image-20200810142105550"></p>
+</li>
+</ul>
+<h4 id="where子句"><a href="#where子句" class="headerlink" title="where子句"></a>where子句</h4><p>使用<code>where</code>选项可以进行where查询</p>
+<pre><code class="js">Book.findAll({
+    where: {
+        bookName: &#39;你不知道的JS&#39;,
+        id: 1
+    }
+})
+// SELECT * FROM books WHERE bookName = &#39;你不知道的JS&#39; AND id = 1;
+</code></pre>
+<p>效果如图</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200810125605150.png" alt="image-20200810125605150"></p>
+<p>有了AND就有OR，使用<code>Op.or</code>来进行or操作</p>
+<pre><code class="js">Book.findAll({
+    where: {
+        bookName: &#39;你不知道的JS&#39;,
+        id: {
+            [Op.or]: [1, 2]
+        }
+    }
+})
+// SELECT * FROM books WHERE bookName = &#39;你不知道的JS&#39; AND (id = 1 OR id = 2);
+</code></pre>
+<p>效果图</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200810133131211.png" alt="image-20200810133131211"></p>
+<p>AND也可以使用Op.and来操作，但是易读性不强（不常用）</p>
+<pre><code class="js">Book.findAll({
+    where: {
+        [Op.and]: [
+            { bookName: &#39;你不知道的JS&#39; },
+            {
+                id: {
+                    [Op.or]: [1, 2]
+                }
+            }
+        ]
+    }
+})
+</code></pre>
+<p><strong>sequelize提供了更多运算</strong></p>
+<pre><code class="js">const { Op } = require(&quot;sequelize&quot;);
+Post.findAll({
+  where: {
+    [Op.and]: [{ a: 5 }, { b: 6 }],            // (a = 5) AND (b = 6)
+    [Op.or]: [{ a: 5 }, { b: 6 }],             // (a = 5) OR (b = 6)
+    someAttribute: {
+      // Basics
+      [Op.eq]: 3,                              // = 3
+      [Op.ne]: 20,                             // != 20
+      [Op.is]: null,                           // IS NULL
+      [Op.not]: true,                          // IS NOT TRUE
+      [Op.or]: [5, 6],                         // (someAttribute = 5) OR (someAttribute = 6)
+
+      // Using dialect specific column identifiers (PG in the following example):
+      [Op.col]: &#39;user.organization_id&#39;,        // = &quot;user&quot;.&quot;organization_id&quot;
+
+      // Number comparisons
+      [Op.gt]: 6,                              // &gt; 6
+      [Op.gte]: 6,                             // &gt;= 6
+      [Op.lt]: 10,                             // &lt; 10
+      [Op.lte]: 10,                            // &lt;= 10
+      [Op.between]: [6, 10],                   // BETWEEN 6 AND 10
+      [Op.notBetween]: [11, 15],               // NOT BETWEEN 11 AND 15
+
+      // Other operators
+
+      [Op.all]: sequelize.literal(&#39;SELECT 1&#39;), // &gt; ALL (SELECT 1)
+
+      [Op.in]: [1, 2],                         // IN [1, 2]
+      [Op.notIn]: [1, 2],                      // NOT IN [1, 2]
+
+      [Op.like]: &#39;%hat&#39;,                       // LIKE &#39;%hat&#39;
+      [Op.notLike]: &#39;%hat&#39;,                    // NOT LIKE &#39;%hat&#39;
+      [Op.startsWith]: &#39;hat&#39;,                  // LIKE &#39;hat%&#39;
+      [Op.endsWith]: &#39;hat&#39;,                    // LIKE &#39;%hat&#39;
+      [Op.substring]: &#39;hat&#39;,                   // LIKE &#39;%hat%&#39;
+      [Op.iLike]: &#39;%hat&#39;,                      // ILIKE &#39;%hat&#39; (case insensitive) (PG only)
+      [Op.notILike]: &#39;%hat&#39;,                   // NOT ILIKE &#39;%hat&#39;  (PG only)
+      [Op.regexp]: &#39;^[h|a|t]&#39;,                 // REGEXP/~ &#39;^[h|a|t]&#39; (MySQL/PG only)
+      [Op.notRegexp]: &#39;^[h|a|t]&#39;,              // NOT REGEXP/!~ &#39;^[h|a|t]&#39; (MySQL/PG only)
+      [Op.iRegexp]: &#39;^[h|a|t]&#39;,                // ~* &#39;^[h|a|t]&#39; (PG only)
+      [Op.notIRegexp]: &#39;^[h|a|t]&#39;,             // !~* &#39;^[h|a|t]&#39; (PG only)
+
+      [Op.any]: [2, 3],                        // ANY ARRAY[2, 3]::INTEGER (PG only)
+
+      // In Postgres, Op.like/Op.iLike/Op.notLike can be combined to Op.any:
+      [Op.like]: { [Op.any]: [&#39;cat&#39;, &#39;hat&#39;] }  // LIKE ANY ARRAY[&#39;cat&#39;, &#39;hat&#39;]
+
+      // There are more postgres-only range operators, see below
+    }
+  }
+});
+</code></pre>
+<h3 id="UPDATE查询"><a href="#UPDATE查询" class="headerlink" title="UPDATE查询"></a>UPDATE查询</h3><p>使用<code>model.update</code>方法来进行数据更新</p>
+<pre><code class="js">Book.update({
+    bookCounts: 5
+}, {
+    where: {
+        id: 2
+    }
+})
+// UPDATE books SET bookCounts =5 WHERE id = 2;
+</code></pre>
+<p>修改后的数据如下</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200810134545193.png" alt="image-20200810134545193"></p>
+<h3 id="DELETE查询"><a href="#DELETE查询" class="headerlink" title="DELETE查询"></a>DELETE查询</h3><p>使用<code>model.destory</code>方法进行删除操作</p>
+<pre><code class="js">Book.destory({
+    where: {
+        id: 2
+    }
+})
+</code></pre>
+<h3 id="限制和分页"><a href="#限制和分页" class="headerlink" title="限制和分页"></a>限制和分页</h3><p>使用<code>limit</code>和<code>offset</code>选项进行限制/分页</p>
+<ul>
+<li>limit：每一页的记录数量限制</li>
+<li>offset：第几页，从0开始</li>
+</ul>
+<pre><code class="js">Book.findAll({
+    where: {
+        bookName: &#39;你不知道的JS&#39;,
+    }，
+    offset: parseInt(req.query.page) ? parseInt(req.query.page) : 0,
+    limit: 1
+})
+</code></pre>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200810140552684.png" alt="image-20200810140552684"></p>
+<h3 id="实用方法"><a href="#实用方法" class="headerlink" title="实用方法"></a>实用方法</h3><p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200810140836869.png" alt="image-20200810140836869"></p>
+<h2 id="进阶用法"><a href="#进阶用法" class="headerlink" title="进阶用法"></a>进阶用法</h2><p>getter&amp;setter</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200810142713058.png" alt="image-20200810142713058"></p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200810142730547.png" alt="image-20200810142730547"></p>
+<p>事务</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200810142930896.png" alt="image-20200810142930896"></p>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2020/08/12/技术/高级组件provide-inject/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/vue-p.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/vue-p.jpg">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                高级组件provide/inject</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+          
+            <div class="post-nepre half next">
+          
+            <a href="/2020/08/06/笔记/TypeScript学习笔记/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/typescript.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/typescript.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                TypeScript学习笔记</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "AdzOvpXTwwf3KAX23DOds5C9-gzGzoHsz",
+        appKey: "olX1MHfMtrQcmemwl5lLmu4a",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg" itemprop="image" alt="小枫" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author">小枫</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>前端小白</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+
+    </div>    
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    <!-- <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 小枫<br>
+      powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer> -->
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/wordpress-rotating-ball-o.svg">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/disqus-preloader.svg">
+      </div>
+      <p style="color: #666666;">&copy 2020</p>
+    </div>
+    <div class="footer-device">
+      <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #b9b9b9;">Theme <a href="https://github.com/honjun/hexo-theme-sakura" target="_blank"
+            style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Sakura</a> <i
+            class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> by <a
+            href="https://2heng.xin/" target="_blank"
+            style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Mashiro</a>&<a
+            href="https://www.hojun.cn/" target="_blank"
+            style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Hojun</a>, Powered by Hexo,
+          Hosted by Coding Pages</a>
+        </span>
+      </p>
+      <!-- <p style="font-family: 'Ubuntu', sans-serif;">
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="busuanzi_container_site_pv"> 总访问量 <span id="busuanzi_value_site_pv"></span> 次 </span>
+        <span id="busuanzi_container_site_uv">| 总访客数 <span id="busuanzi_value_site_uv"></span> 人 </span>
+      </p> -->
+    </div>
+  </div><!-- .site-info -->
+</footer>
+
+
+
+
+
+<!-- <script src="/js/tocbot.js"></script> -->
+<script src="https://cdn.jsdelivr.net/gh/wallleap/cdn@latest/js/hititle.js"></script>
+
+<script type="text/javascript" src="/js/lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/InsightSearch.js"></script>
+<script type="text/javascript" src="/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="/js/zoom.min.js"></script>
+<script type="text/javascript" src="/js/sakura-app.js"></script>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine@1.3.4/dist/Valine.min.js'></script>
+<script src="/js/botui.js"></script>
+<!-- 不蒜子 网页计数器 -->
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script> -->
+<script type="text/javascript">
+  /* <![CDATA[ */
+  if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+    var Poi = { "pjax": "1", "movies": { "url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2", "name": "Unbroken.mp4", "live": "close" }, "windowheight": "fixed", "codelamp": "close", "ajaxurl": "", "order": "asc", "formpostion": "bottom" };
+  } else {
+    var Poi = { "pjax": "1", "movies": { "url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2", "name": "Unbroken.mp4", "live": "open" }, "windowheight": "auto", "codelamp": "close", "ajaxurl": "", "order": "asc", "formpostion": "bottom" };
+  }
+/* ]]> */
+
+</script>
+<script>
+  $(document).ready(function () {
+    if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+      if ($(".pattern-center").length > 0) { //有图的情况
+        tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -400,
+          scrollSmoothOffset: -85
+        });
+      } else {
+        tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+        });
+      }
+      var offsetTop = $('.toc').offset().top - 95;
+      window.onscroll = function () {
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+        if (scrollTop >= offsetTop) {
+          $('.toc').addClass('toc-fixed');
+        } else {
+          $('.toc').removeClass('toc-fixed');
+        }
+      }
+    }
+  });
+</script>
+    <div class="openNav no-select" style="height: 50px;">
+      <div class="iconflat no-select" style="width: 50px; height: 50px;">
+        <div class="icon"></div>
+      </div>
+      <div class="site-branding search-form-submit">
+        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+      </div>
+    </div>
+  </section>
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg">
+  </div>
+  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">沿途の枫景</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+      
+        <a href="https://github.com/Fengjing95" class="fa fa-github" target="_blank" style="color: #333; margin-left:20px"></a>
+      
+        <a href="https://weibo.com/5056791657/profile?is_all=1" class="fa fa-weibo" target="_blank" style="color: #dd4b39; margin-left:20px"></a>
+      
+        <a href="https://wpa.qq.com/msgrd?v=3&uin=1984779164&site=qq&menu=yes" class="fa fa-qq" target="_blank" style="color: #25c6fe; margin-left:20px"></a>
+      
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+            首页
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/archives">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+            归档
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/categories/技术/">
+                  <i class="fa fa-code" aria-hidden="true"></i>
+                  技术
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/生活/">
+                  <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                  生活
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/资源/">
+                  <i class="fa fa-cloud-download" aria-hidden="true"></i>
+                  资源
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/随想/">
+                  <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                  随想
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/笔记/">
+                  <i class="fa fa-book" aria-hidden="true"></i>
+                  笔记
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+            清单
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/tags/悦读/">
+                  <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                  书单
+                </a>
+              </li>
+            
+              <li>
+                <a href="/bangumi/">
+                  <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                  番组
+                </a>
+              </li>
+            
+              <li>
+                <a href="/music/">
+                  <i class="fa fa-headphones" aria-hidden="true"></i>
+                  歌单
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags/图集/">
+                  <i class="fa fa-photo" aria-hidden="true"></i>
+                  图集
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/comment/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+            留言板
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/links/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+            友人帐
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/donate/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+            赞赏
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+            关于
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/about/">
+                  <i class="fa fa-meetup" aria-hidden="true"></i>
+                  我？
+                </a>
+              </li>
+            
+              <li>
+                <a href="/theme-sakura/">
+                  <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+                  主题
+                </a>
+              </li>
+            
+              <li>
+                <a href="/lab/">
+                  <i class="fa fa-cogs" aria-hidden="true"></i>
+                  Lab
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/client/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-android faa-vertical" aria-hidden="true"></i>
+            客户端
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/atom.xml">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+            RSS
+          </span>
+        </a>
+        
+      </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2019 hexo-sakura</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js
+
+    id="2660651585"
+
+    server="netease"
+
+    type="playlist"
+
+    fixed="true"
+
+    autoplay="false"
+
+    loop="all"
+
+    order="random"
+
+    preload="auto"
+
+    volume="0.7"
+
+    mutex="true"
+
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script>
+</body>
+</html>

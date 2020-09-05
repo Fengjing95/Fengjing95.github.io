@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://fengjing95.github.io/"/>
-  <updated>2020-08-30T13:44:01.868Z</updated>
+  <updated>2020-09-05T09:34:39.830Z</updated>
   <id>https://fengjing95.github.io/</id>
   
   <author>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>Vue插槽组件</title>
-    <link href="https://fengjing95.github.io/2020/08/30/Vue%E7%BB%84%E4%BB%B6%E4%B9%8Bslot%E6%8F%92%E6%A7%BD/"/>
-    <id>https://fengjing95.github.io/2020/08/30/Vue组件之slot插槽/</id>
+    <link href="https://fengjing95.github.io/2020/08/30/%E6%8A%80%E6%9C%AF/Vue%E7%BB%84%E4%BB%B6%E4%B9%8Bslot%E6%8F%92%E6%A7%BD/"/>
+    <id>https://fengjing95.github.io/2020/08/30/技术/Vue组件之slot插槽/</id>
     <published>2020-08-30T08:09:24.323Z</published>
-    <updated>2020-08-30T13:44:01.868Z</updated>
+    <updated>2020-09-05T09:34:39.830Z</updated>
     
     <summary type="html">
     
@@ -38,10 +38,10 @@
   
   <entry>
     <title>小爱课程表使用手册</title>
-    <link href="https://fengjing95.github.io/2020/08/28/%E5%B0%8F%E7%88%B1%E8%AF%BE%E7%A8%8B%E8%A1%A8%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3%E2%80%94%E2%80%94%E5%B1%B1%E4%B8%9C%E5%B7%A5%E5%95%86%E5%AD%A6%E9%99%A2-SDTBU/"/>
-    <id>https://fengjing95.github.io/2020/08/28/小爱课程表使用文档——山东工商学院-SDTBU/</id>
+    <link href="https://fengjing95.github.io/2020/08/28/%E7%94%9F%E6%B4%BB/%E5%B0%8F%E7%88%B1%E8%AF%BE%E7%A8%8B%E8%A1%A8%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3%E2%80%94%E2%80%94%E5%B1%B1%E4%B8%9C%E5%B7%A5%E5%95%86%E5%AD%A6%E9%99%A2-SDTBU/"/>
+    <id>https://fengjing95.github.io/2020/08/28/生活/小爱课程表使用文档——山东工商学院-SDTBU/</id>
     <published>2020-08-28T11:08:09.118Z</published>
-    <updated>2020-08-29T11:03:58.960Z</updated>
+    <updated>2020-09-05T09:34:18.364Z</updated>
     
     <summary type="html">
     
@@ -58,14 +58,54 @@
   
   <entry>
     <title>对比call和apply</title>
-    <link href="https://fengjing95.github.io/2020/08/27/call&amp;apply/"/>
-    <id>https://fengjing95.github.io/2020/08/27/call&amp;apply/</id>
+    <link href="https://fengjing95.github.io/2020/08/27/%E6%8A%80%E6%9C%AF/call&amp;apply/"/>
+    <id>https://fengjing95.github.io/2020/08/27/技术/call&amp;apply/</id>
     <published>2020-08-27T14:47:40.917Z</published>
-    <updated>2020-08-27T14:50:35.727Z</updated>
+    <updated>2020-09-05T09:37:13.033Z</updated>
     
     <summary type="html">
     
       function原型方法call、bind、apply
+    
+    </summary>
+    
+      <category term="技术" scheme="https://fengjing95.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="js" scheme="https://fengjing95.github.io/tags/js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Axios</title>
+    <link href="https://fengjing95.github.io/2020/08/27/%E7%AC%94%E8%AE%B0/Axios/"/>
+    <id>https://fengjing95.github.io/2020/08/27/笔记/Axios/</id>
+    <published>2020-08-27T04:14:58.150Z</published>
+    <updated>2020-09-05T09:35:51.229Z</updated>
+    
+    <summary type="html">
+    
+      Axios简单配置
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://fengjing95.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="Node" scheme="https://fengjing95.github.io/tags/Node/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Promise学习笔记</title>
+    <link href="https://fengjing95.github.io/2020/08/20/%E7%AC%94%E8%AE%B0/Promise/"/>
+    <id>https://fengjing95.github.io/2020/08/20/笔记/Promise/</id>
+    <published>2020-08-20T09:41:38.591Z</published>
+    <updated>2020-09-05T09:38:03.804Z</updated>
+    
+    <summary type="html">
+    
+      Promise基本使用以及自定义Promise
     
     </summary>
     
@@ -77,51 +117,11 @@
   </entry>
   
   <entry>
-    <title>Axios</title>
-    <link href="https://fengjing95.github.io/2020/08/27/Axios/"/>
-    <id>https://fengjing95.github.io/2020/08/27/Axios/</id>
-    <published>2020-08-27T04:14:58.150Z</published>
-    <updated>2020-08-27T04:17:49.135Z</updated>
-    
-    <summary type="html">
-    
-      Axios简单配置
-    
-    </summary>
-    
-      <category term="技术" scheme="https://fengjing95.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="Node" scheme="https://fengjing95.github.io/tags/Node/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Promise学习笔记</title>
-    <link href="https://fengjing95.github.io/2020/08/20/Promise/"/>
-    <id>https://fengjing95.github.io/2020/08/20/Promise/</id>
-    <published>2020-08-20T09:41:38.591Z</published>
-    <updated>2020-08-20T09:55:12.820Z</updated>
-    
-    <summary type="html">
-    
-      Promise基本使用以及自定义Promise
-    
-    </summary>
-    
-      <category term="技术" scheme="https://fengjing95.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="js" scheme="https://fengjing95.github.io/tags/js/"/>
-    
-  </entry>
-  
-  <entry>
     <title>原型和原型链</title>
-    <link href="https://fengjing95.github.io/2020/08/19/%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE/"/>
-    <id>https://fengjing95.github.io/2020/08/19/原型和原型链/</id>
+    <link href="https://fengjing95.github.io/2020/08/19/%E6%8A%80%E6%9C%AF/%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE/"/>
+    <id>https://fengjing95.github.io/2020/08/19/技术/原型和原型链/</id>
     <published>2020-08-19T00:53:18.162Z</published>
-    <updated>2020-08-19T00:54:16.493Z</updated>
+    <updated>2020-09-05T09:35:16.583Z</updated>
     
     <summary type="html">
     
@@ -138,10 +138,10 @@
   
   <entry>
     <title>vuex入门</title>
-    <link href="https://fengjing95.github.io/2020/08/18/vuex%E5%85%A5%E9%97%A8/"/>
-    <id>https://fengjing95.github.io/2020/08/18/vuex入门/</id>
+    <link href="https://fengjing95.github.io/2020/08/18/%E6%8A%80%E6%9C%AF/vuex%E5%85%A5%E9%97%A8/"/>
+    <id>https://fengjing95.github.io/2020/08/18/技术/vuex入门/</id>
     <published>2020-08-18T11:03:09.232Z</published>
-    <updated>2020-08-18T11:03:43.497Z</updated>
+    <updated>2020-09-05T09:34:40.320Z</updated>
     
     <summary type="html">
     
@@ -158,10 +158,10 @@
   
   <entry>
     <title>原生JS实现AJAX</title>
-    <link href="https://fengjing95.github.io/2020/08/18/%E5%8E%9F%E7%94%9FJS%E5%AE%9E%E7%8E%B0AJAX/"/>
-    <id>https://fengjing95.github.io/2020/08/18/原生JS实现AJAX/</id>
+    <link href="https://fengjing95.github.io/2020/08/18/%E6%8A%80%E6%9C%AF/%E5%8E%9F%E7%94%9FJS%E5%AE%9E%E7%8E%B0AJAX/"/>
+    <id>https://fengjing95.github.io/2020/08/18/技术/原生JS实现AJAX/</id>
     <published>2020-08-18T08:14:27.923Z</published>
-    <updated>2020-08-19T23:49:28.275Z</updated>
+    <updated>2020-09-05T09:35:10.625Z</updated>
     
     <summary type="html">
     
@@ -178,10 +178,10 @@
   
   <entry>
     <title>ES6和CommonJS的模块化</title>
-    <link href="https://fengjing95.github.io/2020/08/18/ES6&amp;CommonJS/"/>
-    <id>https://fengjing95.github.io/2020/08/18/ES6&amp;CommonJS/</id>
+    <link href="https://fengjing95.github.io/2020/08/18/%E6%8A%80%E6%9C%AF/ES6&amp;CommonJS/"/>
+    <id>https://fengjing95.github.io/2020/08/18/技术/ES6&amp;CommonJS/</id>
     <published>2020-08-18T01:10:06.072Z</published>
-    <updated>2020-08-18T01:15:02.556Z</updated>
+    <updated>2020-09-05T09:36:51.102Z</updated>
     
     <summary type="html">
     
@@ -198,10 +198,10 @@
   
   <entry>
     <title>Egg实用中间件</title>
-    <link href="https://fengjing95.github.io/2020/08/17/Egg%E5%B8%B8%E7%94%A8%E7%9A%84%E5%8C%85/"/>
-    <id>https://fengjing95.github.io/2020/08/17/Egg常用的包/</id>
+    <link href="https://fengjing95.github.io/2020/08/17/%E6%8A%80%E6%9C%AF/Egg%E5%B8%B8%E7%94%A8%E7%9A%84%E5%8C%85/"/>
+    <id>https://fengjing95.github.io/2020/08/17/技术/Egg常用的包/</id>
     <published>2020-08-17T08:17:39.921Z</published>
-    <updated>2020-09-03T11:39:34.070Z</updated>
+    <updated>2020-09-05T09:37:20.810Z</updated>
     
     <summary type="html">
     
@@ -218,10 +218,10 @@
   
   <entry>
     <title>EggJS学习笔记</title>
-    <link href="https://fengjing95.github.io/2020/08/15/EggJS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    <id>https://fengjing95.github.io/2020/08/15/EggJS学习笔记/</id>
+    <link href="https://fengjing95.github.io/2020/08/15/%E7%AC%94%E8%AE%B0/EggJS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>https://fengjing95.github.io/2020/08/15/笔记/EggJS学习笔记/</id>
     <published>2020-08-15T15:14:19.584Z</published>
-    <updated>2020-08-21T05:07:58.026Z</updated>
+    <updated>2020-09-05T09:36:10.076Z</updated>
     
     <summary type="html">
     
@@ -238,10 +238,10 @@
   
   <entry>
     <title>VS Code 实用插件</title>
-    <link href="https://fengjing95.github.io/2020/08/13/VSCode%E4%BD%BF%E7%94%A8%E6%8F%92%E4%BB%B6%E9%9B%86%E5%90%88/"/>
-    <id>https://fengjing95.github.io/2020/08/13/VSCode使用插件集合/</id>
+    <link href="https://fengjing95.github.io/2020/08/13/%E8%B5%84%E6%BA%90/VSCode%E4%BD%BF%E7%94%A8%E6%8F%92%E4%BB%B6%E9%9B%86%E5%90%88/"/>
+    <id>https://fengjing95.github.io/2020/08/13/资源/VSCode使用插件集合/</id>
     <published>2020-08-13T06:25:25.881Z</published>
-    <updated>2020-08-13T06:32:56.930Z</updated>
+    <updated>2020-09-05T09:40:22.694Z</updated>
     
     <summary type="html">
     
@@ -258,10 +258,10 @@
   
   <entry>
     <title>高级组件provide/inject</title>
-    <link href="https://fengjing95.github.io/2020/08/12/%E9%AB%98%E7%BA%A7%E7%BB%84%E4%BB%B6provide-inject/"/>
-    <id>https://fengjing95.github.io/2020/08/12/高级组件provide-inject/</id>
+    <link href="https://fengjing95.github.io/2020/08/12/%E6%8A%80%E6%9C%AF/%E9%AB%98%E7%BA%A7%E7%BB%84%E4%BB%B6provide-inject/"/>
+    <id>https://fengjing95.github.io/2020/08/12/技术/高级组件provide-inject/</id>
     <published>2020-08-12T06:56:52.036Z</published>
-    <updated>2020-08-12T06:58:28.180Z</updated>
+    <updated>2020-09-05T09:34:58.314Z</updated>
     
     <summary type="html">
     
@@ -278,10 +278,10 @@
   
   <entry>
     <title>Express中使用Sequelize实现ORM</title>
-    <link href="https://fengjing95.github.io/2020/08/10/Express%E4%B8%AD%E4%BD%BF%E7%94%A8Sequelize%E5%AE%9E%E7%8E%B0ORM/"/>
-    <id>https://fengjing95.github.io/2020/08/10/Express中使用Sequelize实现ORM/</id>
+    <link href="https://fengjing95.github.io/2020/08/10/%E6%8A%80%E6%9C%AF/Express%E4%B8%AD%E4%BD%BF%E7%94%A8Sequelize%E5%AE%9E%E7%8E%B0ORM/"/>
+    <id>https://fengjing95.github.io/2020/08/10/技术/Express中使用Sequelize实现ORM/</id>
     <published>2020-08-10T06:33:37.962Z</published>
-    <updated>2020-08-12T07:00:47.431Z</updated>
+    <updated>2020-09-05T09:37:31.675Z</updated>
     
     <summary type="html">
     
@@ -298,10 +298,10 @@
   
   <entry>
     <title>TypeScript学习笔记</title>
-    <link href="https://fengjing95.github.io/2020/08/06/TypeScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    <id>https://fengjing95.github.io/2020/08/06/TypeScript学习笔记/</id>
+    <link href="https://fengjing95.github.io/2020/08/06/%E7%AC%94%E8%AE%B0/TypeScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>https://fengjing95.github.io/2020/08/06/笔记/TypeScript学习笔记/</id>
     <published>2020-08-06T15:25:45.926Z</published>
-    <updated>2020-08-24T08:36:07.845Z</updated>
+    <updated>2020-09-05T09:38:13.592Z</updated>
     
     <summary type="html">
     
@@ -318,10 +318,10 @@
   
   <entry>
     <title>Vue组件通信</title>
-    <link href="https://fengjing95.github.io/2020/08/04/Vue%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1/"/>
-    <id>https://fengjing95.github.io/2020/08/04/Vue组件通信/</id>
+    <link href="https://fengjing95.github.io/2020/08/04/%E6%8A%80%E6%9C%AF/Vue%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1/"/>
+    <id>https://fengjing95.github.io/2020/08/04/技术/Vue组件通信/</id>
     <published>2020-08-04T13:44:18.572Z</published>
-    <updated>2020-08-04T13:45:42.022Z</updated>
+    <updated>2020-09-05T09:34:40.002Z</updated>
     
     <summary type="html">
     
@@ -338,10 +338,10 @@
   
   <entry>
     <title>JS正则表达式</title>
-    <link href="https://fengjing95.github.io/2020/08/04/JS%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
-    <id>https://fengjing95.github.io/2020/08/04/JS正则表达式/</id>
+    <link href="https://fengjing95.github.io/2020/08/04/%E6%8A%80%E6%9C%AF/JS%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
+    <id>https://fengjing95.github.io/2020/08/04/技术/JS正则表达式/</id>
     <published>2020-08-03T16:26:08.012Z</published>
-    <updated>2020-08-03T16:32:24.560Z</updated>
+    <updated>2020-09-05T09:37:39.102Z</updated>
     
     <summary type="html">
     
@@ -358,10 +358,10 @@
   
   <entry>
     <title>let、const和var的区别</title>
-    <link href="https://fengjing95.github.io/2020/08/02/let%E3%80%81const%E5%92%8Cvar/"/>
-    <id>https://fengjing95.github.io/2020/08/02/let、const和var/</id>
+    <link href="https://fengjing95.github.io/2020/08/02/%E6%8A%80%E6%9C%AF/let%E3%80%81const%E5%92%8Cvar/"/>
+    <id>https://fengjing95.github.io/2020/08/02/技术/let、const和var/</id>
     <published>2020-08-02T11:09:59.170Z</published>
-    <updated>2020-08-02T11:11:39.247Z</updated>
+    <updated>2020-09-05T09:37:43.284Z</updated>
     
     <summary type="html">
     
@@ -378,10 +378,10 @@
   
   <entry>
     <title>Less预编译使用</title>
-    <link href="https://fengjing95.github.io/2020/08/02/Less%E9%A2%84%E7%BC%96%E8%AF%91/"/>
-    <id>https://fengjing95.github.io/2020/08/02/Less预编译/</id>
+    <link href="https://fengjing95.github.io/2020/08/02/%E7%AC%94%E8%AE%B0/Less%E9%A2%84%E7%BC%96%E8%AF%91/"/>
+    <id>https://fengjing95.github.io/2020/08/02/笔记/Less预编译/</id>
     <published>2020-08-02T06:11:51.895Z</published>
-    <updated>2020-08-02T06:13:59.998Z</updated>
+    <updated>2020-09-05T09:36:26.797Z</updated>
     
     <summary type="html">
     
@@ -398,10 +398,10 @@
   
   <entry>
     <title>动态控制输入框数量</title>
-    <link href="https://fengjing95.github.io/2020/08/01/%E5%8A%A8%E6%80%81%E6%8E%A7%E5%88%B6%E8%BE%93%E5%85%A5%E6%A1%86/"/>
-    <id>https://fengjing95.github.io/2020/08/01/动态控制输入框/</id>
+    <link href="https://fengjing95.github.io/2020/08/01/%E9%9A%8F%E6%83%B3/%E5%8A%A8%E6%80%81%E6%8E%A7%E5%88%B6%E8%BE%93%E5%85%A5%E6%A1%86/"/>
+    <id>https://fengjing95.github.io/2020/08/01/随想/动态控制输入框/</id>
     <published>2020-08-01T14:00:17.672Z</published>
-    <updated>2020-08-01T14:01:28.214Z</updated>
+    <updated>2020-09-05T09:35:01.008Z</updated>
     
     <summary type="html">
     

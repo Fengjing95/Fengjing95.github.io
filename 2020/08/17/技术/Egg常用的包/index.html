@@ -1,0 +1,1541 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta name="baidu-site-verification" content="GdMCS2x132">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+  <title itemprop="name">Egg实用中间件 | 前端小枫</title>
+  
+  <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="/css/style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/lib.min.css" media="all">
+  <link rel="stylesheet" href="/css/font.css" media="all">
+  <link rel="stylesheet" href="/css/insight.css" media="all">
+  <link rel="stylesheet" href="/css/jquery.fancybox.min.css" media="all">
+  <link rel="stylesheet" href="/css/zoom.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+  <!--   <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css
+" type="text/css" media="all"> -->
+  <script>
+    /*Initial Variables*/
+    var mashiro_option = new Object();
+    var mashiro_global = new Object();
+    mashiro_option.NProgressON = true;
+    /* 
+     * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+     * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+     */
+    mashiro_option.email_domain = "";
+    mashiro_option.email_name = "";
+    mashiro_option.cookie_version_control = "";
+    mashiro_option.qzone_autocomplete = false;
+    mashiro_option.site_name = "沿途の枫景";
+    mashiro_option.author_name = "枫景";
+    mashiro_option.site_url = "https://fengjing95.github.io";
+    mashiro_option.v_appId = "AdzOvpXTwwf3KAX23DOds5C9-gzGzoHsz";
+    mashiro_option.v_appKey = "olX1MHfMtrQcmemwl5lLmu4a";
+    mashiro_option.mathjax = "0";
+    mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/";
+    mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+
+  // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
+  // mashiro_option.float_player_on = true;
+
+    /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+    var bg = "https://gitee.com/liuhao1108/picGoCDN/raw/master/img/back1.jpg,https://gitee.com/liuhao1108/picGoCDN/raw/master/img/back2.jpg,https://gitee.com/liuhao1108/picGoCDN/raw/master/img/back3.jpg,https://gitee.com/liuhao1108/picGoCDN/raw/master/img/back4.jpg,https://gitee.com/liuhao1108/picGoCDN/raw/master/img/back5.jpg,https://gitee.com/liuhao1108/picGoCDN/raw/master/img/back6.jpg,https://gitee.com/liuhao1108/picGoCDN/raw/master/img/back7.jpg,https://gitee.com/liuhao1108/picGoCDN/raw/master/img/back8.jpg".split(",");
+    var bgindex = Math.floor(Math.random() * bg.length);
+    if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+      alert('朋友，IE浏览器未适配哦~');
+    }
+  </script>
+  <style type="text/css">
+    .hljs-ln {
+      border-collapse: collapse
+    }
+
+    .hljs-ln td {
+      padding: 0
+    }
+
+    .hljs-ln-n:before {
+      content: attr(data-line-number)
+    }
+  </style>
+  <style type="text/css">
+    .site-top .lower nav {
+      display: block !important;
+    }
+
+    .author-profile i,
+    .post-like a,
+    .post-share .show-share,
+    .sub-text,
+    .we-info a,
+    span.sitename,
+    .post-more i:hover,
+    #pagination a:hover,
+    .post-content a:hover,
+    .float-content i:hover {
+      color: #FE9600
+    }
+
+    .feature i,
+    .download,
+    .navigator i:hover,
+    .links ul li:before,
+    .ar-time i,
+    span.ar-circle,
+    .object,
+    .comment .comment-reply-link,
+    .siren-checkbox-radio:checked+.siren-checkbox-radioInput:after {
+      background: #FE9600
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #FE9600
+    }
+
+    .download,
+    .navigator i:hover,
+    .link-title,
+    .links ul li:hover,
+    #pagination a:hover,
+    .comment-respond input[type='submit']:hover {
+      border-color: #FE9600
+    }
+
+    .entry-content a:hover,
+    .site-info a:hover,
+    .comment h4 a,
+    #comments-navi a.prev,
+    #comments-navi a.next,
+    .comment h4 a:hover,
+    .site-top ul li a:hover,
+    .entry-title a:hover,
+    #archives-temp h3,
+    span.page-numbers.current,
+    .sorry li a:hover,
+    .site-title a:hover,
+    i.iconfont.js-toggle-search.iconsearch:hover,
+    .comment-respond input[type='submit']:hover {
+      color: #FE9600
+    }
+
+    .comments .comments-main {
+      display: block !important;
+    }
+
+    .comments .comments-hidden {
+      display: none !important;
+    }
+
+    background-position:center center;
+    background-attachment:inherit;
+    }
+  </style>
+</head></html>
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <div class="scrollbar" id="bar">
+  </div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop filter-dot">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a href="https://fengjing95.github.io">
+          <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>努力做更好的自己！</p>
+        <div class="top-social_v2">
+          <li id="bg-pre">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="https://github.com/Fengjing95" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/social/github.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://weibo.com/5056791657/profile?is_all=1" target="_blank" class="social-github" title="sina">
+                    <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/social/sina.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://music.163.com/#/my/m/music/playlist?id=2069325819" target="_blank" class="social-github" title="wangyiyun">
+                    <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/social/wangyiyun.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://www.zhihu.com/people/feng-jing-28-65" target="_blank" class="social-github" title="zhihu">
+                    <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/social/zhihu.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="email">
+                    <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/social/email.svg">
+                  </a>
+                </li>
+              
+            
+              
+                <li class="wechat">
+                  <a href="/#">
+                    <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/social/wechat.png">
+                  </a>
+                  <div class="wechatInner">
+                    <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/wechat.jpg">
+                  </div>
+                </li>
+              
+            
+          
+          <li id="bg-next">
+            <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style="">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <div id="video-btn" class="loadvideo videolive">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu">
+    </div>
+  </div>
+  <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span>
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink moe-mashiro">
+          <a href="/">
+            <span class="sakurasono">沿途の</span>
+            <span class="shironeko">枫景</span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div>
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+                    归档
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/categories/技术/">
+                          <i class="fa fa-code" aria-hidden="true"></i>
+                          技术
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/生活/">
+                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          生活
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/资源/">
+                          <i class="fa fa-cloud-download" aria-hidden="true"></i>
+                          资源
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/随想/">
+                          <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                          随想
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/笔记/">
+                          <i class="fa fa-book" aria-hidden="true"></i>
+                          笔记
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    清单
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/tags/悦读/">
+                          <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                          书单
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/bangumi/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          番组
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/music/">
+                          <i class="fa fa-headphones" aria-hidden="true"></i>
+                          歌单
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/tags/图集/">
+                          <i class="fa fa-photo" aria-hidden="true"></i>
+                          图集
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/comment/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+                    留言板
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/links/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+                    友人帐
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/donate/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+                    赞赏
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+                    关于
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/about/">
+                          <i class="fa fa-meetup" aria-hidden="true"></i>
+                          我？
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/theme-sakura/">
+                          <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+                          主题
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/lab/">
+                          <i class="fa fa-cogs" aria-hidden="true"></i>
+                          Lab
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/client/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-android faa-vertical" aria-hidden="true"></i>
+                    客户端
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/atom.xml">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+                    RSS
+                  </span>
+                </a>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://gitee.com/liuhao1108/picGoCDN/raw/master/img/egg-mid.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/egg-mid.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      Egg实用中间件</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="">小枫</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2020-8-17<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h1 id="Egg常用的插件"><a href="#Egg常用的插件" class="headerlink" title="Egg常用的插件"></a>Egg常用的插件</h1><h2 id="egg-mysql"><a href="#egg-mysql" class="headerlink" title="egg-mysql"></a>egg-mysql</h2><h3 id="安装与配置"><a href="#安装与配置" class="headerlink" title="安装与配置"></a>安装与配置</h3><p>首先安装egg-mysql的包</p>
+<pre><code class="shell">$ npm i --save egg-mysql
+</code></pre>
+<p>然后在plugin.ts开启插件</p>
+<pre><code class="typescript">mysql: {
+  enable: true,
+  package: &#39;egg-mysql&#39;,
+},
+</code></pre>
+<p>再然后在config中配置数据库信息</p>
+<h4 id="单数据库"><a href="#单数据库" class="headerlink" title="单数据库"></a>单数据库</h4><pre><code class="typescript">// mysql数据库
+config.mysql = {
+  client: { // 单数据库信息配置
+    host: &#39;localhost&#39;, // host
+    port: &#39;3306&#39;, // 端口号
+    user: &#39;liuhao&#39;, // 用户名
+    password: &#39;123456&#39;, // 密码
+    database: &#39;ssmbuild&#39;, // 数据库名
+  },
+  app: true, // 是否加载到 app 上，默认开启
+  agent: false, // 是否加载到 agent 上，默认关闭
+};
+</code></pre>
+<p>使用方法</p>
+<p><code>await app.mysql.query(sql, values);</code></p>
+<h4 id="多数据库"><a href="#多数据库" class="headerlink" title="多数据库"></a>多数据库</h4><pre><code class="typescript">// mysql数据库
+config.mysql = {
+  clients: { // 多据库信息配置
+    db1: {
+      host: &#39;localhost&#39;, // host
+      port: &#39;3306&#39;, // 端口号
+      user: &#39;liuhao&#39;, // 用户名
+      password: &#39;123456&#39;, // 密码
+      database: &#39;ssmbuild&#39;, // 数据库名
+    },
+    db2: {
+      host: &#39;mysql.com&#39;, // host
+      port: &#39;3306&#39;, // 端口号
+      user: &#39;root&#39;, // 用户名
+      password: &#39;123456&#39;, // 密码
+      database: &#39;test&#39;, // 数据库名
+    }
+  },
+  app: true, // 是否加载到 app 上，默认开启
+  agent: false, // 是否加载到 agent 上，默认关闭
+};
+</code></pre>
+<p>使用方法</p>
+<p><code>const client1 = app.mysql.get(&#39;db1&#39;);</code><br><code>await client1.query(sql, values);</code></p>
+<p><code>const client2 = app.mysql.get(&#39;db2&#39;);</code><br><code>await client2.query(sql, values);</code></p>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>egg-mysql没有index.d.ts，所以编译不过，在typings/index.d.ts中添加配置</p>
+<pre><code class="typescript">import &#39;egg&#39;;
+
+declare module &#39;egg&#39; {
+  interface mysql {
+    get(tableName: String, find: {}): Promise&lt;Any&gt;
+    insert(tableName: String, find: {}): Promise&lt;Any&gt;
+    update(tableName: String, find: {}): Promise&lt;Any&gt;
+    delete(tableName: String, find: {}): Promise&lt;Any&gt;
+
+    query(sql: String, values: Any[]): Promise&lt;Any&gt;
+  }
+  interface Application {
+    mysql: mysql;
+  }
+}
+</code></pre>
+<p>详见<a href="https://www.jianshu.com/p/f9ae991b8d46" target="_blank" rel="noopener">寒风傲天博文</a></p>
+<h3 id="CRUD"><a href="#CRUD" class="headerlink" title="CRUD"></a>CRUD</h3><h4 id="Create"><a href="#Create" class="headerlink" title="Create"></a>Create</h4><p>使用insert方法插入一条记录，插入成功判定 <code>result.affectedRows === 1</code></p>
+<pre><code class="typescript">// controller
+public async insert() {
+  const { ctx } = this;
+  const book = {
+    bookName: &#39;js&#39;,
+    bookCounts: 2,
+    detail: &#39;test&#39;,
+  };
+  const result = await ctx.service.book.create(book);
+  if (result.affectedRows === 1) {
+    ctx.body = &#39;插入成功&#39;;
+  } else {
+    ctx.body = &#39;插入失败&#39;;
+  }
+}
+// service
+public async create(book) {
+  const { app } = this;
+  const result = await app.mysql.insert(&#39;books&#39;, book);
+  return result;
+}
+</code></pre>
+<p>结果如图</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200816093109130.png" alt="image-20200816093109130"></p>
+<h4 id="Read"><a href="#Read" class="headerlink" title="Read"></a>Read</h4><p>使用 <code>get</code> 方法或 <code>select</code> 方法获取一条或多条记录。<code>select</code> 方法支持条件查询与结果的定制。</p>
+<pre><code class="typescript">// controller
+public async index() {
+  const { ctx } = this;
+  const result = await ctx.service.book.select();
+  await ctx.render(&#39;book.ejs&#39;, {
+    result,
+  });
+}
+
+// service
+public async select(options?: object) {
+  const { app } = this;
+  const result = await app.mysql.select(&#39;books&#39;, options);
+  return result;
+}
+</code></pre>
+<p>来看下效果</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200816094230315.png" alt="image-20200816094230315"></p>
+<p>定制查询</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200816094307434.png" alt="image-20200816094307434"></p>
+<h4 id="Update-amp-Delete"><a href="#Update-amp-Delete" class="headerlink" title="Update&amp;Delete"></a>Update&amp;Delete</h4><p>使用 <code>update</code> 方法更新数据库记录</p>
+<pre><code class="typescript">const result = await app.mysql.update(&#39;posts&#39;, row, options);
+// 参数: 表名，更新的数据，查询参数
+const updateSuccess = result.affectedRows === 1;
+// 插入成功判定
+</code></pre>
+<p>使用 <code>delete</code> 方法删除数据库记录</p>
+<pre><code class="typescript">const result = await app.mysql.delete(&#39;posts&#39;, options);
+</code></pre>
+<h3 id="直接执行sql查询"><a href="#直接执行sql查询" class="headerlink" title="直接执行sql查询"></a>直接执行sql查询</h3><p>使用 <code>query</code> 执行sql 语句</p>
+<pre><code class="typescript">const id = 1;
+cosnt count = 4;
+const results = await app.mysql.query(&#39;select * from books where id = ? and bookCounts &gt; ?&#39;, [id, count]);
+</code></pre>
+<h3 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h3><p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200816095912417.png" alt="image-20200816095912417"></p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>代码已上传码云<a href="https://gitee.com/liuhao1108/egg-study" target="_blank" rel="noopener">#2部分</a></p>
+<h2 id="egg-sequelize"><a href="#egg-sequelize" class="headerlink" title="egg-sequelize"></a>egg-sequelize</h2><h3 id="安装与配置-1"><a href="#安装与配置-1" class="headerlink" title="安装与配置"></a>安装与配置</h3><p>安装egg-sequelize和<strong>mysql2</strong></p>
+<pre><code class="shell">$ npm install --save egg-sequelize mysql2
+</code></pre>
+<p>在plugin中开启插件</p>
+<pre><code class="typescript">sequelize: {
+  enable: true,
+  package: &#39;egg-sequelize&#39;,
+},
+</code></pre>
+<p>在config中配置sequelize</p>
+<pre><code class="typescript">// 配置sequellize
+config.sequelize = {
+    dialect: &#39;mysql&#39;, // 数据库类型
+    database: &#39;ssmbuild&#39;, // 数据库名称
+    host: &#39;127.0.0.1&#39;, // 数据库ip地址
+    port: 3306, // 数据库端口
+    username: &#39;liuhao&#39;, // 数据库用户名
+    password: &#39;123456&#39;, // 数据库密码
+};
+</code></pre>
+<p>经测试这种方式可以进行操作，但是，<strong>不能自动生成表，需要手动建表</strong></p>
+<h3 id="配置sequelize-cli"><a href="#配置sequelize-cli" class="headerlink" title="配置sequelize-cli"></a>配置sequelize-cli</h3><p>安装</p>
+<pre><code class="shell">$ npm install --save-dev sequelize-cli
+</code></pre>
+<p>在项目根目录下新建一个 <code>.sequelizerc</code> 配置文件</p>
+<pre><code class="js">&#39;use strict&#39;;
+
+const path = require(&#39;path&#39;);
+
+module.exports = {
+  config: path.join(__dirname, &#39;database/config.json&#39;),
+  &#39;migrations-path&#39;: path.join(__dirname, &#39;database/migrations&#39;),
+  &#39;seeders-path&#39;: path.join(__dirname, &#39;database/seeders&#39;),
+  &#39;models-path&#39;: path.join(__dirname, &#39;app/model&#39;),
+};
+</code></pre>
+<p>然后运行命令初始化配置文件和目录</p>
+<pre><code class="shell">$ npx sequelize init:config
+$ npx sequelize init:migrations
+</code></pre>
+<p>根目录下会生成数据库相关文件夹</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200816173123556.png" alt="image-20200816173123556"></p>
+<p>将config.js中的数据库配置改为自己的配置</p>
+<p>然后运行命令生成表，以user为例</p>
+<pre><code class="shell">$ npx sequelize migration:generate --name=users
+</code></pre>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200816174011956.png" alt="image-20200816174011956"></p>
+<p>可以看到多了一个users.js文件，开始配置user模型</p>
+<pre><code class="js">module.exports = {
+  // 在执行数据库升级时调用的函数，创建 users 表
+  up: async (queryInterface, Sequelize) =&gt; {
+    /**
+     * Add altering commands here.
+     *
+     * Example:
+     * await queryInterface.createTable(&#39;users&#39;, { id: Sequelize.INTEGER });
+     */
+    const { INTEGER, STRING } = Sequelize;
+    await queryInterface.createTable(&#39;users&#39;, {
+      id: {
+        type: INTEGER, // INTEGER就是mysql中的int
+        primaryKey: true,
+        autoIncrement: true, // 自动增长
+      },
+      name: STRING(20),
+      url: STRING(100),
+      country: STRING(10),
+    }, {
+      // timestamps: false, // 去除createAt updateAt
+      createdAt: false, // 表示不启用created_at
+      updatedAt: false, // 表示不启用updated_at
+      freezeTableName: true, // 使用自定义表名
+      // 使用自定义表名之后上面写的users就直接就是你的表名，如果不加的话，你就可以写user，但是自己的表名为users，程序会自动将s加上
+      tableName: &#39;users&#39;, // 自定义的表名，也可以不写，直接用define后面的也可以
+    // 只要你使用了freezeTableName，程序就不会自动给你加上s了
+    });
+  },
+
+  // 在执行数据库降级时调用的函数，删除 users 表
+  down: async queryInterface =&gt; {
+    /**
+     * Add reverting commands here.
+     *
+     * Example:
+     * await queryInterface.dropTable(&#39;users&#39;);
+     */
+    await queryInterface.dropTable(&#39;users&#39;);
+  },
+};
+</code></pre>
+<p>然后变更数据库</p>
+<pre><code class="shell"># 升级数据库
+$ npx sequelize db:migrate
+# 如果有问题需要回滚，可以通过 `db:migrate:undo` 回退一个变更
+# npx sequelize db:migrate:undo
+# 可以通过 `db:migrate:undo:all` 回退到初始状态
+# npx sequelize db:migrate:undo:all
+</code></pre>
+<p>可以看到数据库中已经有了users表</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200816174451359.png" alt="image-20200816174451359"></p>
+<h3 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h3><p>OK，配置已经完成，现在开始进行愉快的编码</p>
+<p>首先在app目录下新建一个model文件夹，将user模型添加到model下面，然后就可以通过<code>app.model.User</code> 或者 <code>ctx.model.User</code> 访问了，以insert为例</p>
+<pre><code class="typescript">// controller
+public async add() {
+  const { ctx } = this;
+  const result = await ctx.service.user.createUser({
+    name: &#39;zhangsan&#39;,
+    url: &#39;http://zhangsan.com&#39;,
+    country: &#39;CN&#39;,
+  });
+  ctx.body = result;
+}
+
+// service
+public async createUser(user: object) {
+  const res = await this.ctx.model.User.create(user);
+  return res;
+}
+</code></pre>
+<p>然后就可以看到已经插入数据成功</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200816175238458.png" alt="image-20200816175238458"></p>
+<p>更多sequelize使用方法不多赘述，见之前的博文，<a href="https://fengjing95.github.io/2020/08/10/Express%E4%B8%AD%E4%BD%BF%E7%94%A8Sequelize%E5%AE%9E%E7%8E%B0ORM/">传送门</a></p>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><p>代码已上传码云<a href="https://gitee.com/liuhao1108/egg-study" target="_blank" rel="noopener">#3部分</a></p>
+<h2 id="egg-passport"><a href="#egg-passport" class="headerlink" title="egg-passport"></a>egg-passport</h2><p>这里用微博的第三登录做为示范</p>
+<h3 id="安装及配置"><a href="#安装及配置" class="headerlink" title="安装及配置"></a>安装及配置</h3><p>首先运行命令安装passport支持</p>
+<pre><code class="shell">$ npm i --save egg-passport
+$ npm i --save egg-passport-weibo
+</code></pre>
+<p>然后开启插件</p>
+<pre><code class="typescript">passport: {
+  enable: true,
+  package: &#39;egg-passport&#39;,
+},
+passportWeibo: {
+  enable: true,
+  package: &#39;egg-passport-weibo&#39;,
+},
+</code></pre>
+<p>然后在config.default中配置申请到的身份码</p>
+<pre><code class="typescript">// weibo登录
+config.passportWeibo = {
+  key: &#39;your key&#39;,
+  secret: &#39;your secret&#39;,
+};
+</code></pre>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200817150110149.png" alt="image-20200817150110149"></p>
+<h3 id="编码-1"><a href="#编码-1" class="headerlink" title="编码"></a>编码</h3><p>首先在router中挂载路由，这里使用的是插件提供的语法糖（这里挂载的时候可能会报错，因为没有index.d.ts文件，这个问题解决办法上面说过，这里不再赘述）</p>
+<pre><code class="typescript">export default (app: Application) =&gt; {
+  const { controller, router } = app;
+
+  router.get(&#39;/&#39;, controller.home.index);
+
+  app.passport.mount(&#39;weibo&#39;);
+  //  相当于
+  // const github = app.passport.authenticate(&#39;github&#39;, {});
+  // router.get(&#39;/passport/github&#39;, github);
+  // router.get(&#39;/passport/github/callback&#39;, github);
+};
+</code></pre>
+<p>然后在controller中编写登录操作</p>
+<pre><code class="typescript">public async index() {
+  // const { ctx } = this;
+  // // ctx.body = await ctx.service.test.sayHi(&#39;egg&#39;);
+  // await ctx.render(&#39;login.ejs&#39;);
+
+
+  const { ctx } = this;
+
+  if (ctx.isAuthenticated()) {
+    ctx.body = `&lt;div&gt;
+      &lt;h2&gt;${ctx.path}&lt;/h2&gt;
+      &lt;hr&gt;
+      Logined user: &lt;img src=&quot;${ctx.user.photo}&quot;&gt; ${ctx.user.displayName} / ${ctx.user.id} | &lt;a href=&quot;/logout&quot;&gt;Logout&lt;/a&gt;
+      &lt;pre&gt;&lt;code&gt;${JSON.stringify(ctx.user, null, 2)}&lt;/code&gt;&lt;/pre&gt;
+      &lt;hr&gt;
+      &lt;a href=&quot;/&quot;&gt;Home&lt;/a&gt; | &lt;a href=&quot;/user&quot;&gt;User&lt;/a&gt;
+    &lt;/div&gt;`;
+  } else {
+    ctx.session.returnTo = ctx.path;
+    ctx.body = `
+      &lt;div&gt;
+        &lt;h2&gt;${ctx.path}&lt;/h2&gt;
+        &lt;hr&gt;
+        Login with
+        &lt;a href=&quot;/passport/weibo&quot;&gt;Weibo&lt;/a&gt;
+        &lt;hr&gt;
+        &lt;a href=&quot;/&quot;&gt;Home&lt;/a&gt; | &lt;a href=&quot;/user&quot;&gt;User&lt;/a&gt;
+      &lt;/div&gt;
+    `;
+  }
+}
+</code></pre>
+<p>由于我的服务器已经过期，没有可用的网站来审核，所以申请到的oauth码不能使用，如果通过审核，这就可以使用了</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ录屏20200817150434 00_00_00-00_00_30.gif" alt="QQ录屏20200817150434 00_00_00-00_00_30"></p>
+<p>此外</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200817151014007.png" alt="image-20200817151014007"></p>
+<h3 id="API"><a href="#API" class="headerlink" title="API"></a>API</h3><ul>
+<li><code>ctx.user</code> - 获取当前已登录的用户信息</li>
+<li><code>ctx.isAuthenticated()</code> - 检查该请求是否已授权</li>
+<li><code>ctx.login(user, [options])</code> - 为用户启动一个登录的 session</li>
+<li><code>ctx.logout()</code> - 退出，将用户信息从 session 中清除</li>
+<li><code>ctx.session.returnTo=</code> - 在跳转验证前设置，可以指定成功后的 redirect 地址</li>
+</ul>
+<p>还提供了 API：</p>
+<ul>
+<li><p><code>app.passport.verify(async (ctx, user) =&gt; {})</code> - 校验用户</p>
+</li>
+<li><p><code>app.passport.serializeUser(async (ctx, user) =&gt; {})</code> - 序列化用户信息后存储进 session</p>
+</li>
+<li><p><code>app.passport.deserializeUser(async (ctx, user) =&gt; {})</code> - 反序列化后取出用户信息</p>
+</li>
+<li><p><code>app.passport.authenticate(strategy, options)</code></p>
+</li>
+</ul>
+<p>  - 生成指定的鉴权中间件</p>
+<ul>
+<li><code>options.successRedirect</code> - 指定鉴权成功后的 redirect 地址</li>
+<li><code>options.loginURL</code> - 跳转登录地址，默认为 <code>/passport/${strategy}</code></li>
+<li><code>options.callbackURL</code> - 授权后回调地址，默认为 <code>/passport/${strategy}/callback</code></li>
+</ul>
+<ul>
+<li><code>app.passport.mount(strategy, options)</code> - 语法糖，方便开发者配置路由</li>
+</ul>
+<h3 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h3><p>代码已上传码云<a href="https://gitee.com/liuhao1108/egg-study" target="_blank" rel="noopener">#4部分</a></p>
+<h2 id="egg-jwt"><a href="#egg-jwt" class="headerlink" title="egg-jwt"></a>egg-jwt</h2><p>jwt（jsonwebtoken）是我认为潜力最大的一种用户状态验证方式</p>
+<h3 id="JWT原理"><a href="#JWT原理" class="headerlink" title="JWT原理"></a>JWT原理</h3><p>三部分组成，用.分割</p>
+<ul>
+<li>header: 一个json对象，描述JWT的元数据</li>
+<li>payload: 一个 JSON 对象，用来存放实际需要传递的数据</li>
+<li>signature: 对header和payload两部分的签名，防止数据被篡改</li>
+</ul>
+<h3 id="安装与配置-2"><a href="#安装与配置-2" class="headerlink" title="安装与配置"></a>安装与配置</h3><p>运行命令安装</p>
+<pre><code class="shell">$ npm i egg-jwt --save
+</code></pre>
+<p>开启插件</p>
+<pre><code class="typescript">jwt: {
+  enable: true,
+  package: &#39;egg-jwt&#39;,
+}
+</code></pre>
+<p>在config.default中配置秘钥</p>
+<pre><code class="typescript">// JWT秘钥
+config.jwt = {
+  secret: &#39;xiaofeng&#39;,
+};
+</code></pre>
+<h3 id="编码-2"><a href="#编码-2" class="headerlink" title="编码"></a>编码</h3><h4 id="生成"><a href="#生成" class="headerlink" title="生成"></a>生成</h4><p>登录页使用post方法提交表单不再列出，主要给出生成token的操作（同样jwt没有index.d.ts，需要手动配置，见前文）</p>
+<pre><code class="typescript">public async add() {
+  const { ctx, app } = this;
+  ctx.cookies.set(&#39;username&#39;, ctx.request.body.username);
+  const token = app.jwt.sign({
+    username: ctx.request.body.username,
+  }, app.config.jwt.secret);
+  ctx.set({ authorization: token }); //设置headers
+  ctx.body = token;
+}
+</code></pre>
+<p>效果如图</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ录屏20200817161322 00_00_00-00_00_30.gif" alt="QQ录屏20200817161322 00_00_00-00_00_30"></p>
+<h4 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h4><pre><code class="typescript">import { Context } from &#39;egg&#39;;
+
+// 自定义的中间件：验证token
+export default function jwtAuth(options: any): any {
+  return async (ctx: Context, next: () =&gt; Promise&lt;any&gt;) =&gt; {
+    const token = ctx.request.header.authorization;
+    let decode = &#39;&#39;;
+    if (token) {
+      try {
+        // 解码token
+        decode = await ctx.app.jwt.verify(token, options.secret);
+        console.log(&#39;decode======&gt;&#39;, decode);
+        await next();
+      } catch (error) {
+        ctx.status = 401;
+        ctx.body = {
+          message: error.message,
+        };
+        return;
+      }
+    } else {
+      ctx.status = 401;
+      ctx.body = {
+        message: &#39;没有token&#39;,
+      };
+      return;
+    }
+  };
+}
+</code></pre>
+<p>自定义验证token中间件，在路由文件中添加需要token才能访问的路由</p>
+<pre><code class="typescript">import { Application } from &#39;egg&#39;;
+
+export default (app: Application) =&gt; {
+  const { controller, router, middleware } = app;
+
+  const token = middleware.jwtAuth(app.config.jwt);
+
+  router.get(&#39;/news&#39;, token, controller.news.index);
+};
+</code></pre>
+<p>没有获得token访问需要登录的路由时会提示没有token<br><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200903193358548.png" alt="image-20200903193358548"><br>使用接口测试工具绑定一个已经生成的token<br><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200903193520323.png" alt="image-20200903193520323"><br><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200903193558484.png" alt="image-20200903193558484"><br>可以看到成功解析了token</p>
+<h3 id="代码-3"><a href="#代码-3" class="headerlink" title="代码"></a>代码</h3><p>代码已上传码云<a href="https://gitee.com/liuhao1108/egg-study" target="_blank" rel="noopener">#5部分,验证部分在#8</a></p>
+<h2 id="egg-validate"><a href="#egg-validate" class="headerlink" title="egg-validate"></a>egg-validate</h2><p>egg-validate用于对参数进行检验，比如检验一个用户名是不是字符串<code>ctx.validate({ userName: &#39;string&#39; });</code></p>
+<h3 id="安装及配置-1"><a href="#安装及配置-1" class="headerlink" title="安装及配置"></a>安装及配置</h3><p>运行命令</p>
+<pre><code class="shell">$ npm i egg-validate --save
+</code></pre>
+<p>plugin中开启插件</p>
+<pre><code class="typescript">validate: {
+  enable: true,
+  package: &#39;egg-validate&#39;,
+},
+</code></pre>
+<p>config中配置</p>
+<pre><code class="typescript">// validate, 参数校验器
+config.validate = {
+  convert: true, // 对参数可以使用convertType规则进行类型转换
+  // validateRoot: false,   // 限制被验证值必须是一个对象。
+};
+</code></pre>
+<h3 id="编码-3"><a href="#编码-3" class="headerlink" title="编码"></a>编码</h3><p>编写一个post请求，接收一个对象作为参数</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200821124231323.png" alt="image-20200821124231323"></p>
+<p>（validator需要手动挂载，使用什么方法添加什么规则）</p>
+<pre><code class="typescript">import { Controller } from &#39;egg&#39;;
+// 规则
+const createRule = {
+  name: &#39;string&#39;,
+  age: {
+    type: &#39;number&#39;,
+    min: 0,
+    max: 100,
+  },
+  sex: [ &#39;man&#39;, &#39;woman&#39; ],
+};
+
+export default class PostsController extends Controller {
+  public async index() {
+    const { ctx } = this;
+    ctx.body = &#39;posts index&#39;;
+  }
+
+  public async create() {
+    const { ctx, app } = this;
+    // ctx.validate(createRule, ctx.request.body); // 自动处理错误，422
+    const error = app.validator.validate(createRule, ctx.request.body); // 返回错误信息，开发者处理
+    console.log(error);
+    ctx.status = 201;
+  }
+}
+</code></pre>
+<p>效果如图，当出现错误时返回错误，没有错误error为空，created是自动加的<img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ录屏20200821123806 00_00_00-00_00_30.gif" alt="QQ录屏20200821123806 00_00_00-00_00_30"></p>
+<p>更多规则</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200821124114122.png" alt="image-20200821124114122"></p>
+<h3 id="自定义规则"><a href="#自定义规则" class="headerlink" title="自定义规则"></a>自定义规则</h3><p>使用<code>app.validator.addRule</code>添加更多自定义规则（需要手动挂载）</p>
+<p>例如：</p>
+<pre><code class="typescript"> app.validator.addRule(&#39;newRule&#39;, (rule, value)=&gt;{
+    if (value.length &lt; 3 || value.length &gt; 10) {
+      console.log(&quot;用户名的长度应该在3-10之间&quot;);
+    }
+  });
+</code></pre>
+<p>自定义规则需要单独在一个文件中添加</p>
+<h3 id="代码-4"><a href="#代码-4" class="headerlink" title="代码"></a>代码</h3><p>代码已上传码云<a href="https://gitee.com/liuhao1108/egg-study" target="_blank" rel="noopener">#6部分</a></p>
+<h2 id="egg-cors"><a href="#egg-cors" class="headerlink" title="egg-cors"></a>egg-cors</h2><p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200821132803272.png" alt="image-20200821132803272"></p>
+<p>请求跨域是我们在日常开发中经常碰到的问题</p>
+<p>egg解决跨域也是非常的简单，只要开启egg-cors就行了</p>
+<h3 id="安装及配置-2"><a href="#安装及配置-2" class="headerlink" title="安装及配置"></a>安装及配置</h3><p>运行命令</p>
+<pre><code class="shell">$ npm i egg-cors --save
+</code></pre>
+<p>plugin中开启插件</p>
+<pre><code class="typescript">cors: {
+  enable: true,
+  package: &#39;egg-cors&#39;,
+},
+</code></pre>
+<p>config中配置</p>
+<pre><code class="typescript">  // 关闭csrf
+  config.security = {
+    csrf: {
+      enable: false, // 关闭csrf
+    },
+    domainWhiteList: [ &#39;*&#39; ], // 白名单
+  };
+
+  // CORS
+  config.cors = {
+    origin: &#39;*&#39;,
+    allowMethods: &#39;GET,HEAD,PUT,POST,DELETE,PATCH&#39;,
+  };
+</code></pre>
+<p>然后就可以了</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200821133240161.png" alt="image-20200821133240161"></p>
+<h3 id="代码-5"><a href="#代码-5" class="headerlink" title="代码"></a>代码</h3><p>代码已上传码云<a href="https://gitee.com/liuhao1108/egg-study" target="_blank" rel="noopener">#7部分</a></p>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2020/08/18/技术/ES6&CommonJS/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/js-es6-cjs.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/js-es6-cjs.jpg">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                ES6和CommonJS的模块化</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+          
+            <div class="post-nepre half next">
+          
+            <a href="/2020/08/15/笔记/EggJS学习笔记/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/egg.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/egg.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                EggJS学习笔记</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "AdzOvpXTwwf3KAX23DOds5C9-gzGzoHsz",
+        appKey: "olX1MHfMtrQcmemwl5lLmu4a",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg" itemprop="image" alt="小枫" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author">小枫</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>前端小白</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+
+    </div>    
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    <!-- <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 小枫<br>
+      powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer> -->
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/wordpress-rotating-ball-o.svg">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/disqus-preloader.svg">
+      </div>
+      <p style="color: #666666;">&copy 2020</p>
+    </div>
+    <div class="footer-device">
+      <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #b9b9b9;">Theme <a href="https://github.com/honjun/hexo-theme-sakura" target="_blank"
+            style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Sakura</a> <i
+            class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> by <a
+            href="https://2heng.xin/" target="_blank"
+            style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Mashiro</a>&<a
+            href="https://www.hojun.cn/" target="_blank"
+            style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Hojun</a>, Powered by Hexo,
+          Hosted by Coding Pages</a>
+        </span>
+      </p>
+      <!-- <p style="font-family: 'Ubuntu', sans-serif;">
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="busuanzi_container_site_pv"> 总访问量 <span id="busuanzi_value_site_pv"></span> 次 </span>
+        <span id="busuanzi_container_site_uv">| 总访客数 <span id="busuanzi_value_site_uv"></span> 人 </span>
+      </p> -->
+    </div>
+  </div><!-- .site-info -->
+</footer>
+
+
+
+
+
+<!-- <script src="/js/tocbot.js"></script> -->
+<script src="https://cdn.jsdelivr.net/gh/wallleap/cdn@latest/js/hititle.js"></script>
+
+<script type="text/javascript" src="/js/lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/InsightSearch.js"></script>
+<script type="text/javascript" src="/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="/js/zoom.min.js"></script>
+<script type="text/javascript" src="/js/sakura-app.js"></script>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine@1.3.4/dist/Valine.min.js'></script>
+<script src="/js/botui.js"></script>
+<!-- 不蒜子 网页计数器 -->
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script> -->
+<script type="text/javascript">
+  /* <![CDATA[ */
+  if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+    var Poi = { "pjax": "1", "movies": { "url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2", "name": "Unbroken.mp4", "live": "close" }, "windowheight": "fixed", "codelamp": "close", "ajaxurl": "", "order": "asc", "formpostion": "bottom" };
+  } else {
+    var Poi = { "pjax": "1", "movies": { "url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2", "name": "Unbroken.mp4", "live": "open" }, "windowheight": "auto", "codelamp": "close", "ajaxurl": "", "order": "asc", "formpostion": "bottom" };
+  }
+/* ]]> */
+
+</script>
+<script>
+  $(document).ready(function () {
+    if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+      if ($(".pattern-center").length > 0) { //有图的情况
+        tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -400,
+          scrollSmoothOffset: -85
+        });
+      } else {
+        tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+        });
+      }
+      var offsetTop = $('.toc').offset().top - 95;
+      window.onscroll = function () {
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+        if (scrollTop >= offsetTop) {
+          $('.toc').addClass('toc-fixed');
+        } else {
+          $('.toc').removeClass('toc-fixed');
+        }
+      }
+    }
+  });
+</script>
+    <div class="openNav no-select" style="height: 50px;">
+      <div class="iconflat no-select" style="width: 50px; height: 50px;">
+        <div class="icon"></div>
+      </div>
+      <div class="site-branding search-form-submit">
+        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+      </div>
+    </div>
+  </section>
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg">
+  </div>
+  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">沿途の枫景</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+      
+        <a href="https://github.com/Fengjing95" class="fa fa-github" target="_blank" style="color: #333; margin-left:20px"></a>
+      
+        <a href="https://weibo.com/5056791657/profile?is_all=1" class="fa fa-weibo" target="_blank" style="color: #dd4b39; margin-left:20px"></a>
+      
+        <a href="https://wpa.qq.com/msgrd?v=3&uin=1984779164&site=qq&menu=yes" class="fa fa-qq" target="_blank" style="color: #25c6fe; margin-left:20px"></a>
+      
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+            首页
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/archives">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+            归档
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/categories/技术/">
+                  <i class="fa fa-code" aria-hidden="true"></i>
+                  技术
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/生活/">
+                  <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                  生活
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/资源/">
+                  <i class="fa fa-cloud-download" aria-hidden="true"></i>
+                  资源
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/随想/">
+                  <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                  随想
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/笔记/">
+                  <i class="fa fa-book" aria-hidden="true"></i>
+                  笔记
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+            清单
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/tags/悦读/">
+                  <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                  书单
+                </a>
+              </li>
+            
+              <li>
+                <a href="/bangumi/">
+                  <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                  番组
+                </a>
+              </li>
+            
+              <li>
+                <a href="/music/">
+                  <i class="fa fa-headphones" aria-hidden="true"></i>
+                  歌单
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags/图集/">
+                  <i class="fa fa-photo" aria-hidden="true"></i>
+                  图集
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/comment/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+            留言板
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/links/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+            友人帐
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/donate/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+            赞赏
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+            关于
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/about/">
+                  <i class="fa fa-meetup" aria-hidden="true"></i>
+                  我？
+                </a>
+              </li>
+            
+              <li>
+                <a href="/theme-sakura/">
+                  <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+                  主题
+                </a>
+              </li>
+            
+              <li>
+                <a href="/lab/">
+                  <i class="fa fa-cogs" aria-hidden="true"></i>
+                  Lab
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/client/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-android faa-vertical" aria-hidden="true"></i>
+            客户端
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/atom.xml">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+            RSS
+          </span>
+        </a>
+        
+      </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2019 hexo-sakura</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js
+
+    id="2660651585"
+
+    server="netease"
+
+    type="playlist"
+
+    fixed="true"
+
+    autoplay="false"
+
+    loop="all"
+
+    order="random"
+
+    preload="auto"
+
+    volume="0.7"
+
+    mutex="true"
+
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script>
+</body>
+</html>
