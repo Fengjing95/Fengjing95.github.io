@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://fengjing95.github.io/"/>
-  <updated>2020-09-07T09:19:11.404Z</updated>
+  <updated>2020-09-07T11:12:50.343Z</updated>
   <id>https://fengjing95.github.io/</id>
   
   <author>
@@ -17,11 +17,31 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Vue中的跨域问题</title>
+    <link href="https://fengjing95.github.io/2020/09/07/%E6%8A%80%E6%9C%AF/Vue%E4%B8%AD%E7%9A%84%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/"/>
+    <id>https://fengjing95.github.io/2020/09/07/技术/Vue中的跨域问题/</id>
+    <published>2020-09-07T10:08:59.597Z</published>
+    <updated>2020-09-07T11:12:50.343Z</updated>
+    
+    <summary type="html">
+    
+      Vue中的跨域问题
+    
+    </summary>
+    
+      <category term="技术" scheme="https://fengjing95.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="vue" scheme="https://fengjing95.github.io/tags/vue/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Socket.IO前端后端一起拿捏</title>
     <link href="https://fengjing95.github.io/2020/09/07/%E6%8A%80%E6%9C%AF/Socket.IO%E5%89%8D%E7%AB%AF%E5%90%8E%E7%AB%AF%E4%B8%80%E8%B5%B7%E6%8B%BF%E6%8D%8F/"/>
     <id>https://fengjing95.github.io/2020/09/07/技术/Socket.IO前端后端一起拿捏/</id>
     <published>2020-09-07T09:17:53.747Z</published>
-    <updated>2020-09-07T09:19:11.404Z</updated>
+    <updated>2020-09-07T10:01:27.089Z</updated>
     
     <summary type="html">
     
@@ -393,26 +413,6 @@
     
     
       <category term="js" scheme="https://fengjing95.github.io/tags/js/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Less预编译使用</title>
-    <link href="https://fengjing95.github.io/2020/08/02/%E7%AC%94%E8%AE%B0/Less%E9%A2%84%E7%BC%96%E8%AF%91/"/>
-    <id>https://fengjing95.github.io/2020/08/02/笔记/Less预编译/</id>
-    <published>2020-08-02T06:11:51.895Z</published>
-    <updated>2020-09-05T09:36:26.797Z</updated>
-    
-    <summary type="html">
-    
-      使用Less加快css样式开发速度
-    
-    </summary>
-    
-      <category term="笔记" scheme="https://fengjing95.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="css" scheme="https://fengjing95.github.io/tags/css/"/>
     
   </entry>
   
