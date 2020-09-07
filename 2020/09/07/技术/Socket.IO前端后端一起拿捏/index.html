@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">tags | 前端小枫</title>
+  <title itemprop="name">Socket.IO前端后端一起拿捏 | 前端小枫</title>
   
   <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -464,12 +464,284 @@
   </div>
 </header>
 
-        <div class="pattern-center-blank"></div>
-  
-  <div id="content" class="site-content">
-    <article class="post-item post-301 page type-page status-publish has-post-thumbnail hentry">
-      
-      <!-- .entry-content -->
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://gitee.com/liuhao1108/picGoCDN/raw/master/img/socket.io.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/socket.io.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      Socket.IO前端后端一起拿捏</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="">小枫</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2020-9-7<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h1 id="Socket-IO前端后端一起拿捏"><a href="#Socket-IO前端后端一起拿捏" class="headerlink" title="Socket.IO前端后端一起拿捏"></a>Socket.IO前端后端一起拿捏</h1><h2 id="后端——Egg"><a href="#后端——Egg" class="headerlink" title="后端——Egg"></a>后端——Egg</h2><p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/egg-socket.io.jpg" alt="egg-socket.io"></p>
+<h3 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h3><p>后端socket使用Egg的周边——egg-socket.io</p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>运行命令安装</p>
+<pre><code class="shell">$ npm i egg-socket.io --save
+</code></pre>
+<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><p>在plugin中开启插件</p>
+<pre><code class="typescript">io: {
+  enable: true,
+  package: &#39;egg-socket.io&#39;,
+},
+</code></pre>
+<p>在config中配置插件相关信息</p>
+<pre><code class="typescript">// socket
+config.io = {
+  // init: { wsEngine: &#39;uws&#39; },
+  init: {}, // 默认ws
+  namespace: { // 命名空间
+    &#39;/&#39;: {
+      connectionMiddleware: [ &#39;connection&#39; ], // 连接中间件
+      packetMiddleware: [ &#39;filter&#39; ], // 数据包中间件
+    },
+  },
+};
+</code></pre>
+<h3 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h3><p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200907085504554.png" alt="image-20200907085504554"></p>
+<h3 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h3><p>首先把刚才配置文件中的两个中间件编写完成</p>
+<p>connection.ts</p>
+<pre><code class="typescript">import { Context } from &#39;egg&#39;;
+// 这个中间件的作用是提示用户连接与断开的，连接成功的消息发送到客户端，断开连接的消息在服务端打印
+export default function connection(): any {
+  return async (ctx: Context, next: () =&gt; Promise &lt; any &gt;) =&gt; {
+    ctx.socket.emit(&#39;res&#39;, &#39;connected!&#39;);
+    await next();
+    // execute when disconnect.
+    console.log(&#39;disconnection!&#39;);
+  };
+}
+</code></pre>
+<p>filter.ts</p>
+<pre><code class="typescript">import { Context } from &#39;egg&#39;;
+// 这个中间件的作用是将接收到的数据再发送给客户端
+export default function filter(): any {
+  return async (ctx: Context, next: () =&gt; Promise&lt;any&gt;) =&gt; {
+    ctx.socket.emit(&#39;res&#39;, &#39;packet received!&#39;);
+    console.log(&#39;packet:&#39;, ctx.packet);
+    await next();
+  };
+}
+</code></pre>
+<p>然后配置路由，通过路由分发给controller处理</p>
+<pre><code class="typescript">import { Application } from &#39;egg&#39;;
+
+export default (app: Application) =&gt; {
+  const { controller, router, middleware, io } = app;
+  io.route(&#39;chat&#39;, io.controller.chat.index);
+    // 这里需要注意route的两个参数，第一个参数要与第二个参数controller的文件名一致
+    // 如果配置中有其他的命名空间‘/othername’，路由配置方法如下
+    // io.of(&#39;/othername&#39;).route(&#39;default&#39;, io.controller.default.index);
+};
+</code></pre>
+<p><strong>注意，因为egg-socket.io中没有.d.ts，所以io会挂载不到app上，在下面的目录下添加代码即可</strong></p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200907110815949.png" alt="image-20200907110815949"></p>
+<p>添加代码如下</p>
+<pre><code class="ts">import { Socket, Server } from &#39;socket.io&#39;;
+
+declare module &#39;egg&#39; {
+  export interface Application {
+    io: Serverr &amp; EggSocketIO &amp; Namespace;
+  }
+
+  export interface Context {
+    socket: Socket
+  }
+
+  interface EggSocketIO {
+    middleware: xxx;
+    controller: xxx;
+  }
+
+  interface Namespace {
+    route(event: string, handler: Function): any
+  }
+}
+</code></pre>
+<p>然后就是controller的代码了</p>
+<pre><code class="typescript">import { Controller } from &#39;egg&#39;;
+
+export default class ChatController extends Controller {
+  public async index() {
+    const { ctx } = this;
+    const message = ctx.args[0];
+    ctx.socket.emit(&#39;res&#39;, `Hi! I&#39;ve got your message: ${message}`);
+      // 这里可以调用service，只是示例就不搞辣么复杂了
+  }
+}
+/*
+// 在controller 中
+// 发送给自己
+this.socket.emit(&#39;eventName&#39;, &#39;value&#39;);
+// 发送给除了自己外的所有人
+this.socket.broadcast.emit(&#39;eventName&#39;, &#39;value&#39;);
+// 发送给所有人，包括自己
+this.server.sockets.emit(&#39;eventName&#39;, &#39;value&#39;);
+*/
+</code></pre>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>代码写完然后使用<code>socket.io-client</code>测试一下连接（需要使用npm安装， npm install socket.io-client –save）</p>
+<pre><code class="js">// eslint-disable-next-line @typescript-eslint/no-var-requires
+const socket = require(&#39;socket.io-client&#39;)(&#39;http://127.0.0.1:7001/&#39;);
+
+socket.on(&#39;connect&#39;, () =&gt; {
+  console.log(&#39;connect!&#39;);
+  socket.emit(&#39;chat&#39;, &#39;hello world!&#39;);
+});
+
+socket.on(&#39;res&#39;, msg =&gt; {
+  console.log(&#39;res from server: %s!&#39;, msg);
+});
+</code></pre>
+<p>然后<code>node ./client.js</code> </p>
+<p>客户端运行结果如下</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200907111636061.png" alt="image-20200907111636061"></p>
+<p>服务端结果如下（关闭服务端时触发中间件，打印了disconnection）</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200907111731173.png" alt="image-20200907111731173"></p>
+<blockquote>
+<p>试了很多办法，一直没法用ws访问连接，只能通过socket.io-client跑通</p>
+</blockquote>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>代码已经上传<a href="https://gitee.com/liuhao1108/egg-study.git" target="_blank" rel="noopener">码云#socket</a></p>
+<h2 id="前端——Vue"><a href="#前端——Vue" class="headerlink" title="前端——Vue"></a>前端——Vue</h2><p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/vue-socket.io.jpg" alt="vue-socket.io"></p>
+<p>前端使用vue-socket.io，这其实是对socket.io-client的封装，然后挂载到Vue实例</p>
+<p>使用也是很简单，安装npm包</p>
+<pre><code class="shell">$ npm install vue-socket.io --save
+</code></pre>
+<p>然后配置main.js，将组件挂载到Vue实例</p>
+<pre><code class="js">import Vue from &#39;vue&#39;
+import App from &#39;./App.vue&#39;
+import router from &#39;./router&#39;
+import store from &#39;./store&#39;
+import VueSocketIO from &#39;vue-socket.io&#39;
+
+Vue.config.productionTip = false
+
+Vue.use(new VueSocketIO({
+  debug: false, // 生产环境关闭
+  connection: &#39;http://127.0.0.1:7001&#39;,
+  vuex: {
+    // store,
+    // actionPrefix: &#39;SOCKET_&#39;,
+    // mutationPrefix: &#39;SOCKET_&#39;
+  },
+  // options: { path: &quot;/my-app/&quot; }
+}))
+
+new Vue({
+  router,
+  store,
+  render: h =&gt; h(App)
+}).$mount(&#39;#app&#39;)
+
+</code></pre>
+<p>然后新建一个page，这里只加了一个简单的按钮来触发事件</p>
+<pre><code class="vue">&lt;template&gt;
+  &lt;div&gt;
+    &lt;button @click=&quot;sendMessageToServer&quot;&gt;send&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+  export default {
+    data() {
+      return {
+        msg: &#39;&#39;
+      }
+    },
+    sockets: {
+      connect: function () {
+        console.log(&#39;连接成功&#39;);
+      },
+      res: function (val) {
+      console.log(&#39;接收到服务端消息:&#39;, val);
+      },
+    },
+    methods: {
+      sendMessageToServer: function() {
+        this.$socket.emit(&#39;chat&#39;, &#39;test111&#39;);
+      }
+    }
+  }
+&lt;/script&gt;
+
+&lt;style lang=&quot;less&quot; scoped&gt;
+
+&lt;/style&gt;
+</code></pre>
+<p>然后运行项目，查看效果</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ录屏20200907170708 00_00_00-00_00_30.gif" alt="QQ录屏20200907170708 00_00_00-00_00_30"></p>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+        
+          
+            <div class="post-nepre full next">
+          
+            <a href="/2020/08/30/技术/Vue组件之slot插槽/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/slots.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/slots.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                Vue插槽组件</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
       
 <div id="vcomments"></div>
 <script>
@@ -485,43 +757,25 @@
   }
 </script>
 
-      <div class="single-reward">
-        <div class="reward-open">赏
-          <div class="reward-main">
-            <ul class="reward-row">
-              <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/donate/AliPayQR.jpg"></li>
-              <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/donate/WeChanQR.jpg"></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
-      <footer class="post-footer">
-        <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
-        <div class="post-tags">
-        </div>
-        <div class="post-share">
-          <div class="social-share sharehidden share-component"></div>
-          <i class="iconfont show-share icon-forward"></i>
-        </div>
-      </footer><!-- .entry-footer -->
-    </article>
-      <!-- #post-## -->
       <section class="author-profile">
         <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
-          <a href="/about/" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg" itemprop="image" alt="枫景" height="70" width="70"></a>
+          <a href="" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg" itemprop="image" alt="小枫" height="70" width="70"></a>
           <div class="meta">
             <span class="title">Author</span>
             <h3 itemprop="name">
-            <a href="https://fengjing95.github.io" itemprop="url" rel="author">枫景</a>
+            <a href="" itemprop="url" rel="author">小枫</a>
             </h3>
           </div>
         </div>
         <hr>
-        <p><i class="iconfont icon-write"></i>努力做更好的自己！</p>
+        <p><i class="iconfont icon-write"></i>前端小白</p>
       </section>
+    </main><!-- #main -->
   </div><!-- #primary -->
 </div>
+
+
+
     </div>    
     <div class="ins-search">
     <div class="ins-search-mask"></div>
