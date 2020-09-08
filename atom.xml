@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://fengjing95.github.io/"/>
-  <updated>2020-09-07T11:12:50.343Z</updated>
+  <updated>2020-09-08T01:07:07.883Z</updated>
   <id>https://fengjing95.github.io/</id>
   
   <author>
@@ -15,6 +15,46 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>pug模板渲染</title>
+    <link href="https://fengjing95.github.io/2020/09/08/%E7%AC%94%E8%AE%B0/pug%E6%A8%A1%E6%9D%BF%E6%B8%B2%E6%9F%93/"/>
+    <id>https://fengjing95.github.io/2020/09/08/笔记/pug模板渲染/</id>
+    <published>2020-09-08T01:04:47.328Z</published>
+    <updated>2020-09-08T01:07:07.883Z</updated>
+    
+    <summary type="html">
+    
+      健壮、灵活、功能丰富的HTML模板引擎,专门为 Node.js 平台开发
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://fengjing95.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="node" scheme="https://fengjing95.github.io/tags/node/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android笔记</title>
+    <link href="https://fengjing95.github.io/2020/09/07/%E7%AC%94%E8%AE%B0/Android%E7%AC%94%E8%AE%B0/"/>
+    <id>https://fengjing95.github.io/2020/09/07/笔记/Android笔记/</id>
+    <published>2020-09-07T12:09:01.520Z</published>
+    <updated>2020-09-07T12:11:32.797Z</updated>
+    
+    <summary type="html">
+    
+      Android学习笔记
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://fengjing95.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="笔记" scheme="https://fengjing95.github.io/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>Vue中的跨域问题</title>
@@ -41,7 +81,7 @@
     <link href="https://fengjing95.github.io/2020/09/07/%E6%8A%80%E6%9C%AF/Socket.IO%E5%89%8D%E7%AB%AF%E5%90%8E%E7%AB%AF%E4%B8%80%E8%B5%B7%E6%8B%BF%E6%8D%8F/"/>
     <id>https://fengjing95.github.io/2020/09/07/技术/Socket.IO前端后端一起拿捏/</id>
     <published>2020-09-07T09:17:53.747Z</published>
-    <updated>2020-09-07T10:01:27.089Z</updated>
+    <updated>2020-09-07T11:21:52.939Z</updated>
     
     <summary type="html">
     
@@ -373,46 +413,6 @@
     
     
       <category term="vue" scheme="https://fengjing95.github.io/tags/vue/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JS正则表达式</title>
-    <link href="https://fengjing95.github.io/2020/08/04/%E6%8A%80%E6%9C%AF/JS%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
-    <id>https://fengjing95.github.io/2020/08/04/技术/JS正则表达式/</id>
-    <published>2020-08-03T16:26:08.012Z</published>
-    <updated>2020-09-05T09:37:39.102Z</updated>
-    
-    <summary type="html">
-    
-      正则表达式，很强大的数据规则验证
-    
-    </summary>
-    
-      <category term="技术" scheme="https://fengjing95.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="js" scheme="https://fengjing95.github.io/tags/js/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>let、const和var的区别</title>
-    <link href="https://fengjing95.github.io/2020/08/02/%E6%8A%80%E6%9C%AF/let%E3%80%81const%E5%92%8Cvar/"/>
-    <id>https://fengjing95.github.io/2020/08/02/技术/let、const和var/</id>
-    <published>2020-08-02T11:09:59.170Z</published>
-    <updated>2020-09-05T09:37:43.284Z</updated>
-    
-    <summary type="html">
-    
-      对比let、const和var的区别
-    
-    </summary>
-    
-      <category term="技术" scheme="https://fengjing95.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="js" scheme="https://fengjing95.github.io/tags/js/"/>
     
   </entry>
   

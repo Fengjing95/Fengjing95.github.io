@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">Tag: node | 前端小枫</title>
+  <title itemprop="name">pug模板渲染 | 前端小枫</title>
   
   <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -464,97 +464,326 @@
   </div>
 </header>
 
-      
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
 <div class="pattern-center-blank"></div>
-<div class="pattern-center ">
-  <div class="pattern-attachment-img">
-    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="node.img" class="lazyload" onerror="imgError(this,3)" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://gitee.com/liuhao1108/picGoCDN/raw/master/img/puglog.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/puglog.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      pug模板渲染</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="">小枫</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2020-9-8<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
   </div>
-  <header class="pattern-header ">
-    <h1 class="cat-title">node</h1>
-  </header>
-</div>
+
 <div id="content" class="site-content">
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/pug.jpg" alt="pug"></p>
+<p>pug由jade改名而来，通过缩进（表示标签间的嵌套关系）的方式来编写代码的过程，在编译的过程中，不需要考虑标签是否闭合的问题。可以加快写代码速度，也为代码复用提供了便捷。</p>
+<p>编译pug模板需要安装npm包</p>
+<pre><code class="shell">$ npm install pug
+</code></pre>
+<p>新建pug模板</p>
+<pre><code class="jade">div
+ p #{name}今年#{age}岁了
+</code></pre>
+<p>通过js解析pug模板，需要引入pug模块</p>
+<pre><code class="js">const pug = require(&#39;pug&#39;);
+
+const compiledFunction = pug.compileFile(&#39;template.pug&#39;);
+
+console.log(compiledFunction({
+  name: &#39;张三&#39;,
+  age: 14,
+}));
+
+console.log(compiledFunction({
+  name: &#39;李四&#39;,
+  age: 25,
+}));
+</code></pre>
+<p>使用node运行js文件，结果如图</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200907201300446.png" alt="image-20200907201300446"></p>
+<p>也可以将解析和渲染放在一起，但是这样会对性能造成影响，这个问题可以通过缓存解决</p>
+<pre><code class="js">console.log(pug.renderFile(&#39;template.pug&#39;, {
+  name: &#39;王五&#39;,
+  age: 30,
+}));
+</code></pre>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200907201700398.png" alt="image-20200907201700398"></p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>使用<code>//</code>可以转义生成html注释；使用<code>//-</code>表示pug内部的注释，不转义；条件注释直接写，<code>&lt;</code>开头的会被当作文本</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200907214119759.png" alt="image-20200907214119759"></p>
+<h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><p>用逗号作为属性分隔符，不加也可（可以使用JavaScript表达式）；当属性有很多时可以分多行</p>
+<pre><code class="jade">div(class=&#39;pug-style&#39; id=&#39;div-1&#39;)
+ - var isTrue = true
+ p(class=isTrue ? &#39;success&#39; : &#39;faild&#39;) #{name}今年#{age}岁了
+</code></pre>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200907202939846.png" alt="image-20200907202939846"></p>
+<p>当属姓名中含有一些可能会产生语法冲突的字符时，使用<code>&quot;&quot;、&#39;&#39;</code>将这些属性名包裹起来，或者使用逗号将前后属性分隔开</p>
+<p>属性可以使用JavaScript语法嵌入，例如：</p>
+<pre><code class="jade">- var url = &#39;www.baidu.com&#39;
+a(href=&#39;http://&#39; + url)
+</code></pre>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200907204531394.png" alt="image-20200907204531394"></p>
+<blockquote>
+<p>如果运行环境支持ES6，可以使用模板字符串<code>${}</code></p>
+</blockquote>
+<p>使用<code>!=</code>可以不转义（<strong>不推荐，很危险，会遭到脚本攻击</strong>）</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200907205255778.png" alt="image-20200907205255778"></p>
+<p>true和false的使用</p>
+<pre><code class="jade">//- 默认为true
+input(type=&#39;checkbox&#39; checked)
+input(type=&#39;checkbox&#39; checked=true)
+//- fasle不变异
+input(type=&#39;checkbox&#39; checked=false)
+//- toString保留true的值
+input(type=&#39;checkbox&#39; checked=true.toString())
+
+//- 编译结果如下
+&lt;input type=&quot;checkbox&quot; checked=&quot;checked&quot;/&gt;
+&lt;input type=&quot;checkbox&quot; checked=&quot;checked&quot;/&gt;
+&lt;input type=&quot;checkbox&quot;/&gt;
+&lt;input type=&quot;checkbox&quot; checked=&quot;true&quot;/&gt;
+</code></pre>
+<p>如果声明<code>doctype html</code>缩写样式checked就不会映射属性</p>
+<p>行内样式使用<code>{}</code>，类属性使用<code>[]</code>可以嵌入</p>
+<pre><code class="jade">a(style={color: &#39;red&#39;, &#39;background-color&#39;: &#39;#409eff&#39;})
+- var classes = [&#39;test&#39;, &#39;test2&#39;]
+a(class=[&#39;blue-div&#39;, &#39;big-div&#39;], class=classes)
+</code></pre>
+<blockquote>
+<p>属性名有短横线连接的，属性名需要加引号，否则可能会出错</p>
+</blockquote>
+<p>字面值</p>
+<ul>
+<li>a.button = <code>&lt;a id=&quot;main-link&quot;&gt;&lt;/a&gt;</code></li>
+<li>.content = <code>&lt;div class=&quot;content&quot;&gt;&lt;/div&gt;</code>（div过于常见，可以省略）</li>
+<li>a#main-link = <code>&lt;a id=&quot;main-link&quot;&gt;&lt;/a&gt;</code></li>
+<li>#content = <code>&lt;div id=&quot;content&quot;&gt;&lt;/div&gt;</code></li>
+</ul>
+<p>使用&amp;attributes可以将一个对象追加到属性列表中（<strong>有一定的危险性，减少使用</strong>）</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200907211246793.png" alt="image-20200907211246793"></p>
+<h3 id="分支条件"><a href="#分支条件" class="headerlink" title="分支条件"></a>分支条件</h3><p>类C语言中都会有<code>switch</code>这个语法，pug中使用case表示</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200907212049336.png" alt="image-20200907212049336"></p>
+<blockquote>
+<p>pug中在没有遇到非空语句之前会一直执行下去，当不想传递分支时使用<code>- break</code>来中断分支传递</p>
+</blockquote>
+<h3 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h3><p>使用for控制循环</p>
+<pre><code class="jade">-for (var i = 0; i &lt; 5; i++)
+  li item
+//- 输出
+&lt;li&gt;item&lt;/li&gt;
+&lt;li&gt;item&lt;/li&gt;
+&lt;li&gt;item&lt;/li&gt;
+&lt;li&gt;item&lt;/li&gt;
+&lt;li&gt;item&lt;/li&gt;
+</code></pre>
+<p>通过each控制循环</p>
+<pre><code class="jade">- var arr = [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;]
+each item in arr
+  li= item
+//- 输出  
+&lt;li&gt;a&lt;/li&gt;
+&lt;li&gt;b&lt;/li&gt;
+&lt;li&gt;c&lt;/li&gt;
+&lt;li&gt;d&lt;/li&gt;
+</code></pre>
+<p>另外，可以用while控制循环</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200908082859868.png" alt="image-20200908082859868"></p>
+<blockquote>
+<p>使用<code>=</code>可以转义代码，等号换行或者行内紧贴父标签；使用<code>!=</code>可以不转义输出，比如携带标点符号等</p>
+</blockquote>
+<h3 id="条件"><a href="#条件" class="headerlink" title="条件"></a>条件</h3><p>使用if可以进行条件判断</p>
+<pre><code class="jade">- var user = {name: &#39;张三&#39;}
+- var isTrue = false
+div
+  if isTrue
+    h2.blue 描述
+  else if user
+    h2.green 描述
+    p.des= user.name
+  else 
+    h2.red 描述
+//- 输出
+&lt;div&gt;
+  &lt;h2 class=&quot;green&quot;&gt;描述&lt;/h2&gt;
+  &lt;p class=&quot;des&quot;&gt;张三&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+<blockquote>
+<p>unless等价于<code>!=</code></p>
+</blockquote>
+<h3 id="包含"><a href="#包含" class="headerlink" title="包含"></a>包含</h3><p>使用<code>include</code>关键字引入外部文本，可以是pug文件，也可以是js文件等</p>
+<blockquote>
+<p>被包含的文件的路径，如果是一个绝对路径（如 <code>include /root.pug</code>），那么前面会加上 <code>options.basedir</code> 选项属性来进行解析。否则，路径应该相对于正在被编译的当前文件</p>
+</blockquote>
+<h3 id="嵌入"><a href="#嵌入" class="headerlink" title="嵌入"></a>嵌入</h3><ul>
+<li><code>#{}</code>转义，可以添加正确的任意JavaScript表达式。</li>
+<li>如果需要<code>#{}</code>文本，可以使用<code>\</code>或者<code>#{}</code>来转义</li>
+<li>使用<code>!{}</code>不转义，<strong>具有一定的危险性</strong></li>
+<li>使用<code>#[]</code>转义pug语句</li>
+</ul>
+<h3 id="混入"><a href="#混入" class="headerlink" title="*混入"></a>*混入</h3><p>这是pug很强大的一个功能，类似于函数编程，可以传参</p>
+<pre><code class="jade">mixin eat(food)
+  li 中午吃#{food}
+ul
+  +eat(&#39;炸鸡&#39;)
+  +eat(&#39;烤鸭&#39;)
+//- 输出  
+&lt;ul&gt;
+    &lt;li&gt;中午吃炸鸡&lt;/li&gt;
+    &lt;li&gt;中午吃烤鸭&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+<p>也可以把代码块传入，类似于Vue的插槽，通过block接收传进来的代码块</p>
+<pre><code class="jade">mixin user(name)
+  .user
+    h2 #{name}
+    if block
+      block
+    else
+      p 没有详细资料
+
++user(&#39;张三&#39;)
+
++user(&#39;张三&#39;)
+  p age: 14
+  p address: china
+//- 输出
+&lt;div class=&quot;user&quot;&gt;
+  &lt;h2&gt;张三&lt;/h2&gt;
+  &lt;p&gt;没有详细资料&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;user&quot;&gt;
+  &lt;h2&gt;张三&lt;/h2&gt;
+  &lt;p&gt;age: 14&lt;/p&gt;
+  &lt;p&gt;address: china&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+<p>可以传入属性，在引用混入的时候传入属性</p>
+<pre><code class="jade">mixin link(href, name)
+  a(class!=attributes.class, href=href) name //- 使用!=防止二次转义
+
++link(&#39;www.baidu.com&#39;, &#39;百度&#39;)(class=&quot;button&quot;)
+//- 输出
+&lt;a class=&quot;button&quot; href=&quot;www.baidu.com&quot;&gt;name&lt;/a&gt;
+</code></pre>
+<p><strong>支持ES6的展开运算符</strong></p>
+<pre><code class="jade">mixin ulArr(className, ...items)
+  ul(class=className)
+    each item in items
+      li= item
+    else
+      li 没有内容
+
++ulArr(&#39;ulArr&#39;, 1,2,3,4)
+</code></pre>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200908090350178.png" alt="image-20200908090350178"></p>
+<h2 id="结束，又一门新技能"><a href="#结束，又一门新技能" class="headerlink" title="结束，又一门新技能"></a>结束，又一门新技能</h2><p>最后推荐一个<a href="https://pughtml.com/" target="_blank" rel="noopener">在线转换HTML和pug的网站</a></p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200908090409142.png" alt="image-20200908090409142"></p>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+        
+          
+            <div class="post-nepre full next">
+          
+            <a href="/2020/09/07/笔记/Android笔记/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200907201114785.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200907201114785.png">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                Android笔记</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
       
-  <!-- 首页默认取最最新文章集 -->
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/09/08/笔记/pug模板渲染/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/puglog.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/09/08/笔记/pug模板渲染/">
-    pug模板渲染</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-9-8</div>
-    <p>
-    健壮、灵活、功能丰富的HTML模板引擎,专门为 Node.js 平台开发</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/09/08/笔记/pug模板渲染/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/09/07/技术/Socket.IO前端后端一起拿捏/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/socket.io.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/09/07/技术/Socket.IO前端后端一起拿捏/">
-    Socket.IO前端后端一起拿捏</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-9-7</div>
-    <p>
-    前后端使用socket.io</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/09/07/技术/Socket.IO前端后端一起拿捏/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "AdzOvpXTwwf3KAX23DOds5C9-gzGzoHsz",
+        appKey: "olX1MHfMtrQcmemwl5lLmu4a",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
 
-
-      <div class="clearer">
-      </div>
-    </main>
-    <!--  -->
-    
-  </div>
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg" itemprop="image" alt="小枫" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author">小枫</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>前端小白</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
 </div>
+
+
+
     </div>    
     <div class="ins-search">
     <div class="ins-search-mask"></div>
@@ -888,92 +1117,6 @@
         <a href="/client/">
           <span class="faa-parent animated-hover">
             <i class="fa  fa-android faa-vertical" aria-hidden="true"></i>
-            客户端
-          </span>
-        </a>
-        
-      </li>
-    
-      <li>
-        <a href="/atom.xml">
-          <span class="faa-parent animated-hover">
-            <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
-            RSS
-          </span>
-        </a>
-        
-      </li>
-    
-  </ul>
-  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2019 hexo-sakura</p>
-</div>
-<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
-<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
-<!-- require MetingJS -->
-<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
-<style>
-  .aplayer .aplayer-lrc {
-    height: 35px;
-  }
-  .aplayer .aplayer-lrc p{
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 18px !important;
-  }
-  .aplayer .aplayer-lrc p.aplayer-lrc-current{
-    color: #FF1493;
-  }
-  .aplayer.aplayer-narrow .aplayer-body{
-    left: -66px !important;
-  }
-  .aplayer.aplayer-fixed .aplayer-lrc {
-    display: none;
-  }
-  .aplayer .aplayer-lrc.aplayer-lrc-hide {
-      display:none !important;
-  }
-  .aplayer.aplayer-fixed .lrc-show {
-    display: block;
-    background: rgba(255, 255, 255, 0.8);
-  }
-</style>
-<meting-js
-
-    id="2660651585"
-
-    server="netease"
-
-    type="playlist"
-
-    fixed="true"
-
-    autoplay="false"
-
-    loop="all"
-
-    order="random"
-
-    preload="auto"
-
-    volume="0.7"
-
-    mutex="true"
-
-</meting-js>
-<script>
-  $(function(){
-    $('body').on('click', '.aplayer', function(){
-      if($('.aplayer-button').hasClass('aplayer-play')) {
-        $('.aplayer-lrc').removeClass('lrc-show');
-      } else {
-        $('.aplayer-lrc').addClass('lrc-show');
-      }
-    })
-  });
-</script>
-</body>
-</html>lass="fa  fa-android faa-vertical" aria-hidden="true"></i>
             客户端
           </span>
         </a>

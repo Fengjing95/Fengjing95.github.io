@@ -1,0 +1,2237 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta name="baidu-site-verification" content="GdMCS2x132">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+  <title itemprop="name">Android笔记 | 前端小枫</title>
+  
+  <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="/css/style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/lib.min.css" media="all">
+  <link rel="stylesheet" href="/css/font.css" media="all">
+  <link rel="stylesheet" href="/css/insight.css" media="all">
+  <link rel="stylesheet" href="/css/jquery.fancybox.min.css" media="all">
+  <link rel="stylesheet" href="/css/zoom.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+  <!--   <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css
+" type="text/css" media="all"> -->
+  <script>
+    /*Initial Variables*/
+    var mashiro_option = new Object();
+    var mashiro_global = new Object();
+    mashiro_option.NProgressON = true;
+    /* 
+     * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+     * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+     */
+    mashiro_option.email_domain = "";
+    mashiro_option.email_name = "";
+    mashiro_option.cookie_version_control = "";
+    mashiro_option.qzone_autocomplete = false;
+    mashiro_option.site_name = "沿途の枫景";
+    mashiro_option.author_name = "枫景";
+    mashiro_option.site_url = "https://fengjing95.github.io";
+    mashiro_option.v_appId = "AdzOvpXTwwf3KAX23DOds5C9-gzGzoHsz";
+    mashiro_option.v_appKey = "olX1MHfMtrQcmemwl5lLmu4a";
+    mashiro_option.mathjax = "0";
+    mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/";
+    mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+
+  // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
+  // mashiro_option.float_player_on = true;
+
+    /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+    var bg = "https://gitee.com/liuhao1108/picGoCDN/raw/master/img/back1.jpg,https://gitee.com/liuhao1108/picGoCDN/raw/master/img/back2.jpg,https://gitee.com/liuhao1108/picGoCDN/raw/master/img/back3.jpg,https://gitee.com/liuhao1108/picGoCDN/raw/master/img/back4.jpg,https://gitee.com/liuhao1108/picGoCDN/raw/master/img/back5.jpg,https://gitee.com/liuhao1108/picGoCDN/raw/master/img/back6.jpg,https://gitee.com/liuhao1108/picGoCDN/raw/master/img/back7.jpg,https://gitee.com/liuhao1108/picGoCDN/raw/master/img/back8.jpg".split(",");
+    var bgindex = Math.floor(Math.random() * bg.length);
+    if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+      alert('朋友，IE浏览器未适配哦~');
+    }
+  </script>
+  <style type="text/css">
+    .hljs-ln {
+      border-collapse: collapse
+    }
+
+    .hljs-ln td {
+      padding: 0
+    }
+
+    .hljs-ln-n:before {
+      content: attr(data-line-number)
+    }
+  </style>
+  <style type="text/css">
+    .site-top .lower nav {
+      display: block !important;
+    }
+
+    .author-profile i,
+    .post-like a,
+    .post-share .show-share,
+    .sub-text,
+    .we-info a,
+    span.sitename,
+    .post-more i:hover,
+    #pagination a:hover,
+    .post-content a:hover,
+    .float-content i:hover {
+      color: #FE9600
+    }
+
+    .feature i,
+    .download,
+    .navigator i:hover,
+    .links ul li:before,
+    .ar-time i,
+    span.ar-circle,
+    .object,
+    .comment .comment-reply-link,
+    .siren-checkbox-radio:checked+.siren-checkbox-radioInput:after {
+      background: #FE9600
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #FE9600
+    }
+
+    .download,
+    .navigator i:hover,
+    .link-title,
+    .links ul li:hover,
+    #pagination a:hover,
+    .comment-respond input[type='submit']:hover {
+      border-color: #FE9600
+    }
+
+    .entry-content a:hover,
+    .site-info a:hover,
+    .comment h4 a,
+    #comments-navi a.prev,
+    #comments-navi a.next,
+    .comment h4 a:hover,
+    .site-top ul li a:hover,
+    .entry-title a:hover,
+    #archives-temp h3,
+    span.page-numbers.current,
+    .sorry li a:hover,
+    .site-title a:hover,
+    i.iconfont.js-toggle-search.iconsearch:hover,
+    .comment-respond input[type='submit']:hover {
+      color: #FE9600
+    }
+
+    .comments .comments-main {
+      display: block !important;
+    }
+
+    .comments .comments-hidden {
+      display: none !important;
+    }
+
+    background-position:center center;
+    background-attachment:inherit;
+    }
+  </style>
+</head></html>
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <div class="scrollbar" id="bar">
+  </div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop filter-dot">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a href="https://fengjing95.github.io">
+          <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>努力做更好的自己！</p>
+        <div class="top-social_v2">
+          <li id="bg-pre">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="https://github.com/Fengjing95" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/social/github.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://weibo.com/5056791657/profile?is_all=1" target="_blank" class="social-github" title="sina">
+                    <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/social/sina.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://music.163.com/#/my/m/music/playlist?id=2069325819" target="_blank" class="social-github" title="wangyiyun">
+                    <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/social/wangyiyun.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://www.zhihu.com/people/feng-jing-28-65" target="_blank" class="social-github" title="zhihu">
+                    <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/social/zhihu.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="email">
+                    <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/social/email.svg">
+                  </a>
+                </li>
+              
+            
+              
+                <li class="wechat">
+                  <a href="/#">
+                    <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/social/wechat.png">
+                  </a>
+                  <div class="wechatInner">
+                    <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/wechat.jpg">
+                  </div>
+                </li>
+              
+            
+          
+          <li id="bg-next">
+            <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style="">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <div id="video-btn" class="loadvideo videolive">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu">
+    </div>
+  </div>
+  <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span>
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink moe-mashiro">
+          <a href="/">
+            <span class="sakurasono">沿途の</span>
+            <span class="shironeko">枫景</span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div>
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+                    归档
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/categories/技术/">
+                          <i class="fa fa-code" aria-hidden="true"></i>
+                          技术
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/生活/">
+                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          生活
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/资源/">
+                          <i class="fa fa-cloud-download" aria-hidden="true"></i>
+                          资源
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/随想/">
+                          <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                          随想
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/笔记/">
+                          <i class="fa fa-book" aria-hidden="true"></i>
+                          笔记
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    清单
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/tags/悦读/">
+                          <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                          书单
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/bangumi/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          番组
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/music/">
+                          <i class="fa fa-headphones" aria-hidden="true"></i>
+                          歌单
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/tags/图集/">
+                          <i class="fa fa-photo" aria-hidden="true"></i>
+                          图集
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/comment/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+                    留言板
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/links/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+                    友人帐
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/donate/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+                    赞赏
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+                    关于
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/about/">
+                          <i class="fa fa-meetup" aria-hidden="true"></i>
+                          我？
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/theme-sakura/">
+                          <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+                          主题
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/lab/">
+                          <i class="fa fa-cogs" aria-hidden="true"></i>
+                          Lab
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/client/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-android faa-vertical" aria-hidden="true"></i>
+                    客户端
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/atom.xml">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+                    RSS
+                  </span>
+                </a>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200907201114785.png);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200907201114785.png">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      Android笔记</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="">小枫</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2020-9-7<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h1 id="Android笔记"><a href="#Android笔记" class="headerlink" title="Android笔记"></a>Android笔记</h1><blockquote>
+<p>xml中的各种字符串数据建议放在values目录下的string.xml中</p>
+<pre><code class="xml">&lt;resources&gt;
+    &lt;string name=&quot;app_name&quot;&gt;HelloWorld&lt;/string&gt;
+&lt;/resources&gt;
+</code></pre>
+</blockquote>
+<h2 id="1-活动"><a href="#1-活动" class="headerlink" title="1. 活动"></a>1. 活动</h2><h3 id="1-1-创建活动"><a href="#1-1-创建活动" class="headerlink" title="1.1 创建活动"></a>1.1 创建活动</h3><p>在包下右键创建新的活动</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200618110844857.png" alt="image-20200618110844857"></p>
+<h3 id="1-2-创建并加载布局"><a href="#1-2-创建并加载布局" class="headerlink" title="1.2 创建并加载布局"></a>1.2 创建并加载布局</h3><p>在资源目录下的layout文件夹下右键创建新的布局资源（Android Studio默认创建）</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200618111101376.png" alt="image-20200618111101376"></p>
+<p>配置好布局之后在活动类下添加布局</p>
+<pre><code class="java">public class List extends AppCompatActivity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_list);
+}
+</code></pre>
+<h3 id="1-3在活动中使用Toast"><a href="#1-3在活动中使用Toast" class="headerlink" title="1.3在活动中使用Toast"></a>1.3在活动中使用Toast</h3><p>Toast是安卓应用中一种比较常用的提示方式</p>
+<p>添加方法也比较简单</p>
+<pre><code class="java">Toast.makeText(this, &quot;click add&quot;, Toast.LENGTH_SHORT).show();
+</code></pre>
+<p>makeText方法参数：</p>
+<ul>
+<li>this：上下文，如果嵌套太深this指向会错误，可改为当前活动.this、getContext()，也可以在外层定义一个<code>Context that = this;</code>用来传递this</li>
+<li>“click add”：字符串，Toast要显示的信息，可以是变量</li>
+<li>Toast.LENGTH.SHORT：显示时间2秒，LONG是3.5秒</li>
+</ul>
+<blockquote>
+<p>show()方法不要忘记添加</p>
+</blockquote>
+<h3 id="1-4在活动中使用menu"><a href="#1-4在活动中使用menu" class="headerlink" title="1.4在活动中使用menu"></a>1.4在活动中使用menu</h3><p>在res下创建menu目录，新建xml文件，内容格式如下</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;menu xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;
+    &lt;item android:id=&quot;@+id/add_item&quot;
+        android:title=&quot;Add&quot;/&gt;
+    &lt;item android:id=&quot;@+id/sub_item&quot;
+        android:title=&quot;Sub&quot;/&gt;
+&lt;/menu&gt;
+</code></pre>
+<p>在要添加menu的活动中添加菜单，格式如下</p>
+<pre><code class="java">@Override
+public boolean onCreateOptionsMenu(Menu menu) {
+    getMenuInflater().inflate(R.menu.main, menu);
+    return super.onCreateOptionsMenu(menu);
+}
+
+@Override
+public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+    Context that = this;
+    switch (item.getItemId()) {
+        case R.id.add_item:
+            Toast.makeText(that, &quot;click add&quot;, Toast.LENGTH_SHORT).show();
+            break;
+        case R.id.sub_item:
+            Toast.makeText(this, &quot;click sub&quot;, Toast.LENGTH_SHORT).show();
+            break;
+        default:
+            break;
+    }
+    return super.onOptionsItemSelected(item);
+}
+</code></pre>
+<h3 id="1-5在活动之间穿梭"><a href="#1-5在活动之间穿梭" class="headerlink" title="1.5在活动之间穿梭"></a>1.5在活动之间穿梭</h3><p>一个安卓应用通常不止一个活动，需要在不同的活动之间来回穿梭来完成各种操作</p>
+<h4 id="1-5-1显式穿梭"><a href="#1-5-1显式穿梭" class="headerlink" title="1.5.1显式穿梭"></a>1.5.1显式穿梭</h4><p>顾名思义，显示穿梭很明显能看出要跳转到那个活动</p>
+<p>在页面中有一个按钮，点击按钮触发切换活动的事件</p>
+<pre><code class="java">Button btn_third = (Button) findViewById(R.id.btn_third);
+btn_third.setOnClickListener(new View.OnClickListener() {
+
+    @Override
+    public void onClick(View v) {
+        Intent intent3 = new Intent(MainActivity.this, List.class);
+        startActivity(intent3);
+    }
+});
+</code></pre>
+<p>先给button添加事件监听，当触发时间时，使用Intent穿梭事件</p>
+<p>Intent构造函数：</p>
+<ul>
+<li>MainActivity.this：上下文</li>
+<li>List.class：要跳转的活动（反射）</li>
+</ul>
+<blockquote>
+<p>活动需要在Mainfest中注册，这些在创建活动时Android Studio默认添加了，如果没有会报错</p>
+</blockquote>
+<h4 id="1-5-2隐式穿梭"><a href="#1-5-2隐式穿梭" class="headerlink" title="1.5.2隐式穿梭"></a>1.5.2隐式穿梭</h4><p>隐式穿梭不会很容易看出要跳转的目的、</p>
+<p>首先，隐式穿梭需要配置Mainfest</p>
+<pre><code class="xml">&lt;activity android:name=&quot;.List&quot;&gt;
+    &lt;intent-filter&gt;
+        &lt;action android:name=&quot;com.example.hello.MAIN&quot; /&gt;
+        &lt;category android:name=&quot;android.intent.category.DEFAULT&quot; /&gt;
+        &lt;category android:name=&quot;com.example.hello.MY_CATEGORY&quot; /&gt;
+    &lt;/intent-filter&gt;
+&lt;/activity&gt;
+</code></pre>
+<p>然后在跳转时使用另一种方式</p>
+<pre><code class="java">Button btn_third = (Button) findViewById(R.id.btn_third);
+btn_third.setOnClickListener(new View.OnClickListener() {
+
+    @Override
+    public void onClick(View v) {
+        Intent intent3 = new Intent(&quot;com.example.hello.MAIN&quot;);
+        // 只使用了android.intent.category.DEFAULT，这里可以不添加category,如果自定义了category就必须要添加
+        intent3.addCategory(&quot;com.example.hello.MY_CATEGORY&quot;);
+        startActivity(intent3);
+    }
+});
+</code></pre>
+<blockquote>
+<p>配置时注意action和category的包路径，只有action和category一致才会进行跳转</p>
+</blockquote>
+<p>更多隐式穿梭用法</p>
+<p>跳转网页</p>
+<p>点击事件如下</p>
+<pre><code class="java">Intent intent = new Intent(Intent.ACTION_VIEW);
+intent.setData(Uri.parse(&quot;http://www.baidu.com&quot;));
+startActivity(intent);
+</code></pre>
+<p>在Mainfest对应事件中添加data标签</p>
+<pre><code class="xml">&lt;activity android:name=&quot;.SecondActivity&quot;&gt;
+    &lt;intent-filter tools:ignore=&quot;AppLinkUrlError&quot;&gt;
+        &lt;action android:name=&quot;android.intent.action.VIEW&quot; /&gt;
+        &lt;category android:name=&quot;android.intent.category.DEFAULT&quot; /&gt;
+        &lt;data android:scheme=&quot;http&quot; /&gt;
+    &lt;/intent-filter&gt;
+&lt;/activity&gt;
+</code></pre>
+<p>拨打电话</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200618115623519.png" alt="image-20200618115623519"></p>
+<h4 id="1-5-3-活动之间传递数据"><a href="#1-5-3-活动之间传递数据" class="headerlink" title="1.5.3 活动之间传递数据"></a>1.5.3 活动之间传递数据</h4><p>在许多情况下，活动之间切换需要携带数据，Intent提供了putExtra方法来传递数据，在MainActivity中通过按钮触发事件，携带参数跳转到SecondActivity</p>
+<pre><code class="java">Button btn = (Button) findViewById(R.id.button1);
+btn.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+        intent.putExtra(&quot;extra_value1&quot;, 10);
+        intent.putExtra(&quot;extra_value2&quot;, &quot;by first&quot;);
+        startActivityForResult(intent, 1);
+    }
+});
+</code></pre>
+<p><code>startActivityForResult(intent, 1);</code>不同的请求通过请求码进行区分</p>
+<p>在SecondActivity中接收参数并显示到页面上</p>
+<pre><code class="java">final Intent intent = getIntent();
+String str = intent.getStringExtra(&quot;extra_value2&quot;);
+int i = intent.getIntExtra(&quot;extra_value1&quot;, -1);
+// int类型的数据接收时可以设置默认值
+String string = str + i;
+
+TextView textView = (TextView) findViewById(R.id.textView);
+textView.setText(string);
+</code></pre>
+<h4 id="1-5-4向上一个活动返回数据"><a href="#1-5-4向上一个活动返回数据" class="headerlink" title="1.5.4向上一个活动返回数据"></a>1.5.4向上一个活动返回数据</h4><p>当然，SecondActivity也可以向MainActivity传递数据</p>
+<pre><code class="java">@Override
+public void onBackPressed() {
+    //        super.onBackPressed();
+    Intent intent1 = new Intent();
+    intent1.putExtra(&quot;data_return&quot;, &quot;I am second&quot;);
+    setResult(RESULT_OK, intent1);
+    finish();
+}
+</code></pre>
+<p>当按下返回键时（可以通过其他事件触发），向主页面传递数据，这里要设置result返回的状态</p>
+<p>在主活动中接收SecondActivity传回来的数据</p>
+<pre><code class="java">@Override
+protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+    switch (requestCode) {
+        case 1:
+            if (resultCode == RESULT_OK) {
+                assert data != null;
+                String returnStr = data.getStringExtra(&quot;data_return&quot;);
+                Toast.makeText(this, returnStr, Toast.LENGTH_SHORT).show();
+            }
+            break;
+        default:
+            break;
+    }
+}
+</code></pre>
+<blockquote>
+<p>onActivityResult(requestCode, resultCode, data)</p>
+<ul>
+<li>requestCode：请求码，在发送请求时携带的code</li>
+<li>resultCode：响应码，活动返回数据时设置的code</li>
+<li>data：接收的数据</li>
+</ul>
+</blockquote>
+<h3 id="1-6-活动的生命周期"><a href="#1-6-活动的生命周期" class="headerlink" title="1.6 活动的生命周期"></a>1.6 活动的生命周期</h3><p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200618124031861.png" alt="image-20200618124031861"></p>
+<h3 id="1-7-活动的启动模式"><a href="#1-7-活动的启动模式" class="headerlink" title="1.7 活动的启动模式"></a>1.7 活动的启动模式</h3><p>参考<a href="https://www.jianshu.com/p/b4472dc6911e" target="_blank" rel="noopener">活动的启动模式</a></p>
+<h2 id="2-UI"><a href="#2-UI" class="headerlink" title="2. UI"></a>2. UI</h2><p>组件相关省略</p>
+<h3 id="2-1-布局"><a href="#2-1-布局" class="headerlink" title="2.1 布局"></a>2.1 布局</h3><h4 id="2-1-1-线性布局LinearLayout"><a href="#2-1-1-线性布局LinearLayout" class="headerlink" title="2.1.1 线性布局LinearLayout"></a>2.1.1 线性布局LinearLayout</h4><ul>
+<li><code>android:layout_width=&quot;match_parent&quot;</code>控制宽度，父组件的宽度，改为 <code>wrap_content</code>就是自身元素的宽度</li>
+<li><p><code>android:layout_height=&quot;match_parent&quot;</code>控制高度</p>
+</li>
+<li><p><code>android:orientation=&quot;vertical&quot;</code>控制纵向排列，如果改为 <code>vertical</code>就会变为水平排列</p>
+</li>
+<li><code>android:layout_gravity=&quot;right&quot;</code>控制元素的对齐方式</li>
+<li><code>android:layout_weight=&quot;1&quot;</code>类似于css中的flex：1</li>
+</ul>
+<h4 id="2-1-2-相对布局RelativeLayout"><a href="#2-1-2-相对布局RelativeLayout" class="headerlink" title="2.1.2 相对布局RelativeLayout"></a>2.1.2 相对布局RelativeLayout</h4><p><strong>相对于parent进行定位</strong></p>
+<p>android:layout_alignParentLeft=”true”</p>
+<p>android:layout_alignParentright=”true”</p>
+<p>android:layout_alignParentTop=”true”</p>
+<p>android:layout_alignParentBottom=”true”</p>
+<p>android:layout_centerInParent=”true”</p>
+<p> <strong>相对于控件进行定位</strong></p>
+<p>android:layout_above=”@id/button3”<code>上</code></p>
+<p>android:layout_below=”@id/button3”<code>下</code></p>
+<p>android:layout_toLeftOf=”@id/button3”</p>
+<p>android:layout_toRightOf=”@id/button3”</p>
+<p>android:layout_alignBottom=”@id/button3”<code>两个控件底边对齐</code></p>
+<p>alignBottom、alignTop、alignLeft、alignRight</p>
+<h4 id="2-1-3帧布局FrameLayout"><a href="#2-1-3帧布局FrameLayout" class="headerlink" title="2.1.3帧布局FrameLayout"></a>2.1.3帧布局FrameLayout</h4><h4 id="2-1-4-百分比布局"><a href="#2-1-4-百分比布局" class="headerlink" title="2.1.4 百分比布局"></a>2.1.4 百分比布局</h4><p>由Android X支持库提供</p>
+<p>导入支持库</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200618164357088.png" alt="image-20200618164357088"></p>
+<p>搜索percentLayout，添加依赖</p>
+<p>然后布局文件中使用百分比布局</p>
+<pre><code class="xml">&lt;androidx.percentlayout.widget.PercentFrameLayout
+ android:layout_width=&quot;match_parent&quot;
+ android:layout_height=&quot;wrap_content&quot;&gt;
+
+    &lt;ImageView
+               android:id=&quot;@+id/imageView&quot;
+               android:layout_width=&quot;wrap_content&quot;
+               android:layout_height=&quot;wrap_content&quot;
+               android:layout_gravity=&quot;right&quot;
+               app:layout_widthPercent=&quot;50%&quot;
+               android:src=&quot;@drawable/wj&quot;
+               tools:ignore=&quot;RtlHardcoded&quot; /&gt;
+
+
+    &lt;Button
+            android:id=&quot;@+id/btn_close&quot;
+            android:layout_width=&quot;wrap_content&quot;
+            android:layout_height=&quot;wrap_content&quot;
+            android:layout_gravity=&quot;left&quot;
+            app:layout_widthPercent=&quot;50%&quot;
+            android:text=&quot;关闭&quot; /&gt;
+    &lt;/LinearLayout&gt;
+&lt;/androidx.percentlayout.widget.PercentFrameLayout&gt;
+</code></pre>
+<h3 id="2-2-控件"><a href="#2-2-控件" class="headerlink" title="2.2 控件"></a>2.2 控件</h3><h4 id="2-2-1-创建自定义控件"><a href="#2-2-1-创建自定义控件" class="headerlink" title="2.2.1 创建自定义控件"></a>2.2.1 创建自定义控件</h4><p>首先新建控件的title.xml布局</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;wrap_content&quot;&gt;
+
+    &lt;Button
+        android:id=&quot;@+id/back_btn_title&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:background=&quot;#409eff&quot;
+        android:text=&quot;返回&quot; /&gt;
+
+    &lt;TextView
+        android:id=&quot;@+id/title&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;match_parent&quot;
+        android:background=&quot;#409eff&quot;
+        android:layout_weight=&quot;1&quot;
+        android:text=&quot;TextView&quot; /&gt;
+
+    &lt;Button
+        android:id=&quot;@+id/edit_btn_title&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:background=&quot;#409eff&quot;
+        android:text=&quot;菜单&quot; /&gt;
+&lt;/LinearLayout&gt;
+</code></pre>
+<p>然后在想要引入title的布局中引入<code>&lt;include layout=&quot;@layout/title&quot; /&gt;</code>即可</p>
+<p>但是这样给title控件添加事件的时候需要给每一个活动都添加，太过于繁琐</p>
+<p>于是有了简便的方法</p>
+<pre><code class="java">public class TitleLayout extends LinearLayout {
+    public TitleLayout(Context context, @Nullable AttributeSet attrs) {
+        super(context, attrs);
+        LayoutInflater.from(context).inflate(R.layout.title, this);
+
+        Button back_btn = (Button)findViewById(R.id.back_btn_title);
+        Button edit_btn = (Button)findViewById(R.id.edit_btn_title);
+        back_btn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((Activity)getContext()).finish();
+            }
+        });
+
+        edit_btn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), &quot;click edit&quot;, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+}
+</code></pre>
+<p>然后在想要引入控件的活动xml中使用包名引入</p>
+<pre><code class="xml">&lt;LinearLayout
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;wrap_content&quot;&gt;
+    &lt;com.example.helloworld.TitleLayout
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:layout_weight=&quot;1&quot; /&gt;
+&lt;/LinearLayout&gt;
+</code></pre>
+<h4 id="2-2-2-ListView列表控件"><a href="#2-2-2-ListView列表控件" class="headerlink" title="2.2.2 ListView列表控件"></a>2.2.2 ListView列表控件</h4><p>首先创建ListView布局</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot; &gt;
+    &lt;ListView
+        android:id=&quot;@+id/list&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;match_parent&quot; /&gt;
+&lt;/LinearLayout&gt;
+</code></pre>
+<p>然后在活动中添加</p>
+<pre><code class="java">public class List extends AppCompatActivity {
+
+    private String[] data = {&quot;apple&quot;, &quot;banana&quot;, &quot;peach&quot;, &quot;fire&quot;,
+            &quot;apple&quot;, &quot;banana&quot;, &quot;peach&quot;, &quot;fire&quot;,
+            &quot;apple&quot;, &quot;banana&quot;, &quot;peach&quot;, &quot;fire&quot;,
+            &quot;apple&quot;, &quot;banana&quot;, &quot;peach&quot;, &quot;fire&quot;};
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_list);
+        ArrayAdapter&lt;String&gt; adapter = new ArrayAdapter&lt;String&gt;(List.this, android.R.layout.simple_list_item_1, data);
+        ListView listView = (ListView) findViewById(R.id.list);
+        listView.setAdapter(adapter);
+    }
+}
+</code></pre>
+<p><strong>定制ListView</strong></p>
+<p><strong>图标</strong></p>
+<p>新建一个菜单类，属性是名称和图标</p>
+<pre><code class="java">public class Fruit {
+    private String name;
+    private int imageId;
+
+    public Fruit(String name, int imageId) {
+        this.name = name;
+        this.imageId = imageId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getImageId() {
+        return imageId;
+    }
+}
+</code></pre>
+<p>新建list选项布局</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;wrap_content&quot;&gt;
+
+    &lt;ImageView
+        android:id=&quot;@+id/fruit_image&quot;
+        android:layout_width=&quot;50dp&quot;
+        android:layout_height=&quot;50dp&quot; /&gt;
+
+    &lt;TextView
+        android:id=&quot;@+id/fruit_name&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:layout_gravity=&quot;center_vertical&quot;
+        android:layout_marginLeft=&quot;10dp&quot; /&gt;
+
+&lt;/LinearLayout&gt;
+</code></pre>
+<p>新建适配器继承自ArrayAdapter</p>
+<pre><code class="java">public class FruitAdapter extends ArrayAdapter {
+    private int resourceId;
+    public FruitAdapter(@NonNull Context context, int resource, @NonNull List&lt;Fruit&gt; objects) {
+        super(context, resource, objects);
+        resourceId = resource;
+    }
+
+    @NonNull
+    @Override
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        Fruit fruit = (Fruit) getItem(position);
+        @SuppressLint(&quot;ViewHolder&quot;) View view = LayoutInflater.from(getContext()).inflate(resourceId, parent, false);
+        ImageView fruitImage = (ImageView) view.findViewById(R.id.fruit_image);
+        TextView fruitName = (TextView) view.findViewById(R.id.fruit_name);
+        fruitImage.setImageResource(fruit.getImageId());
+        fruitName.setText(fruit.getName());
+        return view;
+    }
+}
+</code></pre>
+<p>最后再修改List活动</p>
+<pre><code class="java">public class FruitList extends AppCompatActivity {
+    private List&lt;Fruit&gt; fruitList = new ArrayList&lt;&gt;();
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_list);
+        addData();
+        FruitAdapter fruitAdapter = new FruitAdapter(FruitList.this, R.layout.fruit_item, fruitList);
+        ListView listView = (ListView)findViewById(R.id.list);
+        listView.setAdapter(fruitAdapter);
+
+    }
+    // 初始化list
+    private void addData() {
+        for(int i = 0; i &lt; 10; i++) {
+            Fruit apple = new Fruit(&quot;apple&quot;, R.drawable.icon);
+            fruitList.add(apple);
+        }
+    }
+}
+</code></pre>
+<p>然后运行出来的List就带上了图标</p>
+<p><strong>点击事件</strong></p>
+<p>在List活动中添加事件监听</p>
+<pre><code class="java">listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+    @Override
+    public void onItemClick(AdapterView&lt;?&gt; parent, View view, int position, long id) {
+        Fruit fruit = fruitList.get(position);
+        Toast.makeText(FruitList.this, fruit.getName(), Toast.LENGTH_SHORT).show();
+    }
+});
+</code></pre>
+<p><strong>优化</strong></p>
+<pre><code class="java">public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+    Fruit fruit = (Fruit) getItem(position);
+    //        @SuppressLint(&quot;ViewHolder&quot;) View view = LayoutInflater.from(getContext()).inflate(resourceId, parent, false);
+    View view;
+    if(convertView == null) {
+        view = LayoutInflater.from(getContext()).inflate(resourceId, parent, false);
+    } else {
+        view = convertView;
+    }
+    ImageView fruitImage = (ImageView) view.findViewById(R.id.fruit_image);
+    TextView fruitName = (TextView) view.findViewById(R.id.fruit_name);
+    fruitImage.setImageResource(fruit.getImageId());
+    fruitName.setText(fruit.getName());
+    return view;
+}
+</code></pre>
+<p>对convertView进行判断，当为空时使用LayoutInflater加载布局，不为空时直接使用convertView，提高了运行效率</p>
+<pre><code class="java">public class FruitAdapter extends ArrayAdapter {
+    private int resourceId;
+    public FruitAdapter(@NonNull Context context, int resource, @NonNull List&lt;Fruit&gt; objects) {
+        super(context, resource, objects);
+        resourceId = resource;
+    }
+
+    @NonNull
+    @Override
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        Fruit fruit = (Fruit) getItem(position);
+//        @SuppressLint(&quot;ViewHolder&quot;) View view = LayoutInflater.from(getContext()).inflate(resourceId, parent, false);
+        View view;
+        ViewHolder viewHolder;
+        if(convertView == null) {
+            view = LayoutInflater.from(getContext()).inflate(resourceId, parent, false);
+            viewHolder = new ViewHolder();
+            viewHolder.fruitImage = (ImageView)view.findViewById(R.id.fruit_image);
+            viewHolder.fruitName = (TextView)view.findViewById(R.id.fruit_name);
+            view.setTag(viewHolder);
+        } else {
+            view = convertView;
+            viewHolder = (ViewHolder) view.getTag();
+        }
+        viewHolder.fruitImage.setImageResource(fruit.getImageId());
+        viewHolder.fruitName.setText(fruit.getName());
+        return view;
+    }
+
+    class ViewHolder {
+        ImageView fruitImage;
+        TextView fruitName;
+    }
+}
+</code></pre>
+<p>修改FruitAdapter，新建内部类，对控件实例进行缓存，新建实例时通过setTag方法将实例存储，convertView不为空时使用getTag获取缓存的实例</p>
+<h4 id="2-2-3-RecycleView"><a href="#2-2-3-RecycleView" class="headerlink" title="2.2.3 RecycleView"></a>2.2.3 RecycleView</h4><h2 id="3-碎片"><a href="#3-碎片" class="headerlink" title="3. 碎片"></a>3. 碎片</h2><p>碎片可以有效解决手机平板分辨率不同产生的布局难看的问题，当屏幕分辨率大的时候引入两个碎片</p>
+<h3 id="3-1-碎片使用"><a href="#3-1-碎片使用" class="headerlink" title="3.1 碎片使用"></a>3.1 碎片使用</h3><p>创建碎片</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200619081355230.png" alt="image-20200619081355230"></p>
+<p>设置好碎片布局之后在活动的xml布局中引入fragment，选择要引入的碎片，调整布局</p>
+<p>效果如图</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200619090032158.png" alt="image-20200619090032158"></p>
+<h3 id="3-2-动态使用碎片"><a href="#3-2-动态使用碎片" class="headerlink" title="3.2 动态使用碎片"></a>3.2 动态使用碎片</h3><p>再创建一个新的右侧碎片</p>
+<p>修改当前活动</p>
+<pre><code class="java">public class MainActivity2 extends AppCompatActivity implements View.OnClickListener {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main2);
+        Button button = (Button)findViewById(R.id.left_btn);
+        button.setOnClickListener(this);
+        replaceFragment(new FragmentRight());
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.left_btn:
+                replaceFragment(new FragmentAnotherRight());
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.right_layout, fragment);
+        fragmentTransaction.commit();
+    }
+}
+</code></pre>
+<p>活动创建时初始化一个右侧碎片，当左侧按钮触发时更换一个右侧碎片</p>
+<h3 id="3-3-返回栈"><a href="#3-3-返回栈" class="headerlink" title="3.3 返回栈"></a>3.3 返回栈</h3><p>实现了动态添加碎片之后还有一个问题，当点击返回按钮时会直接退出活动，要返回上一个碎片就需要添加一个返回栈</p>
+<p>只需要修改replaceFragment方法，调用addToBackStack方法，一般传入null即可</p>
+<pre><code class="java">    public void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.right_layout, fragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
+</code></pre>
+<h3 id="3-4-碎片通信"><a href="#3-4-碎片通信" class="headerlink" title="3.4 碎片通信"></a>3.4 碎片通信</h3><p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200619094537683.png" alt="image-20200619094537683"></p>
+<h3 id="3-5-碎片生命周期"><a href="#3-5-碎片生命周期" class="headerlink" title="3.5 碎片生命周期"></a>3.5 碎片生命周期</h3><p><img src="C:\Users\刘浩\Desktop\笔记\Android\image-20200619094637410.png" alt="image-20200619094637410"></p>
+<h3 id="3-6-使用限定符响应式布局"><a href="#3-6-使用限定符响应式布局" class="headerlink" title="3.6 使用限定符响应式布局"></a>3.6 使用限定符响应式布局</h3><p>在res目录下新建<code>layout-large</code>或者<code>layout-sw600dp</code>文件夹，新建一个同名的活动布局，当满足条件时，安卓会自动加载相应的布局</p>
+<p>普通的布局只有一个fragment大屏设备的引入两个fragment</p>
+<p>手机模拟器</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200619143058896.png" alt="image-20200619143058896"></p>
+<p>平板模拟器</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200619143520120.png" alt="image-20200619143520120"></p>
+<h2 id="4-广播机制"><a href="#4-广播机制" class="headerlink" title="4. 广播机制"></a>4. 广播机制</h2><h3 id="4-1-简介"><a href="#4-1-简介" class="headerlink" title="4.1 简介"></a>4.1 简介</h3><ul>
+<li>标准广播：异步执行，所有的广播接收器会在同一时间接收到广播消息，不能被截断</li>
+<li>有序广播：同步执行，只有一个接收器能接受广播消息，接收完才能依次执行，可以被截断</li>
+</ul>
+<h3 id="4-2-接收广播"><a href="#4-2-接收广播" class="headerlink" title="4.2 接收广播"></a>4.2 接收广播</h3><h4 id="4-2-1-动态注册"><a href="#4-2-1-动态注册" class="headerlink" title="4.2.1 动态注册"></a>4.2.1 动态注册</h4><p>广播接收器可以动态的对自己感兴趣的广播进行注册，可以在代码中注册也可以在AndroidMainfest中注册，前者称为动态注册，后者称为静态注册</p>
+<h5 id="4-2-1-1-动态注册监听网络变化"><a href="#4-2-1-1-动态注册监听网络变化" class="headerlink" title="4.2.1.1 动态注册监听网络变化"></a>4.2.1.1 动态注册监听网络变化</h5><p>在代码中进行注册</p>
+<pre><code class="java">public class MainActivity extends AppCompatActivity {
+
+    private IntentFilter intentFilter;
+    private NetworkChangeReceiver changeReceiver;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        ActivityController.addActivity(this);
+
+
+        // 广播
+        intentFilter = new IntentFilter();
+        intentFilter.addAction(&quot;android.net.conn.CONNECTIVITY_CHANGE&quot;);
+        changeReceiver = new NetworkChangeReceiver();
+        registerReceiver(changeReceiver, intentFilter);
+
+    }
+
+    @Override
+    public void onDestroy() {
+
+        super.onDestroy();
+        unregisterReceiver(changeReceiver);
+    }
+}
+</code></pre>
+<pre><code class="java">public class NetworkChangeReceiver extends BroadcastReceiver {
+
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        ConnectivityManager connectivityManager = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        if(networkInfo != null &amp;&amp; networkInfo.isConnected()) {
+            Toast.makeText(context, &quot;网络已连接&quot;, Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(context, &quot;网络未连接&quot;, Toast.LENGTH_SHORT).show();
+        }
+    }
+}
+</code></pre>
+<blockquote>
+<p><code>connectivityManager.getActiveNetworkInfo();</code>需要添加权限，Android Studio可以自动添加</p>
+<p><uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission></p>
+</blockquote>
+<p>当网络连接发生变化时会弹出Toast进行消息提示</p>
+<h4 id="4-2-2-静态注册"><a href="#4-2-2-静态注册" class="headerlink" title="4.2.2 静态注册"></a>4.2.2 静态注册</h4><p>开机自启</p>
+<p>new -&gt; other -&gt; Broadcast Recriver</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200622090251526.png" alt="image-20200622090251526"></p>
+<p>在AndroidMainfest.xml中添加代码</p>
+<pre><code class="xml">&lt;uses-permission android:name=&quot;android.permission.RECEIVE_BOOT_COMPLETED&quot; /&gt;
+···
+&lt;application&gt;
+    ···
+    &lt;receiver
+        android:name=&quot;.BootCompleteReceiver&quot;
+        android:enabled=&quot;true&quot;
+        android:exported=&quot;true&quot;&gt;
+        &lt;intent-filter&gt;
+            &lt;action android:name=&quot;android.intent.action.BOOT_COMPLETED&quot;/&gt;
+        &lt;/intent-filter&gt;
+    &lt;/receiver&gt;
+&lt;/application&gt;
+</code></pre>
+<h3 id="4-3-发送自定义广播"><a href="#4-3-发送自定义广播" class="headerlink" title="4.3 发送自定义广播"></a>4.3 发送自定义广播</h3><h4 id="4-3-1-标准广播"><a href="#4-3-1-标准广播" class="headerlink" title="4.3.1 标准广播"></a>4.3.1 标准广播</h4><p>新建一个广播接收器，并静态注册，这里的action是自定义的不再是系统服务</p>
+<p>在活动中通过按钮发送广播并携带数据</p>
+<pre><code class="java">Button btn_receiver = (Button)findViewById(R.id.btn_receiver);
+btn_receiver.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Intent intent = new Intent(&quot;com.example.helloworld.MY_RECEIVER&quot;);
+        intent.putExtra(&quot;my_blog&quot;, &quot;test&quot;);
+        sendBroadcast(intent);
+    }
+});
+</code></pre>
+<p>在接收器中接收数据并显示</p>
+<pre><code class="java">public class MyReceiver extends BroadcastReceiver {
+
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        String msg = intent.getStringExtra(&quot;my_blog&quot;);
+        Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
+    }
+}
+</code></pre>
+<h4 id="4-3-2-有序广播"><a href="#4-3-2-有序广播" class="headerlink" title="4.3.2 有序广播"></a>4.3.2 有序广播</h4><h3 id="4-4-本地广播"><a href="#4-4-本地广播" class="headerlink" title="4.4 本地广播"></a>4.4 本地广播</h3><p>全局系统的广播存在安全隐患容易被其他程序截获，本地广播只能在程序内部进行传递，提高安全性</p>
+<ul>
+<li><p>导入第三方依赖LocalBroadcastManager</p>
+</li>
+<li><p>新建本地广播接收器</p>
+</li>
+<li><p>在活动中动态注册接收器，并添加事件发送广播</p>
+<p><code>`</code>java<br>public class MainActivity extends AppCompatActivity {</p>
+<pre><code>private IntentFilter intentFilter;
+private LocalBroadcastManager localBroadcastManager;
+private LocalReceiver localReceiver;
+
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+
+    ActivityController.addActivity(this);
+
+    intentFilter = new IntentFilter();
+    localBroadcastManager = LocalBroadcastManager.getInstance(this);
+    intentFilter.addAction(&quot;com.example.helloworld.LOCAL_BROADCAST&quot;);
+    localReceiver = new LocalReceiver();
+    localBroadcastManager.registerReceiver(localReceiver, intentFilter);
+</code></pre></li>
+</ul>
+<pre><code>      Button btn_local = (Button)findViewById(R.id.btn_local);
+      btn_local.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+              Intent intent = new Intent(&quot;com.example.helloworld.LOCAL_BROADCAST&quot;);
+              intent.putExtra(&quot;my_blog&quot;, &quot;test local&quot;);
+              localBroadcastManager.sendBroadcast(intent);
+          }
+      });
+
+  }
+
+  @Override
+  public void onDestroy() {
+
+      super.onDestroy();
+      localBroadcastManager.unregisterReceiver(localReceiver);
+  }
+</code></pre><p>  }</p>
+<pre><code>
+&gt; 本地广播只能动态注册
+
+### 4.5 最佳实践——强制下线
+
++ 创建广播接收器接收强制下线广播
++ 接收器添加提示框提示强制下线
++ 关闭所有活动，通过ActivityController
++ 重启登陆活动
+
+## 5. 数据持久化
+
+### 5.1 文件存储
+
+新建一个文件操作活动，在布局文件中添加一个`EditText`
+
+```xml
+&lt;EditText
+    android:id=&quot;@+id/file_edit&quot;
+    android:layout_width=&quot;wrap_content&quot;
+    android:layout_height=&quot;match_parent&quot;
+    android:hint=&quot;edit in here&quot; /&gt;
+</code></pre><h4 id="5-1-1-将数据存储到文件"><a href="#5-1-1-将数据存储到文件" class="headerlink" title="5.1.1 将数据存储到文件"></a>5.1.1 将数据存储到文件</h4><p>在活动中添加代码，编写保存文件的方法并且在活动销毁时触发保存事件</p>
+<pre><code class="java">public class FileActivity extends AppCompatActivity {
+
+    private EditText editText;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_file);
+        editText = (EditText)findViewById(R.id.file_edit);
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        String input = editText.getText().toString();
+        save(input);
+    }
+
+    public void save(String inputText) {
+        FileOutputStream fileOutputStream = null;
+        BufferedWriter bufferedWriter = null;
+
+        try {
+            fileOutputStream = openFileOutput(&quot;data&quot;, Context.MODE_PRIVATE);
+            bufferedWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream));
+            bufferedWriter.write(inputText);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if(bufferedWriter != null) {
+                try {
+                    bufferedWriter.close();
+                    Toast.makeText(FileActivity.this, &quot;saved success&quot;, Toast.LENGTH_SHORT).show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+}
+</code></pre>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200622173208262.png" alt="image-20200622173208262"></p>
+<h4 id="5-1-2-从文件中读取数据"><a href="#5-1-2-从文件中读取数据" class="headerlink" title="5.1.2 从文件中读取数据"></a>5.1.2 从文件中读取数据</h4><p>在活动中增加加载方法，活动创建时先读取文件，有文件直接加载</p>
+<pre><code class="java">public class FileActivity extends AppCompatActivity {
+
+    private EditText editText;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_file);
+        editText = (EditText)findViewById(R.id.file_edit);
+
+        String text = load();
+        if(!TextUtils.isEmpty(text)) {
+            editText.setText(text);
+            editText.setSelection(text.length());
+            Toast.makeText(FileActivity.this, &quot;loading success&quot;, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+···
+
+    public String load() {
+        FileInputStream in = null;
+        BufferedReader reader = null;
+        StringBuilder content = new StringBuilder();
+
+        try {
+            in = openFileInput(&quot;data&quot;);
+            reader = new BufferedReader(new InputStreamReader(in));
+            String line = &quot;&quot;;
+            while((line = reader.readLine()) != null) {
+                content.append(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if(reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return content.toString();
+    }
+}
+</code></pre>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200622173519500.png" alt="image-20200622173519500"></p>
+<h3 id="5-2-SharedPreferences存储"><a href="#5-2-SharedPreferences存储" class="headerlink" title="5.2 SharedPreferences存储"></a>5.2 SharedPreferences存储</h3><p>存储文件是xml格式</p>
+<p>首先创建一个活动，布局中添加两个按钮，一个save一个load</p>
+<h4 id="5-2-1将数据存储到SharedPreferences中"><a href="#5-2-1将数据存储到SharedPreferences中" class="headerlink" title="5.2.1将数据存储到SharedPreferences中"></a>5.2.1将数据存储到SharedPreferences中</h4><p>首先需要获取SharedPreferences对象，Android中提供了三种方式获取SharedPreferences对象</p>
+<ol>
+<li>Context类中的getSharedPreferences()方法，两个参数：指定SharedPreferences文件名；指定操作模式，目前<code>只有MODE_PRIVATE可选</code></li>
+<li>Activity类中getPreferences()方法：只有一个参数：操作模式。（默认当前活动名为SharedPreferences文件名）</li>
+<li>PreferenceManager类中getDefaultSharedPreferences()方法：<code>静态方法</code>，接收一个Context参数，使用当前包名为前缀来命名SharedPreferences文件</li>
+</ol>
+<pre><code class="java">SharedPreferences.Editor editor = getSharedPreferences(&quot;data_preference&quot;, MODE_PRIVATE).edit();
+editor.putString(&quot;name&quot;, &quot;Tom&quot;);
+editor.putInt(&quot;age&quot;, 20);
+editor.putBoolean(&quot;married&quot;, false);
+editor.apply();
+</code></pre>
+<h4 id="5-2-2从SharedPreferences中读取数据"><a href="#5-2-2从SharedPreferences中读取数据" class="headerlink" title="5.2.2从SharedPreferences中读取数据"></a>5.2.2从SharedPreferences中读取数据</h4><p>从上面可以看出SharedPreferences存储文件非常简单，读取文件更为简便，从SharedPreferences对象中一系列get方法即可获得数据</p>
+<pre><code class="java">SharedPreferences editor_load = getSharedPreferences(&quot;data_preference&quot;, MODE_PRIVATE);
+String name = editor_load.getString(&quot;name&quot;, &quot;&quot;);
+int age = editor_load.getInt(&quot;age&quot;, 0);
+Boolean married = editor_load.getBoolean(&quot;married&quot;, false);
+</code></pre>
+<h4 id="5-2-3-代码及效果展示"><a href="#5-2-3-代码及效果展示" class="headerlink" title="5.2.3 代码及效果展示"></a>5.2.3 代码及效果展示</h4><pre><code class="java">public class PreferencesActivity extends AppCompatActivity implements View.OnClickListener {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_preferences);
+
+        Button btn_save = (Button)findViewById(R.id.btn_preference_save);
+        btn_save.setOnClickListener(this);
+        Button btn_load = (Button)findViewById(R.id.btn_preference_load);
+        btn_load.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_preference_save:
+                SharedPreferences.Editor editor = getSharedPreferences(&quot;data_preference&quot;, MODE_PRIVATE).edit();
+                editor.putString(&quot;name&quot;, &quot;Tom&quot;);
+                editor.putInt(&quot;age&quot;, 20);
+                editor.putBoolean(&quot;married&quot;, false);
+                editor.apply();
+                Toast.makeText(PreferencesActivity.this, &quot;file save succeed&quot;, Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.btn_preference_load:
+                SharedPreferences editor_load = getSharedPreferences(&quot;data_preference&quot;, MODE_PRIVATE);
+                String name = editor_load.getString(&quot;name&quot;, &quot;&quot;);
+                int age = editor_load.getInt(&quot;age&quot;, 0);
+                Boolean married = editor_load.getBoolean(&quot;married&quot;, false);
+                String marry = married?&quot;结婚了&quot;:&quot;没结婚&quot;;
+                Toast.makeText(PreferencesActivity.this, name+&quot;今年&quot;+age+&quot;岁&quot;+marry, Toast.LENGTH_SHORT).show();
+                break;
+            default:
+                break;
+        }
+    }
+}
+</code></pre>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200623083710433.png" alt="image-20200623083710433"></p>
+<h3 id="5-3-数据库SQLite"><a href="#5-3-数据库SQLite" class="headerlink" title="5.3 数据库SQLite"></a>5.3 数据库SQLite</h3><p>SQLite是一款轻量级关系数据库，支持SQL语法，遵循ACID</p>
+<h4 id="5-3-1-创建数据库"><a href="#5-3-1-创建数据库" class="headerlink" title="5.3.1 创建数据库"></a>5.3.1 创建数据库</h4><p>略</p>
+<h4 id="5-3-2-LitePal操作数据库"><a href="#5-3-2-LitePal操作数据库" class="headerlink" title="5.3.2 LitePal操作数据库"></a>5.3.2 LitePal操作数据库</h4><p>通过JavaBean操作数据库</p>
+<h5 id="引入依赖"><a href="#引入依赖" class="headerlink" title="引入依赖"></a>引入依赖</h5><p><code>LitePal</code></p>
+<h5 id="配置xml映射"><a href="#配置xml映射" class="headerlink" title="配置xml映射"></a>配置xml映射</h5><p>app.src.main目录下新建assets目录，新建litepal.xml配置文件</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+&lt;litepal&gt;
+    &lt;dbname value=&quot;BookStore&quot; /&gt;
+    &lt;version value=&quot;1&quot; /&gt;
+    &lt;list&gt;&lt;/list&gt;
+&lt;/litepal&gt;
+</code></pre>
+<p>修改Mainfest，application新加属性<code>android:name=&quot;org.litepal.LitePalApplication&quot;</code></p>
+<h5 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h5><p>创建JavaBean</p>
+<p>添加活动代码，当数据库访问一次之后就创建了</p>
+<p><img src="C:\Users\刘浩\Desktop\笔记\Android\image-20200623112341019.png" alt="image-20200623112341019"></p>
+<blockquote>
+<p>对数据进行操作需要让JavaBean继承DataSupport</p>
+</blockquote>
+<h5 id="添加数据"><a href="#添加数据" class="headerlink" title="添加数据"></a>添加数据</h5><p><img src="C:\Users\刘浩\Desktop\笔记\Android\image-20200623113555427.png" alt="image-20200623113555427"></p>
+<h5 id="更新数据"><a href="#更新数据" class="headerlink" title="更新数据"></a>更新数据</h5><p>一种方法是将要修改的数据值全部set然后save在set要修改的值再次save</p>
+<p>另一种方法用updateAll</p>
+<pre><code class="java">book.setPrice(14.5);
+book.updateAll(&quot;name = ? and author = ?&quot;, &quot;Tom&quot;,&quot;第一行代码&quot;);
+</code></pre>
+<p>设置要修改的价格，然后使用updateAll方法，方法中的参数是约束条件，当当与where查询，只修改匹配到的信息</p>
+<h5 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h5><p>使用DataSupport中的deleteAll方法，第一个参数是眼删除的表名，第二个参数是查询条件</p>
+<pre><code class="java">DataSupport.deleteAll(Book.class, &quot;price &lt; ?&quot;, &quot;14&quot;);
+</code></pre>
+<h5 id="查询数据"><a href="#查询数据" class="headerlink" title="查询数据"></a>查询数据</h5><p>使用 <code>List&lt;Book&gt; list = DataSupport.findAll(Book.class);</code>可以将所有的数据返回到一个List中</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200623141237701.png" alt="image-20200623141237701"></p>
+<p>此外，还支持原生查询</p>
+<pre><code class="java">Cursor cursor = DataSupport.findBySQL(&quot;select * from book where name = ?&quot;, &quot;第一行代码&quot;);
+</code></pre>
+<p>返回的是一个Cuesor对象，需要将数据一一取出</p>
+<h2 id="6-跨程序共享数据——内容提供器"><a href="#6-跨程序共享数据——内容提供器" class="headerlink" title="6. 跨程序共享数据——内容提供器"></a>6. 跨程序共享数据——内容提供器</h2><h3 id="6-1-运行时权限"><a href="#6-1-运行时权限" class="headerlink" title="6.1 运行时权限"></a>6.1 运行时权限</h3><p>安卓6.0以上加入了运行时权限，危险权限需要用户授权</p>
+<p>参考代码</p>
+<pre><code class="java">public class PermissionActivity extends AppCompatActivity {
+
+    List&lt;String&gt; contacts = new ArrayList&lt;&gt;();
+    ArrayAdapter&lt;String&gt; adapter;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_permission);
+
+        ListView list = (ListView) findViewById(R.id.list_contact);
+        adapter = new ArrayAdapter&lt;String&gt;(this, android.R.layout.simple_list_item_1, contacts);
+        list.setAdapter(adapter);
+
+
+        if (ContextCompat.checkSelfPermission(PermissionActivity.this, Manifest.permission.READ_CONTACTS)
+            != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(PermissionActivity.this, new String[]{Manifest.permission.READ_CONTACTS}, 1);
+        } else {
+            readContacts();
+        }
+    }
+
+    private void readContacts() {
+        Cursor cursor = null;
+        try {
+            cursor = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, null, null, null);
+            if(cursor != null) {
+                while (cursor.moveToNext()) {
+                    String name = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
+                    String number = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+                    contacts.add(name+ &quot;\n&quot; +number);
+                }
+                adapter.notifyDataSetChanged();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if(cursor != null) {
+                cursor.close();
+            }
+        }
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            case 1:
+                if (grantResults.length &gt; 0 &amp;&amp; grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    readContacts();
+                } else {
+                    Toast.makeText(PermissionActivity.this, &quot;no permission&quot;, Toast.LENGTH_SHORT).show();
+                }
+                break;
+            default:
+                break;
+        }
+    }
+}
+</code></pre>
+<h3 id="6-2-创建内容提供器"><a href="#6-2-创建内容提供器" class="headerlink" title="6.2 创建内容提供器"></a>6.2 创建内容提供器</h3><h2 id="7-运用手机多媒体"><a href="#7-运用手机多媒体" class="headerlink" title="7. 运用手机多媒体"></a>7. 运用手机多媒体</h2><h3 id="7-1-使用通知"><a href="#7-1-使用通知" class="headerlink" title="7.1 使用通知"></a>7.1 使用通知</h3><p>首先获取通知管理器对象，然后创建通知对象，通过通知管理器下发通知，每个通知的id都是不同的</p>
+<p>代码示例通过按钮触发通知</p>
+<pre><code class="java">Button btn_notification = (Button)findViewById(R.id.btn_notification);
+btn_notification.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        NotificationManager manager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
+        Notification notification = new Notification.Builder(PermissionActivity.this)
+                .setContentTitle(&quot;1条新消息&quot;)
+                .setContentText(&quot;XXX请求添加好友&quot;)
+                .setWhen(System.currentTimeMillis())
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher))
+                .build();
+        manager.notify(1, notification);
+    }
+});
+</code></pre>
+<p>这里可以看到按钮点击之后通知栏显示了一条通知</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200624105029248.png" alt="image-20200624105029248"></p>
+<p>但是，这里的通知不能点击，要再让它可以点击</p>
+<p>这时需要用到<code>PendingIntent</code>，可以理解为延时的Intent</p>
+<p>将代码稍作改装，就得到了可以点击的通知</p>
+<pre><code class="java">Button btn_notification = (Button)findViewById(R.id.btn_notification);
+btn_notification.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Intent intent = new Intent(PermissionActivity.this, MainActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(PermissionActivity.this, 0, intent, 0);
+        NotificationManager manager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
+        Notification notification = new Notification.Builder(PermissionActivity.this)
+                .setContentTitle(&quot;1条新消息&quot;)
+                .setContentText(&quot;XXX请求添加好友&quot;)
+                .setWhen(System.currentTimeMillis())
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher))
+                .setContentIntent(pendingIntent)
+                .build();
+        manager.notify(1, notification);
+    }
+});
+</code></pre>
+<p>距离完成还差一步，点击通知之后通知应该是消失的</p>
+<p>有两种方法：</p>
+<ul>
+<li><p>通知追加setAutoCancel方法</p>
+<pre><code class="java">···
+    .setAutoCancel(true)
+</code></pre>
+</li>
+<li><p>通过通知管理器的canael方法根据通知id消除通知</p>
+<pre><code class="java">···
+    NotificationManager manager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
+    manager.cancel(1)
+</code></pre>
+</li>
+</ul>
+<p>长文本通知</p>
+<pre><code class="java">.setStyle(new Notification.BigTextStyle().bigText(&quot;* 当URL没有指定文件名时(比如：https://www.w3schools.com/css/)，&quot; +
+                                &quot;服务器将返回默认的文件名，&quot; +
+                                &quot;通用的默认文件名是：index.html、index.htm、default.html、和default.html\n&quot; +
+                                &quot;* 但如果你的服务器仅配置了“index.html”作为默认文件名，那么你的文件就必须命名index.html，不能用index.htm\n&quot; +
+                                &quot;* 不过服务器可以配置多个默认的文件名，所以你可以根据需要设置多个默认文件名\n&quot; +
+                                &quot;* 总而言之，HTML文件的完整扩展名是.html，我们没有理由不用它啊~~~&quot;))
+</code></pre>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200624112021971.png" alt="image-20200624112021971"></p>
+<p>图片通知：</p>
+<pre><code class="java">.setStyle(new Notification.BigPictureStyle().bigPicture(BitmapFactory.decodeResource(getResources(),  R.drawable.wj)))
+</code></pre>
+<h3 id="7-2-调用摄像头和相册"><a href="#7-2-调用摄像头和相册" class="headerlink" title="7.2 调用摄像头和相册"></a>7.2 调用摄像头和相册</h3><h2 id="8-网络"><a href="#8-网络" class="headerlink" title="8. 网络"></a>8. 网络</h2><h3 id="8-1-webView"><a href="#8-1-webView" class="headerlink" title="8.1 webView"></a>8.1 webView</h3><p>应用程序内引入网页，不需要打开系统浏览器</p>
+<p>创建活动，布局添加webview组件</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    tools:context=&quot;.WebActivity&quot;&gt;
+
+    &lt;WebView
+        android:id=&quot;@+id/web_view&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;match_parent&quot; /&gt;
+&lt;/LinearLayout&gt;
+</code></pre>
+<p>编辑活动代码</p>
+<pre><code class="java">public class WebActivity extends AppCompatActivity {
+
+    @SuppressLint(&quot;SetJavaScriptEnabled&quot;)
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_web);
+
+        WebView webView = (WebView)findViewById(R.id.web_view);
+        // 设置允许js，否则网页逻辑可能无法运行
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.setWebViewClient(new WebViewClient());
+        webView.loadUrl(&quot;http://www.baidu.com&quot;);
+    }
+}
+</code></pre>
+<blockquote>
+<p>该活动需要网络权限</p>
+<p> <code>&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot;/&gt;</code></p>
+</blockquote>
+<h3 id="8-2-HTTP协议访问网络"><a href="#8-2-HTTP协议访问网络" class="headerlink" title="8.2 HTTP协议访问网络"></a>8.2 HTTP协议访问网络</h3><h4 id="8-2-1-HttpURLConnection"><a href="#8-2-1-HttpURLConnection" class="headerlink" title="8.2.1 HttpURLConnection"></a>8.2.1 HttpURLConnection</h4><p>安卓上发送HTTP请求有两种方式HttpURLConnection和HttpClient，由于HttpClientd的API数量多，扩展困难已经在6.0被移除</p>
+<p>创建布局</p>
+<pre><code class="xml">    &lt;Button
+        android:id=&quot;@+id/btn_http&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;HTTP请求&quot; /&gt;
+    &lt;TextView
+        android:id=&quot;@+id/text_http&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;wrap_content&quot; /&gt;
+</code></pre>
+<p>编辑活动代码</p>
+<pre><code class="java">public class WebActivity extends AppCompatActivity {
+    TextView responseText;
+
+    @SuppressLint(&quot;SetJavaScriptEnabled&quot;)
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_web);
+
+        Button sentRequest = (Button)findViewById(R.id.btn_http);
+        responseText = (TextView)findViewById(R.id.text_http);
+        sentRequest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendRequestWithHttpURLConnection();
+            }
+        });
+
+    }
+
+    private void sendRequestWithHttpURLConnection() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                // 创建HttpURLConnection对象
+                HttpURLConnection connection = null;
+                BufferedReader reader = null;
+                try {
+                    // URL
+                    URL url = new URL(&quot;http://www.baidu.com&quot;);
+                    connection = (HttpURLConnection)url.openConnection();// 建立连接
+                    connection.setRequestMethod(&quot;GET&quot;);// 请求方式
+                    connection.setConnectTimeout(8000);// 超时时间
+                    connection.setReadTimeout(8000);
+                    InputStream in = connection.getInputStream(); // 获取输入流
+                    reader = new BufferedReader(new InputStreamReader(in));
+                    StringBuilder response = new StringBuilder();
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        response.append(line);
+                    }
+                    showResponse(response.toString());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    // 完成后需要关闭连接
+                    if(reader != null) {
+                        try {
+                            reader.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    if(connection != null) {
+                        connection.disconnect();
+                    }
+                }
+            }
+        }).start();
+    }
+
+    private void showResponse(final String response) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                responseText.setText(response);
+            }
+        });
+    }
+}
+</code></pre>
+<blockquote>
+<p>耗时的操作不能再主线程中进行，开一个线程处理；</p>
+<p><code>new Thread().start;</code> 不要忽略start</p>
+<p>更新UI不能在子线程中，会闪退，通过runOnUiThread切换回主线程</p>
+</blockquote>
+<p>POST请求</p>
+<pre><code class="java">connection.setRequestMethod(&quot;POST&quot;);// 请求方式
+DataOutputStream out = new DataOutputStream(connection.getOutputStream());
+out.writeBytes(&quot;name=Tom&amp;password=123456&quot;);
+</code></pre>
+<p>在获取输入流之前把要提交的数据写入</p>
+<h4 id="8-2-2-使用OKHttp"><a href="#8-2-2-使用OKHttp" class="headerlink" title="8.2.2 使用OKHttp"></a>8.2.2 使用OKHttp</h4><p>在AndroidX中添加依赖<code>okhttp</code>（squareup公司的）</p>
+<p>添加新的方法使用OkHttp，把button的绑定事件改为sendRequestWithOkHttp</p>
+<pre><code class="java">private void sendRequestWithOkHttp() {
+    new Thread(new Runnable() {
+        @Override
+        public void run() {
+            try {
+                OkHttpClient client = new OkHttpClient();
+                Request request = new Request.Builder()
+                        .url(&quot;http://www.baidu.com&quot;).build();
+                Response response = client.newCall(request).execute();
+                String responseData = Objects.requireNonNull(response.body()).string();
+                showResponse(responseData);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }).start();
+}
+</code></pre>
+<p>就可以看到跟原来一样的效果</p>
+<h3 id="8-3-解析XML数据"><a href="#8-3-解析XML数据" class="headerlink" title="8.3 解析XML数据"></a>8.3 解析XML数据</h3><p>进行网络传输通常有两种格式XML和JSON</p>
+<p>课本P334</p>
+<h3 id="8-4-解析JSON数据"><a href="#8-4-解析JSON数据" class="headerlink" title="8.4 解析JSON数据"></a>8.4 解析JSON数据</h3><p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200628181700386.png" alt="image-20200628181700386"></p>
+<p>使用GSON</p>
+<p>添加依赖gson</p>
+<p>可以把JSON的格式映射成一个对象</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200628182716636.png" alt="image-20200628182716636"></p>
+<p><img src="C:\Users\刘浩\Desktop\笔记\Android\image-20200628182730935.png" alt="image-20200628182730935"></p>
+<h3 id="8-5-网络方法封装"><a href="#8-5-网络方法封装" class="headerlink" title="8.5 网络方法封装"></a>8.5 网络方法封装</h3><p>将网络方法封装到HttpUtil类中，方法作为静态方法直接调用</p>
+<p>如</p>
+<pre><code class="java">public class HttpUtil {
+    public static void sendGetRequestWithOkHttp(String address, okhttp3.Callback callback) {
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder()
+                .url(address)
+                .build();
+        client.newCall(request).enqueue(callback);
+    }
+}
+</code></pre>
+<p>调用</p>
+<pre><code class="java">private void sendRequestWithOkHttp() {
+    new Thread(new Runnable() {
+        @Override
+        public void run() {
+            HttpUtil.sendGetRequestWithOkHttp(&quot;http://www.baidu.com&quot;, new okhttp3.Callback() {
+
+                @Override
+                public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                    String responseData = Objects.requireNonNull(response.body()).string();
+                    showResponse(responseData);
+                }
+
+                @Override
+                public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                    e.printStackTrace();
+                }
+            });
+        }
+    }).start();
+}
+</code></pre>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2020/09/08/笔记/pug模板渲染/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/puglog.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/puglog.jpg">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                pug模板渲染</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+          
+            <div class="post-nepre half next">
+          
+            <a href="/2020/09/07/技术/Vue中的跨域问题/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/vue跨域.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/vue跨域.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                Vue中的跨域问题</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "AdzOvpXTwwf3KAX23DOds5C9-gzGzoHsz",
+        appKey: "olX1MHfMtrQcmemwl5lLmu4a",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg" itemprop="image" alt="小枫" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author">小枫</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>前端小白</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+
+    </div>    
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    <!-- <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 小枫<br>
+      powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer> -->
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/wordpress-rotating-ball-o.svg">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/disqus-preloader.svg">
+      </div>
+      <p style="color: #666666;">&copy2020 | <a href="http://beian.miit.gov.cn">鲁ICP备19019592号-2</a></p>
+    </div>
+    <div class="footer-device">
+      <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #b9b9b9;">Theme <a href="https://github.com/honjun/hexo-theme-sakura" target="_blank"
+            style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Sakura</a> <i
+            class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> by <a
+            href="https://2heng.xin/" target="_blank"
+            style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Mashiro</a>&<a
+            href="https://www.hojun.cn/" target="_blank"
+            style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Hojun</a>, Powered by Hexo,
+          Hosted by Coding Pages</a>
+        </span>
+      </p>
+      <!-- <p style="font-family: 'Ubuntu', sans-serif;">
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="busuanzi_container_site_pv"> 总访问量 <span id="busuanzi_value_site_pv"></span> 次 </span>
+        <span id="busuanzi_container_site_uv">| 总访客数 <span id="busuanzi_value_site_uv"></span> 人 </span>
+      </p> -->
+    </div>
+  </div><!-- .site-info -->
+</footer>
+
+
+
+
+
+<!-- <script src="/js/tocbot.js"></script> -->
+<script src="https://cdn.jsdelivr.net/gh/wallleap/cdn@latest/js/hititle.js"></script>
+
+<script type="text/javascript" src="/js/lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/InsightSearch.js"></script>
+<script type="text/javascript" src="/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="/js/zoom.min.js"></script>
+<script type="text/javascript" src="/js/sakura-app.js"></script>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine@1.3.4/dist/Valine.min.js'></script>
+<script src="/js/botui.js"></script>
+<!-- 不蒜子 网页计数器 -->
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script> -->
+<script type="text/javascript">
+  /* <![CDATA[ */
+  if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+    var Poi = { "pjax": "1", "movies": { "url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2", "name": "Unbroken.mp4", "live": "close" }, "windowheight": "fixed", "codelamp": "close", "ajaxurl": "", "order": "asc", "formpostion": "bottom" };
+  } else {
+    var Poi = { "pjax": "1", "movies": { "url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2", "name": "Unbroken.mp4", "live": "open" }, "windowheight": "auto", "codelamp": "close", "ajaxurl": "", "order": "asc", "formpostion": "bottom" };
+  }
+/* ]]> */
+
+</script>
+<script>
+  $(document).ready(function () {
+    if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+      if ($(".pattern-center").length > 0) { //有图的情况
+        tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -400,
+          scrollSmoothOffset: -85
+        });
+      } else {
+        tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+        });
+      }
+      var offsetTop = $('.toc').offset().top - 95;
+      window.onscroll = function () {
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+        if (scrollTop >= offsetTop) {
+          $('.toc').addClass('toc-fixed');
+        } else {
+          $('.toc').removeClass('toc-fixed');
+        }
+      }
+    }
+  });
+</script>
+    <div class="openNav no-select" style="height: 50px;">
+      <div class="iconflat no-select" style="width: 50px; height: 50px;">
+        <div class="icon"></div>
+      </div>
+      <div class="site-branding search-form-submit">
+        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+      </div>
+    </div>
+  </section>
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg">
+  </div>
+  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">沿途の枫景</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+      
+        <a href="https://github.com/Fengjing95" class="fa fa-github" target="_blank" style="color: #333; margin-left:20px"></a>
+      
+        <a href="https://weibo.com/5056791657/profile?is_all=1" class="fa fa-weibo" target="_blank" style="color: #dd4b39; margin-left:20px"></a>
+      
+        <a href="https://wpa.qq.com/msgrd?v=3&uin=1984779164&site=qq&menu=yes" class="fa fa-qq" target="_blank" style="color: #25c6fe; margin-left:20px"></a>
+      
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+            首页
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/archives">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+            归档
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/categories/技术/">
+                  <i class="fa fa-code" aria-hidden="true"></i>
+                  技术
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/生活/">
+                  <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                  生活
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/资源/">
+                  <i class="fa fa-cloud-download" aria-hidden="true"></i>
+                  资源
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/随想/">
+                  <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                  随想
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/笔记/">
+                  <i class="fa fa-book" aria-hidden="true"></i>
+                  笔记
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+            清单
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/tags/悦读/">
+                  <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                  书单
+                </a>
+              </li>
+            
+              <li>
+                <a href="/bangumi/">
+                  <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                  番组
+                </a>
+              </li>
+            
+              <li>
+                <a href="/music/">
+                  <i class="fa fa-headphones" aria-hidden="true"></i>
+                  歌单
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags/图集/">
+                  <i class="fa fa-photo" aria-hidden="true"></i>
+                  图集
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/comment/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+            留言板
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/links/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+            友人帐
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/donate/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+            赞赏
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+            关于
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/about/">
+                  <i class="fa fa-meetup" aria-hidden="true"></i>
+                  我？
+                </a>
+              </li>
+            
+              <li>
+                <a href="/theme-sakura/">
+                  <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+                  主题
+                </a>
+              </li>
+            
+              <li>
+                <a href="/lab/">
+                  <i class="fa fa-cogs" aria-hidden="true"></i>
+                  Lab
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/client/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-android faa-vertical" aria-hidden="true"></i>
+            客户端
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/atom.xml">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+            RSS
+          </span>
+        </a>
+        
+      </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2019 hexo-sakura</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js
+
+    id="2660651585"
+
+    server="netease"
+
+    type="playlist"
+
+    fixed="true"
+
+    autoplay="false"
+
+    loop="all"
+
+    order="random"
+
+    preload="auto"
+
+    volume="0.7"
+
+    mutex="true"
+
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script>
+</body>
+</html>
