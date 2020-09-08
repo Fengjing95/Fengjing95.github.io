@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://fengjing95.github.io/"/>
-  <updated>2020-09-08T01:07:07.883Z</updated>
+  <updated>2020-09-08T11:16:00.057Z</updated>
   <id>https://fengjing95.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>webpack笔记</title>
+    <link href="https://fengjing95.github.io/2020/09/08/%E7%AC%94%E8%AE%B0/webpack/"/>
+    <id>https://fengjing95.github.io/2020/09/08/笔记/webpack/</id>
+    <published>2020-09-08T11:14:28.126Z</published>
+    <updated>2020-09-08T11:16:00.057Z</updated>
+    
+    <summary type="html">
+    
+      Webpack是一个非常流行的前端资源加载/打包工具
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://fengjing95.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="node" scheme="https://fengjing95.github.io/tags/node/"/>
+    
+  </entry>
   
   <entry>
     <title>pug模板渲染</title>
@@ -393,26 +413,6 @@
     
     
       <category term="js" scheme="https://fengjing95.github.io/tags/js/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Vue组件通信</title>
-    <link href="https://fengjing95.github.io/2020/08/04/%E6%8A%80%E6%9C%AF/Vue%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1/"/>
-    <id>https://fengjing95.github.io/2020/08/04/技术/Vue组件通信/</id>
-    <published>2020-08-04T13:44:18.572Z</published>
-    <updated>2020-09-05T09:34:40.002Z</updated>
-    
-    <summary type="html">
-    
-      Vue组件之间传递数据的方式
-    
-    </summary>
-    
-      <category term="技术" scheme="https://fengjing95.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="vue" scheme="https://fengjing95.github.io/tags/vue/"/>
     
   </entry>
   
