@@ -695,6 +695,17 @@ new Vue({
 </code></pre>
 <p>然后运行项目，查看效果</p>
 <p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ录屏20200907170708 00_00_00-00_00_30.gif" alt="QQ录屏20200907170708 00_00_00-00_00_30"></p>
+<h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><p>先来看效果</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ录屏20200908175038 00_00_00-00_00_30.gif" alt="QQ录屏20200908175038 00_00_00-00_00_30"></p>
+<p>东西就这么个东西，感觉没啥好说的，直接上代码吧，<a href="https://gitee.com/liuhao1108/toy-chat.git" target="_blank" rel="noopener">传送门</a></p>
+<p>主要记一下过程中遇到的问题</p>
+<ol>
+<li><p>给输入框添加回车事件时，第三方框架中不可以直接用<a href="mailto:`@keyup.enter" target="_blank" rel="noopener">`@keyup.enter</a><code>，而是要用</code>@keyup.enter.native`</p>
+</li>
+<li><p>后端在往前端发送消息时使用的主题是什么，前端就用什么主题接收，比如</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200908190711766.png" alt="image-20200908190711766"></p>
+</li>
+</ol>
 
         </div>
         <!-- .entry-content -->
