@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://easyremember.cn/2020/09/09/%E6%8A%80%E6%9C%AF/webpack%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/</loc>
+    
+    <lastmod>2020-09-09</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://easyremember.cn/2020/09/09/%E8%B5%84%E6%BA%90/hexo%E5%8D%9A%E5%AE%A2SEO%E4%BC%98%E5%8C%96/</loc>
     
     <lastmod>2020-09-09</lastmod>
@@ -389,14 +396,14 @@
 
   
   <url>
-    <loc>https://easyremember.cn/tags/Node/</loc>
+    <loc>https://easyremember.cn/tags/js/</loc>
     <lastmod>2020-09-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://easyremember.cn/tags/js/</loc>
+    <loc>https://easyremember.cn/tags/Node/</loc>
     <lastmod>2020-09-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -410,14 +417,14 @@
   </url>
   
   <url>
-    <loc>https://easyremember.cn/tags/node/</loc>
+    <loc>https://easyremember.cn/tags/vue/</loc>
     <lastmod>2020-09-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://easyremember.cn/tags/vue/</loc>
+    <loc>https://easyremember.cn/tags/node/</loc>
     <lastmod>2020-09-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -438,14 +445,14 @@
   </url>
   
   <url>
-    <loc>https://easyremember.cn/tags/%E6%82%A6%E8%AF%BB/</loc>
+    <loc>https://easyremember.cn/tags/%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2020-09-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://easyremember.cn/tags/%E7%AC%94%E8%AE%B0/</loc>
+    <loc>https://easyremember.cn/tags/%E6%82%A6%E8%AF%BB/</loc>
     <lastmod>2020-09-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -482,14 +489,14 @@
   </url>
   
   <url>
-    <loc>https://easyremember.cn/categories/%E5%B7%A5%E5%85%B7/</loc>
+    <loc>https://easyremember.cn/categories/%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2020-09-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://easyremember.cn/categories/%E7%AC%94%E8%AE%B0/</loc>
+    <loc>https://easyremember.cn/categories/%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2020-09-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
