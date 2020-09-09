@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://easyremember.cn/2020/08/18/%E6%8A%80%E6%9C%AF/ES6%E5%92%8CCommonJS/</loc>
+    <lastmod>2020-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://easyremember.cn/2020/08/27/%E6%8A%80%E6%9C%AF/call%E5%92%8Capply/</loc>
+    <lastmod>2020-09-09</lastmod>
+  </url>
+  <url>
     <loc>https://easyremember.cn/2020/09/08/%E7%AC%94%E8%AE%B0/webpack/</loc>
     <lastmod>2020-09-08</lastmod>
   </url>
@@ -74,14 +82,6 @@
   </url>
   <url>
     <loc>https://easyremember.cn/2020/08/17/%E6%8A%80%E6%9C%AF/Egg%E5%B8%B8%E7%94%A8%E7%9A%84%E5%8C%85/</loc>
-    <lastmod>2020-09-05</lastmod>
-  </url>
-  <url>
-    <loc>https://easyremember.cn/2020/08/27/%E6%8A%80%E6%9C%AF/call&apply/</loc>
-    <lastmod>2020-09-05</lastmod>
-  </url>
-  <url>
-    <loc>https://easyremember.cn/2020/08/18/%E6%8A%80%E6%9C%AF/ES6&CommonJS/</loc>
     <lastmod>2020-09-05</lastmod>
   </url>
   <url>
