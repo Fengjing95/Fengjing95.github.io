@@ -5,9 +5,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="https://fengjing95.github.io/"/>
+  <link href="https://easyremember.cn/"/>
   <updated>2020-09-08T11:16:00.057Z</updated>
-  <id>https://fengjing95.github.io/</id>
+  <id>https://easyremember.cn/</id>
   
   <author>
     <name>小枫</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>webpack笔记</title>
-    <link href="https://fengjing95.github.io/2020/09/08/%E7%AC%94%E8%AE%B0/webpack/"/>
-    <id>https://fengjing95.github.io/2020/09/08/笔记/webpack/</id>
+    <link href="https://easyremember.cn/2020/09/08/%E7%AC%94%E8%AE%B0/webpack/"/>
+    <id>https://easyremember.cn/2020/09/08/笔记/webpack/</id>
     <published>2020-09-08T11:14:28.126Z</published>
     <updated>2020-09-08T11:16:00.057Z</updated>
     
@@ -29,17 +29,17 @@
     
     </summary>
     
-      <category term="笔记" scheme="https://fengjing95.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+      <category term="笔记" scheme="https://easyremember.cn/categories/%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="node" scheme="https://fengjing95.github.io/tags/node/"/>
+      <category term="node" scheme="https://easyremember.cn/tags/node/"/>
     
   </entry>
   
   <entry>
     <title>pug模板渲染</title>
-    <link href="https://fengjing95.github.io/2020/09/08/%E7%AC%94%E8%AE%B0/pug%E6%A8%A1%E6%9D%BF%E6%B8%B2%E6%9F%93/"/>
-    <id>https://fengjing95.github.io/2020/09/08/笔记/pug模板渲染/</id>
+    <link href="https://easyremember.cn/2020/09/08/%E7%AC%94%E8%AE%B0/pug%E6%A8%A1%E6%9D%BF%E6%B8%B2%E6%9F%93/"/>
+    <id>https://easyremember.cn/2020/09/08/笔记/pug模板渲染/</id>
     <published>2020-09-08T01:04:47.328Z</published>
     <updated>2020-09-08T01:07:07.883Z</updated>
     
@@ -49,17 +49,17 @@
     
     </summary>
     
-      <category term="笔记" scheme="https://fengjing95.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+      <category term="笔记" scheme="https://easyremember.cn/categories/%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="node" scheme="https://fengjing95.github.io/tags/node/"/>
+      <category term="node" scheme="https://easyremember.cn/tags/node/"/>
     
   </entry>
   
   <entry>
     <title>Android笔记</title>
-    <link href="https://fengjing95.github.io/2020/09/07/%E7%AC%94%E8%AE%B0/Android%E7%AC%94%E8%AE%B0/"/>
-    <id>https://fengjing95.github.io/2020/09/07/笔记/Android笔记/</id>
+    <link href="https://easyremember.cn/2020/09/07/%E7%AC%94%E8%AE%B0/Android%E7%AC%94%E8%AE%B0/"/>
+    <id>https://easyremember.cn/2020/09/07/笔记/Android笔记/</id>
     <published>2020-09-07T12:09:01.520Z</published>
     <updated>2020-09-07T12:11:32.797Z</updated>
     
@@ -69,17 +69,17 @@
     
     </summary>
     
-      <category term="笔记" scheme="https://fengjing95.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+      <category term="笔记" scheme="https://easyremember.cn/categories/%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="笔记" scheme="https://fengjing95.github.io/tags/%E7%AC%94%E8%AE%B0/"/>
+      <category term="笔记" scheme="https://easyremember.cn/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title>Vue中的跨域问题</title>
-    <link href="https://fengjing95.github.io/2020/09/07/%E6%8A%80%E6%9C%AF/Vue%E4%B8%AD%E7%9A%84%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/"/>
-    <id>https://fengjing95.github.io/2020/09/07/技术/Vue中的跨域问题/</id>
+    <link href="https://easyremember.cn/2020/09/07/%E6%8A%80%E6%9C%AF/Vue%E4%B8%AD%E7%9A%84%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/"/>
+    <id>https://easyremember.cn/2020/09/07/技术/Vue中的跨域问题/</id>
     <published>2020-09-07T10:08:59.597Z</published>
     <updated>2020-09-07T11:12:50.343Z</updated>
     
@@ -89,17 +89,17 @@
     
     </summary>
     
-      <category term="技术" scheme="https://fengjing95.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="vue" scheme="https://fengjing95.github.io/tags/vue/"/>
+      <category term="vue" scheme="https://easyremember.cn/tags/vue/"/>
     
   </entry>
   
   <entry>
     <title>Socket.IO前端后端一起拿捏</title>
-    <link href="https://fengjing95.github.io/2020/09/07/%E6%8A%80%E6%9C%AF/Socket.IO%E5%89%8D%E7%AB%AF%E5%90%8E%E7%AB%AF%E4%B8%80%E8%B5%B7%E6%8B%BF%E6%8D%8F/"/>
-    <id>https://fengjing95.github.io/2020/09/07/技术/Socket.IO前端后端一起拿捏/</id>
+    <link href="https://easyremember.cn/2020/09/07/%E6%8A%80%E6%9C%AF/Socket.IO%E5%89%8D%E7%AB%AF%E5%90%8E%E7%AB%AF%E4%B8%80%E8%B5%B7%E6%8B%BF%E6%8D%8F/"/>
+    <id>https://easyremember.cn/2020/09/07/技术/Socket.IO前端后端一起拿捏/</id>
     <published>2020-09-07T09:17:53.747Z</published>
     <updated>2020-09-08T11:08:21.502Z</updated>
     
@@ -109,17 +109,17 @@
     
     </summary>
     
-      <category term="技术" scheme="https://fengjing95.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="node" scheme="https://fengjing95.github.io/tags/node/"/>
+      <category term="node" scheme="https://easyremember.cn/tags/node/"/>
     
   </entry>
   
   <entry>
     <title>Vue插槽组件</title>
-    <link href="https://fengjing95.github.io/2020/08/30/%E6%8A%80%E6%9C%AF/Vue%E7%BB%84%E4%BB%B6%E4%B9%8Bslot%E6%8F%92%E6%A7%BD/"/>
-    <id>https://fengjing95.github.io/2020/08/30/技术/Vue组件之slot插槽/</id>
+    <link href="https://easyremember.cn/2020/08/30/%E6%8A%80%E6%9C%AF/Vue%E7%BB%84%E4%BB%B6%E4%B9%8Bslot%E6%8F%92%E6%A7%BD/"/>
+    <id>https://easyremember.cn/2020/08/30/技术/Vue组件之slot插槽/</id>
     <published>2020-08-30T08:09:24.323Z</published>
     <updated>2020-09-05T09:34:39.830Z</updated>
     
@@ -129,17 +129,17 @@
     
     </summary>
     
-      <category term="技术" scheme="https://fengjing95.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="vue" scheme="https://fengjing95.github.io/tags/vue/"/>
+      <category term="vue" scheme="https://easyremember.cn/tags/vue/"/>
     
   </entry>
   
   <entry>
     <title>小爱课程表使用手册</title>
-    <link href="https://fengjing95.github.io/2020/08/28/%E7%94%9F%E6%B4%BB/%E5%B0%8F%E7%88%B1%E8%AF%BE%E7%A8%8B%E8%A1%A8%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3%E2%80%94%E2%80%94%E5%B1%B1%E4%B8%9C%E5%B7%A5%E5%95%86%E5%AD%A6%E9%99%A2-SDTBU/"/>
-    <id>https://fengjing95.github.io/2020/08/28/生活/小爱课程表使用文档——山东工商学院-SDTBU/</id>
+    <link href="https://easyremember.cn/2020/08/28/%E7%94%9F%E6%B4%BB/%E5%B0%8F%E7%88%B1%E8%AF%BE%E7%A8%8B%E8%A1%A8%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3%E2%80%94%E2%80%94%E5%B1%B1%E4%B8%9C%E5%B7%A5%E5%95%86%E5%AD%A6%E9%99%A2-SDTBU/"/>
+    <id>https://easyremember.cn/2020/08/28/生活/小爱课程表使用文档——山东工商学院-SDTBU/</id>
     <published>2020-08-28T11:08:09.118Z</published>
     <updated>2020-09-05T09:34:18.364Z</updated>
     
@@ -149,17 +149,17 @@
     
     </summary>
     
-      <category term="工具" scheme="https://fengjing95.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+      <category term="工具" scheme="https://easyremember.cn/categories/%E5%B7%A5%E5%85%B7/"/>
     
     
-      <category term="悦读" scheme="https://fengjing95.github.io/tags/%E6%82%A6%E8%AF%BB/"/>
+      <category term="悦读" scheme="https://easyremember.cn/tags/%E6%82%A6%E8%AF%BB/"/>
     
   </entry>
   
   <entry>
     <title>对比call和apply</title>
-    <link href="https://fengjing95.github.io/2020/08/27/%E6%8A%80%E6%9C%AF/call&amp;apply/"/>
-    <id>https://fengjing95.github.io/2020/08/27/技术/call&amp;apply/</id>
+    <link href="https://easyremember.cn/2020/08/27/%E6%8A%80%E6%9C%AF/call&amp;apply/"/>
+    <id>https://easyremember.cn/2020/08/27/技术/call&amp;apply/</id>
     <published>2020-08-27T14:47:40.917Z</published>
     <updated>2020-09-05T09:37:13.033Z</updated>
     
@@ -169,17 +169,17 @@
     
     </summary>
     
-      <category term="技术" scheme="https://fengjing95.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="js" scheme="https://fengjing95.github.io/tags/js/"/>
+      <category term="js" scheme="https://easyremember.cn/tags/js/"/>
     
   </entry>
   
   <entry>
     <title>Axios</title>
-    <link href="https://fengjing95.github.io/2020/08/27/%E7%AC%94%E8%AE%B0/Axios/"/>
-    <id>https://fengjing95.github.io/2020/08/27/笔记/Axios/</id>
+    <link href="https://easyremember.cn/2020/08/27/%E7%AC%94%E8%AE%B0/Axios/"/>
+    <id>https://easyremember.cn/2020/08/27/笔记/Axios/</id>
     <published>2020-08-27T04:14:58.150Z</published>
     <updated>2020-09-05T09:35:51.229Z</updated>
     
@@ -189,17 +189,17 @@
     
     </summary>
     
-      <category term="笔记" scheme="https://fengjing95.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+      <category term="笔记" scheme="https://easyremember.cn/categories/%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Node" scheme="https://fengjing95.github.io/tags/Node/"/>
+      <category term="Node" scheme="https://easyremember.cn/tags/Node/"/>
     
   </entry>
   
   <entry>
     <title>Promise学习笔记</title>
-    <link href="https://fengjing95.github.io/2020/08/20/%E7%AC%94%E8%AE%B0/Promise/"/>
-    <id>https://fengjing95.github.io/2020/08/20/笔记/Promise/</id>
+    <link href="https://easyremember.cn/2020/08/20/%E7%AC%94%E8%AE%B0/Promise/"/>
+    <id>https://easyremember.cn/2020/08/20/笔记/Promise/</id>
     <published>2020-08-20T09:41:38.591Z</published>
     <updated>2020-09-05T09:38:03.804Z</updated>
     
@@ -209,17 +209,17 @@
     
     </summary>
     
-      <category term="笔记" scheme="https://fengjing95.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+      <category term="笔记" scheme="https://easyremember.cn/categories/%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="js" scheme="https://fengjing95.github.io/tags/js/"/>
+      <category term="js" scheme="https://easyremember.cn/tags/js/"/>
     
   </entry>
   
   <entry>
     <title>原型和原型链</title>
-    <link href="https://fengjing95.github.io/2020/08/19/%E6%8A%80%E6%9C%AF/%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE/"/>
-    <id>https://fengjing95.github.io/2020/08/19/技术/原型和原型链/</id>
+    <link href="https://easyremember.cn/2020/08/19/%E6%8A%80%E6%9C%AF/%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE/"/>
+    <id>https://easyremember.cn/2020/08/19/技术/原型和原型链/</id>
     <published>2020-08-19T00:53:18.162Z</published>
     <updated>2020-09-05T09:35:16.583Z</updated>
     
@@ -229,17 +229,17 @@
     
     </summary>
     
-      <category term="技术" scheme="https://fengjing95.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="js" scheme="https://fengjing95.github.io/tags/js/"/>
+      <category term="js" scheme="https://easyremember.cn/tags/js/"/>
     
   </entry>
   
   <entry>
     <title>vuex入门</title>
-    <link href="https://fengjing95.github.io/2020/08/18/%E6%8A%80%E6%9C%AF/vuex%E5%85%A5%E9%97%A8/"/>
-    <id>https://fengjing95.github.io/2020/08/18/技术/vuex入门/</id>
+    <link href="https://easyremember.cn/2020/08/18/%E6%8A%80%E6%9C%AF/vuex%E5%85%A5%E9%97%A8/"/>
+    <id>https://easyremember.cn/2020/08/18/技术/vuex入门/</id>
     <published>2020-08-18T11:03:09.232Z</published>
     <updated>2020-09-05T09:34:40.320Z</updated>
     
@@ -249,17 +249,17 @@
     
     </summary>
     
-      <category term="技术" scheme="https://fengjing95.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="vue" scheme="https://fengjing95.github.io/tags/vue/"/>
+      <category term="vue" scheme="https://easyremember.cn/tags/vue/"/>
     
   </entry>
   
   <entry>
     <title>原生JS实现AJAX</title>
-    <link href="https://fengjing95.github.io/2020/08/18/%E6%8A%80%E6%9C%AF/%E5%8E%9F%E7%94%9FJS%E5%AE%9E%E7%8E%B0AJAX/"/>
-    <id>https://fengjing95.github.io/2020/08/18/技术/原生JS实现AJAX/</id>
+    <link href="https://easyremember.cn/2020/08/18/%E6%8A%80%E6%9C%AF/%E5%8E%9F%E7%94%9FJS%E5%AE%9E%E7%8E%B0AJAX/"/>
+    <id>https://easyremember.cn/2020/08/18/技术/原生JS实现AJAX/</id>
     <published>2020-08-18T08:14:27.923Z</published>
     <updated>2020-09-05T09:35:10.625Z</updated>
     
@@ -269,17 +269,17 @@
     
     </summary>
     
-      <category term="技术" scheme="https://fengjing95.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="js" scheme="https://fengjing95.github.io/tags/js/"/>
+      <category term="js" scheme="https://easyremember.cn/tags/js/"/>
     
   </entry>
   
   <entry>
     <title>ES6和CommonJS的模块化</title>
-    <link href="https://fengjing95.github.io/2020/08/18/%E6%8A%80%E6%9C%AF/ES6&amp;CommonJS/"/>
-    <id>https://fengjing95.github.io/2020/08/18/技术/ES6&amp;CommonJS/</id>
+    <link href="https://easyremember.cn/2020/08/18/%E6%8A%80%E6%9C%AF/ES6&amp;CommonJS/"/>
+    <id>https://easyremember.cn/2020/08/18/技术/ES6&amp;CommonJS/</id>
     <published>2020-08-18T01:10:06.072Z</published>
     <updated>2020-09-05T09:36:51.102Z</updated>
     
@@ -289,17 +289,17 @@
     
     </summary>
     
-      <category term="技术" scheme="https://fengjing95.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="js" scheme="https://fengjing95.github.io/tags/js/"/>
+      <category term="js" scheme="https://easyremember.cn/tags/js/"/>
     
   </entry>
   
   <entry>
     <title>Egg实用中间件</title>
-    <link href="https://fengjing95.github.io/2020/08/17/%E6%8A%80%E6%9C%AF/Egg%E5%B8%B8%E7%94%A8%E7%9A%84%E5%8C%85/"/>
-    <id>https://fengjing95.github.io/2020/08/17/技术/Egg常用的包/</id>
+    <link href="https://easyremember.cn/2020/08/17/%E6%8A%80%E6%9C%AF/Egg%E5%B8%B8%E7%94%A8%E7%9A%84%E5%8C%85/"/>
+    <id>https://easyremember.cn/2020/08/17/技术/Egg常用的包/</id>
     <published>2020-08-17T08:17:39.921Z</published>
     <updated>2020-09-05T09:37:20.810Z</updated>
     
@@ -309,17 +309,17 @@
     
     </summary>
     
-      <category term="技术" scheme="https://fengjing95.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="Node" scheme="https://fengjing95.github.io/tags/Node/"/>
+      <category term="Node" scheme="https://easyremember.cn/tags/Node/"/>
     
   </entry>
   
   <entry>
     <title>EggJS学习笔记</title>
-    <link href="https://fengjing95.github.io/2020/08/15/%E7%AC%94%E8%AE%B0/EggJS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    <id>https://fengjing95.github.io/2020/08/15/笔记/EggJS学习笔记/</id>
+    <link href="https://easyremember.cn/2020/08/15/%E7%AC%94%E8%AE%B0/EggJS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>https://easyremember.cn/2020/08/15/笔记/EggJS学习笔记/</id>
     <published>2020-08-15T15:14:19.584Z</published>
     <updated>2020-09-05T09:36:10.076Z</updated>
     
@@ -329,17 +329,17 @@
     
     </summary>
     
-      <category term="笔记" scheme="https://fengjing95.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+      <category term="笔记" scheme="https://easyremember.cn/categories/%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Node" scheme="https://fengjing95.github.io/tags/Node/"/>
+      <category term="Node" scheme="https://easyremember.cn/tags/Node/"/>
     
   </entry>
   
   <entry>
     <title>VS Code 实用插件</title>
-    <link href="https://fengjing95.github.io/2020/08/13/%E8%B5%84%E6%BA%90/VSCode%E4%BD%BF%E7%94%A8%E6%8F%92%E4%BB%B6%E9%9B%86%E5%90%88/"/>
-    <id>https://fengjing95.github.io/2020/08/13/资源/VSCode使用插件集合/</id>
+    <link href="https://easyremember.cn/2020/08/13/%E8%B5%84%E6%BA%90/VSCode%E4%BD%BF%E7%94%A8%E6%8F%92%E4%BB%B6%E9%9B%86%E5%90%88/"/>
+    <id>https://easyremember.cn/2020/08/13/资源/VSCode使用插件集合/</id>
     <published>2020-08-13T06:25:25.881Z</published>
     <updated>2020-09-05T09:40:22.694Z</updated>
     
@@ -349,17 +349,17 @@
     
     </summary>
     
-      <category term="技术" scheme="https://fengjing95.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="工具" scheme="https://fengjing95.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
+      <category term="工具" scheme="https://easyremember.cn/tags/%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   
   <entry>
     <title>高级组件provide/inject</title>
-    <link href="https://fengjing95.github.io/2020/08/12/%E6%8A%80%E6%9C%AF/%E9%AB%98%E7%BA%A7%E7%BB%84%E4%BB%B6provide-inject/"/>
-    <id>https://fengjing95.github.io/2020/08/12/技术/高级组件provide-inject/</id>
+    <link href="https://easyremember.cn/2020/08/12/%E6%8A%80%E6%9C%AF/%E9%AB%98%E7%BA%A7%E7%BB%84%E4%BB%B6provide-inject/"/>
+    <id>https://easyremember.cn/2020/08/12/技术/高级组件provide-inject/</id>
     <published>2020-08-12T06:56:52.036Z</published>
     <updated>2020-09-05T09:34:58.314Z</updated>
     
@@ -369,17 +369,17 @@
     
     </summary>
     
-      <category term="技术" scheme="https://fengjing95.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="vue" scheme="https://fengjing95.github.io/tags/vue/"/>
+      <category term="vue" scheme="https://easyremember.cn/tags/vue/"/>
     
   </entry>
   
   <entry>
     <title>Express中使用Sequelize实现ORM</title>
-    <link href="https://fengjing95.github.io/2020/08/10/%E6%8A%80%E6%9C%AF/Express%E4%B8%AD%E4%BD%BF%E7%94%A8Sequelize%E5%AE%9E%E7%8E%B0ORM/"/>
-    <id>https://fengjing95.github.io/2020/08/10/技术/Express中使用Sequelize实现ORM/</id>
+    <link href="https://easyremember.cn/2020/08/10/%E6%8A%80%E6%9C%AF/Express%E4%B8%AD%E4%BD%BF%E7%94%A8Sequelize%E5%AE%9E%E7%8E%B0ORM/"/>
+    <id>https://easyremember.cn/2020/08/10/技术/Express中使用Sequelize实现ORM/</id>
     <published>2020-08-10T06:33:37.962Z</published>
     <updated>2020-09-05T09:37:31.675Z</updated>
     
@@ -389,17 +389,17 @@
     
     </summary>
     
-      <category term="技术" scheme="https://fengjing95.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="Node" scheme="https://fengjing95.github.io/tags/Node/"/>
+      <category term="Node" scheme="https://easyremember.cn/tags/Node/"/>
     
   </entry>
   
   <entry>
     <title>TypeScript学习笔记</title>
-    <link href="https://fengjing95.github.io/2020/08/06/%E7%AC%94%E8%AE%B0/TypeScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    <id>https://fengjing95.github.io/2020/08/06/笔记/TypeScript学习笔记/</id>
+    <link href="https://easyremember.cn/2020/08/06/%E7%AC%94%E8%AE%B0/TypeScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>https://easyremember.cn/2020/08/06/笔记/TypeScript学习笔记/</id>
     <published>2020-08-06T15:25:45.926Z</published>
     <updated>2020-09-05T09:38:13.592Z</updated>
     
@@ -409,10 +409,10 @@
     
     </summary>
     
-      <category term="笔记" scheme="https://fengjing95.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+      <category term="笔记" scheme="https://easyremember.cn/categories/%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="js" scheme="https://fengjing95.github.io/tags/js/"/>
+      <category term="js" scheme="https://easyremember.cn/tags/js/"/>
     
   </entry>
   
