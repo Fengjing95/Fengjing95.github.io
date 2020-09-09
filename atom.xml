@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://easyremember.cn/"/>
-  <updated>2020-09-08T11:16:00.057Z</updated>
+  <updated>2020-09-09T03:28:10.410Z</updated>
   <id>https://easyremember.cn/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hexo博客SEO优化</title>
+    <link href="https://easyremember.cn/2020/09/09/%E8%B5%84%E6%BA%90/hexo%E5%8D%9A%E5%AE%A2SEO%E4%BC%98%E5%8C%96/"/>
+    <id>https://easyremember.cn/2020/09/09/资源/hexo博客SEO优化/</id>
+    <published>2020-09-09T03:24:28.983Z</published>
+    <updated>2020-09-09T03:28:10.410Z</updated>
+    
+    <summary type="html">
+    
+      hexo博客百度收录，SEO优化
+    
+    </summary>
+    
+      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="工具" scheme="https://easyremember.cn/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
   
   <entry>
     <title>webpack笔记</title>
@@ -393,26 +413,6 @@
     
     
       <category term="Node" scheme="https://easyremember.cn/tags/Node/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>TypeScript学习笔记</title>
-    <link href="https://easyremember.cn/2020/08/06/%E7%AC%94%E8%AE%B0/TypeScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    <id>https://easyremember.cn/2020/08/06/笔记/TypeScript学习笔记/</id>
-    <published>2020-08-06T15:25:45.926Z</published>
-    <updated>2020-09-05T09:38:13.592Z</updated>
-    
-    <summary type="html">
-    
-      TypeScript 是 JavaScript 的一个超集，支持 ECMAScript 6 标准
-    
-    </summary>
-    
-      <category term="笔记" scheme="https://easyremember.cn/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="js" scheme="https://easyremember.cn/tags/js/"/>
     
   </entry>
   
