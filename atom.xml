@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://easyremember.cn/"/>
-  <updated>2020-09-09T11:52:27.276Z</updated>
+  <updated>2020-09-10T06:50:35.752Z</updated>
   <id>https://easyremember.cn/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>git入门操作</title>
+    <link href="https://easyremember.cn/2020/09/10/%E6%8A%80%E6%9C%AF/git%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/"/>
+    <id>https://easyremember.cn/2020/09/10/技术/git基本操作/</id>
+    <published>2020-09-10T06:49:07.044Z</published>
+    <updated>2020-09-10T06:50:35.752Z</updated>
+    
+    <summary type="html">
+    
+      Git日常使用中最常用的操作
+    
+    </summary>
+    
+      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="工具" scheme="https://easyremember.cn/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
   
   <entry>
     <title>webpack工作原理</title>
@@ -393,26 +413,6 @@
     
     
       <category term="工具" scheme="https://easyremember.cn/tags/%E5%B7%A5%E5%85%B7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>高级组件provide/inject</title>
-    <link href="https://easyremember.cn/2020/08/12/%E6%8A%80%E6%9C%AF/%E9%AB%98%E7%BA%A7%E7%BB%84%E4%BB%B6provide-inject/"/>
-    <id>https://easyremember.cn/2020/08/12/技术/高级组件provide-inject/</id>
-    <published>2020-08-12T06:56:52.036Z</published>
-    <updated>2020-09-05T09:34:58.314Z</updated>
-    
-    <summary type="html">
-    
-      高级组件provide/inject的用法介绍
-    
-    </summary>
-    
-      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="vue" scheme="https://easyremember.cn/tags/vue/"/>
     
   </entry>
   
