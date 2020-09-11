@@ -403,13 +403,6 @@
 
   
   <url>
-    <loc>https://easyremember.cn/tags/express/</loc>
-    <lastmod>2020-09-11</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://easyremember.cn/tags/js/</loc>
     <lastmod>2020-09-11</lastmod>
     <changefreq>daily</changefreq>
@@ -418,6 +411,13 @@
   
   <url>
     <loc>https://easyremember.cn/tags/Node/</loc>
+    <lastmod>2020-09-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://easyremember.cn/tags/express/</loc>
     <lastmod>2020-09-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -452,14 +452,14 @@
   </url>
   
   <url>
-    <loc>https://easyremember.cn/tags/%E6%82%A6%E8%AF%BB/</loc>
+    <loc>https://easyremember.cn/tags/hello/</loc>
     <lastmod>2020-09-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://easyremember.cn/tags/hello/</loc>
+    <loc>https://easyremember.cn/tags/%E6%82%A6%E8%AF%BB/</loc>
     <lastmod>2020-09-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
