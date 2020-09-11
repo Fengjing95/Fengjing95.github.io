@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">Tag: vue | 前端小枫</title>
+  <title itemprop="name">Vue2双向绑定原理 | 前端小枫</title>
   
   <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -466,368 +466,428 @@
   </div>
 </header>
 
-      
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
 <div class="pattern-center-blank"></div>
-<div class="pattern-center ">
-  <div class="pattern-attachment-img">
-    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/vue-background.jpg" class="lazyload" onerror="imgError(this,3)" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200911162126011.png);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200911162126011.png">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      Vue2双向绑定原理</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="">小枫</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2020-9-11<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
   </div>
-  <header class="pattern-header ">
-    <h1 class="cat-title">vue</h1>
-  </header>
-</div>
+
 <div id="content" class="site-content">
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
-      
-  <!-- 首页默认取最最新文章集 -->
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/09/11/技术/created和mounted的区别/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200911161130624.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/09/11/技术/created和mounted的区别/">
-    created和mounted的区别</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-9-11</div>
-    <p>
-    比较created和mounted的区别</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/09/11/技术/created和mounted的区别/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/09/11/技术/defineproperty与Vue2/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200911162126011.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/09/11/技术/defineproperty与Vue2/">
-    Vue2双向绑定原理</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-9-11</div>
-    <p>
-    defineproperty与Vue2</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/09/11/技术/defineproperty与Vue2/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/09/07/技术/Vue中的跨域问题/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/vue跨域.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/09/07/技术/Vue中的跨域问题/">
-    Vue中的跨域问题</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-9-7</div>
-    <p>
-    Vue中的跨域问题</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/09/07/技术/Vue中的跨域问题/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/08/30/技术/Vue组件之slot插槽/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/slots.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/08/30/技术/Vue组件之slot插槽/">
-    Vue插槽组件</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-8-30</div>
-    <p>
-    Vue组件之slot插槽详解</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/08/30/技术/Vue组件之slot插槽/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/08/18/技术/vuex入门/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/vue-p.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/08/18/技术/vuex入门/">
-    vuex入门</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-8-18</div>
-    <p>
-    vuex入门</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/08/18/技术/vuex入门/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/08/12/技术/高级组件provide-inject/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/vue-p.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/08/12/技术/高级组件provide-inject/">
-    高级组件provide/inject</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-8-12</div>
-    <p>
-    高级组件provide/inject的用法介绍</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/08/12/技术/高级组件provide-inject/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/08/04/技术/Vue组件通信/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/vue-p.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/08/04/技术/Vue组件通信/">
-    Vue组件通信</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-8-4</div>
-    <p>
-    Vue组件之间传递数据的方式</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/08/04/技术/Vue组件通信/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/08/01/随想/动态控制输入框/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/vue-p.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/08/01/随想/动态控制输入框/">
-    动态控制输入框数量</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-8-1</div>
-    <p>
-    Vue页面中动态控制表单输入框的数量</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/08/01/随想/动态控制输入框/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/08/01/随想/Vue子路由常见的问题/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/vue-p.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/08/01/随想/Vue子路由常见的问题/">
-    Vue绑定不到组件</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-8-1</div>
-    <p>
-    探究Vue路由组件绑定失败原因</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/08/01/随想/Vue子路由常见的问题/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/07/31/随想/Vue页面刷新方法/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/vue-p.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/07/31/随想/Vue页面刷新方法/">
-    Vue刷新页面</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-7-31</div>
-    <p>
-    Vue刷新页面的三种方式</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/07/31/随想/Vue页面刷新方法/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-
-
-      <div class="clearer">
-      </div>
-    </main>
-    <!-- 
-      <nav class="navigator">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
-        <span class="page-number current">1</span><a class="page-number" href="/tags/vue/page/2/">2</a><a class="extend next" rel="next" href="/tags/vue/page/2/"><i class="iconfont icon-right"></i></a>
-      </nav>
-     -->
-    
-      <div id="pagination"><a href="/tags/vue/page/2/" class="">Previous</a></div>
-    
-  </div>
+        <div class="entry-content">
+          <h2 id="先上效果图"><a href="#先上效果图" class="headerlink" title="先上效果图"></a>先上效果图</h2><p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200911162228319.png" alt="image-20200911162228319"></p>
+<p>Vue的双向绑定采用数据劫持配合发布者——订阅者模式，通过<code>Object.defineproperty()</code>劫持各个属性getter和setter，数据变动时,发布消息给依赖收集器Dep，然后通知观察者，做出对应的回调，更新视图</p>
+<p>在案例中MyVue作为入口，整合Observer，Compile，Watcher，通过Observer来监听数据变化通过Compile来编译模板，利用Watcher来连接Compile和Observer，来实现双向绑定</p>
+<p>MyVue作为入口，经过Compile解析之后渲染到页面，同时添加观察者Observer来监听数据变化，当数据变化时通知依赖收集器Dep，将变化分发给watcher然后再渲染视图</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200911162534506.png" alt="image-20200911162534506"></p>
+<h2 id="数据劫持"><a href="#数据劫持" class="headerlink" title="数据劫持"></a>数据劫持</h2><p>示例代码</p>
+<pre><code class="js">
+const obj = {};
+
+function property(obj, key, value) {
+  Object.defineProperty(obj, key, {
+    enumerable: true,
+    configurable: false,
+    get() {
+      return &#39;姓名：&#39; + value;
+    },
+    set(newVal) {
+      value = newVal;
+      console.log(&#39;修改了数据&#39;);
+    }
+  })
+}
+property(obj, &#39;name&#39;, &#39;张三&#39;);
+console.log(obj.name);
+</code></pre>
+<p>运行图</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200911162410965.png" alt="image-20200911162410965"></p>
+<p>当数据读取时会加上“姓名：”，数据修改时会提示修改数据，此时对象obj除了name之外，还有name的getter和setter两个方法</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="入口"><a href="#入口" class="headerlink" title="入口"></a>入口</h3><pre><code class="js">class MyVue {
+  constructor(options) {
+    this.$el = options.el;
+    this.$data = options.data;
+    this.$options = options;
+    if (this.$el) {
+      // 观察者
+      new Observer(this.$data);
+      // 指令解析器
+      new Compile(this.$el, this)
+  }
+}
+</code></pre>
+<h3 id="Compile"><a href="#Compile" class="headerlink" title="Compile"></a>Compile</h3><p>指令解析器，解析网页元素中的双大括号、v-model、v-on……等元素。对指令节点进行判断，然后遍历其所有属性，看是否有匹配的指令的属性。首先要获得dom元素，然后对含有dom元素上含有指令的节点进行处理，建一个fragment片段，将需要解析的dom元素存到fragment片段中在做处理，接下来需要遍历所有节点，对含有指令的节点进行特殊的处理</p>
+<pre><code class="js">class Compile {
+  constructor(el, vm) {
+    // 赋值/获取节点
+    this.el = this.isElementNode(el) ? el : document.querySelector(el);
+    this.vm = vm;
+    // 获取子元素文档碎片
+    const frag = this.fragment(this.el);
+    // console.log(frag);
+    // 编译模板
+    this.compile(frag);
+
+    // 追加子元素到根元素
+    this.el.appendChild(frag);
+
+  }
+  compile(fragment) {
+    const children = fragment.childNodes;
+    [...children].forEach(child =&gt; {
+      if (this.isElementNode(child)) {
+        // 元素节点
+        this.compileElement(child);
+      } else {
+        // 文本节点
+        this.complieText(child);
+      }
+
+      if (child.childNodes &amp;&amp; child.childNodes.length) {
+        this.compile(child)
+      }
+    });
+  }
+  complieText(text) {
+    const content = text.textContent;
+    if(/\{\{(.+?)\}\}/.test(content)) {
+      compileUtil[&#39;text&#39;](text, content, this.vm);
+    }
+  }
+  compileElement(node) {
+    const attributes = node.attributes;
+    [...attributes].forEach(attribute =&gt; {
+      const {
+        name,
+        value
+      } = attribute;
+      if (this.isDire(name)) {
+        const [, dirctive] = name.split(&#39;-&#39;);
+        const [dirName, eventName] = dirctive.split(&#39;:&#39;);
+        // 更新视图
+        compileUtil[dirName](node, value, this.vm, eventName);
+        // 删除指令
+        node.removeAttribute(&#39;v-&#39; + dirctive);
+      } else if(this.isEventName(name)) {// 判断@符号
+        let [, eventName] = name.split(&#39;@&#39;);
+        compileUtil[&#39;on&#39;](node, value, this.vm, eventName);
+      } else if(this.isBindName(name)) {
+        let [, attr] = name.split(&#39;:&#39;);
+        compileUtil[&#39;bind&#39;](node, value, this.vm, attr);
+      }
+    })
+  }
+  isBindName(name) {
+    return name.startsWith(&#39;:&#39;)
+  }
+  isEventName(name) {
+    return name.startsWith(&#39;@&#39;)
+  }
+  isDire(name) {
+    return name.startsWith(&#39;v-&#39;)
+  }
+  fragment(el) {
+    // 创建文档碎片
+    const nodeFrag = document.createDocumentFragment();
+    while (el.firstChild) {
+      nodeFrag.appendChild(el.firstChild);
+    }
+    return nodeFrag;
+  }
+  isElementNode(node) {
+    return node.nodeType === 1;
+  }
+}
+</code></pre>
+<h3 id="Observer"><a href="#Observer" class="headerlink" title="Observer"></a>Observer</h3><p>遍历循环对所有属性值进行监听，并对其进行数据劫持。通过observe()方法进行遍历向下找到所有的属性，并通过defineReactive()方法进行数据劫持监听。知道监听器Observer是在get函数中执行了添加订阅者的操作的，所以我们只需要在订阅者Watcher在初始化时触发相对应的get函数来执行添加订阅者的操作，借助依赖收集器</p>
+<pre><code class="js">
+class Observer {
+  constructor(data) {
+      this.observer(data);
+  }
+  observer(data) {
+    if(data &amp;&amp; typeof data === &#39;object&#39;) {
+      Object.keys(data).forEach(key =&gt; {
+        this.defineReactive(data, key, data[key]);
+      })
+    }
+  }
+  defineReactive(data, key, value) {
+    this.observer(value);
+    const depend = new Dep();
+    // 劫持
+    Object.defineProperty(data, key, {
+      enumerable: true,
+      configurable: false,
+      get() {
+        // 数据初始化的时候添加订阅
+        Dep.target &amp;&amp; depend.addSub(Dep.target)
+        return value;
+      },
+      set: (newValue) =&gt; {
+        this.observer(newValue);
+        if(newValue !== value) {
+          value = newValue;
+        }
+        // 通知Dep变化
+        depend.notify();
+      }
+    })
+  }
+}
+</code></pre>
+<h3 id="Dep"><a href="#Dep" class="headerlink" title="Dep"></a>Dep</h3><p>依赖收集器，主要负责添加订阅以及发布通知</p>
+<pre><code class="js">class Dep {
+  // 收集watcher,通知watcher
+  constructor() {
+      this.subs = [];
+  }
+  // 收集watcher
+  addSub(watcher) {
+    this.subs.push(watcher);
+  }
+  // 通知watcher更新
+  notify() {
+    console.log(&quot;观察者&quot;, this.subs);
+    this.subs.forEach(watcher =&gt; {
+      watcher.update()
+    })
+  }
+}
+</code></pre>
+<h3 id="Watcher"><a href="#Watcher" class="headerlink" title="Watcher"></a>Watcher</h3><p>将Compile和Observer关联起来</p>
+<pre><code class="js">
+class Watcher {
+  constructor(vm, express, callback) {
+    this.vm = vm;
+    this.express = express;
+    this.callback = callback;
+    // 保存旧值
+      this.oldValue = this.getOldValue();
+  }
+  getOldValue() {
+    Dep.target = this;
+    let old = compileUtil.getValue(this.express, this.vm);
+    Dep.target = null;
+    return old;
+  }
+  update() {
+    const newValue = compileUtil.getValue(this.express, this.vm);
+    if(newValue !== this.oldValue) {
+      this.callback(newValue);
+    }
+  }
+}
+</code></pre>
+<p>上面图中的updater放在了compileUtil中</p>
+<pre><code class="js">
+const compileUtil = {
+  // 获取data中的对象值
+  getValue(express, vm) {
+    return express.split(&#39;.&#39;).reduce((data, currentVal) =&gt; {
+      // console.log(currentVal);
+      return data[currentVal]
+    }, vm.$data)
+  },
+  setValue(express, vm, inputValue) {
+    return express.split(&#39;.&#39;).reduce((data, currentVal) =&gt; {
+      data[currentVal] = inputValue;
+    }, vm.$data)
+  },
+  // 区分开{{}}--{{}}
+  getContentValue(express, vm) {
+    return express.replace(/\{\{(.+?)\}\}/g, (...args) =&gt; {
+      return this.getValue(args[1], vm);
+    })
+  },
+  // v-text
+  text(node, express, vm) {
+    let value;
+    if(express.indexOf(&#39;{{') !== -1) {
+      // {{msg}}
+      value = express.replace(/\{\{(.+?)\}\}/g, (...args) =&gt; {
+        // 绑定观察者
+        new Watcher(vm, args[1], (newValue) =&gt; {
+          this.updater.textUpdater(node, this.getContentValue(express, vm));
+        })
+        return this.getValue(args[1], vm);
+      })
+    } else {
+      value = this.getValue(express, vm);
+    }
+    this.updater.textUpdater(node, value);
+  },
+  // v-html
+  html(node, express, vm) {
+    let value = this.getValue(express, vm);
+    new Watcher(vm, express, (newValue) =&gt; {
+      this.updater.htmlUpdater(node, newValue);
+    });
+    this.updater.htmlUpdater(node, value);
+  },
+  // v-model
+  model(node, express, vm) {
+    // 数据-视图
+    const value = this.getValue(express, vm);
+    new Watcher(vm, express, (newValue) =&gt; {
+      this.updater.modelUpdater(node, newValue);
+    });
+    // 视图-数据-视图
+    node.addEventListener(&#39;input&#39;, e =&gt; {
+      this.setValue(express, vm, e.target.value);
+    })
+    this.updater.modelUpdater(node, value);
+  },
+  // v-on
+  on(node, express, vm, event) {
+    const f = vm.$options.methods &amp;&amp; vm.$options.methods[express];
+    node.addEventListener(event, f.bind(vm), false);
+  },
+  bind(node, express, vm, attribute) {
+    const value = this.getValue(express, vm);
+    this.updater.bindUpdater(node, attribute, value);
+  },
+  updater: {
+    textUpdater(node, value) {
+      node.textContent = value;
+    },
+    htmlUpdater(node, value) {
+      node.innerHTML = value;
+    },
+    modelUpdater(node, value) {
+      node.value = value;
+    },
+    bindUpdater(node, attribute, value) {
+      node.setAttribute(attribute, value);
+    }
+  }
+}
+</code></pre>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2020/09/11/技术/created和mounted的区别/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200911161130624.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200911161130624.png">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                created和mounted的区别</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+          
+            <div class="post-nepre half next">
+          
+            <a href="/2020/09/10/技术/git基本操作/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200910135828844.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200910135828844.png">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                git入门操作</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "AdzOvpXTwwf3KAX23DOds5C9-gzGzoHsz",
+        appKey: "olX1MHfMtrQcmemwl5lLmu4a",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg" itemprop="image" alt="小枫" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author">小枫</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>前端小白</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
 </div>
+
+
+
     </div>    
     <div class="ins-search">
     <div class="ins-search-mask"></div>
