@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://easyremember.cn/"/>
-  <updated>2020-09-11T09:03:21.632Z</updated>
+  <updated>2020-09-13T03:14:11.933Z</updated>
   <id>https://easyremember.cn/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Vue动态组件</title>
+    <link href="https://easyremember.cn/2020/09/13/%E6%8A%80%E6%9C%AF/%E5%8A%A8%E6%80%81%E7%BB%84%E4%BB%B6/"/>
+    <id>https://easyremember.cn/2020/09/13/技术/动态组件/</id>
+    <published>2020-09-13T03:13:24.458Z</published>
+    <updated>2020-09-13T03:14:11.933Z</updated>
+    
+    <summary type="html">
+    
+      比较两种动态组件切换的方案
+    
+    </summary>
+    
+      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="vue" scheme="https://easyremember.cn/tags/vue/"/>
+    
+  </entry>
   
   <entry>
     <title>created和mounted的区别</title>
@@ -393,26 +413,6 @@
     
     
       <category term="js" scheme="https://easyremember.cn/tags/js/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Egg实用中间件</title>
-    <link href="https://easyremember.cn/2020/08/17/%E6%8A%80%E6%9C%AF/Egg%E5%B8%B8%E7%94%A8%E7%9A%84%E5%8C%85/"/>
-    <id>https://easyremember.cn/2020/08/17/技术/Egg常用的包/</id>
-    <published>2020-08-17T08:17:39.921Z</published>
-    <updated>2020-09-05T09:37:20.810Z</updated>
-    
-    <summary type="html">
-    
-      Egg.js 中实用性较高的中间件
-    
-    </summary>
-    
-      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="Node" scheme="https://easyremember.cn/tags/Node/"/>
     
   </entry>
   
