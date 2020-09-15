@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://easyremember.cn/"/>
-  <updated>2020-09-13T03:14:11.933Z</updated>
+  <updated>2020-09-15T12:13:09.646Z</updated>
   <id>https://easyremember.cn/</id>
   
   <author>
@@ -15,6 +15,46 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>filter过滤器</title>
+    <link href="https://easyremember.cn/2020/09/15/%E6%8A%80%E6%9C%AF/filter%E8%BF%87%E6%BB%A4%E5%99%A8/"/>
+    <id>https://easyremember.cn/2020/09/15/技术/filter过滤器/</id>
+    <published>2020-09-15T11:53:27.165Z</published>
+    <updated>2020-09-15T12:13:09.646Z</updated>
+    
+    <summary type="html">
+    
+      两种方式定义过滤器进行数据渲染
+    
+    </summary>
+    
+      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="vue" scheme="https://easyremember.cn/tags/vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>elementUI导航栏组件使用</title>
+    <link href="https://easyremember.cn/2020/09/13/%E6%8A%80%E6%9C%AF/elementUI%E5%AF%BC%E8%88%AA%E6%A0%8F%E4%B8%8E%E8%B7%AF%E7%94%B1%E4%B8%8D%E5%8C%B9%E9%85%8D/"/>
+    <id>https://easyremember.cn/2020/09/13/技术/elementUI导航栏与路由不匹配/</id>
+    <published>2020-09-13T11:58:37.724Z</published>
+    <updated>2020-09-13T11:59:43.670Z</updated>
+    
+    <summary type="html">
+    
+      解决elementUI导航栏组件路由与选中状态不一样的问题
+    
+    </summary>
+    
+      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="vue" scheme="https://easyremember.cn/tags/vue/"/>
+    
+  </entry>
   
   <entry>
     <title>Vue动态组件</title>
@@ -261,7 +301,7 @@
     <link href="https://easyremember.cn/2020/08/28/%E7%94%9F%E6%B4%BB/%E5%B0%8F%E7%88%B1%E8%AF%BE%E7%A8%8B%E8%A1%A8%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3%E2%80%94%E2%80%94%E5%B1%B1%E4%B8%9C%E5%B7%A5%E5%95%86%E5%AD%A6%E9%99%A2-SDTBU/"/>
     <id>https://easyremember.cn/2020/08/28/生活/小爱课程表使用文档——山东工商学院-SDTBU/</id>
     <published>2020-08-28T11:08:09.118Z</published>
-    <updated>2020-09-05T09:34:18.364Z</updated>
+    <updated>2020-09-14T11:28:51.463Z</updated>
     
     <summary type="html">
     
@@ -301,7 +341,7 @@
     <link href="https://easyremember.cn/2020/08/27/%E7%AC%94%E8%AE%B0/Axios/"/>
     <id>https://easyremember.cn/2020/08/27/笔记/Axios/</id>
     <published>2020-08-27T04:14:58.150Z</published>
-    <updated>2020-09-05T09:35:51.229Z</updated>
+    <updated>2020-09-14T23:46:15.530Z</updated>
     
     <summary type="html">
     
@@ -373,46 +413,6 @@
     
     
       <category term="vue" scheme="https://easyremember.cn/tags/vue/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>原生JS实现AJAX</title>
-    <link href="https://easyremember.cn/2020/08/18/%E6%8A%80%E6%9C%AF/%E5%8E%9F%E7%94%9FJS%E5%AE%9E%E7%8E%B0AJAX/"/>
-    <id>https://easyremember.cn/2020/08/18/技术/原生JS实现AJAX/</id>
-    <published>2020-08-18T08:14:27.923Z</published>
-    <updated>2020-09-05T09:35:10.625Z</updated>
-    
-    <summary type="html">
-    
-      原生JS实现AJAX
-    
-    </summary>
-    
-      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="js" scheme="https://easyremember.cn/tags/js/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ES6和CommonJS的模块化</title>
-    <link href="https://easyremember.cn/2020/08/18/%E6%8A%80%E6%9C%AF/ES6%E5%92%8CCommonJS/"/>
-    <id>https://easyremember.cn/2020/08/18/技术/ES6和CommonJS/</id>
-    <published>2020-08-18T01:10:06.072Z</published>
-    <updated>2020-09-09T02:55:20.645Z</updated>
-    
-    <summary type="html">
-    
-      对比ES6和CommonJS的模块化的差异
-    
-    </summary>
-    
-      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="js" scheme="https://easyremember.cn/tags/js/"/>
     
   </entry>
   
