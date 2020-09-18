@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">elementUI导航栏组件使用 | 前端小枫</title>
+  <title itemprop="name">Vue3初体验 | 前端小枫</title>
   
   <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -472,11 +472,11 @@
 
   <div class="pattern-center single-center">
     <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200913194326637.png);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200913194326637.png">
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200918080313754.png);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200918080313754.png">
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      elementUI导航栏组件使用</h1>
+      Vue3初体验</h1>
       <p class="entry-census">
         <span>
           <a href="">
@@ -488,7 +488,7 @@
         </span>
         <span class="bull">
         ·</span>
-        2020-9-13<span class="bull">
+        2020-9-18<span class="bull">
         ·</span>
       <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
@@ -502,37 +502,81 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>使用Element-UI Vue组件框架时，使用导航菜单NavMenu时，点击可以更改选中状态，但是，当路由改变不是通过导航菜单改变时，选中状态是不改变的</p>
-<p>也就是说，只有在点击导航栏某一项时选中状态才会改变，如图，在点击浏览区返回键之后选中状态依旧没有改变</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ录屏20200913194903 00_00_00-00_00_30.gif" alt="QQ录屏20200913194903 00_00_00-00_00_30"></p>
-<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>通过计算属性将路由和选中状态绑定，使用<code>$route.path</code>获取当前路由</p>
-<pre><code class="vue">&lt;template lang=&quot;pug&quot;&gt;
-.my-nav
-  el-menu.el-menu(
-    :default-active=&quot;route&quot;,
-    mode=&quot;horizontal&quot;,
-    active-text-color=&quot;#409eff&quot;,
-    router
-  )
-    el-menu-item(index=&quot;/&quot;) 首页
-    el-menu-item(index=&quot;/class&quot;) 分类
-    el-menu-item(index=&quot;/hot-user&quot;, disabled) 名人堂
-    el-menu-item(index=&quot;/collection&quot;) 藏品展示
-&lt;/template&gt;
-
-&lt;script&gt;
+          <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>Vue3基于vite实现工程化，首先安装vite</p>
+<pre><code class="shell"># 安装生成器
+npm install -g create-vite-app
+# 创建Vue3项目
+create-vite-app vue3-camp
+# 安装依赖
+npm install
+</code></pre>
+<h2 id="差异"><a href="#差异" class="headerlink" title="差异"></a>差异</h2><h3 id="入口文件"><a href="#入口文件" class="headerlink" title="入口文件"></a>入口文件</h3><h4 id="Vue2"><a href="#Vue2" class="headerlink" title="Vue2"></a>Vue2</h4><pre><code class="js">new Vue(render() {}).$mount()
+</code></pre>
+<h4 id="Vue3"><a href="#Vue3" class="headerlink" title="Vue3"></a>Vue3</h4><pre><code class="js">//                     ↓--App.vue
+createApp(App).mount(&#39;#app&#39;)
+</code></pre>
+<h3 id="API"><a href="#API" class="headerlink" title="API"></a>API</h3><p>（两种API可以混用）</p>
+<h4 id="Vue2-1"><a href="#Vue2-1" class="headerlink" title="Vue2"></a>Vue2</h4><p>option-api，每次新添加数据需要从data等里面新增数据，需要来回翻动（同一颜色为同一功能所需数据）</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200918083252509.png" alt="image-20200918083252509"></p>
+<pre><code class="js">export default {
+  data() {
+    return {
+      number: 1
+    }
+  },
+  methods: {
+    add() {
+      this.number++
+    }
+  },
+}
+</code></pre>
+<h4 id="Vue3-1"><a href="#Vue3-1" class="headerlink" title="Vue3"></a>Vue3</h4><h5 id="什么是composition-api"><a href="#什么是composition-api" class="headerlink" title="什么是composition-api"></a>什么是composition-api</h5><p>composition-api，将同一功能的数据放在同一块内</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200918083546414.png" alt="image-20200918083546414"></p>
+<h5 id="为什么要用composition-api"><a href="#为什么要用composition-api" class="headerlink" title="为什么要用composition-api"></a>为什么要用composition-api</h5><p>维护大型组件时不再需要上下翻动</p>
+<h5 id="怎么使用composition-api"><a href="#怎么使用composition-api" class="headerlink" title="怎么使用composition-api"></a>怎么使用composition-api</h5><pre><code class="js">// 使用ref可以将基本数据类型变为响应式，引用类型使用reactive
+import { ref, reactive, toRefs } from &#39;vue&#39;
 export default {
-  computed: {
-    route() {
-      return &#39;/&#39; + this.$route.path.replace(&quot;/&quot;, &quot;&quot;);
-    },
+  setup() {
+    let number = ref(1)
+    function add() {
+      number.value++
+    }
+    return { number, add }
+  }
+}
+</code></pre>
+<p>这还不足以看出composition-api的优势，再来看一个todo示例，直接将不同的功能模块放在不同的方法中</p>
+<pre><code class="js">import { reactive, toRefs } from &quot;vue&quot;;
+export default {
+  setup() {
+    let { addTodos, state } = todoDemo();
+    return { addTodos, ...toRefs(state) };
+    // 响应式对象需要state.val，使用toRefs将数组解构，可以直接val
   },
 };
-&lt;/script&gt;
+// 也可以在单独的js文件中
+function todoDemo() {
+  let state = reactive({
+    todos: [
+      { id: 0, name: &quot;学习&quot; },
+      { id: 1, name: &quot;玩游戏&quot; },
+    ],
+    val: &quot;&quot;,
+  });
+
+  function addTodos() {
+    state.todos.push({
+      id: state.todos.length,
+      name: state.val
+    })
+    state.val = &#39;&#39;
+  }
+
+  return { addTodos, state };
+}
 </code></pre>
-<p>将路由路径第一个<code>/</code>之后的内容替换为，然后与<code>default-active</code>绑定，每一次路由改变都会更改这个值，从而实现同步改变</p>
-<p>效果图</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ录屏20200913195701 00_00_00-00_00_30.gif" alt="QQ录屏20200913195701 00_00_00-00_00_30"></p>
+<p>更多API不在此多说，<a href="https://v3.vuejs.org/" target="_blank" rel="noopener">官网文档</a></p>
 
         </div>
         <!-- .entry-content -->
@@ -561,36 +605,19 @@ export default {
       <div class="toc" style="background: none;"></div>
       <section class="post-squares nextprev">
         
+        
           
-            <div class="post-nepre half previous">
+            <div class="post-nepre full next">
           
-            <a href="/2020/09/15/技术/filter过滤器/" rel="prev">
+            <a href="/2020/09/15/技术/filter过滤器/" rel="next">
               <div class="background">
                 <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/vue-filter.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/vue-filter.png">
-              </div>
-              <span class="label">
-              Previous Post</span>
-              <div class="info">
-                <h3>
-                filter过滤器</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
-        
-          
-            <div class="post-nepre half next">
-          
-            <a href="/2020/09/13/技术/动态组件/" rel="next">
-              <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200913111231171.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200913111231171.png">
               </div>
               <span class="label">
               Next Post</span>
               <div class="info">
                 <h3>
-                Vue动态组件</h3>
+                filter过滤器</h3>
                 <hr>
               </div>
             </a>

@@ -549,14 +549,14 @@ export default {
 </code></pre>
 <p>效果如下，网上说会有路由的改变过程，我没有发现。。。</p>
 <p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ录屏20200731213658 00_00_00-00_00_30.gif" alt="QQ录屏20200731213658 00_00_00-00_00_30"></p>
-<h2 id="provide-inject-组合"><a href="#provide-inject-组合" class="headerlink" title="provide / inject 组合"></a>provide / inject 组合</h2><p>先修改一下app.vue，通过provide传递reload方法</p>
+<h2 id="provide-inject-组合"><a href="#provide-inject-组合" class="headerlink" title="provide / inject 组合"></a>provide / inject 组合</h2><p>先修改一下app.vue，通过provide传递reload方法<br>在<code>router-view</code>标签中添加v-if判断<code>v-if=&quot;isRouterAlive&quot;</code></p>
 <pre><code class="js">export default {
     provide() {
         return {
-            reload: this.reload()
+            reload: this.reload
         }
     },
-    name: &quot;Back&quot;,
+    name: &quot;app&quot;,
     data() {
         return {
             isRouterAlive: true
