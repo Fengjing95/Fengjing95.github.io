@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://easyremember.cn/"/>
-  <updated>2020-09-18T04:23:04.218Z</updated>
+  <updated>2020-09-19T00:35:04.864Z</updated>
   <id>https://easyremember.cn/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Vue3的基础API变化</title>
+    <link href="https://easyremember.cn/2020/09/19/%E6%8A%80%E6%9C%AF/Vue3API%E5%8F%98%E5%8C%96/"/>
+    <id>https://easyremember.cn/2020/09/19/技术/Vue3API变化/</id>
+    <published>2020-09-19T00:33:27.474Z</published>
+    <updated>2020-09-19T00:35:04.864Z</updated>
+    
+    <summary type="html">
+    
+      Vue3“船新”API
+    
+    </summary>
+    
+      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="vue" scheme="https://easyremember.cn/tags/vue/"/>
+    
+  </entry>
   
   <entry>
     <title>Vue3初体验</title>
@@ -390,26 +410,6 @@
     </summary>
     
       <category term="笔记" scheme="https://easyremember.cn/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="js" scheme="https://easyremember.cn/tags/js/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>原型和原型链</title>
-    <link href="https://easyremember.cn/2020/08/19/%E6%8A%80%E6%9C%AF/%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE/"/>
-    <id>https://easyremember.cn/2020/08/19/技术/原型和原型链/</id>
-    <published>2020-08-19T00:53:18.162Z</published>
-    <updated>2020-09-05T09:35:16.583Z</updated>
-    
-    <summary type="html">
-    
-      原型和原型链
-    
-    </summary>
-    
-      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
       <category term="js" scheme="https://easyremember.cn/tags/js/"/>
