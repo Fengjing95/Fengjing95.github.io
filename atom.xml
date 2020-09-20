@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://easyremember.cn/"/>
-  <updated>2020-09-19T06:53:34.496Z</updated>
+  <updated>2020-09-20T08:34:46.790Z</updated>
   <id>https://easyremember.cn/</id>
   
   <author>
@@ -17,11 +17,31 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>函数式编程思想之柯里化</title>
+    <link href="https://easyremember.cn/2020/09/20/%E6%8A%80%E6%9C%AF/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3%E4%B9%8B%E6%9F%AF%E9%87%8C%E5%8C%96/"/>
+    <id>https://easyremember.cn/2020/09/20/技术/函数式编程思想之柯里化/</id>
+    <published>2020-09-20T08:33:44.542Z</published>
+    <updated>2020-09-20T08:34:46.790Z</updated>
+    
+    <summary type="html">
+    
+      认识柯里化
+    
+    </summary>
+    
+      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="js" scheme="https://easyremember.cn/tags/js/"/>
+    
+  </entry>
+  
+  <entry>
     <title>重新认识replace</title>
     <link href="https://easyremember.cn/2020/09/19/%E6%8A%80%E6%9C%AF/replace%EF%BC%9A%E9%87%8D%E6%96%B0%E8%AE%A4%E8%AF%86%E4%B8%80%E4%B8%8B%E5%91%97/"/>
     <id>https://easyremember.cn/2020/09/19/技术/replace：重新认识一下呗/</id>
     <published>2020-09-19T06:48:45.777Z</published>
-    <updated>2020-09-19T06:53:34.496Z</updated>
+    <updated>2020-09-19T06:56:45.931Z</updated>
     
     <summary type="html">
     
@@ -281,7 +301,7 @@
     <link href="https://easyremember.cn/2020/09/08/%E7%AC%94%E8%AE%B0/pug%E6%A8%A1%E6%9D%BF%E6%B8%B2%E6%9F%93/"/>
     <id>https://easyremember.cn/2020/09/08/笔记/pug模板渲染/</id>
     <published>2020-09-08T01:04:47.328Z</published>
-    <updated>2020-09-08T01:07:07.883Z</updated>
+    <updated>2020-09-20T00:35:34.997Z</updated>
     
     <summary type="html">
     
@@ -393,26 +413,6 @@
     
     
       <category term="悦读" scheme="https://easyremember.cn/tags/%E6%82%A6%E8%AF%BB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>对比call和apply</title>
-    <link href="https://easyremember.cn/2020/08/27/%E6%8A%80%E6%9C%AF/call%E5%92%8Capply/"/>
-    <id>https://easyremember.cn/2020/08/27/技术/call和apply/</id>
-    <published>2020-08-27T14:47:40.917Z</published>
-    <updated>2020-09-09T02:55:14.055Z</updated>
-    
-    <summary type="html">
-    
-      function原型方法call、bind、apply
-    
-    </summary>
-    
-      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="js" scheme="https://easyremember.cn/tags/js/"/>
     
   </entry>
   

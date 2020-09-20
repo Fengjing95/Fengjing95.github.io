@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">Category: 技术 | 前端小枫</title>
+  <title itemprop="name">函数式编程思想之柯里化 | 前端小枫</title>
   
   <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -466,308 +466,203 @@
   </div>
 </header>
 
-      
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
 <div class="pattern-center-blank"></div>
-<div class="pattern-center ">
-  <div class="pattern-attachment-img">
-    <img data-src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/banner/coding.jpg" class="lazyload" onerror="imgError(this,3)" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200920155016815.png);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200920155016815.png">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      函数式编程思想之柯里化</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="">小枫</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2020-9-20<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
   </div>
-  <header class="pattern-header ">
-    <h1 class="cat-title">野生技术协会</h1>
-    <span class="cat-des">
-      <p>Geek – Only for Love</p>
-    </span>
-  </header>
-</div>
+
 <div id="content" class="site-content">
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
-      
-  <!-- 首页默认取最最新文章集 -->
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/07/23/技术/异步轮询/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200723135235506.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/07/23/技术/异步轮询/">
-    JS异步轮询</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-7-23</div>
-    <p>
-    JS异步深入理解</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/07/23/技术/异步轮询/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/07/23/技术/闭包/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200723133122739.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/07/23/技术/闭包/">
-    JS中的闭包</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-7-23</div>
-    <p>
-    一篇文章带你了解JS闭包</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/07/23/技术/闭包/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/07/15/资源/Typora图片自动上传到图床/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/typora-icon.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/07/15/资源/Typora图片自动上传到图床/">
-    Typora图片自动上传到图床</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-7-15</div>
-    <p>
-    Typora+picGo+gitee</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/07/15/资源/Typora图片自动上传到图床/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/07/14/资源/VS Code 快捷键/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/vscode.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/07/14/资源/VS Code 快捷键/">
-    VS Code 快捷键</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-7-14</div>
-    <p>
-    VSCode常用快捷键汇集</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/07/14/资源/VS Code 快捷键/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-
-
-      <div class="clearer">
-      </div>
-    </main>
-    <!-- 
-      <nav class="navigator">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
-        <a class="extend prev" rel="prev" href="/categories/技术/page/3/"><i class="iconfont icon-back"></i></a><a class="page-number" href="/categories/技术/">1</a><a class="page-number" href="/categories/技术/page/2/">2</a><a class="page-number" href="/categories/技术/page/3/">3</a><span class="page-number current">4</span>
-      </nav>
-     -->
-    
-  </div>
+        <div class="entry-content">
+          <p>接下来马上开始WWH（what，why，how）</p>
+<h2 id="W——什么是柯里化"><a href="#W——什么是柯里化" class="headerlink" title="W——什么是柯里化"></a>W——什么是柯里化</h2><blockquote>
+<p>在计算机科学中，柯里化（Currying）是把接受多个参数的函数变换成接受一个单一参数(最初函数的第一个参数)的函数，并且返回接受余下的参数且返回结果的新函数的技术。这个技术由 Christopher Strachey 以逻辑学家 Haskell Curry 命名的，尽管它是 Moses Schnfinkel 和 Gottlob Frege 发明的。</p>
+<p>——百度百科《柯里化》</p>
+</blockquote>
+<p>下面说一点人话</p>
+<p>用<code>cfn(1)(2)(3)</code>来实现<code>fn(1,2,3)</code>的效果</p>
+<h2 id="W——为什么要柯里化"><a href="#W——为什么要柯里化" class="headerlink" title="W——为什么要柯里化"></a>W——为什么要柯里化</h2><blockquote>
+<p>把一个抽象函数（即只知道参数列表和返回类型的函数模版）作为参数送给另一个函数。这样实现了调用和实现的分离</p>
+</blockquote>
+<p>解决了某些方法只接受一个参数的问题</p>
+<h2 id="H——怎么实现柯里化"><a href="#H——怎么实现柯里化" class="headerlink" title="H——怎么实现柯里化"></a>H——怎么实现柯里化</h2><p>重头戏开始</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200920160207086.png" alt="image-20200920160207086"></p>
+<p>先来看一个简单的二元函数转一元函数的示例</p>
+<pre><code class="js">// 接收一个函数，返回一个柯里化的函数
+function curry(fn) {
+  return function (x) {
+    return function (y) {
+      return fn(x, y)
+    }
+  }
+}
+function add(x, y) {
+  return x + y
+}
+
+const cAdd = curry(add)
+
+console.log(&#39;add方法-&#39; + add(1, 2));
+console.log(&#39;cAdd方法-&#39; + cAdd(1)(2));
+</code></pre>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200920161321007.png" alt="image-20200920161321007"></p>
+<p>类似于在z=x+y中，先确定了x的值，然后下一步把y带入，计算出结果</p>
+<p>再来看一个实际一点的用法</p>
+<pre><code class="js">const arr = [
+  {
+    name: &#39;zhangsan&#39;,
+    age: 12
+  },
+  {
+    name: &#39;lisi&#39;,
+    age: 12
+  },
+  {
+    name: &#39;wangwu&#39;,
+    age: 12
+  },
+]
+const getObj = (name, item) =&gt; {
+  return item.name === name
+}
+const cfn = curry(getObj)
+// console.log(cfn(&#39;lisi&#39;).toString());
+let result = arr.filter(cfn(&#39;lisi&#39;))
+console.log(result);
+</code></pre>
+<p>这段代码中首先定义了一个对象数组，然后使用数组的filter方法来获取某个对象，getObj方法接收两个参数，返回一个boolean值，柯里化之后只需要接收一个参数，因为是在filter函数的回调函数中，所以会自动将数组中的每一项作为参数执行回调函数</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200920161722255.png" alt="image-20200920161722255"></p>
+<p>这里可能会很难绕出来，打印一下<code>cfn(&#39;lisi&#39;)</code>看一下</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200920161941983.png" alt="image-20200920161941983"></p>
+<p>可以看到<code>cfn(&#39;lisi&#39;)</code>就只是一个函数，参数y就是filter遍历时的item</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200920162121815.png" alt="image-20200920162121815"></p>
+<p>这只是二元柯里化，那我要是好多参数怎么办，再写一个？几个参数套几层闭包？</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200920162440895.png" alt="image-20200920162440895"></p>
+<p>当然有一劳永逸的方法</p>
+<pre><code class="js">function curry(fn) {
+  const length = fn.length;
+  const curryFn = (args) =&gt; (arg) =&gt; {
+    const curryArgs = args.concat(arg);
+    if (curryArgs.length === length) {
+      return fn(...curryArgs);
+    }
+    return curryFn(curryArgs);
+  }
+  return curryFn([]);
+}
+</code></pre>
+<p>试一下</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200920163236366.png" alt="image-20200920163236366"></p>
+<p>GOOD！！！</p>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+        
+          
+            <div class="post-nepre full next">
+          
+            <a href="/2020/09/19/技术/replace：重新认识一下呗/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/js-api.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/js-api.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                重新认识replace</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "AdzOvpXTwwf3KAX23DOds5C9-gzGzoHsz",
+        appKey: "olX1MHfMtrQcmemwl5lLmu4a",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg" itemprop="image" alt="小枫" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author">小枫</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>前端小白</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
 </div>
 
-<!-- 
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/07/23/技术/异步轮询/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200723135235506.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/07/23/技术/异步轮询/">
-    JS异步轮询</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-7-23</div>
-    <p>
-    JS异步深入理解</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/07/23/技术/异步轮询/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/07/23/技术/闭包/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200723133122739.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/07/23/技术/闭包/">
-    JS中的闭包</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-7-23</div>
-    <p>
-    一篇文章带你了解JS闭包</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/07/23/技术/闭包/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/07/15/资源/Typora图片自动上传到图床/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/typora-icon.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/07/15/资源/Typora图片自动上传到图床/">
-    Typora图片自动上传到图床</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-7-15</div>
-    <p>
-    Typora+picGo+gitee</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/07/15/资源/Typora图片自动上传到图床/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/07/14/资源/VS Code 快捷键/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/vscode.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/07/14/资源/VS Code 快捷键/">
-    VS Code 快捷键</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-7-14</div>
-    <p>
-    VSCode常用快捷键汇集</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/07/14/资源/VS Code 快捷键/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
 
- -->
+
     </div>    
     <div class="ins-search">
     <div class="ins-search-mask"></div>
