@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://easyremember.cn/"/>
-  <updated>2020-09-20T08:34:46.790Z</updated>
+  <updated>2020-09-23T09:25:20.131Z</updated>
   <id>https://easyremember.cn/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Sass学习笔记</title>
+    <link href="https://easyremember.cn/2020/09/23/%E7%AC%94%E8%AE%B0/Sass%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>https://easyremember.cn/2020/09/23/笔记/Sass学习笔记/</id>
+    <published>2020-09-23T09:24:16.818Z</published>
+    <updated>2020-09-23T09:25:20.131Z</updated>
+    
+    <summary type="html">
+    
+      Sass，最稳定、成熟的css拓展语言
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://easyremember.cn/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="css" scheme="https://easyremember.cn/tags/css/"/>
+    
+  </entry>
   
   <entry>
     <title>函数式编程思想之柯里化</title>
@@ -393,26 +413,6 @@
     
     
       <category term="vue" scheme="https://easyremember.cn/tags/vue/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>小爱课程表使用手册</title>
-    <link href="https://easyremember.cn/2020/08/28/%E7%94%9F%E6%B4%BB/%E5%B0%8F%E7%88%B1%E8%AF%BE%E7%A8%8B%E8%A1%A8%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3%E2%80%94%E2%80%94%E5%B1%B1%E4%B8%9C%E5%B7%A5%E5%95%86%E5%AD%A6%E9%99%A2-SDTBU/"/>
-    <id>https://easyremember.cn/2020/08/28/生活/小爱课程表使用文档——山东工商学院-SDTBU/</id>
-    <published>2020-08-28T11:08:09.118Z</published>
-    <updated>2020-09-14T11:28:51.463Z</updated>
-    
-    <summary type="html">
-    
-      小爱课程表使用手册——山东工商学院-SDTBU
-    
-    </summary>
-    
-      <category term="工具" scheme="https://easyremember.cn/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-      <category term="悦读" scheme="https://easyremember.cn/tags/%E6%82%A6%E8%AF%BB/"/>
     
   </entry>
   
