@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://easyremember.cn/"/>
-  <updated>2020-09-23T09:25:20.131Z</updated>
+  <updated>2020-09-27T07:25:33.501Z</updated>
   <id>https://easyremember.cn/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JavaScript自动化测试框架——Jest</title>
+    <link href="https://easyremember.cn/2020/09/27/%E7%AC%94%E8%AE%B0/%E5%89%8D%E7%AB%AF%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7Jest/"/>
+    <id>https://easyremember.cn/2020/09/27/笔记/前端测试工具Jest/</id>
+    <published>2020-09-27T07:24:18.018Z</published>
+    <updated>2020-09-27T07:25:33.501Z</updated>
+    
+    <summary type="html">
+    
+      Jest 是一个令人愉快的 JavaScript 测试框架，专注于简单性。
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://easyremember.cn/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="node" scheme="https://easyremember.cn/tags/node/"/>
+    
+  </entry>
   
   <entry>
     <title>Sass学习笔记</title>
@@ -393,26 +413,6 @@
     
     
       <category term="node" scheme="https://easyremember.cn/tags/node/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Vue插槽组件</title>
-    <link href="https://easyremember.cn/2020/08/30/%E6%8A%80%E6%9C%AF/Vue%E7%BB%84%E4%BB%B6%E4%B9%8Bslot%E6%8F%92%E6%A7%BD/"/>
-    <id>https://easyremember.cn/2020/08/30/技术/Vue组件之slot插槽/</id>
-    <published>2020-08-30T08:09:24.323Z</published>
-    <updated>2020-09-05T09:34:39.830Z</updated>
-    
-    <summary type="html">
-    
-      Vue组件之slot插槽详解
-    
-    </summary>
-    
-      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="vue" scheme="https://easyremember.cn/tags/vue/"/>
     
   </entry>
   
