@@ -538,6 +538,32 @@ export default {
 <h2 id="键盘事件"><a href="#键盘事件" class="headerlink" title="键盘事件"></a>键盘事件</h2><h3 id="问题描述-2"><a href="#问题描述-2" class="headerlink" title="问题描述"></a>问题描述</h3><p>添加键盘事件监听无法生效</p>
 <h3 id="解决办法-2"><a href="#解决办法-2" class="headerlink" title="解决办法"></a>解决办法</h3><p>添加<strong>.native</strong>修饰符</p>
 <p><a href="mailto:`@keyup.delete.native" target="_blank" rel="noopener">`@keyup.delete.native</a>=”KeyUpDelete”`</p>
+<h2 id="Dialog对话框"><a href="#Dialog对话框" class="headerlink" title="Dialog对话框"></a>Dialog对话框</h2><h3 id="问题描述-3"><a href="#问题描述-3" class="headerlink" title="问题描述"></a>问题描述</h3><p>点击空白处不关闭等默认属性无法改变</p>
+<h3 id="解决办法-3"><a href="#解决办法-3" class="headerlink" title="解决办法"></a>解决办法</h3><p>修改引入element组件的默认配置</p>
+<pre><code class="js">import Vue from &#39;vue&#39;
+import Element from &#39;element-ui&#39;
+import &#39;element-ui/lib/theme-chalk/index.css&#39;
+
+
+Element.Dialog.props.closeOnClickModal.default = false
+Element.Dialog.props.showClose.default = false
+
+Vue.use(Element)
+</code></pre>
+<h2 id="upload上传组件"><a href="#upload上传组件" class="headerlink" title="upload上传组件"></a>upload上传组件</h2><h3 id="问题描述-4"><a href="#问题描述-4" class="headerlink" title="问题描述"></a>问题描述</h3><ol>
+<li>通过action属性发送请求出现跨域问题</li>
+<li>不被请求拦截器拦截无法添加token</li>
+</ol>
+<h3 id="解决办法-4"><a href="#解决办法-4" class="headerlink" title="解决办法"></a>解决办法</h3><ol>
+<li><p>配置代理，直接使用代理发送请求，如下</p>
+<p><img src="C:/Users/刘浩/AppData/Roaming/Typora/typora-user-images/image-20201006121432711.png" alt="image-20201006121432711"></p>
+</li>
+<li><p>添加token请求头，使用<code>:headers</code>属性添加请求头，在data中添加token变量</p>
+<blockquote>
+<p>不要对上传组件样式进行scoped限制，会丢失样式</p>
+</blockquote>
+</li>
+</ol>
 
         </div>
         <!-- .entry-content -->
