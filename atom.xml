@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://easyremember.cn/"/>
-  <updated>2020-10-19T03:53:29.368Z</updated>
+  <updated>2020-11-06T08:44:23.434Z</updated>
   <id>https://easyremember.cn/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>uni-app学习笔记（入门）</title>
+    <link href="https://easyremember.cn/2020/11/06/%E7%AC%94%E8%AE%B0/uni-app%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>https://easyremember.cn/2020/11/06/笔记/uni-app学习笔记/</id>
+    <published>2020-11-06T08:42:39.312Z</published>
+    <updated>2020-11-06T08:44:23.434Z</updated>
+    
+    <summary type="html">
+    
+      跨端适配框架uni-app，基于Vue
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://easyremember.cn/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="js" scheme="https://easyremember.cn/tags/js/"/>
+    
+  </entry>
   
   <entry>
     <title>点击按钮显示评论框点击其他部位隐藏</title>
@@ -221,7 +241,7 @@
     <link href="https://easyremember.cn/2020/09/13/%E6%8A%80%E6%9C%AF/elementUI%E8%B8%A9%E5%9D%91/"/>
     <id>https://easyremember.cn/2020/09/13/技术/elementUI踩坑/</id>
     <published>2020-09-13T11:58:37.724Z</published>
-    <updated>2020-10-06T05:53:35.317Z</updated>
+    <updated>2020-10-19T04:11:13.233Z</updated>
     
     <summary type="html">
     
@@ -393,26 +413,6 @@
     
     
       <category term="node" scheme="https://easyremember.cn/tags/node/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android笔记</title>
-    <link href="https://easyremember.cn/2020/09/07/%E7%AC%94%E8%AE%B0/Android%E7%AC%94%E8%AE%B0/"/>
-    <id>https://easyremember.cn/2020/09/07/笔记/Android笔记/</id>
-    <published>2020-09-07T12:09:01.520Z</published>
-    <updated>2020-09-07T12:11:32.797Z</updated>
-    
-    <summary type="html">
-    
-      Android学习笔记
-    
-    </summary>
-    
-      <category term="笔记" scheme="https://easyremember.cn/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="笔记" scheme="https://easyremember.cn/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
