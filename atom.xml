@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://easyremember.cn/"/>
-  <updated>2020-11-06T08:44:23.434Z</updated>
+  <updated>2020-11-08T02:28:00.840Z</updated>
   <id>https://easyremember.cn/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>记一次文件上传的曲折历史</title>
+    <link href="https://easyremember.cn/2020/11/08/%E6%8A%80%E6%9C%AF/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
+    <id>https://easyremember.cn/2020/11/08/技术/记一次文件上传/</id>
+    <published>2020-11-08T02:25:12.454Z</published>
+    <updated>2020-11-08T02:28:00.840Z</updated>
+    
+    <summary type="html">
+    
+      使用Vue进行文件切片上传
+    
+    </summary>
+    
+      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="vue" scheme="https://easyremember.cn/tags/vue/"/>
+    
+  </entry>
   
   <entry>
     <title>uni-app学习笔记（入门）</title>
@@ -386,26 +406,6 @@
     <summary type="html">
     
       Webpack是一个非常流行的前端资源加载/打包工具
-    
-    </summary>
-    
-      <category term="笔记" scheme="https://easyremember.cn/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="node" scheme="https://easyremember.cn/tags/node/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>pug模板渲染</title>
-    <link href="https://easyremember.cn/2020/09/08/%E7%AC%94%E8%AE%B0/pug%E6%A8%A1%E6%9D%BF%E6%B8%B2%E6%9F%93/"/>
-    <id>https://easyremember.cn/2020/09/08/笔记/pug模板渲染/</id>
-    <published>2020-09-08T01:04:47.328Z</published>
-    <updated>2020-09-20T00:35:34.997Z</updated>
-    
-    <summary type="html">
-    
-      健壮、灵活、功能丰富的HTML模板引擎,专门为 Node.js 平台开发
     
     </summary>
     
