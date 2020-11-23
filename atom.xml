@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://easyremember.cn/"/>
-  <updated>2020-11-08T02:28:00.840Z</updated>
+  <updated>2020-11-23T00:10:09.402Z</updated>
   <id>https://easyremember.cn/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JavaScript中的数组遍历方法</title>
+    <link href="https://easyremember.cn/2020/11/23/%E6%8A%80%E6%9C%AF/JavaScript%E4%B8%AD%E7%9A%84%E6%95%B0%E7%BB%84%E9%81%8D%E5%8E%86%E6%96%B9%E6%B3%95/"/>
+    <id>https://easyremember.cn/2020/11/23/技术/JavaScript中的数组遍历方法/</id>
+    <published>2020-11-23T00:08:47.874Z</published>
+    <updated>2020-11-23T00:10:09.402Z</updated>
+    
+    <summary type="html">
+    
+      使用Array中的API遍历数组
+    
+    </summary>
+    
+      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="js" scheme="https://easyremember.cn/tags/js/"/>
+    
+  </entry>
   
   <entry>
     <title>记一次文件上传的曲折历史</title>
@@ -41,7 +61,7 @@
     <link href="https://easyremember.cn/2020/11/06/%E7%AC%94%E8%AE%B0/uni-app%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     <id>https://easyremember.cn/2020/11/06/笔记/uni-app学习笔记/</id>
     <published>2020-11-06T08:42:39.312Z</published>
-    <updated>2020-11-06T08:44:23.434Z</updated>
+    <updated>2020-11-23T00:27:59.626Z</updated>
     
     <summary type="html">
     
@@ -52,7 +72,7 @@
       <category term="笔记" scheme="https://easyremember.cn/categories/%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="js" scheme="https://easyremember.cn/tags/js/"/>
+      <category term="vue" scheme="https://easyremember.cn/tags/vue/"/>
     
   </entry>
   
@@ -393,26 +413,6 @@
     
     
       <category term="工具" scheme="https://easyremember.cn/tags/%E5%B7%A5%E5%85%B7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>webpack笔记</title>
-    <link href="https://easyremember.cn/2020/09/08/%E7%AC%94%E8%AE%B0/webpack/"/>
-    <id>https://easyremember.cn/2020/09/08/笔记/webpack/</id>
-    <published>2020-09-08T11:14:28.126Z</published>
-    <updated>2020-09-08T11:16:00.057Z</updated>
-    
-    <summary type="html">
-    
-      Webpack是一个非常流行的前端资源加载/打包工具
-    
-    </summary>
-    
-      <category term="笔记" scheme="https://easyremember.cn/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="node" scheme="https://easyremember.cn/tags/node/"/>
     
   </entry>
   
