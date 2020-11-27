@@ -1,0 +1,1718 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta name="baidu-site-verification" content="GdMCS2x132">
+  <meta name="baidu-site-verification" content="MtlFG3tB3d">
+  <!-- <link rel="shortcut icon" type="image/x-icon" href="./images/favicon.ico"> -->
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+  <title itemprop="name">nestjs学习笔记 | 前端小枫</title>
+  
+  <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="/css/style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/lib.min.css" media="all">
+  <link rel="stylesheet" href="/css/font.css" media="all">
+  <link rel="stylesheet" href="/css/insight.css" media="all">
+  <link rel="stylesheet" href="/css/jquery.fancybox.min.css" media="all">
+  <link rel="stylesheet" href="/css/zoom.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+  <!--   <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css
+" type="text/css" media="all"> -->
+  <script>
+    /*Initial Variables*/
+    var mashiro_option = new Object();
+    var mashiro_global = new Object();
+    mashiro_option.NProgressON = true;
+    /* 
+     * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+     * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+     */
+    mashiro_option.email_domain = "";
+    mashiro_option.email_name = "";
+    mashiro_option.cookie_version_control = "";
+    mashiro_option.qzone_autocomplete = false;
+    mashiro_option.site_name = "沿途の枫景";
+    mashiro_option.author_name = "枫景";
+    mashiro_option.site_url = "https://easyremember.cn";
+    mashiro_option.v_appId = "AdzOvpXTwwf3KAX23DOds5C9-gzGzoHsz";
+    mashiro_option.v_appKey = "olX1MHfMtrQcmemwl5lLmu4a";
+    mashiro_option.mathjax = "0";
+    mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/";
+    mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+
+  // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
+  // mashiro_option.float_player_on = true;
+
+    /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+    var bg = "https://gitee.com/liuhao1108/picGoCDN/raw/master/img/back1.jpg,https://gitee.com/liuhao1108/picGoCDN/raw/master/img/back2.jpg,https://gitee.com/liuhao1108/picGoCDN/raw/master/img/back3.jpg,https://gitee.com/liuhao1108/picGoCDN/raw/master/img/back4.jpg,https://gitee.com/liuhao1108/picGoCDN/raw/master/img/back5.jpg,https://gitee.com/liuhao1108/picGoCDN/raw/master/img/back6.jpg,https://gitee.com/liuhao1108/picGoCDN/raw/master/img/back7.jpg,https://gitee.com/liuhao1108/picGoCDN/raw/master/img/back8.jpg".split(",");
+    var bgindex = Math.floor(Math.random() * bg.length);
+    if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+      alert('朋友，IE浏览器未适配哦~');
+    }
+  </script>
+  <style type="text/css">
+    .hljs-ln {
+      border-collapse: collapse
+    }
+
+    .hljs-ln td {
+      padding: 0
+    }
+
+    .hljs-ln-n:before {
+      content: attr(data-line-number)
+    }
+  </style>
+  <style type="text/css">
+    .site-top .lower nav {
+      display: block !important;
+    }
+
+    .author-profile i,
+    .post-like a,
+    .post-share .show-share,
+    .sub-text,
+    .we-info a,
+    span.sitename,
+    .post-more i:hover,
+    #pagination a:hover,
+    .post-content a:hover,
+    .float-content i:hover {
+      color: #FE9600
+    }
+
+    .feature i,
+    .download,
+    .navigator i:hover,
+    .links ul li:before,
+    .ar-time i,
+    span.ar-circle,
+    .object,
+    .comment .comment-reply-link,
+    .siren-checkbox-radio:checked+.siren-checkbox-radioInput:after {
+      background: #FE9600
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #FE9600
+    }
+
+    .download,
+    .navigator i:hover,
+    .link-title,
+    .links ul li:hover,
+    #pagination a:hover,
+    .comment-respond input[type='submit']:hover {
+      border-color: #FE9600
+    }
+
+    .entry-content a:hover,
+    .site-info a:hover,
+    .comment h4 a,
+    #comments-navi a.prev,
+    #comments-navi a.next,
+    .comment h4 a:hover,
+    .site-top ul li a:hover,
+    .entry-title a:hover,
+    #archives-temp h3,
+    span.page-numbers.current,
+    .sorry li a:hover,
+    .site-title a:hover,
+    i.iconfont.js-toggle-search.iconsearch:hover,
+    .comment-respond input[type='submit']:hover {
+      color: #FE9600
+    }
+
+    .comments .comments-main {
+      display: block !important;
+    }
+
+    .comments .comments-hidden {
+      display: none !important;
+    }
+
+    background-position:center center;
+    background-attachment:inherit;
+    }
+  </style>
+</head></html>
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <div class="scrollbar" id="bar">
+  </div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop filter-dot">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a href="https://easyremember.cn">
+          <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>努力做更好的自己！</p>
+        <div class="top-social_v2">
+          <li id="bg-pre">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="https://github.com/Fengjing95" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/social/github.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://weibo.com/5056791657/profile?is_all=1" target="_blank" class="social-github" title="sina">
+                    <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/social/sina.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://music.163.com/#/my/m/music/playlist?id=2069325819" target="_blank" class="social-github" title="wangyiyun">
+                    <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/social/wangyiyun.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://www.zhihu.com/people/feng-jing-28-65" target="_blank" class="social-github" title="zhihu">
+                    <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/social/zhihu.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="email">
+                    <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/social/email.svg">
+                  </a>
+                </li>
+              
+            
+              
+                <li class="wechat">
+                  <a href="/#">
+                    <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/social/wechat.png">
+                  </a>
+                  <div class="wechatInner">
+                    <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/wechat.jpg">
+                  </div>
+                </li>
+              
+            
+          
+          <li id="bg-next">
+            <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style="">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <div id="video-btn" class="loadvideo videolive">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu">
+    </div>
+  </div>
+  <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span>
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink moe-mashiro">
+          <a href="/">
+            <span class="sakurasono">沿途の</span>
+            <span class="shironeko">枫景</span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div>
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+                    归档
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/categories/技术/">
+                          <i class="fa fa-code" aria-hidden="true"></i>
+                          技术
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/生活/">
+                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          生活
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/资源/">
+                          <i class="fa fa-cloud-download" aria-hidden="true"></i>
+                          资源
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/随想/">
+                          <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                          随想
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/笔记/">
+                          <i class="fa fa-book" aria-hidden="true"></i>
+                          笔记
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    清单
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/tags/悦读/">
+                          <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                          书单
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/bangumi/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          番组
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/music/">
+                          <i class="fa fa-headphones" aria-hidden="true"></i>
+                          歌单
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/tags/图集/">
+                          <i class="fa fa-photo" aria-hidden="true"></i>
+                          图集
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/comment/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+                    留言板
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/links/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+                    友人帐
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/donate/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+                    赞赏
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+                    关于
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/about/">
+                          <i class="fa fa-meetup" aria-hidden="true"></i>
+                          我？
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/theme-sakura/">
+                          <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+                          主题
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/lab/">
+                          <i class="fa fa-cogs" aria-hidden="true"></i>
+                          Lab
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/client/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-android faa-vertical" aria-hidden="true"></i>
+                    客户端
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/atom.xml">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+                    RSS
+                  </span>
+                </a>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201125184611103.png);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201125184611103.png">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      nestjs学习笔记</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="">小枫</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2020-11-27<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h2 id="1-开始"><a href="#1-开始" class="headerlink" title="1 开始"></a>1 开始</h2><h3 id="1-1-简介"><a href="#1-1-简介" class="headerlink" title="1.1 简介"></a>1.1 简介</h3><blockquote>
+<p>Nest.js是一个渐进的Node.js框架，可以在TypeScript和JavaScript (ES6、ES7、ES8)之上构建高效、可伸缩的企业级服务器端应用程序。它的核心思想是提供了一个层与层直接的耦合度极小、抽象化极高的一个架构体系</p>
+</blockquote>
+<p>Nest框架底层HTTP平台默认是基于Express 实现的，所以无需担心第三方库的缺失。默认集成了mongoose、TypeOrm、Redis、Graphql、Socket.io，微服务等模块。Nest基于TypeScript编写并且结合了OOP（面向对象编程），FP（函数式编程）和 FRP（函数式响应编程）的相关理念，为node.js世界带来设计模式和成熟的解决方案。</p>
+<h3 id="1-2-安装与启动"><a href="#1-2-安装与启动" class="headerlink" title="1.2 安装与启动"></a>1.2 安装与启动</h3><ul>
+<li><p>全局安装nest—— <code>npm install @nest/cli -g</code></p>
+</li>
+<li><p>创建项目—— <code>nest new app-name</code></p>
+<p>创建过程中会让你选择包管理器，npm或者yarn</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201125185017819.png" alt="image-20201125185017819"></p>
+</li>
+<li><p>进入项目—— <code>cd app-name</code></p>
+</li>
+<li><p>启动项目—— <code>npm run start</code></p>
+</li>
+</ul>
+<p>项目默认使用3000端口，打开浏览器输入<a href="http://localhost:3000，就可以看到默认的数据了" target="_blank" rel="noopener">http://localhost:3000，就可以看到默认的数据了</a></p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201125185258987.png" alt="image-20201125185258987"></p>
+<h3 id="1-3-入口文件及文件结构"><a href="#1-3-入口文件及文件结构" class="headerlink" title="1.3 入口文件及文件结构"></a>1.3 入口文件及文件结构</h3><p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201125204719276.png" alt="image-20201125204719276"></p>
+<p>整个项目的入口文件是main.ts，只有8行，利用了nestjs的工厂创建了实例，监听3000端口</p>
+<p>一般我们的分包的方式都是相同职责的文件放在一起（比如Egg.js），比如controller包下面都是controller，service包下面都是service，但是在nestjs中，这种方式不如按照功能分包来的方便（login包下面的所有文件都与login功能相关）</p>
+<pre><code class="cmd">├─ app
+│  ├─ dist    // 打包目录
+│  ├─ src  // 源码
+│  │  ├─ main.ts  // 入口
+│  │  ├─ modules  // 业务逻辑代码
+│  │  │  └─ login // 跟login相关的代码（controller、service、module等）
+│  │  └─ app.module.ts // 总的模块组装文件
+│  └─ test  // 测试相关
+</code></pre>
+<h3 id="1-4-功能Demo"><a href="#1-4-功能Demo" class="headerlink" title="1.4 功能Demo"></a>1.4 功能Demo</h3><p>Controller中使用Service中的功能不再需要new一个Service示例，那样既浪费内存，又不容易维护。在NestJS中，使用类似Spring IoC的方式，将service注入到Controller中</p>
+<p>以Hello功能为例进行代码演示：</p>
+<p>在功能包下的module.ts中实现注入这一操作</p>
+<pre><code class="typescript">import { Module } from &#39;@nestjs/common&#39;;
+import { HelloController } from &#39;./hello.controller&#39;;
+import { HelloService } from &#39;./hello.service&#39;;
+
+@Module({
+  imports: [],
+  controllers: [HelloController],
+  providers: [HelloService],
+})
+export class HelloModule {}
+</code></pre>
+<p>在Controller中编写控制器代码</p>
+<pre><code class="typescript">import { Controller, Get, Query } from &#39;@nestjs/common&#39;;
+import { HelloService } from &#39;./hello.service&#39;;
+
+@Controller(&#39;/hello&#39;)
+export class HelloController {
+  constructor(private readonly helloService: HelloService) {}
+
+  @Get()
+  hi(@Query() { id }): string {
+    console.log(id);
+    return this.helloService.getHi() + id;
+  }
+}
+</code></pre>
+<p>可以看到在controller中没有出现任何new的字样，这时候运行代码你会发现</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201125222339120.png" alt="image-20201125222339120"></p>
+<p>仍然找不到，因为没有在app.module.ts中进行组装，每一个功能就像一个器官，需要在这个文件中进行拼装才能正常工作</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201125222532616.png" alt="image-20201125222532616"></p>
+<p>到这里答题的流程已经差不多看完了，下面开始详细介绍</p>
+<h2 id="2-控制器"><a href="#2-控制器" class="headerlink" title="2 控制器"></a>2 控制器</h2><h3 id="2-1-创建Controller"><a href="#2-1-创建Controller" class="headerlink" title="2.1 创建Controller"></a>2.1 创建Controller</h3><p>运行命令 <code>nest g controller hello</code>，可以使用nest自动创建controller文件</p>
+<h3 id="2-2-路由"><a href="#2-2-路由" class="headerlink" title="2.2 路由"></a>2.2 路由</h3><p>通过<code>@Controller</code>注解来创建一级路由，在Controller内部使用@Get、@Post等方法装饰器来创建不同http方法的子路由，例如</p>
+<pre><code class="typescript">@Controller(&#39;/hello&#39;)
+export class HelloController {
+  constructor(private readonly helloService: HelloService) {}
+
+  @Get(&#39;hi&#39;)
+  hi(): string {
+    return this.helloService.getHi();
+  }
+}
+</code></pre>
+<p>这段代码生成的路由就是/hello/hi，使用GET请求访问</p>
+<h3 id="2-3-参数"><a href="#2-3-参数" class="headerlink" title="2.3 参数"></a>2.3 参数</h3><h4 id="2-3-1-Query"><a href="#2-3-1-Query" class="headerlink" title="2.3.1 Query"></a>2.3.1 Query</h4><p>GET请求中一般使用<code>@Query()</code>注解来修饰方法中的参数</p>
+<pre><code class="typescript">@Controller(&#39;/hello&#39;)
+export class HelloController {
+  constructor(private readonly helloService: HelloService) {}
+
+  @Get(&#39;hi&#39;)
+  hi(@Query() { id }): string {
+    return this.helloService.getHi() + &#39;——&#39; + id;
+  }
+}
+</code></pre>
+<p>通过query的形式携带参数</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201126090826936.png" alt="image-20201126090826936"></p>
+<h4 id="2-3-2-Body"><a href="#2-3-2-Body" class="headerlink" title="2.3.2 Body"></a>2.3.2 Body</h4><p>在POST请求中一般使用<code>@Body()</code>注解来获取数据</p>
+<pre><code class="typescript">@Post()
+save(@Body() { message }): string {
+  return &#39;接收到消息:&#39; + message;
+}
+</code></pre>
+<p>使用http工具发送post请求来测试一下</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201126093308003.png" alt="image-20201126093308003"></p>
+<h4 id="2-3-3-Headers"><a href="#2-3-3-Headers" class="headerlink" title="2.3.3 Headers"></a>2.3.3 Headers</h4><p>使用<code>@Headers()</code>注解来获取requestHeader中的数据</p>
+<pre><code class="typescript">@Get(&#39;hi&#39;)
+hi(@Query() { id }, @Headers() header): string {
+  console.log(header);
+  return this.helloService.getHi() + &#39;——&#39; + id;
+}
+</code></pre>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201126092331929.png" alt="image-20201126092331929"></p>
+<p>还可以获取某一特定的请求头，比如获取请求中的UA</p>
+<pre><code class="typescript">@Get(&#39;hi&#39;)
+hi(@Query() { id }, @Headers(&#39;user-agent&#39;) UA: string): string {
+  console.log(UA);
+  return this.helloService.getHi() + &#39;——&#39; + id;
+}
+</code></pre>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201126092541138.png" alt="image-20201126092541138"></p>
+<h4 id="2-3-4-Param"><a href="#2-3-4-Param" class="headerlink" title="2.3.4 Param"></a>2.3.4 Param</h4><p><code>@Param()</code>一般用在动态路由，形如：<a href="http://localhost:3000/hello/id/123，后面的123是动态的，可以是其他数据" target="_blank" rel="noopener">http://localhost:3000/hello/id/123，后面的123是动态的，可以是其他数据</a></p>
+<pre><code class="typescript">@Get(&#39;id/:id&#39;)
+getId(@Param() { id }): string {
+  return &#39;接收到ID：&#39; + id;
+}
+</code></pre>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201126094459938.png" alt="image-20201126094459938"></p>
+<h3 id="2-4-集成swagger文档"><a href="#2-4-集成swagger文档" class="headerlink" title="2.4 集成swagger文档"></a>2.4 集成swagger文档</h3><p><a href="https://cloud.tencent.com/developer/section/1490222" target="_blank" rel="noopener">swaggerAPI文档</a></p>
+<p>运行命令安装swagger</p>
+<pre><code class="powershell">npm install @nestjs/swagger swagger-ui-express --save
+</code></pre>
+<p>在main.ts中进行配置</p>
+<pre><code class="typescript">import { NestFactory } from &#39;@nestjs/core&#39;;
+import { SwaggerModule, DocumentBuilder } from &#39;@nestjs/swagger&#39;;
+import { AppModule } from &#39;./app.module&#39;;
+
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
+
+  const options = new DocumentBuilder()
+    .setTitle(&#39;Nest RESTful API&#39;)
+    .setDescription(&#39;接口文档&#39;)
+    .setVersion(&#39;1.0&#39;)
+    .addBearerAuth()
+    .build();
+  const document = SwaggerModule.createDocument(app, options);
+  SwaggerModule.setup(&#39;doc&#39;, app, document);
+
+  await app.listen(3000);
+}
+bootstrap();
+</code></pre>
+<p>然后就可以通过设置的路径去访问了</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201126100230124.png" alt="image-20201126100230124"></p>
+<p>具体的使用方法见<a href="https://docs.nestjs.com/openapi/introduction" target="_blank" rel="noopener">官网文档</a></p>
+<h2 id="3-服务"><a href="#3-服务" class="headerlink" title="3 服务"></a>3 服务</h2><h3 id="3-1-创建服务"><a href="#3-1-创建服务" class="headerlink" title="3.1 创建服务"></a>3.1 创建服务</h3><p>可以使用命令行创建服务</p>
+<pre><code class="powershell">nest g service user
+</code></pre>
+<p>运行命令后，nest会自动创建相关文件，并可以自动注册在module中</p>
+<p>由创建HelloService服务来示例，首先新建hello.service.ts文件，然后将其定义为provider，使用<code>@Injectable()</code>来修饰</p>
+<pre><code class="typescript">import { Injectable } from &#39;@nestjs/common&#39;;
+
+@Injectable()
+export class HelloService {
+  getHi(): string {
+    return &#39;Hi&#39;;
+  }
+}
+</code></pre>
+<p><code>@Injectable({scope: Scope.REQUEST})</code>选择作用域</p>
+<table>
+<thead>
+<tr>
+<th>scope名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SINGLETON</td>
+<td>单例模式，整个应用内只存在一份实例</td>
+</tr>
+<tr>
+<td>REQUEST</td>
+<td>每个请求初始化一次</td>
+</tr>
+<tr>
+<td>TRANSIENT</td>
+<td>每次注入都会实例化</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-2-依赖注入"><a href="#3-2-依赖注入" class="headerlink" title="3.2 依赖注入"></a>3.2 依赖注入</h3><p>在Controller的构造函数中通过<code>constructor(private readonly helloService: HelloService) {}</code>来将Service注入到Controller中</p>
+<blockquote>
+<p>乎所有的东西都可以被当作提供者(Provider),比如： service, repository, factory, helper，他们都可以通过constructor 注入依赖关系</p>
+</blockquote>
+<p><strong>可选的依赖项</strong></p>
+<p>默认情况下，如果依赖注入的对象不存在会提示错误，中断应用运行，此时可以使用<code>@Optional()</code>来指明选择性注入，但依赖注入的对象不存在时不会发生错误。</p>
+<pre><code class="typescript">@Controller(&#39;users&#39;)
+export class UserController {
+    constructor(@Optional() private readonly userService:UserService){}
+}
+</code></pre>
+<p><strong>基于属性的注入</strong></p>
+<p>类似于springboot的service注入，不在构造函数中注入，而是作为一个属性</p>
+<pre><code class="typescript">@Controller(&#39;users&#39;)
+export class UserController {
+    @Inject()
+    private readonly userService:UserService;
+}
+</code></pre>
+<h3 id="3-3-注册provider"><a href="#3-3-注册provider" class="headerlink" title="3.3 注册provider"></a>3.3 注册provider</h3><p>编写完的service需要在module中进行注册，否则无法生效</p>
+<h2 id="4-中间件"><a href="#4-中间件" class="headerlink" title="4 中间件"></a>4 中间件</h2><blockquote>
+<p>Nest 中间件实际上等价于 express 中间件。</p>
+</blockquote>
+<p>中间件函数可以执行以下任务:</p>
+<ul>
+<li>执行任何代码。</li>
+<li>对请求和响应对象进行更改。</li>
+<li>结束请求-响应周期。</li>
+<li>调用堆栈中的下一个中间件函数。</li>
+<li>如果当前的中间件函数没有结束请求-响应周期, 它必须调用next()将控制传递给下一个中间件函数。否则, 请求将被挂起。</li>
+</ul>
+<h3 id="4-1-自定义中间件"><a href="#4-1-自定义中间件" class="headerlink" title="4.1 自定义中间件"></a>4.1 自定义中间件</h3><p>编写一个自定义中间件用来打印每个请求的方法</p>
+<pre><code class="typescript">import { Injectable, NestMiddleware } from &#39;@nestjs/common&#39;;
+import { Request, Response } from &#39;express&#39;;
+
+@Injectable()
+export class LoggerMiddleware implements NestMiddleware {
+  use(req: Request, res: Response, next: () =&gt; void) {
+    console.log(req.method);
+    next();
+  }
+}
+</code></pre>
+<p>然后在app.module.ts中挂载中间件</p>
+<pre><code class="typescript">@Module({
+  imports: [HelloModule],
+  controllers: [AppController],
+  providers: [AppService],
+})
+export class AppModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(LoggerMiddleware)    // 应用中间件
+      .exclude({ path: &#39;hello&#39;, method: RequestMethod.POST })    // 哪些路由和哪些方法不经过中间件
+      .forRoutes(&#39;hello&#39;);    // 中间件服务的路由
+  }
+}
+</code></pre>
+<h2 id="5-异常过滤"><a href="#5-异常过滤" class="headerlink" title="5 异常过滤"></a>5 异常过滤</h2><blockquote>
+<p>内置的<strong>异常层</strong>负责处理整个应用程序中的所有抛出的异常。当捕获到未处理的异常时，最终用户将收到友好的响应。</p>
+</blockquote>
+<h3 id="5-1-编写过滤器"><a href="#5-1-编写过滤器" class="headerlink" title="5.1 编写过滤器"></a>5.1 编写过滤器</h3><p>需要继承ExceptionFilter，进去看一下接口的结构</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201126162644830.png" alt="image-20201126162644830"></p>
+<p>需要实现catch方法，接收两个参数：异常和参数主机，然后来编码实现这个接口</p>
+<pre><code class="typescript">import {
+  ArgumentsHost,
+  Catch,
+  ExceptionFilter,
+  HttpException,
+} from &#39;@nestjs/common&#39;;
+
+@Catch(HttpException)
+export class HttpExceptionFilter implements ExceptionFilter&lt;HttpException&gt; {
+  catch(exception: HttpException, host: ArgumentsHost) {
+    const ctx = host.switchToHttp();
+    const response = ctx.getResponse();
+    const request = ctx.getRequest();
+    const status = exception.getStatus();
+    console.log(exception);
+    const exceptionRes: any = exception.getResponse();
+    const { error, message } = exceptionRes;
+
+    response.status(status).json({
+      status,
+      timestamp: new Date().toISOString(),
+      path: request.url,
+      error,
+      message,
+    });
+  }
+}
+</code></pre>
+<h3 id="5-2-挂载"><a href="#5-2-挂载" class="headerlink" title="5.2 挂载"></a>5.2 挂载</h3><p><strong>全局使用</strong></p>
+<p>在main.ts中通过 <code>app.useGlobalFilters(new HttpExceptionFilter());</code></p>
+<p>来全局挂载过滤器</p>
+<p><strong>局部使用</strong></p>
+<p>在不同模块的Controller中通过注解添加</p>
+<pre><code class="typescript">@UseFilters(new HttpExceptionFilter())
+@Controller(&#39;/hello&#39;)
+export class HelloController {
+  constructor(private readonly helloService: HelloService) {}
+
+  /**
+   * 传入ID获取数据
+   * @param id ID
+   * @param UA user-agent
+   */
+  @Get(&#39;hi&#39;)
+  @ApiQuery({ name: &#39;id&#39;, required: true })
+  @ApiResponse({
+    status: 200,
+    description: &#39;get...&#39;,
+    type: Hello,
+  })
+  hi(@Query() { id }, @Headers(&#39;user-agent&#39;) UA): string {
+    console.log(UA);
+    if (!id)
+      throw new HttpException(
+        {
+          status: HttpStatus.BAD_REQUEST,
+          message: &#39;参数必填&#39;,
+          error: &#39;id is must&#39;,
+        },
+        HttpStatus.BAD_REQUEST,
+      );
+    return this.helloService.getHi() + &#39;——&#39; + id;
+  }
+}
+</code></pre>
+<p>然后再去访问这个路由，就可以获得格式化的异常</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201126162315146.png" alt="image-20201126162315146"></p>
+<h2 id="6-管道"><a href="#6-管道" class="headerlink" title="6 管道"></a>6 管道</h2><h3 id="6-1-内置管道"><a href="#6-1-内置管道" class="headerlink" title="6.1 内置管道"></a>6.1 内置管道</h3><p>通过路由获取参数时，获取到的值都会是string类型，就像下面代码中</p>
+<pre><code class="typescript">@Get(&#39;id/:id&#39;)
+@ApiParam({ name: &#39;id&#39;, required: true })
+getId(@Param(&#39;id&#39;) id: number): string {
+  console.log(typeof id);
+  return &#39;接收到ID：&#39; + id;
+}
+</code></pre>
+<p>即使声明了id是number，通过typeof检测仍然打印string</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201126173807672.png" alt="image-20201126173807672"></p>
+<p>这时候就可以使用内置管道来解决，将代码做如下修改</p>
+<pre><code class="typescript">@Get(&#39;id/:id&#39;)
+@ApiParam({ name: &#39;id&#39;, required: true })
+getId(@Param(&#39;id&#39;, new ParseIntPipe()) id: number): string {
+  console.log(typeof id);
+  return &#39;接收到ID：&#39; + id;
+}
+</code></pre>
+<p>就可以将路由中获取的参数转换为number类型</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201126174114698.png" alt="image-20201126174114698"></p>
+<blockquote>
+<p>管道也可以全局使用，也是在main.ts中使用useGlobalPipe()来挂载全局管道</p>
+</blockquote>
+<h2 id="7-守卫"><a href="#7-守卫" class="headerlink" title="7 守卫"></a>7 守卫</h2><p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201126202056683.png" alt="image-20201126202056683"></p>
+<p>守卫是一个使用@Injectable()装饰器的类。 守卫应该实现CanActivate接口。</p>
+<h3 id="7-1-定义守卫"><a href="#7-1-定义守卫" class="headerlink" title="7.1 定义守卫"></a>7.1 定义守卫</h3><p>使用注解修饰然后实现接口方法</p>
+<pre><code class="typescript">import { Injectable, CanActivate, ExecutionContext } from &#39;@nestjs/common&#39;;
+import { Reflector } from &#39;@nestjs/core&#39;;  // 反射器
+
+@Injectable()
+export class Guard implements CanActivate {
+  constructor(private readonly reflector: Reflector) {}
+
+  canActivate(context: ExecutionContext): boolean {
+    // 使用反射获取到自定义装饰器roles中传入的roles
+    const roles = this.reflector.get&lt;string[]&gt;(&#39;roles&#39;, context.getHandler());
+    // 如果没有获取到roles，说明不需要守卫
+    if (!roles) {
+      return true;
+    }
+    const request = context.switchToHttp().getRequest();
+    const { user } = request.query;
+    return !!roles.find((role) =&gt; role === user);
+  }
+}
+</code></pre>
+<p>自定义装饰器roles</p>
+<pre><code class="typescript">import { SetMetadata } from &#39;@nestjs/common&#39;;
+
+// 守卫中通过反射获取这里传入的值
+export const Roles = (...roles: string[]) =&gt; SetMetadata(&#39;roles&#39;, roles);
+</code></pre>
+<h3 id="7-2-挂载守卫"><a href="#7-2-挂载守卫" class="headerlink" title="7.2 挂载守卫"></a>7.2 挂载守卫</h3><p><strong>局部挂载</strong></p>
+<p>使用注解<code>@UseGuards()</code>对某一Controller挂载守卫，在需要进行守卫的方法上使用自定义装饰器传入开放权限的角色</p>
+<pre><code class="typescript">@UseFilters(new HttpExceptionFilter())
+@UseGuards(RolesGuard)
+@Controller(&#39;/hello&#39;)
+export class HelloController {
+  constructor(private readonly helloService: HelloService) {}
+
+  /**
+   * 传入ID获取数据
+   * @param id ID
+   * @param UA user-agent
+   */
+  @Get(&#39;hi&#39;)
+  @ApiQuery({ name: &#39;id&#39;, required: true })
+  @ApiResponse({
+    status: 200,
+    description: &#39;get...&#39;,
+    type: Hello,
+  })
+  @Roles(&#39;admin&#39;)
+  hi(@Query() { id }, @Headers(&#39;user-agent&#39;) UA): string {
+    console.log(UA);
+    if (!id)
+      throw new HttpException(
+        {
+          status: HttpStatus.BAD_REQUEST,
+          message: &#39;参数必填&#39;,
+          error: &#39;id is must&#39;,
+        },
+        HttpStatus.BAD_REQUEST,
+      );
+    return this.helloService.getHi() + &#39;——&#39; + id;
+  }
+}
+</code></pre>
+<p>挂在守卫之后只有user的值为admin时才会获取到数据</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201126204836064.png" alt="image-20201126204836064"></p>
+<blockquote>
+<p>正常的业务中不可能使用明文来判断权限</p>
+</blockquote>
+<p><strong>全局挂载</strong></p>
+<p><code>app.useGlobalGuards(new RolesGuard());</code></p>
+<h2 id="8-配置文件集中管理"><a href="#8-配置文件集中管理" class="headerlink" title="8 配置文件集中管理"></a>8 配置文件集中管理</h2><h3 id="8-1-邮件服务的配置集中管理"><a href="#8-1-邮件服务的配置集中管理" class="headerlink" title="8.1 邮件服务的配置集中管理"></a>8.1 邮件服务的配置集中管理</h3><blockquote>
+<p>使用到的npm包：@nestjs-modules/mailer nodemailer</p>
+<p>！！！<strong>注意是@nestjs-modules，@nest-modules会报错</strong></p>
+</blockquote>
+<p>准备工作：获取邮箱授权码，<a href="https://service.mail.qq.com/cgi-bin/help?subtype=1&amp;&amp;id=28&amp;&amp;no=1001256" target="_blank" rel="noopener">QQ邮箱示例</a></p>
+<h4 id="8-1-1-编写邮件服务"><a href="#8-1-1-编写邮件服务" class="headerlink" title="8.1.1 编写邮件服务"></a>8.1.1 编写邮件服务</h4><p>email.controller.ts</p>
+<pre><code class="typescript">@Controller(&#39;/email&#39;)
+@UseFilters(new HttpExceptionFilter())
+export class EmailController {
+  constructor(private readonly emailService: EmailService) {}
+
+  @Get(&#39;send&#39;)
+  @ApiTags(&#39;email&#39;)
+  @ApiQuery({ name: &#39;email&#39;, required: true })
+  send(@Query(&#39;email&#39;) email: string): string {
+    if (!email) {
+      throw new HttpException(
+        {
+          status: HttpStatus.BAD_REQUEST,
+          message: &#39;参数必填&#39;,
+          error: &#39;email is must&#39;,
+        },
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+    this.emailService.sendEmail(email);
+    return &#39;ok&#39;;
+  }
+}
+</code></pre>
+<p>email.service.ts</p>
+<pre><code class="typescript">@Injectable()
+export class EmailService {
+  constructor(private readonly mailerService: MailerService) {}
+  sendEmail(email: string): void {
+    this.mailerService.sendMail({
+      to: email,
+      from: &#39;1984779164@qq.com&#39;,
+      subject: &#39;email test&#39;,
+      template: &#39;welcome&#39;,
+      // html: &#39;&lt;h1&gt;Welcome&lt;/h1&gt;&#39;,
+    });
+  }
+}
+</code></pre>
+<blockquote>
+<p>这里面的html是直接发送的，template需要编译，在打包之后的dist目录下可能会找不到文件，需要在nest-cli.json文件中添加配置项</p>
+<pre><code class="typescript">{
+  &quot;collection&quot;: &quot;@nestjs/schematics&quot;,
+  &quot;sourceRoot&quot;: &quot;src&quot;,
+  &quot;compilerOptions&quot;: {
+    &quot;assets&quot;: [&quot;template/**/*&quot;]
+  }
+}
+</code></pre>
+</blockquote>
+<p>email.module.ts</p>
+<pre><code class="typescript">@Module({
+  imports: [],
+  controllers: [EmailController],
+  providers: [EmailService],
+})
+export class EmailModule {}
+</code></pre>
+<p>app.module.ts</p>
+<pre><code class="typescript">@Module({
+  imports: [
+    MailerModule.forRootAsync({
+      useFactory: () =&gt; ({
+        transport: &#39;smtps://1984779164@qq.com:XXXXX@smtp.qq.com&#39;, // XXXX-&gt;邮箱授权码
+        defaults: {
+          from: &#39;&quot;nest-modules&quot; &lt;modules@nestjs.com&gt;&#39;,
+        },
+        template: {
+          dir: path.join(__dirname, &#39;./template/email&#39;),
+          adapter: new PugAdapter(),
+          options: {
+            strict: true,
+          },
+        },
+      }),
+    }),
+    HelloModule,
+    EmailModule,
+  ],
+  controllers: [AppController],
+  providers: [AppService],
+})
+export class AppModule {}
+</code></pre>
+<p>在swagger中测试</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201127131859829.png" alt="image-20201127131859829"></p>
+<p>然后就可以收到邮件了</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201127131954275.png" alt="image-20201127131954275"></p>
+<h4 id="8-1-2-提取配置项"><a href="#8-1-2-提取配置项" class="headerlink" title="8.1.2 提取配置项"></a>8.1.2 提取配置项</h4><p>虽然功能实现了，但是配置直接放在代码中不仅会显得特别臃肿（还有其他的配置如数据库等），而且不易于管理，那么下面我们就来提取配置项来集中管理</p>
+<blockquote>
+<p>需要使用的包：nestjs-config</p>
+</blockquote>
+<p>安装完npm包之后，在app.module.ts同级目录下创建config文件夹，<strong>一定要在同级目录</strong>，然后新建email.ts文件，将刚才app.modules.ts中的有关邮件的配置信息复制过来</p>
+<pre><code class="typescript">export default {
+  transport: &#39;smtps://1984779164@qq.com:qwwsvgcvmjuedhbj@smtp.qq.com&#39;,
+  defaults: {
+    from: &#39;&quot;nest-modules&quot; &lt;modules@nestjs.com&gt;&#39;,
+  },
+  template: {
+    dir: join(__dirname, &#39;../template/email&#39;),
+    adapter: new PugAdapter(),
+    options: {
+      strict: true,
+    },
+  },
+};
+</code></pre>
+<p>将app.module.ts中的配置做如下修改</p>
+<pre><code class="typescript">@Module({
+  imports: [
+    ConfigModule.load(resolve(__dirname, &#39;config&#39;, &#39;**/!(*.d).{ts,js}&#39;)),
+    MailerModule.forRootAsync({
+      useFactory: (config: ConfigService) =&gt; config.get(&#39;email&#39;),
+      inject: [ConfigService],
+    }),
+    HelloModule,
+    EmailModule,
+  ],
+  controllers: [AppController],
+  providers: [AppService],
+})
+export class AppModule {}
+</code></pre>
+<p>导入ConfigModule模块，然后向MailerModule中注入ConfigService，然后使用传入的service来获取配置文件</p>
+<p>大功告成！！！</p>
+<h3 id="8-2-数据库配置集中管理"><a href="#8-2-数据库配置集中管理" class="headerlink" title="8.2 数据库配置集中管理"></a>8.2 数据库配置集中管理</h3><p>nest提供了orm映射</p>
+<blockquote>
+<p>使用到的包： @nestjs/typeorm typeorm mysql</p>
+</blockquote>
+<p>首先需要在app.module.ts中注册TypeOrmModule，已经有了上面的例子，这次我们直接创建配置文件database.ts</p>
+<pre><code class="typescript">export default {
+  type: &#39;mysql&#39;,
+  host: &#39;localhost&#39;,
+  port: 3306,
+  username: &#39;liuhao&#39;,
+  password: &#39;123456&#39;,
+  database: &#39;nest&#39;,
+  entities: [join(__dirname, &#39;../&#39;, &#39;**/**.entity{.ts,.js}&#39;)],
+  synchronize: true,
+};
+</code></pre>
+<p>然后在app.module.ts中添加配置</p>
+<pre><code class="typescript">TypeOrmModule.forRootAsync({
+  useFactory: (config: ConfigService) =&gt; config.get(&#39;database&#39;),
+  inject: [ConfigService],
+}),
+</code></pre>
+<p>然后编写controller</p>
+<pre><code class="typescript">@Controller(&#39;users&#39;)
+@ApiTags(&#39;users&#39;)
+export class UsersController {
+  constructor(private readonly usersService: UsersService) {}
+
+  @Get(&#39;all&#39;)
+  getAll() {
+    return this.usersService.findAll();
+  }
+
+  @Post(&#39;save&#39;)
+  async createOne(@Body() user: User) {
+    await this.usersService.create(user);
+    return true;
+  }
+}
+</code></pre>
+<p>还有service</p>
+<pre><code class="typescript">@Injectable()
+export class UsersService {
+  constructor(
+    @InjectRepository(UsersEntity)
+    private readonly usersRepository: Repository&lt;UsersEntity&gt;,
+    private connection: Connection,
+  ) {
+
+  /**
+   * 查询所有用户
+   */
+  async findAll(): Promise&lt;UsersEntity[]&gt; {
+    return await this.usersRepository.find();
+  }
+
+  /**
+   * 创建用户
+   * @param user 用户实体
+   */
+  async create(user): Promise&lt;UsersEntity[]&gt; {
+    const { username } = user;
+    const u = await getRepository(UsersEntity).findOne({ where: { username } });
+    if (u) {
+      throw new HttpException(
+        {
+          message: &#39;Input data validation faild&#39;,
+          error: &#39;name must unique&#39;,
+        },
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+    return await this.usersRepository.save(user);
+  }
+}
+</code></pre>
+<p>user的实体也需要我们来配置，用实体来对应数据库的表结构——<a href="https://typeorm.biunav.com/zh/#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%A8%A1%E5%9E%8B" target="_blank" rel="noopener">TypeORM文档</a></p>
+<pre><code class="typescript">@Entity()
+export class UsersEntity {
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @Column({ length: 255 })
+  username: string;
+
+  @Column({ length: 255 })
+  password: string;
+}
+</code></pre>
+<p>最后一步我们需要在module中注入service和entity</p>
+<pre><code class="typescript">@Module({
+  imports: [TypeOrmModule.forFeature([UsersEntity])],
+  providers: [UsersService],
+  exports: [UsersService],
+  controllers: [UsersController],
+})
+export class UsersModule {}
+</code></pre>
+<p>然后就可以在swagger中测试我们的代码</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201127205625665.png" alt="image-20201127205625665"></p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201127205646455.png" alt="image-20201127205646455"></p>
+<p>然后在数据库可视化界面看一下</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201127205730540.png" alt="image-20201127205730540"></p>
+<p>一个简单的数据库操作就完成了</p>
+<h2 id="9-简易服务监控"><a href="#9-简易服务监控" class="headerlink" title="9 简易服务监控"></a>9 简易服务监控</h2><blockquote>
+<p>使用到的npm包：nest-status-monitor @nestjs/platform-socket.io</p>
+</blockquote>
+<p>安装完之后在config目录下创建status.ts文件</p>
+<pre><code class="typescript">export default {
+  pageTitle: &#39;Nest.js Monitoring Page&#39;,
+  port: 3000,
+  path: &#39;/status&#39;,
+  ignoreStartsWith: &#39;/health/alive&#39;,
+  spans: [
+    {
+      interval: 1, // Every second
+      retention: 60, // Keep 60 datapoints in memory
+    },
+    {
+      interval: 5, // Every 5 seconds
+      retention: 60,
+    },
+    {
+      interval: 15, // Every 15 seconds
+      retention: 60,
+    },
+  ],
+  chartVisibility: {
+    cpu: true,
+    mem: true,
+    load: true,
+    responseTime: true,
+    rps: true,
+    statusCodes: true,
+  },
+  healthChecks: [],
+};
+</code></pre>
+<p>在app.module.ts中引入配置文件，由于该包未实现注入，所以直接添加就行了</p>
+<p><code>StatusMonitorModule.setUp(statusMonitorConfig),</code></p>
+<p>StatusMonitorModule是从包中导入的方法，statusMonitorConfig是我们写的配置文件</p>
+<h2 id="10-JWT（json-web-token）"><a href="#10-JWT（json-web-token）" class="headerlink" title="10 JWT（json web token）"></a>10 JWT（json web token）</h2><blockquote>
+<p>用到的包：@nestjs/passport passport passport-local @nestjs/jwt passport-jwt</p>
+<p>本示例仅是模仿登录，真正的登录业务需要配合数据库</p>
+</blockquote>
+<p>先看一下要用到的文件</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201127165506929.png" alt="image-20201127165506929"></p>
+<p>代码就不在这贴出来了，主要说一下逻辑</p>
+<p>首先从controller开始看</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201127165851771.png" alt="image-20201127165851771"></p>
+<p>controller中有两个方法，一个是登录，另一个是登陆之后获取信息，两个方法用到了两个不同的守卫（策略模式），一个是未登录时获取token，另一个是登陆之后通过token获取数据</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201127170243911.png" alt="image-20201127170243911"></p>
+<p>这两个策略中（左边是local，右边是jwt）</p>
+<p>1.local策略做的事是获取到用户名密码，通过注入的authService中的验证方法来验证用户名是否存在和用户名密码是否匹配，验证通过后返回user实体，否则抛出异常；</p>
+<p>authService</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201127170814975.png" alt="image-20201127170814975"></p>
+<p>controller中再使用获取到的user实体调用authService中的login方法注册一个token然后返回</p>
+<p>在auth.module.ts中进行注册token的配置</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201127171259388.png" alt="image-20201127171259388"></p>
+<p>2.jwt策略做的事是从request的header中获取<code>token</code>值，然后检验token的合法性，再从token中解析信息返回</p>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+        
+          
+            <div class="post-nepre full next">
+          
+            <a href="/2020/11/23/技术/JavaScript中的数组遍历方法/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201123080801976.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201123080801976.png">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                JavaScript中的数组遍历方法</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "AdzOvpXTwwf3KAX23DOds5C9-gzGzoHsz",
+        appKey: "olX1MHfMtrQcmemwl5lLmu4a",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg" itemprop="image" alt="小枫" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author">小枫</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>前端小白</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+
+    </div>    
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    <!-- <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 小枫<br>
+      powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer> -->
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/wordpress-rotating-ball-o.svg">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/disqus-preloader.svg">
+      </div>
+      <p style="color: #666666;">&copy2020 | <a href="http://beian.miit.gov.cn">鲁ICP备19019592号-2</a></p>
+    </div>
+    <div class="footer-device">
+      <p style="font-family: 'Ubuntu', sans-serif;">
+        
+        <script src="/libsuanzi.pure.js"></script>
+        
+        
+        
+        
+        <span id="busuanzi_container_site_pv" style="display:none">
+          本站总访问量<span id="busuanzi_value_site_pv"></span>次
+          <span class="post-meta-divider">|</span>
+        </span>
+        <span id="busuanzi_container_site_uv" style='display:none'>
+          本站访客数<span id="busuanzi_value_site_uv"></span>人
+        </span>
+        
+      </p>
+      <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #b9b9b9;">Theme <a href="https://github.com/honjun/hexo-theme-sakura" target="_blank"
+            style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Sakura</a> <i
+            class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> by <a
+            href="https://2heng.xin/" target="_blank"
+            style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Mashiro</a>&<a
+            href="https://www.hojun.cn/" target="_blank"
+            style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Hojun</a>, Powered by Hexo,
+          Hosted by Coding Pages</a>
+        </span>
+      </p>
+    </div>
+  </div><!-- .site-info -->
+</footer>
+
+
+
+
+
+<!-- <script src="/js/tocbot.js"></script> -->
+<script src="https://cdn.jsdelivr.net/gh/wallleap/cdn@latest/js/hititle.js"></script>
+
+<script type="text/javascript" src="/js/lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/InsightSearch.js"></script>
+<script type="text/javascript" src="/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="/js/zoom.min.js"></script>
+<script type="text/javascript" src="/js/sakura-app.js"></script>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine@1.3.4/dist/Valine.min.js'></script>
+<script src="/js/botui.js"></script>
+<!-- 不蒜子 网页计数器 -->
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script> -->
+<script type="text/javascript">
+  /* <![CDATA[ */
+  if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+    var Poi = { "pjax": "1", "movies": { "url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2", "name": "Unbroken.mp4", "live": "close" }, "windowheight": "fixed", "codelamp": "close", "ajaxurl": "", "order": "asc", "formpostion": "bottom" };
+  } else {
+    var Poi = { "pjax": "1", "movies": { "url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2", "name": "Unbroken.mp4", "live": "open" }, "windowheight": "auto", "codelamp": "close", "ajaxurl": "", "order": "asc", "formpostion": "bottom" };
+  }
+/* ]]> */
+
+</script>
+<script>
+  $(document).ready(function () {
+    if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+      if ($(".pattern-center").length > 0) { //有图的情况
+        tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -400,
+          scrollSmoothOffset: -85
+        });
+      } else {
+        tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+        });
+      }
+      var offsetTop = $('.toc').offset().top - 95;
+      window.onscroll = function () {
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+        if (scrollTop >= offsetTop) {
+          $('.toc').addClass('toc-fixed');
+        } else {
+          $('.toc').removeClass('toc-fixed');
+        }
+      }
+    }
+  });
+</script>
+    <div class="openNav no-select" style="height: 50px;">
+      <div class="iconflat no-select" style="width: 50px; height: 50px;">
+        <div class="icon"></div>
+      </div>
+      <div class="site-branding search-form-submit">
+        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+      </div>
+    </div>
+  </section>
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg">
+  </div>
+  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">沿途の枫景</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+      
+        <a href="https://github.com/Fengjing95" class="fa fa-github" target="_blank" style="color: #333; margin-left:20px"></a>
+      
+        <a href="https://weibo.com/5056791657/profile?is_all=1" class="fa fa-weibo" target="_blank" style="color: #dd4b39; margin-left:20px"></a>
+      
+        <a href="https://wpa.qq.com/msgrd?v=3&uin=1984779164&site=qq&menu=yes" class="fa fa-qq" target="_blank" style="color: #25c6fe; margin-left:20px"></a>
+      
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+            首页
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/archives">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+            归档
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/categories/技术/">
+                  <i class="fa fa-code" aria-hidden="true"></i>
+                  技术
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/生活/">
+                  <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                  生活
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/资源/">
+                  <i class="fa fa-cloud-download" aria-hidden="true"></i>
+                  资源
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/随想/">
+                  <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                  随想
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/笔记/">
+                  <i class="fa fa-book" aria-hidden="true"></i>
+                  笔记
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+            清单
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/tags/悦读/">
+                  <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                  书单
+                </a>
+              </li>
+            
+              <li>
+                <a href="/bangumi/">
+                  <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                  番组
+                </a>
+              </li>
+            
+              <li>
+                <a href="/music/">
+                  <i class="fa fa-headphones" aria-hidden="true"></i>
+                  歌单
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags/图集/">
+                  <i class="fa fa-photo" aria-hidden="true"></i>
+                  图集
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/comment/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+            留言板
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/links/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+            友人帐
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/donate/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+            赞赏
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+            关于
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/about/">
+                  <i class="fa fa-meetup" aria-hidden="true"></i>
+                  我？
+                </a>
+              </li>
+            
+              <li>
+                <a href="/theme-sakura/">
+                  <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+                  主题
+                </a>
+              </li>
+            
+              <li>
+                <a href="/lab/">
+                  <i class="fa fa-cogs" aria-hidden="true"></i>
+                  Lab
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/client/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-android faa-vertical" aria-hidden="true"></i>
+            客户端
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/atom.xml">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+            RSS
+          </span>
+        </a>
+        
+      </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2019 hexo-sakura</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js
+
+    id="2660651585"
+
+    server="netease"
+
+    type="playlist"
+
+    fixed="true"
+
+    autoplay="false"
+
+    loop="all"
+
+    order="random"
+
+    preload="auto"
+
+    volume="0.7"
+
+    mutex="true"
+
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script>
+</body>
+</html>
