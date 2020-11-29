@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://easyremember.cn/"/>
-  <updated>2020-11-27T13:08:53.936Z</updated>
+  <updated>2020-11-29T04:15:23.018Z</updated>
   <id>https://easyremember.cn/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>uni-app在线预览PDF</title>
+    <link href="https://easyremember.cn/2020/11/29/%E6%8A%80%E6%9C%AF/uni-app%E5%9C%A8%E7%BA%BF%E9%A2%84%E8%A7%88PDF/"/>
+    <id>https://easyremember.cn/2020/11/29/技术/uni-app在线预览PDF/</id>
+    <published>2020-11-29T04:10:32.740Z</published>
+    <updated>2020-11-29T04:15:23.018Z</updated>
+    
+    <summary type="html">
+    
+      uni-app 基于文件流实现PDF在线预览
+    
+    </summary>
+    
+      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="js" scheme="https://easyremember.cn/tags/js/"/>
+    
+  </entry>
   
   <entry>
     <title>nestjs学习笔记</title>
@@ -393,26 +413,6 @@
     
     
       <category term="工具" scheme="https://easyremember.cn/tags/%E5%B7%A5%E5%85%B7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>webpack工作原理</title>
-    <link href="https://easyremember.cn/2020/09/09/%E6%8A%80%E6%9C%AF/webpack%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/"/>
-    <id>https://easyremember.cn/2020/09/09/技术/webpack工作原理/</id>
-    <published>2020-09-09T11:51:27.685Z</published>
-    <updated>2020-09-09T11:52:27.276Z</updated>
-    
-    <summary type="html">
-    
-      手写webpack核心代码
-    
-    </summary>
-    
-      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="node" scheme="https://easyremember.cn/tags/node/"/>
     
   </entry>
   
