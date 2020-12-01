@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">Tag: mode | 前端小枫</title>
+  <title itemprop="name">Token无痛刷新 | 前端小枫</title>
   
   <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -466,64 +466,145 @@
   </div>
 </header>
 
-      
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
 <div class="pattern-center-blank"></div>
-<div class="pattern-center ">
-  <div class="pattern-attachment-img">
-    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="mode.img" class="lazyload" onerror="imgError(this,3)" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201201172438269.png);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201201172438269.png">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      Token无痛刷新</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="">小枫</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2020-12-1<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
   </div>
-  <header class="pattern-header ">
-    <h1 class="cat-title">mode</h1>
-  </header>
-</div>
+
 <div id="content" class="site-content">
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
-      
-  <!-- 首页默认取最最新文章集 -->
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/11/27/笔记/NestJS学习笔记/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <p>今天被问到一个很实用的问题：</p>
+<blockquote>
+<p>出于安全考虑，将用户的token有效期设置得时间很短，怎么能保证用户在使用过程中的体验呢</p>
+</blockquote>
+<p>然鹅，我没答上来！！！</p>
+<p>赶紧查一下解决方案，终于找到了解决办法</p>
+<h3 id="先来说一下原来的"><a href="#先来说一下原来的" class="headerlink" title="先来说一下原来的"></a>先来说一下原来的</h3><p>图有点丑，将就着看</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201201164435453.png" alt="image-20201201164435453"></p>
+<p>首先在页面中触发一个事件向服务器发送一个请求，后端检测到token不合法，返回响应，状态码401，axios的响应拦截器捕获到了error，直接清除token，将页面跳转到首页</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201201164826307.png" alt="image-20201201164826307"></p>
+<p>如果用户在刚填完一个很长的表单，刚提交，结果来了这么一出，那体验自然是很差的，所以有了下面的方案</p>
+<h3 id="无痛刷新"><a href="#无痛刷新" class="headerlink" title="无痛刷新"></a>无痛刷新</h3><p>需要后端提供支持，token除了设置过期时间之外，还要有一个刷新时间（刷新时间&gt;过期时间），当token过期之后只要没有超过刷新时间，就可以永久的token换取新的token，以保持前端无感</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201201165831430.png" alt="image-20201201165831430"></p>
+<p>注意的一点是要再发送一次原来的请求，后端返回数据可以在错误响应中加入请求地址，（伪码）</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201201171907530.png" alt="image-20201201171907530"></p>
+<p>这是一个错误响应的截图，里面有config项，可以用来访问原来的请求</p>
+<pre><code class="javascript">const {token} = await getNewToken()
+localStroage.setItem(&#39;token&#39;, token)
+const res = axios.request(error.response.config)
+return res
+</code></pre>
+<p>注意先后顺序，要先获取到token之后再去访问请求</p>
+
         </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201125184611103.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/11/27/笔记/NestJS学习笔记/">
-    nestjs学习笔记</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-11-27</div>
-    <p>
-    一个完整的开发工具包，用于构建可伸缩的服务器端应用程序。</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/11/27/笔记/NestJS学习笔记/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+        
+          
+            <div class="post-nepre full next">
+          
+            <a href="/2020/11/29/技术/uni-app在线预览PDF/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201129121153648.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201129121153648.png">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                uni-app在线预览PDF</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "AdzOvpXTwwf3KAX23DOds5C9-gzGzoHsz",
+        appKey: "olX1MHfMtrQcmemwl5lLmu4a",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
 
-
-      <div class="clearer">
-      </div>
-    </main>
-    <!--  -->
-    
-  </div>
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg" itemprop="image" alt="小枫" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author">小枫</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>前端小白</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
 </div>
+
+
+
     </div>    
     <div class="ins-search">
     <div class="ins-search-mask"></div>
