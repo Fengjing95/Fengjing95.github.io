@@ -471,6 +471,13 @@
   </url>
   
   <url>
+    <loc>https://easyremember.cn/music/index.html</loc>
+    
+    <lastmod>2020-07-13</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://easyremember.cn/tags/index.html</loc>
     
     <lastmod>2020-07-13</lastmod>
@@ -485,13 +492,6 @@
   </url>
   
   <url>
-    <loc>https://easyremember.cn/music/index.html</loc>
-    
-    <lastmod>2020-07-13</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://easyremember.cn/lab/index.html</loc>
     
     <lastmod>2020-07-13</lastmod>
@@ -499,7 +499,7 @@
   </url>
   
   <url>
-    <loc>https://easyremember.cn/client/index.html</loc>
+    <loc>https://easyremember.cn/comment/index.html</loc>
     
     <lastmod>2020-07-13</lastmod>
     
@@ -513,7 +513,7 @@
   </url>
   
   <url>
-    <loc>https://easyremember.cn/comment/index.html</loc>
+    <loc>https://easyremember.cn/client/index.html</loc>
     
     <lastmod>2020-07-13</lastmod>
     
@@ -543,6 +543,13 @@
 
   
   <url>
+    <loc>https://easyremember.cn/tags/js/</loc>
+    <lastmod>2020-12-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://easyremember.cn/tags/Node/</loc>
     <lastmod>2020-12-01</lastmod>
     <changefreq>daily</changefreq>
@@ -557,7 +564,7 @@
   </url>
   
   <url>
-    <loc>https://easyremember.cn/tags/js/</loc>
+    <loc>https://easyremember.cn/tags/vue/</loc>
     <lastmod>2020-12-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -565,13 +572,6 @@
   
   <url>
     <loc>https://easyremember.cn/tags/node/</loc>
-    <lastmod>2020-12-01</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://easyremember.cn/tags/vue/</loc>
     <lastmod>2020-12-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
