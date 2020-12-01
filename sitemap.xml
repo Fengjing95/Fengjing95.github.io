@@ -471,14 +471,14 @@
   </url>
   
   <url>
-    <loc>https://easyremember.cn/rss/index.html</loc>
+    <loc>https://easyremember.cn/music/index.html</loc>
     
     <lastmod>2020-07-13</lastmod>
     
   </url>
   
   <url>
-    <loc>https://easyremember.cn/music/index.html</loc>
+    <loc>https://easyremember.cn/rss/index.html</loc>
     
     <lastmod>2020-07-13</lastmod>
     
@@ -506,13 +506,6 @@
   </url>
   
   <url>
-    <loc>https://easyremember.cn/donate/index.html</loc>
-    
-    <lastmod>2020-07-13</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://easyremember.cn/comment/index.html</loc>
     
     <lastmod>2020-07-13</lastmod>
@@ -520,7 +513,7 @@
   </url>
   
   <url>
-    <loc>https://easyremember.cn/about/index.html</loc>
+    <loc>https://easyremember.cn/donate/index.html</loc>
     
     <lastmod>2020-07-13</lastmod>
     
@@ -528,6 +521,13 @@
   
   <url>
     <loc>https://easyremember.cn/bangumi/index.html</loc>
+    
+    <lastmod>2020-07-13</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://easyremember.cn/about/index.html</loc>
     
     <lastmod>2020-07-13</lastmod>
     
@@ -592,14 +592,14 @@
   </url>
   
   <url>
-    <loc>https://easyremember.cn/tags/%E6%82%A6%E8%AF%BB/</loc>
+    <loc>https://easyremember.cn/tags/hello/</loc>
     <lastmod>2020-12-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://easyremember.cn/tags/hello/</loc>
+    <loc>https://easyremember.cn/tags/%E6%82%A6%E8%AF%BB/</loc>
     <lastmod>2020-12-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
