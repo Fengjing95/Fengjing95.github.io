@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">Category: 生活 | 前端小枫</title>
+  <title itemprop="name">前端面试经典问题 | 前端小枫</title>
   
   <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -466,435 +466,456 @@
   </div>
 </header>
 
-      
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
 <div class="pattern-center-blank"></div>
-<div class="pattern-center ">
-  <div class="pattern-attachment-img">
-    <img data-src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/banner/writing.jpg" class="lazyload" onerror="imgError(this,3)" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201203171008643.png);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201203171008643.png">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      前端面试经典问题</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="">小枫</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2020-12-7<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
   </div>
-  <header class="pattern-header ">
-    <h1 class="cat-title">生活</h1>
-    <span class="cat-des">
-      <p>live</p>
-    </span>
-  </header>
-</div>
+
 <div id="content" class="site-content">
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h2 id="BFC"><a href="#BFC" class="headerlink" title="BFC"></a>BFC</h2><blockquote>
+<p>BFC(Block formatting context)直译为”块级格式化上下文”。它是一个独立的渲染区域，只有Block-level box参与， 它规定了内部的Block-level Box如何布局，并且与这个区域外部毫不相干。</p>
+<p>BFC是一个独立的布局环境，其中的元素布局是不受外界的影响，并且在一个BFC中，块盒与行盒（行盒由一行中所有的内联元素所组成）都会垂直的沿着其父元素的边框排列。</p>
+</blockquote>
+<p>BFC布局规则：</p>
+<ul>
+<li>Box垂直方向的距离由margin决定，同一个BFC内部会出现margin塌陷现象</li>
+<li>BFC的区域不会与float box重叠</li>
+<li>浮动元素也参与计算BFC高度</li>
+</ul>
+<p>创建BFC</p>
+<ol>
+<li>float的值不是none。</li>
+<li>position的值不是static或者relative。</li>
+<li>display的值是inline-block、table-cell、flex、table-caption或者inline-flex</li>
+<li>overflow的值不是visible</li>
+</ol>
+<p>作用：解决margin塌陷、不会被浮动元素覆盖、解决浮动元素无法撑起父级元素</p>
+<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><p>先来看一段代码</p>
+<pre><code class="javascript">function f() {
+  var book = &#39;JavaScript高级&#39;
+}
+console.log(book);
+</code></pre>
+<p>这一段代码的执行结果当然是报错，因为book的作用域是在f函数内部，外部无法访问，函数执行时生成一个自己的执行上下文（执行环境），执行完毕时执行上下文销毁</p>
+<p><strong>作用域链</strong></p>
+<p>作用域链中保存着当前变量对象和所有父级变量对象</p>
+<pre><code class="javascript">function f() {
+  var book = &#39;JavaScript高级&#39;
+  return function () {
+    console.log(book);
+  }
+}
+var newF = f()
+newF()
+</code></pre>
+<p>执行f函数，将返回值赋值给newF函数，这个返回值是一个匿名函数，这其实就是闭包，在这个匿名函数中保留着f的作用域，所以这里可以打印出book的值</p>
+<p><strong>经典面试题for循环延时打印</strong></p>
+<pre><code class="javascript">for (var i = 0; i &lt; 5; i++) {
+  setTimeout(function () {
+    console.log(i);
+  },1000)
+}
+// 5 5 5 5 5
+</code></pre>
+<p>结果为什么会是5个5呢，这里牵扯到了一点异步轮询，setTimeout属于异步方法，会在全局上下文执行完毕之后再之执行</p>
+<p>执行过程为：for循环遍历5次，添加5个定时器，此时i=5，定时器时间到了之后，打印的是i的值，也就是5</p>
+<p>那么怎么打印0-4呢？</p>
+<ul>
+<li>使用let声明i，let是块级变量</li>
+<li>使用闭包，闭包函数有自己的作用域可以在设置定时器时保留i的值</li>
+</ul>
+<p>let就不说了，说一下闭包解决这个问题</p>
+<pre><code class="javascript">for (var i = 0; i &lt; 5; i++) {
+  (function (j) {
+    setTimeout(function () {
+      console.log(j);
+    }, 1000)
+  })(i)
+}
+// 0 1 2 3 4
+</code></pre>
+<p>在么词设置定时器时，每次传进去的变量都不一样，每个定时器保留着着不同的作用域，所以结果是0 1 2 3 4</p>
+<p><strong>弊端</strong></p>
+<p>闭包虽好，但也有弊端——容易造成内存泄漏</p>
+<p>根据js的垃圾回收机制，没有引用的变量将会自动回收，而如果使用闭包的形式通过函数表达式赋值给全局作用域中的一个变量，就可能会造成无法回收</p>
+<h2 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h2><p>先来看几个概念</p>
+<ul>
+<li>原型——每一个函数都有一个prototype对象属性，指向另一个对象，prototype就是调用构造函数所创建的那个实例对象的原型</li>
+<li>原型链——每个对象都有一个<code>__proto__</code>属性，用于指向创建它的函数对象的原型对象，通过<code>__proto__</code>把对象属性连接起来就叫原型链</li>
+</ul>
+<p>如果还有些许疑惑，那么看代码吧</p>
+<pre><code class="javascript">function Person(name) {
+  this.name = name
+  this.sayHi = function() {
+    console.log(&#39;Hi&#39;);
+  }
+}
+
+Person.prototype.sayName = function () {
+  console.log(this.name);
+}
+
+const p = new Person(&#39;张三&#39;)
+p.sayHi()
+p.sayName()
+console.log(p.__proto__ === Person.prototype);
+</code></pre>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201204141103365.png" alt="image-20201204141103365"></p>
+<p>第一段代码是一个构造函数，添加了一个属性和一个方法；第二段代码是往Person的原型上添加方法；第三段代码是创建了一个对象实例p，他的父类是Person，然后执行父类的方法，最后一行说明了p的<code>__proto__</code>就是Person的prototype，对象实例可以使用原型链上的的方法</p>
+<p><strong>继承</strong></p>
+<p>继承有很多种方法</p>
+<ol>
+<li><p>原型链继承</p>
+<pre><code class="javascript">function Animals() {
+  this.say = function () {
+    console.log(&#39;Hi&#39;);
+  }
+}
+function Cat() {
+
+}
+Cat.prototype = new Animals()
+</code></pre>
+<p>通过把Animals的原型对象添加到Cat的原型对象上，实现继承</p>
+</li>
+<li><p>构造函数继承</p>
+<pre><code class="javascript">function Animals() {
+  this.say = function () {
+    console.log(&#39;Hi&#39;);
+  }
+}
+function Cat() {
+  Animals.call(this)
+}
+const c = new Cat()
+c.say()
+</code></pre>
+<p>用.call()和.apply()将父类构造函数引入子类函数（在子类函数中做了父类函数的自执行（复制））</p>
+</li>
+<li><p>组合继承</p>
+<pre><code class="javascript">function Animals(name) {
+  this.name = name
+  this.say = function () {
+    console.log(&#39;Hi&#39;);
+  }
+}
+function Cat() {
+  Animals.call(this, &#39;king&#39;)
+}
+Cat.prototype = new Animals()
+const c = new Cat()
+c.say()
+</code></pre>
+<p>将前面两种继承方式组合起来，解决了原型链继承不能传参和构造函数继承不能复用的问题，但是消耗内存，子类的构造函数会代替原型上的那个父类构造函数</p>
+</li>
+<li><p>原型式（实例）继承</p>
+<pre><code class="javascript">function Animals(name) {
+  this.name = name
+  this.say = function () {
+    console.log(&#39;Hi&#39;);
+  }
+}
+function content(obj) {
+  function F() { }
+  F.prototype = obj
+  return new F()
+}
+var animal = new Animals()
+var cat = content(animal)
+</code></pre>
+<p>通过对象实例来实现继承，但是无法复用</p>
+</li>
+<li><p>寄生组合继承</p>
+<pre><code class="javascript">function Animals(name) {
+  this.name = name
+  this.say = function () {
+    console.log(&#39;Hi&#39;);
+  }
+}
+
+function content(obj) {
+  function F() { }
+  F.prototype = obj
+  return new F()
+}
+var proto = content(Animals.prototype)
+
+function Cat() {
+  Animals.call(this)
+}
+Cat.prototype = proto   // 继承实例
+proto.constructor = Cat // 修复实例
+
+const c = new Cat()
+c.say()
+</code></pre>
+<p>解决了组合继承的问题</p>
+</li>
+</ol>
+<p><strong>插一嘴new的原理</strong></p>
+<pre><code class="javascript">var new1 = function (Class) {
+  var newObj = Object.create(Class.prototype);
+  var returnObj = Class.call(newObj);
+  return typeof returnObj === &#39;object&#39; ? returnObj : newObj
+}
+var s = new1(String)
+console.log(s instanceof String); // true
+</code></pre>
+<p>首先创建一个新的对象，然后通过构造函数继承的方式，将要实例化对象的原型添加到创建的对象上</p>
+<h2 id="HTTP请求方法"><a href="#HTTP请求方法" class="headerlink" title="HTTP请求方法"></a>HTTP请求方法</h2><p><strong>GET</strong></p>
+<p>请求URL指定的资源</p>
+<p><strong>POST</strong></p>
+<p>传输实体主体</p>
+<p><strong>PUT</strong></p>
+<p>PUT方法用来传输文件，也可以实现与post相同的效果</p>
+<blockquote>
+<p>POST和PUT的区别：PUT具有幂等性，也就是说多次PUT操作对服务器影响是一样的。举个例子，如果发布一篇文章，发送了两个请求，如果使用POST会产生两篇相同的帖子，使用PUT只会产生一个</p>
+</blockquote>
+<p><strong>DELETE</strong></p>
+<p>用来删除文件，是PUT的相反方法。</p>
+<p><strong>HEAD</strong></p>
+<p>获取报文首部，和GET方法一样，只是不返回报文主体部分</p>
+<p><strong>OPTIONS</strong></p>
+<p>查询针对请求URL指定的资源支持的方法</p>
+<p><strong>TRACE</strong></p>
+<p>让Web服务器端将之前的请求通信环回给客户端方法</p>
+<p><strong>CONNECT</strong></p>
+<p>要求在与代理服务器通信时建立隧道，实现用隧道协议进行TCP通信。</p>
+<h2 id="this的指向"><a href="#this的指向" class="headerlink" title="this的指向"></a>this的指向</h2><p>一句话来说就是：谁调用指向谁（个别情况除外）</p>
+<p>改变this指向，可以看<a href="https://easyremember.cn/2020/08/27/%E6%8A%80%E6%9C%AF/call%E5%92%8Capply/">之前的一篇博客</a></p>
+<ul>
+<li><strong>正常情况下 this 指向调用他的上下文</strong></li>
+<li>箭头函数的 this 指向他的父作用域的 this（静态作用域、静态作用域、静态作用域）</li>
+<li>new 会创建一个新的对象，this 指向这个对象，详情可以自行了解 new</li>
+<li>call、bind、apply 会改变 this 的指向，详情自行了解</li>
+</ul>
+<h2 id="异步"><a href="#异步" class="headerlink" title="异步"></a>异步</h2><p><a href="https://easyremember.cn/2020/07/23/%E6%8A%80%E6%9C%AF/%E5%BC%82%E6%AD%A5%E8%BD%AE%E8%AF%A2/">异步轮询</a></p>
+<p><a href="https://easyremember.cn/2020/08/20/%E7%AC%94%E8%AE%B0/Promise/">Promise原理</a></p>
+<h2 id="元素垂直水平居中"><a href="#元素垂直水平居中" class="headerlink" title="元素垂直水平居中"></a>元素垂直水平居中</h2><ol>
+<li>父级元素display设置为table，子元素display设置为table-cell，子元素vertical-align: middle;</li>
+<li>利用绝对定位，父级设置position为relative，子级设置position为absolute，距离顶部50%左侧50%，然后利用transform，translate（-50%， -50%）；也可以使用margin-top和margin-left为负值</li>
+<li>利用flex，将父级display设置为flex，然后justify-content: center; align-items: center;</li>
+<li>利用父级伪类或子级空元素，display设置为inline-block，然后设置vertical-align: middle;</li>
+</ol>
+<h2 id="清除浮动"><a href="#清除浮动" class="headerlink" title="清除浮动"></a>清除浮动</h2><ol>
+<li>浮动元素后添加空标签，标签样式clear: both;</li>
+<li>父级元素设置overflow: hidden;触发BFC，如果有定位谨慎使用</li>
+<li>after伪元素清除浮动，浮动元素父级添加伪元素，设置属性clear: both;</li>
+</ol>
+<h2 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型"></a>盒子模型</h2><p>盒子模型包含margin（外边距）、padding（内边距）、border（边框）、content（内容）四部分</p>
+<p>关于盒子模型存在两套标准</p>
+<p>标准盒模型（W3C）</p>
+<p>盒子宽度width=content</p>
+<p>怪异盒模型（IE）</p>
+<p>盒子宽度width=border+padding+content</p>
+<p>这两个模型可以通过box-sizing来转换，conten-box是标准盒模型，border-box是怪异盒模型</p>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>JS中有两大类数据类型，基本类型和引用类型</p>
+<p>基本类型——Number、String、Boolean、Null、Undefined以及新加入的Symbol</p>
+<p>引用类型——是一种数据结构，用于将数据和功能组织在一起，常见的有Object类型，Array类型，Date类型，RegExp类型（正则），Function类型</p>
+<p><strong>基本类型和引用类型的区别</strong></p>
+<p>基本类型是按值访问的，因为可以直接操作保存在变量中的实际值，保存在栈中；而引用类型大小是不固定的，存储在堆内存中，不可以直接访问和操作对内存空间，所以只能在栈中操作引用地址</p>
+<p>例如</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201206134109844.png" alt="image-20201206134109844"></p>
+<p>基本类型在赋值时是将值重新添加到了b，此时改变a的值，b的值不受影响（传值）</p>
+<p>而在引用类型中</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201206134616732.png" alt="image-20201206134616732"></p>
+<p>在赋值时，传递的是引用的地址，所以内容发生变化时所有的引用都会改变（传址）</p>
+<blockquote>
+<p>栈(stack)会自动分配内存空间，会自动释放。堆(heap)动态分配的内存，大小不定也不会自动释放，需要程序员手动释放，如果不释放就会由OS在程序结束运行时释放。</p>
+<p>此外注意，在函数传参时，引用类型传参也是传的地址，形参的操作会影响到原来的数据</p>
+</blockquote>
+<h2 id="let、const和var的区别"><a href="#let、const和var的区别" class="headerlink" title="let、const和var的区别"></a>let、const和var的区别</h2><p><strong>var存在变量提升，let和const没有</strong></p>
+<p>变量提升意味着可以先使用再声明，上代码</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201206190219810.png" alt="image-20201206190219810"></p>
+<p>而块级作用域会报错</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201206190516794.png" alt="image-20201206190516794"></p>
+<p>这就牵扯到了暂时性死区</p>
+<blockquote>
+<p>暂时性死区：只要作用域内使用let声明了变量，变量就绑定了这个作用域，即使存在全局变量不会生效。使用let命令声明变量之前，该变量都是不可用的，这就叫暂时性死区。</p>
+</blockquote>
+<p><strong>let和const是块级变量</strong></p>
+<p>let和const都只会在声明所在的作用域块中生效，let和const的区别是，const声明时必须赋值，而且一旦赋值不可改变</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201206191340358.png" alt="image-20201206191340358"></p>
+<p><strong>同一作用域下const和let不能重复声明</strong></p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201206192929928.png" alt="image-20201206192929928"></p>
+<h2 id="事件委托"><a href="#事件委托" class="headerlink" title="事件委托"></a>事件委托</h2><p>事件委托主要利用了冒泡原理实现，从最深的结点开始，向外层传递事件，我们可以只给父级添加事件，然后通过target来触发事件</p>
+<p>例如在ul&gt;li中，如果添加事件一般是在每个li上添加事件，如</p>
+<pre><code class="html">&lt;ul id=&quot;ul&quot;&gt;
+  &lt;li id=&quot;li1&quot;&gt;第一个&lt;/li&gt;
+  &lt;li id=&quot;li2&quot;&gt;第二个&lt;/li&gt;
+  &lt;li id=&quot;li2&quot;&gt;第三个&lt;/li&gt;
+  &lt;li id=&quot;li2&quot;&gt;第四个&lt;/li&gt;
+&lt;/ul&gt;
+&lt;script&gt;
+  var liNodes = document.querySelectorAll(&#39;li&#39;)
+  for(let i =0; i &lt; liNodes.length; i++) {
+    liNodes[i].onclick = function() {
+      console.log(liNodes[i].innerText);
+    }
+  }
+&lt;/script&gt;
+</code></pre>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ录屏20201207140026 00_00_00-00_00_30.gif" alt="QQ录屏20201207140026 00_00_00-00_00_30"></p>
+<p>这样再每个节点上都加上监听会影响性能，这时候就可以利用事件委托在这些元素的父级元素上添加监听事件</p>
+<pre><code class="html">事件委托
+&lt;ul id=&quot;ul&quot;&gt;
+  &lt;li id=&quot;li1&quot;&gt;第一个&lt;/li&gt;
+  &lt;li id=&quot;li2&quot;&gt;第二个&lt;/li&gt;
+  &lt;li id=&quot;li2&quot;&gt;第三个&lt;/li&gt;
+  &lt;li id=&quot;li2&quot;&gt;第四个&lt;/li&gt;
+&lt;/ul&gt;
+&lt;script&gt;
+  var ulNode = document.getElementById(&#39;ul&#39;)
+  ulNode.onclick = function(e) {
+    console.log(e.target.innerText);
+  }
+&lt;/script&gt;
+</code></pre>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ录屏20201207140507 00_00_00-00_00_30.gif" alt="QQ录屏20201207140507 00_00_00-00_00_30"></p>
+<p>就可以实现相同的效果</p>
+<h2 id="ES6和CommonJS模块化"><a href="#ES6和CommonJS模块化" class="headerlink" title="ES6和CommonJS模块化"></a>ES6和CommonJS模块化</h2><p><strong>区别：</strong></p>
+<ul>
+<li>CommonJS模块输出的是一个值的拷贝，ES6模块输出的是值的引用</li>
+<li>CommonJS模块是运行时加载，ES6模块是编译时输出接口</li>
+</ul>
+<p><strong>ES6</strong></p>
+<p>使用<code>export</code>关键字导出变量或方法，使用<code>import</code>关键字导入模块；</p>
+<p>此外还有默认导出<code>export default</code>，只能默认导出一次；</p>
+<p>export导出的内容会被放到一个对象中，导入时使用{}来解构取值，export default导出的是什么导入就是什么</p>
+<p><strong>CommonJS</strong></p>
+<p>使用<code>module.exports</code>关键字导出模块，使用<code>require</code>关键字倒入模块</p>
+<p>可以使用<code>解构</code>或者<code>.属性名</code>来按需引入如</p>
+<pre><code class="javascript">// 导出
+module.exports =  {
+  obj: {
+    name: &#39;张三&#39;,
+    age: 14,
+    out() {
+      console.log(this.age);
+    }
+  }
+}
+// 导入
+const obj = require(&#39;./1&#39;).obj
+// 或者
+const {obj} = require(&#39;./1&#39;)
+</code></pre>
+<p><strong>混用</strong></p>
+<ul>
+<li>module.exports可以看做一个export default，可以直接import</li>
+<li>使用require导入export default时需要写成require().default</li>
+</ul>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+        
+          
+            <div class="post-nepre full next">
+          
+            <a href="/2020/12/01/技术/token无痛刷新/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201201172438269.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201201172438269.png">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                Token无痛刷新</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
       
-  <!-- 首页默认取最最新文章集 -->
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/07/26/生活/STDay 5/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200722153529693.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/07/26/生活/STDay 5/">
-    思途实训day5</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-7-26</div>
-    <p>
-    中享思途实训第五天</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/07/26/生活/STDay 5/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/07/24/生活/STDay 4/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200722153529693.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/07/24/生活/STDay 4/">
-    思途实训day4</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-7-24</div>
-    <p>
-    中享思途实训第四天</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/07/24/生活/STDay 4/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/07/24/生活/STDay 3/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200722153529693.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/07/24/生活/STDay 3/">
-    思途实训day3</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-7-24</div>
-    <p>
-    中享思途实训第三天</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/07/24/生活/STDay 3/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/07/22/生活/STDay 2/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200722153529693.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/07/22/生活/STDay 2/">
-    思途实训day2</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-7-22</div>
-    <p>
-    中享思途实训第二天</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/07/22/生活/STDay 2/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/07/22/生活/STDay 1/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200722153529693.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/07/22/生活/STDay 1/">
-    思途实训day1</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-7-22</div>
-    <p>
-    中享思途实训第一天</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/07/22/生活/STDay 1/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/07/14/生活/hello-world/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://ae01.alicdn.com/kf/H4d3fee369ddb41488a102c04471604d2x.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/07/14/生活/hello-world/">
-    Hello World</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-7-14</div>
-    <p>
-    纪念博客创建</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/07/14/生活/hello-world/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "AdzOvpXTwwf3KAX23DOds5C9-gzGzoHsz",
+        appKey: "olX1MHfMtrQcmemwl5lLmu4a",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
 
-
-      <div class="clearer">
-      </div>
-    </main>
-    <!--  -->
-    
-  </div>
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg" itemprop="image" alt="小枫" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author">小枫</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>前端小白</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
 </div>
 
-<!-- 
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/07/26/生活/STDay 5/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200722153529693.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/07/26/生活/STDay 5/">
-    思途实训day5</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-7-26</div>
-    <p>
-    中享思途实训第五天</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/07/26/生活/STDay 5/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/07/24/生活/STDay 4/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200722153529693.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/07/24/生活/STDay 4/">
-    思途实训day4</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-7-24</div>
-    <p>
-    中享思途实训第四天</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/07/24/生活/STDay 4/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/07/24/生活/STDay 3/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200722153529693.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/07/24/生活/STDay 3/">
-    思途实训day3</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-7-24</div>
-    <p>
-    中享思途实训第三天</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/07/24/生活/STDay 3/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/07/22/生活/STDay 2/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200722153529693.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/07/22/生活/STDay 2/">
-    思途实训day2</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-7-22</div>
-    <p>
-    中享思途实训第二天</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/07/22/生活/STDay 2/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/07/22/生活/STDay 1/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200722153529693.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/07/22/生活/STDay 1/">
-    思途实训day1</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-7-22</div>
-    <p>
-    中享思途实训第一天</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/07/22/生活/STDay 1/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/07/14/生活/hello-world/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://ae01.alicdn.com/kf/H4d3fee369ddb41488a102c04471604d2x.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/07/14/生活/hello-world/">
-    Hello World</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-7-14</div>
-    <p>
-    纪念博客创建</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/07/14/生活/hello-world/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
 
- -->
+
     </div>    
     <div class="ins-search">
     <div class="ins-search-mask"></div>

@@ -201,7 +201,7 @@
             
               
                 <li>
-                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="email">
+                  <a href="mailto:1984779164@qq.com" target="_blank" class="social-github" title="email">
                     <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/social/email.svg">
                   </a>
                 </li>
@@ -552,11 +552,10 @@ console.log(&#39;end&#39;)
 <p>先来看一下Promise对象的结构</p>
 <p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200723134434556.png" alt="image-20200723134434556"></p>
 <p>当没有任何操作的时候，Promise对象的状态时pending，值是undefinded</p>
-<p>当在Promise中调用resolve之后，状态变为resolved，值是成功</p>
+<p>当在Promise中调用resolve之后，状态变为fulfilled，意思是成功</p>
 <p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200723134448544.png" alt="image-20200723134448544"></p>
-<p>当调用reject的时候，状态变为rejected，值是失败</p>
+<p>当调用reject的时候，状态变为rejected，意思是失败</p>
 <p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200723134457497.png" alt="image-20200723134457497"></p>
-<p>pending就是未决，resolve可以理解为成功，reject可以理解为拒绝</p>
 <p>Promise的状态是不可逆的，resolve和reject同时出现，先执行的决定状态，后执行的不生效</p>
 <p>下面这三种方法可以触发Promise.then的错误方法</p>
 <ul>

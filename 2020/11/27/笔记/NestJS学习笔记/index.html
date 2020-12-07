@@ -201,7 +201,7 @@
             
               
                 <li>
-                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="email">
+                  <a href="mailto:1984779164@qq.com" target="_blank" class="social-github" title="email">
                     <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/social/email.svg">
                   </a>
                 </li>
@@ -708,7 +708,8 @@ export class UserController {
     private readonly userService:UserService;
 }
 </code></pre>
-<h3 id="3-3-注册provider"><a href="#3-3-注册provider" class="headerlink" title="3.3 注册provider"></a>3.3 注册provider</h3><p>编写完的service需要在module中进行注册，否则无法生效</p>
+<h3 id="3-3-注册provider"><a href="#3-3-注册provider" class="headerlink" title="3.3 注册provider"></a>3.3 注册provider</h3><p>编写完的service需要在module中进行注册providers: []，否则无法生效</p>
+<h3 id="3-4-导出"><a href="#3-4-导出" class="headerlink" title="3.4 导出"></a>3.4 导出</h3><p>如果module中的部分文件需要被其他文件依赖，使用exports: []导出</p>
 <h2 id="4-中间件"><a href="#4-中间件" class="headerlink" title="4 中间件"></a>4 中间件</h2><blockquote>
 <p>Nest 中间件实际上等价于 express 中间件。</p>
 </blockquote>
