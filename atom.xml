@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://easyremember.cn/"/>
-  <updated>2020-12-14T05:40:31.720Z</updated>
+  <updated>2020-12-16T06:39:54.099Z</updated>
   <id>https://easyremember.cn/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>React入门笔记</title>
+    <link href="https://easyremember.cn/2020/12/15/%E7%AC%94%E8%AE%B0/React%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/"/>
+    <id>https://easyremember.cn/2020/12/15/笔记/React入门笔记/</id>
+    <published>2020-12-15T14:01:03.039Z</published>
+    <updated>2020-12-16T06:39:54.099Z</updated>
+    
+    <summary type="html">
+    
+      基础的react语法，对比Vue。
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://easyremember.cn/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="react" scheme="https://easyremember.cn/tags/react/"/>
+    
+  </entry>
   
   <entry>
     <title>react配置axios</title>
@@ -61,7 +81,7 @@
     <link href="https://easyremember.cn/2020/12/01/%E6%8A%80%E6%9C%AF/token%E6%97%A0%E7%97%9B%E5%88%B7%E6%96%B0/"/>
     <id>https://easyremember.cn/2020/12/01/技术/token无痛刷新/</id>
     <published>2020-12-01T09:23:38.519Z</published>
-    <updated>2020-12-01T09:26:39.307Z</updated>
+    <updated>2020-12-16T06:38:50.604Z</updated>
     
     <summary type="html">
     
@@ -69,7 +89,7 @@
     
     </summary>
     
-      <category term="笔记" scheme="https://easyremember.cn/categories/%E7%AC%94%E8%AE%B0/"/>
+      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
       <category term="js" scheme="https://easyremember.cn/tags/js/"/>
@@ -386,26 +406,6 @@
     <summary type="html">
     
       记录一些使用elementUI踩的坑
-    
-    </summary>
-    
-      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="vue" scheme="https://easyremember.cn/tags/vue/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Vue动态组件</title>
-    <link href="https://easyremember.cn/2020/09/13/%E6%8A%80%E6%9C%AF/%E5%8A%A8%E6%80%81%E7%BB%84%E4%BB%B6/"/>
-    <id>https://easyremember.cn/2020/09/13/技术/动态组件/</id>
-    <published>2020-09-13T03:13:24.458Z</published>
-    <updated>2020-09-13T03:14:11.933Z</updated>
-    
-    <summary type="html">
-    
-      比较两种动态组件切换的方案
     
     </summary>
     
