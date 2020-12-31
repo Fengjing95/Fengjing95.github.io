@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://easyremember.cn/"/>
-  <updated>2020-12-16T06:39:54.099Z</updated>
+  <updated>2020-12-31T07:18:24.013Z</updated>
   <id>https://easyremember.cn/</id>
   
   <author>
@@ -17,11 +17,71 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>react组件传值</title>
+    <link href="https://easyremember.cn/2020/12/31/%E6%8A%80%E6%9C%AF/react%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%80%BC/"/>
+    <id>https://easyremember.cn/2020/12/31/技术/react组件传值/</id>
+    <published>2020-12-31T07:17:00.093Z</published>
+    <updated>2020-12-31T07:18:24.013Z</updated>
+    
+    <summary type="html">
+    
+      各种状态下的react组件间的通信。
+    
+    </summary>
+    
+      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="react" scheme="https://easyremember.cn/tags/react/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Redux笔记</title>
+    <link href="https://easyremember.cn/2020/12/30/%E7%AC%94%E8%AE%B0/Redux%E7%AC%94%E8%AE%B0/"/>
+    <id>https://easyremember.cn/2020/12/30/笔记/Redux笔记/</id>
+    <published>2020-12-30T08:38:44.340Z</published>
+    <updated>2020-12-30T08:39:44.830Z</updated>
+    
+    <summary type="html">
+    
+      Redux 是 JavaScript 状态容器，提供可预测化的状态管理。
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://easyremember.cn/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="react" scheme="https://easyremember.cn/tags/react/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>React-Router笔记</title>
+    <link href="https://easyremember.cn/2020/12/16/%E7%AC%94%E8%AE%B0/React-Router%E7%AC%94%E8%AE%B0/"/>
+    <id>https://easyremember.cn/2020/12/16/笔记/React-Router笔记/</id>
+    <published>2020-12-16T08:46:15.780Z</published>
+    <updated>2020-12-17T01:03:36.307Z</updated>
+    
+    <summary type="html">
+    
+      react-router路由组件的使用
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://easyremember.cn/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="react" scheme="https://easyremember.cn/tags/react/"/>
+    
+  </entry>
+  
+  <entry>
     <title>React入门笔记</title>
     <link href="https://easyremember.cn/2020/12/15/%E7%AC%94%E8%AE%B0/React%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/"/>
     <id>https://easyremember.cn/2020/12/15/笔记/React入门笔记/</id>
     <published>2020-12-15T14:01:03.039Z</published>
-    <updated>2020-12-16T06:39:54.099Z</updated>
+    <updated>2020-12-17T02:34:15.001Z</updated>
     
     <summary type="html">
     
@@ -346,66 +406,6 @@
     <summary type="html">
     
       Vue3“船新”API
-    
-    </summary>
-    
-      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="vue" scheme="https://easyremember.cn/tags/vue/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Vue3初体验</title>
-    <link href="https://easyremember.cn/2020/09/18/%E6%8A%80%E6%9C%AF/Vue3%E5%88%9D%E4%BD%93%E9%AA%8C/"/>
-    <id>https://easyremember.cn/2020/09/18/技术/Vue3初体验/</id>
-    <published>2020-09-18T04:21:58.577Z</published>
-    <updated>2020-09-18T04:23:04.218Z</updated>
-    
-    <summary type="html">
-    
-      上手体验vite加持的Vue3
-    
-    </summary>
-    
-      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="vue" scheme="https://easyremember.cn/tags/vue/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>filter过滤器</title>
-    <link href="https://easyremember.cn/2020/09/15/%E6%8A%80%E6%9C%AF/filter%E8%BF%87%E6%BB%A4%E5%99%A8/"/>
-    <id>https://easyremember.cn/2020/09/15/技术/filter过滤器/</id>
-    <published>2020-09-15T11:53:27.165Z</published>
-    <updated>2020-09-15T12:13:09.646Z</updated>
-    
-    <summary type="html">
-    
-      两种方式定义过滤器进行数据渲染
-    
-    </summary>
-    
-      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="vue" scheme="https://easyremember.cn/tags/vue/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>elementUI踩坑记录</title>
-    <link href="https://easyremember.cn/2020/09/13/%E6%8A%80%E6%9C%AF/elementUI%E8%B8%A9%E5%9D%91/"/>
-    <id>https://easyremember.cn/2020/09/13/技术/elementUI踩坑/</id>
-    <published>2020-09-13T11:58:37.724Z</published>
-    <updated>2020-10-19T04:11:13.233Z</updated>
-    
-    <summary type="html">
-    
-      记录一些使用elementUI踩的坑
     
     </summary>
     

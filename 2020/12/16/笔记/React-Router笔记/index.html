@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">前端小枫</title>
+  <title itemprop="name">React-Router笔记 | 前端小枫</title>
   
   <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -466,497 +466,264 @@
   </div>
 </header>
 
-      <div class="blank" style="padding-top: 0px;"></div>
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201216164641985.png);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201216164641985.png">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      React-Router笔记</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="">小枫</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2020-12-16<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
 <div id="content" class="site-content">
-  
-  <div class="notice" style="margin-top:60px">
-    <i class="iconfont icon-notification">
-    </i>
-    <div class="notice-content">微信公众号：前端小枫</div>
-  </div>
-  
-  <div class="top-feature-row">
-  <h1 class="fes-title" style="font-family: 'Ubuntu', sans-serif;">
-  <i class="fa fa-anchor" aria-hidden="true">
-  </i>
-  START:DASH!!</h1>
-  
-  <div class="top-feature-v2">
-    <div class="the-feature square from_left_and_right">
-      <a href="/theme-sakura" target="_blank">
-        <div class="img">
-          <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/startdash/sakura.md.png">
-        </div>
-        <div class="info">
-          <h3>Sakura</h3>
-          <p>本站 hexo 主题</p>
-        </div>
-      </a>
-    </div>
-  </div>
-  
-  <div class="top-feature-v2">
-    <div class="the-feature square from_left_and_right">
-      <a href="https://space.bilibili.com/75412375" target="_blank">
-        <div class="img">
-          <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/startdash/bilibili.jpg">
-        </div>
-        <div class="info">
-          <h3>Bilibili</h3>
-          <p>博主的b站</p>
-        </div>
-      </a>
-    </div>
-  </div>
-  
-  <div class="top-feature-v2">
-    <div class="the-feature square from_left_and_right">
-      <a href="/" target="_blank">
-        <div class="img">
-          <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/startdash/wangshiwu.jpg">
-        </div>
-        <div class="info">
-          <h3>前端小枫</h3>
-          <p>技术服务</p>
-        </div>
-      </a>
-    </div>
-  </div>
-  
-</div>
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
-      <h1 class="main-title" style="font-family: 'Ubuntu', sans-serif;">
-      <i class="fa fa-envira" aria-hidden="true"></i>
-      Discovery</h1>
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h3 id="react-router入门"><a href="#react-router入门" class="headerlink" title="react-router入门"></a>react-router入门</h3><p>React-Router由社区维护并非官方发布的，有三个部分</p>
+<ul>
+<li>react-router 核心组件</li>
+<li>react-router-dom 应用于浏览器端的路由库（单独使用包含了react-router的核心部分）</li>
+<li>react-router-native 应用于native端的路由</li>
+</ul>
+<p>所以我们就只需要引入<code>react-router-dom</code>就可以了</p>
+<p>React-Router中主要有三部分，Router、Route和Link，Router用于管理Route，Route用来匹配组件，Link用来跳转Route，先来看一个简单的小示例</p>
+<pre><code class="jsx">&lt;Router&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;Link to=&quot;/&quot;&gt;首页&lt;/Link&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;Link to=&quot;/list&quot;&gt;列表&lt;/Link&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;Route path=&quot;/&quot; exact component={Index}/&gt;
+  &lt;Route path=&quot;/list&quot; component={List}/&gt;
+&lt;/Router&gt;
+</code></pre>
+<p>Link用于跳转，在渲染时会被渲染成 <code>&lt;a href=&quot;/&quot;&gt;首页&lt;/a&gt;</code>的样式</p>
+<h4 id="路由传参"><a href="#路由传参" class="headerlink" title="路由传参"></a>路由传参</h4><p>路由传参大致分为两大类，一种是通过动态路由传参，一种是通过路由属性传递，就是params和query</p>
+<pre><code class="jsx">&lt;Route path=&quot;/list/:id&quot; component={List}/&gt;
+// 声明路由时定义接收的参数，然后在组件中通过props.match.params获取这个值
+&lt;Link to=&quot;/list/123&quot;&gt;列表&lt;/Link&gt;
+// 这个link就可以命中路由，123也将作为params属性传递
+</code></pre>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201216191642631.png" alt="image-20201216191642631"></p>
+<pre><code class="jsx">// 还是上面的路由声明，将to做修改
+&lt;Link to={{pathname: "/list/123", query: {name: '张三'}}}&gt;列表&lt;/Link&gt;
+// pathname作为url路径，query将被携带到props.location.query中
+</code></pre>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201216192002738.png" alt="image-20201216192002738"></p>
+<h4 id="嵌套路由"><a href="#嵌套路由" class="headerlink" title="嵌套路由"></a>嵌套路由</h4><p>react的路由嵌套也很简单，就是在组件中再声明路由，比如一级路由中声明了一个/list路由，指向List组件，然后List组件中再声明/list/newslist路由指向子组件，就可以达到二级路由的效果</p>
+<h4 id="Switch组件"><a href="#Switch组件" class="headerlink" title="Switch组件"></a>Switch组件</h4><p>Switch用于只匹配一个组件，比如/about和/:user这两个路由，命中第一个就必定会命中第二个，这时候可以使用Switch将Route声明包裹，就只命中1个组件；此外还可以在所有的路由都不命中时显示404页面</p>
+<pre><code class="jsx">&lt;Switch&gt;
+    &lt;Route exact path=&quot;/&quot; component={Home}/&gt;
+  &lt;Route path=&quot;/about&quot; component={About}/&gt;
+    &lt;Route component={NotFound}/&gt;
+&lt;/Switch&gt;
+</code></pre>
+<h4 id="Redirect组件"><a href="#Redirect组件" class="headerlink" title="Redirect组件"></a>Redirect组件</h4><p>Redirect组件用于组件重定向，有两种方法来实现重定向</p>
+<ul>
+<li>使用Redirect标签声明重定向</li>
+<li>在构造函数中使用this.props.history.push()实现编程式重定向</li>
+</ul>
+<p>例如可以在个人中心的页面中，通过判定是否登陆来重定向到登录页面</p>
+<pre><code class="jsx">// 声明式(路由声明组件)
+&lt;Route exact path=&quot;/person&quot; render={() =&gt; (
+  &#39;登录判定条件&#39; ? (
+    &lt;Person /&gt;
+  ) : (
+    &lt;Redirect to=&quot;/login&quot;/&gt;
+  )
+)}/&gt;
+// 编程式(个人中心组件)
+constructor(props) {
+  super(props);
+  this.state = {}
+  if (&#39;未登录判定条件&#39;) {
+    this.props.history.push(&#39;/login&#39;)
+  }
+}
+</code></pre>
+<h3 id="react-router进阶"><a href="#react-router进阶" class="headerlink" title="react-router进阶"></a>react-router进阶</h3><p>这种写法虽然能够运行，但是后期的维护成本太高，我们需要将路由尽可能的配置到一起，以减少后期的维护成本，我们可以将路由信息配置到一个数组中，然后通过map来遍历数组</p>
+<pre><code class="jsx">function AppRouter() {
+  let routes = [
+    {
+      path: &#39;/&#39;,
+      exact: true,
+      component: Person
+    },
+    {
+      path: &#39;/list/:id&#39;,
+      exact: false,
+      component: InputList
+    },
+  ]
+  return (&lt;Router&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;Link to=&quot;/&quot;&gt;首页&lt;/Link&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;Link to={{pathname: "/list/123", query: {name: '张三'}}}&gt;列表&lt;/Link&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+      {
+        routes.map((item) =&gt; {
+          return (&lt;Route path={item.path} exact={item.exact} key={item.path} component={item.component}/&gt;)
+        })
+      }
+  &lt;/Router&gt;)
+}
+
+export default AppRouter
+</code></pre>
+<p>虽然这样比起之前好了不少，但是还是达不到我们想要的效果</p>
+<h3 id="终极解决方案react-router-config"><a href="#终极解决方案react-router-config" class="headerlink" title="终极解决方案react-router-config"></a>终极解决方案react-router-config</h3><p>这里需要额外安装一个包<code>react-router-config</code>，安装完之后就可以开始配置路由了</p>
+<p>新建一个router的js文件</p>
+<pre><code class="js">export const routes = [
+  {
+    path: &#39;/&#39;,
+    exact: true,
+    component: Person
+  },
+  {
+    path: &#39;/list/:id&#39;,
+    component: InputList,
+    routes: [
+      {
+        path: &#39;/list/:id/h&#39;,
+        component: News
+      }
+    ]
+  }
+]
+</code></pre>
+<p>然后修改AppRouter文件，将Route的map遍历声明改为<code>{renderRoutes(routes)}</code></p>
+<pre><code class="jsx">function AppRouter() {
+  return &lt;Router&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;Link to=&quot;/&quot;&gt;首页&lt;/Link&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;Link to={{pathname: "/list/123", query: {name: '张三'}}}&gt;列表&lt;/Link&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+      {renderRoutes(routes)}
+  &lt;/Router&gt;
+}
+
+export default AppRouter
+</code></pre>
+<p>子路由也一样，在子组件中使用<code>{renderRoutes(this.props.route.routes)}</code></p>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2020/12/30/笔记/Redux笔记/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201224113850648.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201224113850648.png">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                Redux笔记</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+          
+            <div class="post-nepre half next">
+          
+            <a href="/2020/12/15/笔记/React入门笔记/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201216105004240.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201216105004240.png">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                React入门笔记</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
       
-  <!-- 首页默认取最最新文章集 -->
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "AdzOvpXTwwf3KAX23DOds5C9-gzGzoHsz",
+        appKey: "olX1MHfMtrQcmemwl5lLmu4a",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
 
-  <div class="post-thumb">
-    <a href="/2020/08/18/技术/vuex入门/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/vue-p.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-8-18 19:08</div>
-      <a href="/2020/08/18/技术/vuex入门/" class="post-title">
-        <h3>vuex入门</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/vue/">vue<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/技术/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>vuex入门</p>
-        <div class="post-bottom">
-          <a href="/2020/08/18/技术/vuex入门/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg" itemprop="image" alt="小枫" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author">小枫</a>
+            </h3>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/08/18/技术/原生JS实现AJAX/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/ajax.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-8-18 16:08</div>
-      <a href="/2020/08/18/技术/原生JS实现AJAX/" class="post-title">
-        <h3>原生JS实现AJAX</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/js/">js<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/技术/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>原生JS实现AJAX</p>
-        <div class="post-bottom">
-          <a href="/2020/08/18/技术/原生JS实现AJAX/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/08/18/技术/ES6和CommonJS/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/js-es6-cjs.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-8-18 09:08</div>
-      <a href="/2020/08/18/技术/ES6和CommonJS/" class="post-title">
-        <h3>ES6和CommonJS的模块化</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/js/">js<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/技术/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>对比ES6和CommonJS的模块化的差异</p>
-        <div class="post-bottom">
-          <a href="/2020/08/18/技术/ES6和CommonJS/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/08/17/技术/Egg常用的包/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/egg-mid.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-8-17 16:08</div>
-      <a href="/2020/08/17/技术/Egg常用的包/" class="post-title">
-        <h3>Egg实用中间件</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/Node/">Node<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/技术/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>Egg.js 中实用性较高的中间件</p>
-        <div class="post-bottom">
-          <a href="/2020/08/17/技术/Egg常用的包/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/08/15/笔记/EggJS学习笔记/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/egg.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-8-15 23:08</div>
-      <a href="/2020/08/15/笔记/EggJS学习笔记/" class="post-title">
-        <h3>EggJS学习笔记</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/Node/">Node<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/笔记/">笔记</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>Egg.js 为企业级框架和应用而生</p>
-        <div class="post-bottom">
-          <a href="/2020/08/15/笔记/EggJS学习笔记/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/08/13/资源/VSCode使用插件集合/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/vscode.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-8-13 14:08</div>
-      <a href="/2020/08/13/资源/VSCode使用插件集合/" class="post-title">
-        <h3>VS Code 实用插件</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/工具/">工具<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/技术/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>VSCode提高开发效率的插件集合</p>
-        <div class="post-bottom">
-          <a href="/2020/08/13/资源/VSCode使用插件集合/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/08/12/技术/高级组件provide-inject/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/vue-p.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-8-12 14:08</div>
-      <a href="/2020/08/12/技术/高级组件provide-inject/" class="post-title">
-        <h3>高级组件provide/inject</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/vue/">vue<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/技术/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>高级组件provide/inject的用法介绍</p>
-        <div class="post-bottom">
-          <a href="/2020/08/12/技术/高级组件provide-inject/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/08/10/技术/Express中使用Sequelize实现ORM/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/sequelize.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-8-10 14:08</div>
-      <a href="/2020/08/10/技术/Express中使用Sequelize实现ORM/" class="post-title">
-        <h3>Express中使用Sequelize实现ORM</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/Node/">Node<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/技术/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>Express中使用Sequelize实现ORM</p>
-        <div class="post-bottom">
-          <a href="/2020/08/10/技术/Express中使用Sequelize实现ORM/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/08/06/笔记/TypeScript学习笔记/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/typescript.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-8-6 23:08</div>
-      <a href="/2020/08/06/笔记/TypeScript学习笔记/" class="post-title">
-        <h3>TypeScript学习笔记</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/js/">js<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/笔记/">笔记</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>TypeScript 是 JavaScript 的一个超集，支持 ECMAScript 6 标准</p>
-        <div class="post-bottom">
-          <a href="/2020/08/06/笔记/TypeScript学习笔记/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/08/04/技术/Vue组件通信/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/vue-p.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-8-4 21:08</div>
-      <a href="/2020/08/04/技术/Vue组件通信/" class="post-title">
-        <h3>Vue组件通信</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/vue/">vue<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/技术/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>Vue组件之间传递数据的方式</p>
-        <div class="post-bottom">
-          <a href="/2020/08/04/技术/Vue组件通信/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-
-
-    </main>
-      <!-- 首页默认取最最新文章集 -->
-    <!-- 
-      <nav class="navigator">
-        
-        <a class="extend prev" rel="prev" href="/page/4/"><i class="iconfont icon-back"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/"><i class="iconfont icon-right"></i></a>
-      </nav>
-     -->
-  </div>
-  
-    <div id="pagination"><a href="/page/6/" class="">Previous</a></div>
-  
+        <hr>
+        <p><i class="iconfont icon-write"></i>前端小白</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
 </div>
+
+
 
     </div>    
     <div class="ins-search">

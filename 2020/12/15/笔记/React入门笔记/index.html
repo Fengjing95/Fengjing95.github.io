@@ -648,6 +648,57 @@ render(
 }
 </code></pre>
 <p>componentWillReceiveProps只在props发生改变时执行，可以在这里面使用setState，不会引起额外的render</p>
+<h3 id="获取DOM元素"><a href="#获取DOM元素" class="headerlink" title="获取DOM元素"></a>获取DOM元素</h3><p>Vue中获取DOM的方式是通过给元素添加ref属性，然后通过$refs来获取DOM</p>
+<pre><code class="vue">&lt;template&gt;
+    &lt;input ref=&quot;inputRef&quot; type=&quot;text&quot; /&gt;
+&lt;/template&gt;
+&lt;script&gt;
+    mounted() {
+    console.log(this.$refs[&#39;inputRef&#39;])
+  }
+&lt;/script&gt;
+</code></pre>
+<p>在React中有很多种方式，其中一种就跟Vue这种形式一样，但是已经废弃了，我们再来看一下其他方法</p>
+<p><strong>React.createRef()</strong></p>
+<p>在构造函数中声明一个变量并赋值React.createRef()，然后在元素上挂载ref，就可以通过这个变量来访问DOM</p>
+<pre><code class="jsx">constructor() {
+  this.inputRef = React.createRef()
+}
+
+componentDidMount() {
+  console.log(this.inputRef.current)
+  // 这里注意使用createRef的方式需要通过current来获取
+}
+
+render(
+    return &lt;div&gt;
+      &lt;input ref={this.inputRef} /&gt;
+  &lt;/div&gt;
+)
+</code></pre>
+<p><strong>回调函数</strong></p>
+<p>直接在回调函数中向组件传递DOM</p>
+<pre><code class="jsx">componentDidMount() {
+  console.log(this.inputRef)
+  // 回调函数的方式直接获取
+}
+
+render(
+    return &lt;div&gt;
+      &lt;input ref={(ul) =&gt; {this.inputRef = ul}} /&gt;
+  &lt;/div&gt;
+)
+</code></pre>
+<p><strong>子组件ref</strong></p>
+<p>通过React.forward()来创建子组件，接收两个参数props、ref，将元素绑定接收来的ref就可以在父组件中获取子组件的DOM了</p>
+<pre><code class="jsx">// 子组件
+const InputComponent = React.forwardRef((props,ref)=&gt;(
+  &lt;input type=&quot;text&quot; ref={ref} /&gt;
+));
+
+// 父组件，使用createRef声明this.InputRef变量
+&lt;InputComponent ref={this.InputRef} /&gt;
+</code></pre>
 
         </div>
         <!-- .entry-content -->
@@ -676,9 +727,26 @@ render(
       <div class="toc" style="background: none;"></div>
       <section class="post-squares nextprev">
         
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2020/12/16/笔记/React-Router笔记/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201216164641985.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201216164641985.png">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                React-Router笔记</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
         
           
-            <div class="post-nepre full next">
+            <div class="post-nepre half next">
           
             <a href="/2020/12/14/技术/react配置axios/" rel="next">
               <div class="background">
