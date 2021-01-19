@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://easyremember.cn/"/>
-  <updated>2020-12-31T07:18:24.013Z</updated>
+  <updated>2021-01-19T13:34:03.565Z</updated>
   <id>https://easyremember.cn/</id>
   
   <author>
@@ -15,6 +15,46 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Vue面试题</title>
+    <link href="https://easyremember.cn/2021/01/19/%E9%9A%8F%E6%83%B3/Vue%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    <id>https://easyremember.cn/2021/01/19/随想/Vue面试题/</id>
+    <published>2021-01-19T13:33:03.945Z</published>
+    <updated>2021-01-19T13:34:03.565Z</updated>
+    
+    <summary type="html">
+    
+      Vue面试题，持续更新
+    
+    </summary>
+    
+      <category term="随想" scheme="https://easyremember.cn/categories/%E9%9A%8F%E6%83%B3/"/>
+    
+    
+      <category term="悦读" scheme="https://easyremember.cn/tags/%E6%82%A6%E8%AF%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>重学flex</title>
+    <link href="https://easyremember.cn/2021/01/05/%E6%8A%80%E6%9C%AF/%E9%87%8D%E5%AD%A6flex/"/>
+    <id>https://easyremember.cn/2021/01/05/技术/重学flex/</id>
+    <published>2021-01-05T07:03:32.209Z</published>
+    <updated>2021-01-05T07:04:40.918Z</updated>
+    
+    <summary type="html">
+    
+      flex弹性盒模型属性
+    
+    </summary>
+    
+      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="css" scheme="https://easyremember.cn/tags/css/"/>
+    
+  </entry>
   
   <entry>
     <title>react组件传值</title>
@@ -373,46 +413,6 @@
     
     
       <category term="js" scheme="https://easyremember.cn/tags/js/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vite运行原理</title>
-    <link href="https://easyremember.cn/2020/09/19/%E6%8A%80%E6%9C%AF/vite%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86/"/>
-    <id>https://easyremember.cn/2020/09/19/技术/vite运行原理/</id>
-    <published>2020-09-19T05:02:52.481Z</published>
-    <updated>2020-09-19T05:05:11.631Z</updated>
-    
-    <summary type="html">
-    
-      手写一个toy-vite
-    
-    </summary>
-    
-      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="vue" scheme="https://easyremember.cn/tags/vue/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Vue3的基础API变化</title>
-    <link href="https://easyremember.cn/2020/09/19/%E6%8A%80%E6%9C%AF/Vue3API%E5%8F%98%E5%8C%96/"/>
-    <id>https://easyremember.cn/2020/09/19/技术/Vue3API变化/</id>
-    <published>2020-09-19T00:33:27.474Z</published>
-    <updated>2020-09-19T00:35:04.864Z</updated>
-    
-    <summary type="html">
-    
-      Vue3“船新”API
-    
-    </summary>
-    
-      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="vue" scheme="https://easyremember.cn/tags/vue/"/>
     
   </entry>
   
