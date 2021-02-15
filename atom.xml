@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://easyremember.cn/"/>
-  <updated>2021-01-19T13:34:03.565Z</updated>
+  <updated>2021-02-15T06:21:08.765Z</updated>
   <id>https://easyremember.cn/</id>
   
   <author>
@@ -15,6 +15,42 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>纯手工搭建Vue SSR</title>
+    <link href="https://easyremember.cn/2021/02/15/%E6%8A%80%E6%9C%AF/%E7%BA%AF%E6%89%8B%E5%B7%A5%E6%90%AD%E5%BB%BAVue-SSR/"/>
+    <id>https://easyremember.cn/2021/02/15/技术/纯手工搭建Vue-SSR/</id>
+    <published>2021-02-15T02:44:36.951Z</published>
+    <updated>2021-02-15T06:21:08.765Z</updated>
+    
+    <summary type="html">
+    
+      手动实现vue服务端渲染
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="https://easyremember.cn/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>帧动画animation</title>
+    <link href="https://easyremember.cn/2021/02/01/%E7%AC%94%E8%AE%B0/%E5%B8%A7%E5%8A%A8%E7%94%BBanimation/"/>
+    <id>https://easyremember.cn/2021/02/01/笔记/帧动画animation/</id>
+    <published>2021-02-01T01:10:59.521Z</published>
+    <updated>2021-02-05T08:51:23.462Z</updated>
+    
+    <summary type="html">
+    
+      css3帧动画
+    
+    </summary>
+    
+    
+      <category term="笔记" scheme="https://easyremember.cn/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>Vue面试题</title>
@@ -161,7 +197,7 @@
     <link href="https://easyremember.cn/2020/12/07/%E9%9A%8F%E6%83%B3/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E7%BB%8F%E5%85%B8%E9%97%AE%E9%A2%98/"/>
     <id>https://easyremember.cn/2020/12/07/随想/前端面试经典问题/</id>
     <published>2020-12-07T07:55:46.825Z</published>
-    <updated>2020-12-10T14:03:49.270Z</updated>
+    <updated>2021-01-27T14:35:07.133Z</updated>
     
     <summary type="html">
     
@@ -373,46 +409,6 @@
     
     
       <category term="css" scheme="https://easyremember.cn/tags/css/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>函数式编程思想之柯里化</title>
-    <link href="https://easyremember.cn/2020/09/20/%E6%8A%80%E6%9C%AF/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3%E4%B9%8B%E6%9F%AF%E9%87%8C%E5%8C%96/"/>
-    <id>https://easyremember.cn/2020/09/20/技术/函数式编程思想之柯里化/</id>
-    <published>2020-09-20T08:33:44.542Z</published>
-    <updated>2020-09-20T08:34:46.790Z</updated>
-    
-    <summary type="html">
-    
-      认识柯里化
-    
-    </summary>
-    
-      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="js" scheme="https://easyremember.cn/tags/js/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>重新认识replace</title>
-    <link href="https://easyremember.cn/2020/09/19/%E6%8A%80%E6%9C%AF/replace%EF%BC%9A%E9%87%8D%E6%96%B0%E8%AE%A4%E8%AF%86%E4%B8%80%E4%B8%8B%E5%91%97/"/>
-    <id>https://easyremember.cn/2020/09/19/技术/replace：重新认识一下呗/</id>
-    <published>2020-09-19T06:48:45.777Z</published>
-    <updated>2020-09-19T06:56:45.931Z</updated>
-    
-    <summary type="html">
-    
-      重新认识一下string.prototype.replace
-    
-    </summary>
-    
-      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="js" scheme="https://easyremember.cn/tags/js/"/>
     
   </entry>
   

@@ -850,6 +850,22 @@ const {obj} = require(&#39;./1&#39;)
 <p><strong>浏览器解析资源渲染</strong></p>
 <p>解析过程如下（来自网络，侵权联系删除）</p>
 <p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201210220303700.png" alt="image-20201210220303700"></p>
+<h2 id="怎么判断一个变量是数组"><a href="#怎么判断一个变量是数组" class="headerlink" title="怎么判断一个变量是数组"></a>怎么判断一个变量是数组</h2><ul>
+<li>基于instanceof</li>
+<li>基于constructor</li>
+<li>基于Object.prototype.isPrototypeOf</li>
+<li>基于getPrototypeOf</li>
+<li>基于Object.prototype.toString</li>
+<li>基于Array.isArray</li>
+</ul>
+<pre><code class="js">var a = []
+a instanceof Array;
+a.constructor === Array;
+Array.prototype.isPrototypeOf(a);
+Object.getPrototypeOf(a) === Array.prototype;
+Object.prototype.toString.apply(a) === &#39;[object Array]&#39;;
+Array.isArray(a)
+</code></pre>
 
         </div>
         <!-- .entry-content -->

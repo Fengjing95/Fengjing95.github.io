@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">Promise学习笔记 | 前端小枫</title>
+  <title itemprop="name">帧动画animation | 前端小枫</title>
   
   <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -472,11 +472,11 @@
 
   <div class="pattern-center single-center">
     <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://gitee.com/liuhao1108/picGoCDN/raw/master/img/Promise_logo.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/Promise_logo.jpg">
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210202092652062.png);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210202092652062.png">
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      Promise学习笔记</h1>
+      帧动画animation</h1>
       <p class="entry-census">
         <span>
           <a href="">
@@ -488,7 +488,7 @@
         </span>
         <span class="bull">
         ·</span>
-        2020-8-20<span class="bull">
+        2021-2-1<span class="bull">
         ·</span>
       <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
@@ -502,391 +502,155 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1 id="Promise学习笔记"><a href="#Promise学习笔记" class="headerlink" title="Promise学习笔记"></a>Promise学习笔记</h1><p>参考<a href="https://www.bilibili.com/video/BV1MJ41197Eu" target="_blank" rel="noopener">视频教程</a></p>
-<h2 id="知识铺垫"><a href="#知识铺垫" class="headerlink" title="知识铺垫"></a>知识铺垫</h2><h3 id="函数对象和实例对象"><a href="#函数对象和实例对象" class="headerlink" title="函数对象和实例对象"></a>函数对象和实例对象</h3><ul>
-<li>函数对象：将函数作为对象使用 </li>
-<li>实例对象：new 函数产生的对象(执行构造函数)</li>
-</ul>
-<p>只有在new出实例对象之后，函数才能叫做构造函数</p>
-<pre><code class="js">function Person() {
-
-}
-var p = new Person();
-console.log(Person.prototype)
-</code></pre>
-<p>在这段代码中p是实例对象，Person是构造函数，打印Person原型时，Person是函数对象</p>
-<h3 id="回调函数"><a href="#回调函数" class="headerlink" title="回调函数"></a>回调函数</h3><ul>
-<li><p>同步回调：立即执行，完全执行完了才结束，不会放入回调队列</p>
-</li>
-<li><p>异步回调：不会立即执行，放入回调队列中将来执行</p>
-</li>
-</ul>
-<pre><code class="js">const arr = [1, 2, 3];
-arr.forEach(item =&gt; {
-  console.log(item);
-});
-console.log(&#39;foreach之后&#39;);
-
-
-setTimeout(() =&gt; {
-  console.log(&#39;callback&#39;);
-}, 0);
-console.log(&#39;setTime之后&#39;);
-</code></pre>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200819110221552.png" alt="image-20200819110221552"></p>
-<p>上面一段是同步回调，按照顺序执行；下面一段是异步函数，放到队列中执行，主线程执行完毕之后才执行</p>
-<h3 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h3><ul>
-<li><p>错误的类型</p>
+          <p><strong>没有中间值过度的属性无法使用帧动画</strong></p>
+<h2 id="定义关键帧"><a href="#定义关键帧" class="headerlink" title="定义关键帧"></a>定义关键帧</h2><p>使用关键字<code>@keyframes</code>来声明关键帧</p>
 <ul>
-<li>Error: 所有错误的父类型</li>
-<li>ReferenceError: 引用的变量不存在</li>
-<li>TypeError: 数据类型不正确的错误</li>
-<li>RangeError: 数据值不在其所允许的范围内</li>
-<li>SyntaxError: 语法错误</li>
+<li>from表示开始</li>
+<li>to表示结束</li>
+<li>使用百分数表示动画到百分之几的位置</li>
 </ul>
-</li>
-<li><p>错误处理</p>
-<ul>
-<li>捕获错误: try … catch</li>
-<li>抛出错误: throw error</li>
-</ul>
-</li>
-<li><p>错误对象</p>
-<ul>
-<li>message属性: 错误相关信息</li>
-<li>stack属性: 函数调用栈记录信息</li>
-</ul>
-</li>
-</ul>
-<h2 id="Promise理解和使用"><a href="#Promise理解和使用" class="headerlink" title="Promise理解和使用"></a>Promise理解和使用</h2><h3 id="什么是Promise"><a href="#什么是Promise" class="headerlink" title="什么是Promise"></a>什么是Promise</h3><ul>
-<li><p>抽象表达:</p>
-<ul>
-<li>Promise是JS中进行<strong>异步编程</strong>的新的解决方案(旧的是谁？纯回调callback)</li>
-</ul>
-</li>
-<li><p>具体表达:</p>
-<ul>
-<li>从语法上来说: Promise是一个构造函数</li>
-<li>从功能上来说: promise对象用来封装一个异步操作并可以获取其结果</li>
-</ul>
-</li>
-<li><p>promise的状态改变(只有2种结果,，只能改变一次)</p>
-<ul>
-<li>pending变为resolved</li>
-<li>pending变为rejected</li>
-<li>无论成功还是失败都会有一个 结果，成功的称为value，失败的称为reason</li>
-</ul>
-</li>
-<li><p>promise的基本流程(pending，图里面写错了)</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200819155202362.png" alt="image-20200819155202362"></p>
-</li>
-</ul>
-<h3 id="为什么使用Promise"><a href="#为什么使用Promise" class="headerlink" title="为什么使用Promise"></a>为什么使用Promise</h3><ol>
-<li>指定回调函数的方式更加灵活：可以在请求发出甚至结束后指定回调函数</li>
-<li>支持链式调用，可以解决回调地狱问题</li>
-</ol>
-<h3 id="怎么使用Promise"><a href="#怎么使用Promise" class="headerlink" title="怎么使用Promise"></a>怎么使用Promise</h3><p>简单的示例</p>
-<pre><code class="js">const p = new Promise((resolve, reject) =&gt; {
-  const d = Date.now();
-  if (d % 2 === 1) {
-    resolve(&#39;success&#39;)
-  } else {
-    reject(&#39;faild&#39;)
-  }
-})
-p.then(value =&gt; console.log(value), reason =&gt; console.log(reason))
-</code></pre>
-<p>.then()接收两个函数，第一个是成功的回调（onResolved），第二个是失败的回调（onRejected）</p>
-<h4 id="主要API"><a href="#主要API" class="headerlink" title="主要API"></a>主要API</h4><ul>
-<li>Promise构造函数: Promise (excutor) {}</li>
-<li>Promise.prototype.then方法: (onResolved, onRejected) =&gt; {}</li>
-<li>Promise.prototype.catch方法: (onRejected) =&gt; {}，拦截失败操作，返回promise对象，如果catch之前有reject，直接跳到reject，中间所有的.then都不执行</li>
-<li>Promise.resolve方法: (value) =&gt; {}，修改状态为成功</li>
-<li>Promise.reject方法: (reason) =&gt; {}，修改状态为失败</li>
-<li>Promise.all方法: (promises) =&gt; {}，参数为一个可迭代对象，等所有的promise对象都完成之后状态变为resolved，返回结果可迭代对象；如果过有失败结果，状态变为rejected，失败原因是第一个失败的promise对象的结果</li>
-<li>Promise.race方法: (promises) =&gt; {}，参数为一个可迭代对象，如果有任何一个promise解决或者拒绝，返回的promise就会解决或者拒绝</li>
-</ul>
-<h3 id="存在的问题"><a href="#存在的问题" class="headerlink" title="存在的问题"></a>存在的问题</h3><ul>
-<li>改变状态不一定是resolve和reject，也可以发生错误或者抛出异常</li>
-<li>同一个promise对象添加多个.then都会执行</li>
-<li>改变promise状态和指定回调函数谁先谁后<ul>
-<li>正常情况下是先指定回调函数再改变状态</li>
-<li>先改变状态再指定回调：①在执行器中直接调用resolve()/reject()②延迟更长时间才调用then()</li>
-</ul>
-</li>
-<li>什么时候得到数据<ul>
-<li>如果先指定的回调，那当状态发生改变时，回调函数就会调用，得到数据</li>
-<li>如果先改变的状态，那当指定回调时，回调函数就会调用，得到数据</li>
-</ul>
-</li>
-<li>不论成功失败，回调函数永远是异步执行</li>
-<li>.then返回promise的状态——由指定的回调函数执行的结果决定<ul>
-<li>抛出异常，新的promise变为rejected，reason为跑出的异常</li>
-<li>返回的是非promise任意值，状态改为resolved，value是返回值</li>
-<li>返回值是一个新的promise，这个promise的结果就会成为新的promise的结果</li>
-</ul>
-</li>
-</ul>
-<h2 id="自定义Promise"><a href="#自定义Promise" class="headerlink" title="自定义Promise"></a>自定义Promise</h2><h3 id="整体结构"><a href="#整体结构" class="headerlink" title="整体结构"></a>整体结构</h3><p>由于ES6和CommenJS都需要编译才能使用，所以自定义Promise需要使用ES5模块语法（自调用函数）</p>
-<pre><code class="js">(function (window) {
-  /* 
-  Promise：构造函数
-  excutor: 执行器
-  */
-  function Promise(excutor) {
+<p>如：</p>
+<pre><code class="css">@keyframes box {
+  from {
 
   }
-
-  /* 
-  Promise 原型对象.then
-  指定成功和失败的回调函数
-  返回一个新的Promise
-  */
-  Promise.prototype.then = function (onResolved, onRejected) {
+  to {
 
   }
-
-  /*
-  Promise 原型对象.catch
-  指定失败的回调函数
-  返回一个新的Promise
-  */
-  Promise.prototype.catch = function (onRejected) {
+  /* 或者 */
+  /* 0% {
 
   }
+  100%{
 
-  /*
-  Promise 原型对象.resolve
-  返回一个指定value的Promise
-  */
-  Promise.resolve = function (value) {
-
-  }
-
-  /*
-  Promise 原型对象.reject
-  返回一个指定reason的Promise
-  */
-  Promise.reject = function (reason) {
-
-  }
-
-  /*
-  Promise 原型对象.all
-  返回一个Promise，所有promise都成功才成功，一个失败就失败
-  */
-  Promise.all = function (promises) {
-
-  }
-
-  /*
-  Promise 原型对象.race
-  返回一个Promise，由第一个完成的promise决定
-  */
-  Promise.race = function (promises) {
-
-  }
-
-  // 暴露Promise
-  window.Promise = Promise;
-})(window)
-</code></pre>
-<h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><pre><code class="js">/* 
-Promise：构造函数
-excutor: 执行器
-*/
-function Promise(excutor) {
-  this.status = &#39;pending&#39;; // 状态
-  this.data = undefined;  // 数据
-  this.callbacks = [];  // 保存回调函数，结构：{onResolved() {}, onReject() {}}
-  function resolve(value) {
-    // 当前状态不是pending结束
-    if (this.status !== &#39;pending&#39;) {
-      return
-    }
-    // 修改状态
-    this.status = &#39;resolved&#39;;
-    // 保存数据
-    this.data = value;
-    // 立即执行callback
-    if (this.callbacks.length &gt; 0) {
-      this.callbacks.forEach(callbacksObj =&gt; {
-        setTimeout(() =&gt; {  // 异步执行回调
-          callbacksObj.onResolved(value)
-        }, 0)
-      });
-    }
-
-  }
-
-  function reject(reason) {
-    // 当前状态不是pending结束
-    if (this.status !== &#39;pending&#39;) {
-      return
-    }
-    // 修改状态
-    this.status = &#39;rejected&#39;;
-    // 保存数据
-    this.data = value;
-    // 立即执行callback
-    if (this.callbacks.length &gt; 0) {
-      this.callbacks.forEach(callbacksObj =&gt; {
-        setTimeout(() =&gt; {  // 异步执行回调
-          callbacksObj.onRejected(reason)
-        }, 0)
-      });
-    }
-  }
-  // 立即执行excutor
-  try {
-    excutor(resolve, reject);
-  } catch (error) { // 抛出异常变为rejected
-    reject(error);
-  }
+  } */
 }
 </code></pre>
-<h3 id="Promise-then-catch"><a href="#Promise-then-catch" class="headerlink" title="Promise.then()/.catch()"></a>Promise.then()/.catch()</h3><p>先来看一下这个例子，将fn赋值给f，两种方法，第二种比第一种简介，在.then内部返回数据时会用到</p>
-<pre><code class="js">function fn() {
-
+<blockquote>
+<p>不设置0%和100%时默认使用元素初始样式，时间点可以同时设置，例如<code>25%,75%{}</code>就可以在两个时间点同时生效</p>
+</blockquote>
+<h2 id="使用关键帧"><a href="#使用关键帧" class="headerlink" title="使用关键帧"></a>使用关键帧</h2><h3 id="使用动画"><a href="#使用动画" class="headerlink" title="使用动画"></a>使用动画</h3><p>元素属性中使用<code>animation-name</code>声明动画，可以声明多个动画，使用逗号隔开；使用<code>animation-duration</code>声明动画时间，多个时间并列会自动对应相应的name，如果动画个数多于时间个数，会从第一个时间开始依次使用</p>
+<pre><code class="css">.class {
+  animation-name: box, float-box;
+  animation-duration: 6s, 3s;
 }
-var f = function fn() {
-
-}
-var f = fn;
 </code></pre>
-<p>正片开始</p>
-<pre><code class="js">  /* 
-  Promise 原型对象.then
-  指定成功和失败的回调函数
-  返回一个新的Promise
-  */
-  Promise.prototype.then = function (onResolved, onRejected) {
-    onResolved = typeof onResolved === &#39;function&#39; ? onResolved : value =&gt; value
-
-    onRejected = typeof onRejected === &#39;function&#39; ? onRejected : reason =&gt; {throw reason}
-
-    const _this = this;
-    // 返回一个新的promise
-    return new Promise((resolve, reject) =&gt; {
-      // 指定调用回调函数
-      function handle(callback) {
-        try {
-          const result = callback(_this.data);
-          if (result instanceof Promise) {  // 类型为promise，结果是这个promise的结果
-            // result.then(
-            //   value =&gt; resolve(value),
-            //   reason =&gt; reject(reason)
-            // )
-            result.then(resolve, reject);
-          } else {
-            resolve(result);  // 非promise返回结果
-          }
-        } catch (error) { // 抛出异常，失败
-          reject(error);
-        }
-      }
-
-      if (_this.status === PENDING) {
-        _this.callbacks.push({
-          onResolved(value) {
-            handle(onResolved)
-          },
-          onRejected(reason) {
-            handle(onRejected)
-          }
-        })
-      } else if (_this.status === RESOLVED) {
-        setTimeout(() =&gt; {
-          handle(onResolved)
-        })
-      } else {
-        setTimeout(() =&gt; {
-          handle(onRejected)
-        })
-      }
-    })
-
-  }
-
-  /*
-  Promise 原型对象.catch
-  指定失败的回调函数
-  返回一个新的Promise
-  */
-  Promise.prototype.catch = function (onRejected) {
-    return this.then(undefined, onRejected)
-  }
-</code></pre>
-<h3 id="Promise-resolve-reject"><a href="#Promise-resolve-reject" class="headerlink" title="Promise.resolve()/reject()"></a>Promise.resolve()/reject()</h3><pre><code class="js">  /*
-  Promise 原型对象.resolve
-  返回一个指定value的Promise
-  */
-  Promise.resolve = function (value) {
-    // 返回一个成功/失败的promise
-    return new Promise((resolve, reject) =&gt; {
-      if (value instanceof Promise) {
-        value.then(resolve, reject)
-      } else {
-        resolve(value)
-      }
-    })
-  }
-
-  /*
-  Promise 原型对象.reject
-  返回一个指定reason的Promise
-  */
-  Promise.reject = function (reason) {
-    // 返回一个失败的promise
-    return new Promise((resolve, reject) =&gt; {
-      reject(reason);
-    })
-  }
-</code></pre>
-<h3 id="Promise-all-race"><a href="#Promise-all-race" class="headerlink" title="Promise.all()/race()"></a>Promise.all()/race()</h3><pre><code class="js">  /*
-  Promise 原型对象.all
-  返回一个Promise，所有promise都成功才成功，一个失败就失败
-  */
-  Promise.all = function (promises) {
-    const values = new Array(promises.length);  // 保存所有成功的value
-    let resolveCount = 0;  // 计数器，计算成功的数量
-    return new Promise((resolve, reject) =&gt; {
-      // 获取每个promise的结果
-      promises.forEach((p, index) =&gt; {
-        p.then(
-          value =&gt; {
-            resolveCount++;
-            values[index] = value;
-            if (resolveCount === promises.length) { // 所有都完成才会resolve
-              resolve(values)
-            }
-          }, reason =&gt; {
-            reject(reason)
-          }
-        )
-      })
-    })
-  }
-
-  /*
-  Promise 原型对象.race
-  返回一个Promise，由第一个完成的promise决定
-  */
-  Promise.race = function (promises) {
-    return new Promise((resolve, reject) =&gt; {
-      promises.forEach((p) =&gt; {
-        p.then(
-          value =&gt; {
-            resolve(value)
-          }, reason =&gt; {
-            reject(reason)
-          }
-        )
-      })
-    })
-  }
-</code></pre>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>代码已经上传<a href="https://gitee.com/liuhao1108/toy_promise" target="_blank" rel="noopener">码云</a></p>
+<blockquote>
+<p>如果多个动画存在属性冲突，后出现的权重高，如果后出现的执行完了，先设置的效果还没结束，就会再执行先设置的效果</p>
+</blockquote>
+<h3 id="重复动画"><a href="#重复动画" class="headerlink" title="重复动画"></a>重复动画</h3><p>使用<code>animation-iteration-count</code> 规则设置动画重复执行次数，设置值为 <code>infinite</code> 表示无限循环执行，控制多个动画重复次数的规则跟时间控制一样</p>
+<h3 id="动画方向"><a href="#动画方向" class="headerlink" title="动画方向"></a>动画方向</h3><p>使用<code>animation-direction</code>规则设置动画的方向</p>
+<ul>
+<li>normal——从0%到100%运行动画</li>
+<li>reverse——从100%到0%运行动画</li>
+<li>alternate——先从0%到100%，然后从100%到0%</li>
+<li>alternate-reverse——先从100%到0%，然后从0%到100%</li>
+</ul>
+<h3 id="延迟动画"><a href="#延迟动画" class="headerlink" title="延迟动画"></a>延迟动画</h3><p>使用 <code>animation-delay</code> 规则定义动画等待多长时间后执行。</p>
+<h3 id="动画速率"><a href="#动画速率" class="headerlink" title="动画速率"></a>动画速率</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">值</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">linear</td>
+<td style="text-align:left">规定以相同速度开始至结束的过渡效果（等于 cubic-bezier(0,0,1,1)）。</td>
+</tr>
+<tr>
+<td style="text-align:left">ease</td>
+<td style="text-align:left">开始慢，然后快，慢下来，结束时非常慢（cubic-bezier(0.25,0.1,0.25,1)）</td>
+</tr>
+<tr>
+<td style="text-align:left">ease-in</td>
+<td style="text-align:left">开始慢，结束快（等于 cubic-bezier(0.42,0,1,1)）</td>
+</tr>
+<tr>
+<td style="text-align:left">ease-out</td>
+<td style="text-align:left">开始快，结束慢（等于 cubic-bezier(0,0,0.58,1)）</td>
+</tr>
+<tr>
+<td style="text-align:left">ease-in-out</td>
+<td style="text-align:left">中间快，两边慢（等于 cubic-bezier(0.42,0,0.58,1)）</td>
+</tr>
+<tr>
+<td style="text-align:left">cubic-bezier(<em>n</em>,<em>n</em>,<em>n</em>,<em>n</em>)</td>
+<td style="text-align:left">在 cubic-bezier 函数中定义自己的值</td>
+</tr>
+</tbody>
+</table>
+<h3 id="步进动画"><a href="#步进动画" class="headerlink" title="步进动画"></a>步进动画</h3><p>通过 <code>animation-timing-function</code>控制步进动画，具体操作如下</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>steps(n,start)</td>
+<td>设置n个时间点，第一时间点变化状态</td>
+</tr>
+<tr>
+<td>steps(n,end)</td>
+<td>设置n个时间点，第一时间点初始状态</td>
+</tr>
+<tr>
+<td>step-start</td>
+<td>等于steps(1,start)，可以理解为从下一步开始</td>
+</tr>
+<tr>
+<td>step-end</td>
+<td>等于steps(1,end)，可以理解为从当前步开始</td>
+</tr>
+</tbody>
+</table>
+<h3 id="播放状态"><a href="#播放状态" class="headerlink" title="播放状态"></a>播放状态</h3><p>使用 <code>animation-play-state</code> 可以控制动画的暂停与运行</p>
+<ul>
+<li>paused：暂停</li>
+<li>running：运动</li>
+</ul>
+<p>可以在鼠标悬浮时运动或者暂停</p>
+<h3 id="填充模式"><a href="#填充模式" class="headerlink" title="填充模式"></a>填充模式</h3><p><code>animation-fill-mode</code> 用于定义动画播放结束后的处理模式，是回到原来状态还是停止在动画结束状态。</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>none</td>
+<td>需要等延迟结束，起始帧属性才应用</td>
+</tr>
+<tr>
+<td>backwards</td>
+<td>动画效果在起始帧，不等延迟结束</td>
+</tr>
+<tr>
+<td>forwards</td>
+<td>结束后停留动画的最后一帧</td>
+</tr>
+<tr>
+<td>both</td>
+<td>包含backwards与forwards规则，即动画效果在起始帧，不等延迟结束，并且在结束后停止在最后一帧</td>
+</tr>
+</tbody>
+</table>
+<h3 id="组合定义"><a href="#组合定义" class="headerlink" title="组合定义"></a>组合定义</h3><p>可以使用<code>animation</code>组合定义帧动画。animation 属性是一个简写属性，用于设置六个动画属性：</p>
+<ul>
+<li>animation-name</li>
+<li>animation-duration</li>
+<li>animation-timing-function</li>
+<li>animation-delay</li>
+<li>animation-iteration-count</li>
+<li>animation-direction</li>
+</ul>
+<p>必须存在 <code>animation-duration</code>属性，否则过渡时间为0没有动画效果</p>
 
         </div>
         <!-- .entry-content -->
@@ -918,15 +682,15 @@ var f = fn;
           
             <div class="post-nepre half previous">
           
-            <a href="/2020/08/27/笔记/Axios/" rel="prev">
+            <a href="/2021/02/15/技术/纯手工搭建Vue-SSR/" rel="prev">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/axios.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/axios.jpg">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210215114118456.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210215114118456.png">
               </div>
               <span class="label">
               Previous Post</span>
               <div class="info">
                 <h3>
-                Axios</h3>
+                纯手工搭建Vue SSR</h3>
                 <hr>
               </div>
             </a>
@@ -936,15 +700,15 @@ var f = fn;
           
             <div class="post-nepre half next">
           
-            <a href="/2020/08/19/技术/原型和原型链/" rel="next">
+            <a href="/2021/01/19/随想/Vue面试题/" rel="next">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200819074604584.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200819074604584.png">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201207160223670.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201207160223670.png">
               </div>
               <span class="label">
               Next Post</span>
               <div class="info">
                 <h3>
-                原型和原型链</h3>
+                Vue面试题</h3>
                 <hr>
               </div>
             </a>
