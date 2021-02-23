@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">前端小枫</title>
+  <title itemprop="name">TypeScript高级使用 | 前端小枫</title>
   
   <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -466,497 +466,378 @@
   </div>
 </header>
 
-      <div class="blank" style="padding-top: 0px;"></div>
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210220090547039.png);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210220090547039.png">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      TypeScript高级使用</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="">小枫</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2021-2-20<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
 <div id="content" class="site-content">
-  
-  <div class="notice" style="margin-top:60px">
-    <i class="iconfont icon-notification">
-    </i>
-    <div class="notice-content">微信公众号：前端小枫</div>
-  </div>
-  
-  <div class="top-feature-row">
-  <h1 class="fes-title" style="font-family: 'Ubuntu', sans-serif;">
-  <i class="fa fa-anchor" aria-hidden="true">
-  </i>
-  START:DASH!!</h1>
-  
-  <div class="top-feature-v2">
-    <div class="the-feature square from_left_and_right">
-      <a href="/theme-sakura" target="_blank">
-        <div class="img">
-          <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/startdash/sakura.md.png">
-        </div>
-        <div class="info">
-          <h3>Sakura</h3>
-          <p>本站 hexo 主题</p>
-        </div>
-      </a>
-    </div>
-  </div>
-  
-  <div class="top-feature-v2">
-    <div class="the-feature square from_left_and_right">
-      <a href="https://space.bilibili.com/75412375" target="_blank">
-        <div class="img">
-          <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/startdash/bilibili.jpg">
-        </div>
-        <div class="info">
-          <h3>Bilibili</h3>
-          <p>博主的b站</p>
-        </div>
-      </a>
-    </div>
-  </div>
-  
-  <div class="top-feature-v2">
-    <div class="the-feature square from_left_and_right">
-      <a href="/" target="_blank">
-        <div class="img">
-          <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/startdash/wangshiwu.jpg">
-        </div>
-        <div class="info">
-          <h3>前端小枫</h3>
-          <p>技术服务</p>
-        </div>
-      </a>
-    </div>
-  </div>
-  
-</div>
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
-      <h1 class="main-title" style="font-family: 'Ubuntu', sans-serif;">
-      <i class="fa fa-envira" aria-hidden="true"></i>
-      Discovery</h1>
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <p>在之前有过一篇<a href="https://easyremember.cn/2020/08/06/%E7%AC%94%E8%AE%B0/TypeScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">TypeScript的入门笔记</a>，介绍了TS最基本的用法，现在来进阶一下</p>
+<h2 id="深入TS类型"><a href="#深入TS类型" class="headerlink" title="深入TS类型"></a>深入TS类型</h2><h3 id="联合类型"><a href="#联合类型" class="headerlink" title="联合类型"></a>联合类型</h3><p>使用<code>|</code>操作符将变量可能出现的数值类型连接起来，就是联合类型</p>
+<pre><code class="typescript">function css(ele: Element, attr: string, value: string | number) {
+  // value参数的类型只能是string或者number
+    // ......
+}
+</code></pre>
+<h3 id="交叉类型"><a href="#交叉类型" class="headerlink" title="交叉类型"></a>交叉类型</h3><p>使用<code>&amp;</code>操作符将多种类型合并在一起，形成一种新的类型</p>
+<pre><code class="typescript">type t1 = {
+  name: string,
+  age: number
+}
+type t2 = {
+  sex: string
+}
+
+type t3 = t1 &amp; t2
+
+function sayHi(person: t3) {
+  console.log(`${person.name}今年${person.age}岁，性别：${person.sex}`)
+}
+let king = {
+  name: &#39;king&#39;,
+  age: 12,
+  sex: &#39;man&#39;
+}
+let ali = {
+  name: &#39;king&#39;,
+  sex: &#39;woman&#39;
+}
+sayHi(king)
+sayHi(ali) // 报错
+</code></pre>
+<p>这里t1和t2两个类型通过交叉合并为一种类型，要求必须含有三个属性并且符合数据类型限定，上面的代码中最后一行会抛出错误，因为变量ali不满足t3类型的要求</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210220093226570.png" alt="image-20210220093226570"></p>
+<p>这里需要说一下interface和type，都可以描述一个对象或者函数，interface用来定义接口，type定义类型，二者并不是互相独立的。</p>
+<p>这里说一下二者的区别：</p>
+<ul>
+<li>type可以直接通过运算获得新类型，而interface需要使用extends操作符来生成新的接口。</li>
+<li>type 语句中还可以使用 typeof 获取实例的类型进行赋值</li>
+<li>interface 能够声明合并，多个同名interface声明的类型会被合并到同一接口</li>
+</ul>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210220094427501.png" alt="image-20210220094427501"></p>
+<p>从图中可以看到interface也可以来继承type，并且实现相同功能</p>
+<h3 id="字面量类型"><a href="#字面量类型" class="headerlink" title="字面量类型"></a>字面量类型</h3><p>TS类型限定除了基本数据类型限定之外还可以进行具体值的限定</p>
+<pre><code class="typescript">type t1 = {
+  name: string,
+  sex: &#39;man&#39; | &#39;woman&#39;
+}
+
+let person: t1 = {
+  name: &#39;张三&#39;,
+  sex: &#39;middle&#39; // 报错
+}
+</code></pre>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210220145734719.png" alt="image-20210220145734719"></p>
+<p>如上，使用字符串限定之后sex的值之能是man或者woman。除了字符串以外，其他的基本数据类型也都可以限制</p>
+<h3 id="类型别名"><a href="#类型别名" class="headerlink" title="类型别名"></a>类型别名</h3><p>可以使用type操作符对任意类型获取组合类型起别名</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210220150834204.png" alt="image-20210220150834204"></p>
+<h3 id="类型推导"><a href="#类型推导" class="headerlink" title="类型推导"></a>类型推导</h3><p>每次都显式标注类型太麻烦，TS提供了一种方便的特性——类型推导。根据上下文自动推导出对应的类型标注，过程发生在：</p>
+<ul>
+<li>初始化变量</li>
+<li>设置函数默认参数</li>
+<li>返回函数值</li>
+</ul>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210220151839594.png" alt="image-20210220151839594"></p>
+<h3 id="类型断言"><a href="#类型断言" class="headerlink" title="类型断言"></a>类型断言</h3><p>有的时候我们需要一个更精确的标注，比如使用document.querySelector方法获得的结果，TS会根据参数判断返回值的类型。如果是一个图片，他有src属性，而如果是一个div，他就没有src属性。</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210220152603665.png" alt="image-20210220152603665"></p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210220152623073.png" alt="image-20210220152623073"></p>
+<p>但是TS并不会知道我们使用了类选择器之后的结果，我们需要提前告知</p>
+<pre><code class="typescript">let ele = &lt;HTMLImageElement&gt;document.querySelector(&#39;.box&#39;)
+// 或者
+let ele2 = document.querySelector(&#39;.box&#39;) as HTMLImageElement
+</code></pre>
+<p>断言也可以联合类型参数带来的问题吗，如果参数是联合类型，比如string | string[]，参数有可能是数组也有可能是字符串，那么无法判断参数是否具有某一方法，这时候就可以使用类型断言来调用方法</p>
+<h3 id="类型保护"><a href="#类型保护" class="headerlink" title="类型保护"></a>类型保护</h3><p>上面说的联合类型参数带来的问题也可已通过类型保护来解决</p>
+<pre><code class="typescript">function fun(str: string | string[]) {
+  if (typeof str === &#39;string&#39;) {
+    str.split(&#39;&#39;)
+  } else {
+    // 当其他类型都在if中罗列之后，剩余的一种在else中生效
+    str.push()
+  }
+}
+</code></pre>
+<p><strong>intanceof也可以触发类型保护</strong></p>
+<h3 id="类型操作符"><a href="#类型操作符" class="headerlink" title="类型操作符"></a>类型操作符</h3><h4 id="keyof"><a href="#keyof" class="headerlink" title="keyof"></a>keyof</h4><p>可以获取类型的键名组成的联合类型，主要用途是key的合法化</p>
+<pre><code class="typescript">type Person = {
+  name: string;
+  age: number;
+}
+type PersonKey = keyof Person;
+// PersonKey得到的类型为 &#39;name&#39; | &#39;age&#39;
+
+function getValue(p: Person, k: keyof Person) {
+  return p[k];
+}
+</code></pre>
+<h4 id="typeof"><a href="#typeof" class="headerlink" title="typeof"></a>typeof</h4><p>获取一个对象/实例的类型，只能用在具体的对象上</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210220155239020.png" alt="image-20210220155239020"></p>
+<h4 id="in"><a href="#in" class="headerlink" title="in"></a>in</h4><p>只能用在类型的定义中，可以对枚举类型进行遍历</p>
+<pre><code class="typescript">// 这个类型可以将任何类型的键值转化成number类型
+type TypeToNumber&lt;T&gt; = {
+  [key in keyof T]: number
+}
+</code></pre>
+<h2 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h2><p>泛型在之前的入门中也有所涉及，但那只是皮毛中的皮毛，现在我们来深入一下泛型，基本的泛型定义不再赘述，可以去看一下<a href="https://easyremember.cn/2020/08/06/%E7%AC%94%E8%AE%B0/TypeScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">TypeScript的入门笔记</a></p>
+<h3 id="泛型推导"><a href="#泛型推导" class="headerlink" title="泛型推导"></a>泛型推导</h3><p>如同前面所说的类型推导一样，泛型也有推导，</p>
+<pre><code class="typescript">type Dog&lt;T&gt; = {
+  name: string,
+  type: T
+}
+
+function doSth&lt;T&gt;(dog: Dog&lt;T&gt;) {
+  return dog.type
+}
+
+let dog = {
+  name: &#39;lucky&#39;,
+  type: &#39;pug&#39;
+}
+// 如果没有泛型推导，就需要写这么多
+// let dog: Dog&lt;string&gt; = {
+//   name: &#39;lucky&#39;,
+//   type: &#39;pug&#39;
+// }
+
+doSth(dog)    // 调用函数时根据type的类型自动推导出了T
+</code></pre>
+<h3 id="类型约束"><a href="#类型约束" class="headerlink" title="类型约束"></a>类型约束</h3><p>有时候，我们需要限定类型，这时候使用<code>extends</code>关键字</p>
+<pre><code class="typescript">function sum&lt;T extends number&gt;(value: T[]) {
+  let count = 0
+  value.forEach(v =&gt; count += v)
+  return count
+}
+</code></pre>
+<p>使用extends限定参数类型为数字数组，如果调用时参数出现了其他类型就会报错</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210221082239434.png" alt="image-20210221082239434"></p>
+<p>还可以限制多个参数，如</p>
+<pre><code class="typescript">function pick&lt;T, U extends keyof T&gt;(obj: T, proto: U) {
+  console.log(obj[proto]);
+};
+
+let person = {
+  name: &#39;张三&#39;,
+  age: 14
+}
+
+pick(person, &#39;name&#39;)
+</code></pre>
+<p>第二个参数必须是第一个参数中keys的子集，否则报错</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210222083246269.png" alt="image-20210222083246269"></p>
+<h3 id="泛型推断"><a href="#泛型推断" class="headerlink" title="泛型推断"></a>泛型推断</h3><p>使用<code>infer</code>关键字来进行泛型推断</p>
+<pre><code class="typescript">type Per&lt;T&gt; = T extends { t: infer P } ? P : string
+
+type p = Per&lt;number&gt; // string
+type p1 = Per&lt;{ t: boolean }&gt; // boolean
+type p2 = Per&lt;{ t: number }&gt;  // number
+</code></pre>
+<p>定义Per的过程也叫泛型条件，通过三目运算符控制最终分配的类型。根据传进来的泛型类型T有无t属性来确定返回的类型，并将t的属性返回</p>
+<h2 id="常用泛型工具"><a href="#常用泛型工具" class="headerlink" title="常用泛型工具"></a>常用泛型工具</h2><h3 id="Partial"><a href="#Partial" class="headerlink" title="Partial"></a>Partial</h3><p>Partial的作用是将传入的属性变成可选项，原理就是使用keyof拿到所有属性名，然后再使用in遍历，使用<code>?</code>将属性设置为可选属性，其实现源码如下</p>
+<pre><code class="typescript">type Partial&lt;T&gt; = {
+  [P in keyof T]?: T[p]
+}
+
+type person = {
+  name: string,
+  age: number
+}
+
+// 使用Partial处理后没有全部属性不再报错
+let a: Partial&lt;person&gt; = {
+  name: &#39;1q23&#39;
+}
+</code></pre>
+<h4 id="Required"><a href="#Required" class="headerlink" title="Required"></a>Required</h4><p>Required将所有的参数变为必选项；其原理是使用keyof拿到所有属性名，然后再使用in遍历，可以理解为使用<code>-?</code>抵消掉<code>?</code></p>
+<pre><code class="typescript">type Required&lt;T&gt; = {
+  [P in keyof T]-?: T[P]
+}
+
+type person = {
+  name: string,
+  age: number
+}
+
+
+let b: Required&lt;person&gt; = {
+  name: &#39;king&#39;,
+}
+</code></pre>
+<h3 id="Record"><a href="#Record" class="headerlink" title="Record"></a>Record</h3><p>Record作用是将 K 中所有属性值转化为 T 类型</p>
+<pre><code class="typescript">type Record&lt;K extends keyof any,T&gt; = {
+  [key in K]: T
+}
+// keyof any对应的类型为number | string | symbol,就是可以做索引的类型集合
+
+type person = {
+  name: string,
+  age: number
+}
+
+let c: Record&lt;number, string&gt; = {
+  1: 1,
+  &#39;str&#39;: 123
+}
+</code></pre>
+<p>这里会抛出异常，因为使用Record工具将所有的number类型为索引的属性值类型设置为string，数字索引的属性不是string就会报错</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210222181652942.png" alt="image-20210222181652942"></p>
+<h3 id="Pick"><a href="#Pick" class="headerlink" title="Pick"></a>Pick</h3><p>Pick的作用是将 T 类型中的 K 键列表提取出来，生成新的子键值对类型</p>
+<pre><code class="typescript">type Pick&lt;T, K extends keyof T&gt; = {
+  [P in K]: T[P]
+}
+
+type person = {
+  name: string,
+  age: number
+}
+
+let d: Pick&lt;person, &#39;name&#39;&gt; = {
+  name: &#39;king&#39;,
+  age: 12 
+  // 不能将类型“{ name: string; age: number; }”分配给类型“Pick&lt;person, &quot;name&quot;&gt;”。对象文字可以只指定已知属性，并且“age”不在类型“Pick&lt;person, &quot;name&quot;&gt;”中
+}
+</code></pre>
+<p>因为使用Pick工具从person类型中只选择了name属性，所以添加age属性之后会报错</p>
+<h3 id="Exclude"><a href="#Exclude" class="headerlink" title="Exclude"></a>Exclude</h3><p>Exclude的作用是去除 T 类型和 U 类型的交集，返回剩余的部分</p>
+<pre><code class="typescript">type Exclude&lt;T, U&gt; = T extends U ? never : T
+
+type person = {
+  name: string,
+  age: number
+}
+
+type el = Exclude&lt;person | string, number | &#39;a&#39; | person&gt; // string
+let e: el = &#39;str&#39;
+</code></pre>
+<h3 id="Omit"><a href="#Omit" class="headerlink" title="Omit"></a>Omit</h3><p>Omit用于键值对对象的 Exclude，它会去除类型 T 中包含 K 的键值对</p>
+<pre><code class="typescript">type Omit = Pick&lt;T, Exclude&lt;keyof T, K&gt;&gt;
+
+type person = {
+  name: string,
+  age: number
+}
+
+type oi = Omit&lt;person, &#39;age&#39;&gt;
+let f: oi = {
+  name: &#39;king&#39;
+}
+</code></pre>
+<h3 id="ReturnType"><a href="#ReturnType" class="headerlink" title="ReturnType"></a>ReturnType</h3><p>ReturnType获取 T 类型(函数)对应的返回值类型，通过使用 infer 推断返回值类型，然后返回此类型</p>
+<pre><code class="typescript">type ReturnType&lt;T extends (...args: any) =&gt; any&gt;
+  = T extends (...args: any) =&gt; infer R ? R : any;
+
+type T0 = ReturnType&lt;() =&gt; string&gt;; // string
+type T1 = ReturnType&lt;(s: string) =&gt; void&gt;; // void
+</code></pre>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+        
+          
+            <div class="post-nepre full next">
+          
+            <a href="/2021/02/16/技术/防抖和节流/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210216163311612.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210216163311612.png">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                前端防抖和节流</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
       
-  <!-- 首页默认取最最新文章集 -->
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "AdzOvpXTwwf3KAX23DOds5C9-gzGzoHsz",
+        appKey: "olX1MHfMtrQcmemwl5lLmu4a",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
 
-  <div class="post-thumb">
-    <a href="/2020/08/17/技术/Egg常用的包/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/egg-mid.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-8-17 16:08</div>
-      <a href="/2020/08/17/技术/Egg常用的包/" class="post-title">
-        <h3>Egg实用中间件</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/Node/">Node<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/技术/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>Egg.js 中实用性较高的中间件</p>
-        <div class="post-bottom">
-          <a href="/2020/08/17/技术/Egg常用的包/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg" itemprop="image" alt="小枫" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author">小枫</a>
+            </h3>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/08/15/笔记/EggJS学习笔记/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/egg.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-8-15 23:08</div>
-      <a href="/2020/08/15/笔记/EggJS学习笔记/" class="post-title">
-        <h3>EggJS学习笔记</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/Node/">Node<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/笔记/">笔记</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>Egg.js 为企业级框架和应用而生</p>
-        <div class="post-bottom">
-          <a href="/2020/08/15/笔记/EggJS学习笔记/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/08/13/资源/VSCode使用插件集合/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/vscode.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-8-13 14:08</div>
-      <a href="/2020/08/13/资源/VSCode使用插件集合/" class="post-title">
-        <h3>VS Code 实用插件</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/工具/">工具<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/技术/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>VSCode提高开发效率的插件集合</p>
-        <div class="post-bottom">
-          <a href="/2020/08/13/资源/VSCode使用插件集合/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/08/12/技术/高级组件provide-inject/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/vue-p.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-8-12 14:08</div>
-      <a href="/2020/08/12/技术/高级组件provide-inject/" class="post-title">
-        <h3>高级组件provide/inject</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/vue/">vue<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/技术/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>高级组件provide/inject的用法介绍</p>
-        <div class="post-bottom">
-          <a href="/2020/08/12/技术/高级组件provide-inject/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/08/10/技术/Express中使用Sequelize实现ORM/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/sequelize.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-8-10 14:08</div>
-      <a href="/2020/08/10/技术/Express中使用Sequelize实现ORM/" class="post-title">
-        <h3>Express中使用Sequelize实现ORM</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/Node/">Node<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/技术/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>Express中使用Sequelize实现ORM</p>
-        <div class="post-bottom">
-          <a href="/2020/08/10/技术/Express中使用Sequelize实现ORM/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/08/06/笔记/TypeScript学习笔记/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/typescript.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-8-6 23:08</div>
-      <a href="/2020/08/06/笔记/TypeScript学习笔记/" class="post-title">
-        <h3>TypeScript学习笔记</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/js/">js<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/笔记/">笔记</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>TypeScript 是 JavaScript 的一个超集，支持 ECMAScript 6 标准</p>
-        <div class="post-bottom">
-          <a href="/2020/08/06/笔记/TypeScript学习笔记/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/08/04/技术/Vue组件通信/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/vue-p.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-8-4 21:08</div>
-      <a href="/2020/08/04/技术/Vue组件通信/" class="post-title">
-        <h3>Vue组件通信</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/vue/">vue<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/技术/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>Vue组件之间传递数据的方式</p>
-        <div class="post-bottom">
-          <a href="/2020/08/04/技术/Vue组件通信/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/08/04/技术/JS正则表达式/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200804002806175.png">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-8-4 00:08</div>
-      <a href="/2020/08/04/技术/JS正则表达式/" class="post-title">
-        <h3>JS正则表达式</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/js/">js<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/技术/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>正则表达式，很强大的数据规则验证</p>
-        <div class="post-bottom">
-          <a href="/2020/08/04/技术/JS正则表达式/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/08/02/技术/let、const和var/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200802190902667.png">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-8-2 19:08</div>
-      <a href="/2020/08/02/技术/let、const和var/" class="post-title">
-        <h3>let、const和var的区别</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/js/">js<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/技术/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>对比let、const和var的区别</p>
-        <div class="post-bottom">
-          <a href="/2020/08/02/技术/let、const和var/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/08/02/笔记/Less预编译/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200802141348317.png">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-8-2 14:08</div>
-      <a href="/2020/08/02/笔记/Less预编译/" class="post-title">
-        <h3>Less预编译使用</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/css/">css<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/笔记/">笔记</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>使用Less加快css样式开发速度</p>
-        <div class="post-bottom">
-          <a href="/2020/08/02/笔记/Less预编译/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-
-
-    </main>
-      <!-- 首页默认取最最新文章集 -->
-    <!-- 
-      <nav class="navigator">
-        
-        <a class="extend prev" rel="prev" href="/page/5/"><i class="iconfont icon-back"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/7/"><i class="iconfont icon-right"></i></a>
-      </nav>
-     -->
-  </div>
-  
-    <div id="pagination"><a href="/page/7/" class="">Previous</a></div>
-  
+        <hr>
+        <p><i class="iconfont icon-write"></i>前端小白</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
 </div>
+
+
 
     </div>    
     <div class="ins-search">

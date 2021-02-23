@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://easyremember.cn/"/>
-  <updated>2021-02-15T06:21:08.765Z</updated>
+  <updated>2021-02-22T12:10:01.993Z</updated>
   <id>https://easyremember.cn/</id>
   
   <author>
@@ -15,6 +15,46 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>TypeScript高级使用</title>
+    <link href="https://easyremember.cn/2021/02/20/%E7%AC%94%E8%AE%B0/TypeScript%E9%AB%98%E7%BA%A7/"/>
+    <id>https://easyremember.cn/2021/02/20/笔记/TypeScript高级/</id>
+    <published>2021-02-20T01:00:21.569Z</published>
+    <updated>2021-02-22T12:10:01.993Z</updated>
+    
+    <summary type="html">
+    
+      TypeScript各种省时省力的高级技巧
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://easyremember.cn/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="js" scheme="https://easyremember.cn/tags/js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>前端防抖和节流</title>
+    <link href="https://easyremember.cn/2021/02/16/%E6%8A%80%E6%9C%AF/%E9%98%B2%E6%8A%96%E5%92%8C%E8%8A%82%E6%B5%81/"/>
+    <id>https://easyremember.cn/2021/02/16/技术/防抖和节流/</id>
+    <published>2021-02-16T08:31:34.714Z</published>
+    <updated>2021-02-16T09:20:06.305Z</updated>
+    
+    <summary type="html">
+    
+      前端性能优化之防抖和节流
+    
+    </summary>
+    
+      <category term="随想" scheme="https://easyremember.cn/categories/%E9%9A%8F%E6%83%B3/"/>
+    
+    
+      <category term="悦读" scheme="https://easyremember.cn/tags/%E6%82%A6%E8%AF%BB/"/>
+    
+  </entry>
   
   <entry>
     <title>纯手工搭建Vue SSR</title>
@@ -31,6 +71,26 @@
     
     
       <category term="技术" scheme="https://easyremember.cn/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Vue2.x数据绑定原理</title>
+    <link href="https://easyremember.cn/2021/02/14/%E6%8A%80%E6%9C%AF/Vue2.x%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A%E5%8E%9F%E7%90%86/"/>
+    <id>https://easyremember.cn/2021/02/14/技术/Vue2.x数据绑定原理/</id>
+    <published>2021-02-14T13:25:47.791Z</published>
+    <updated>2021-02-22T12:09:55.436Z</updated>
+    
+    <summary type="html">
+    
+      Vue2.x数据绑定原理和依赖收集过程
+    
+    </summary>
+    
+      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="vue" scheme="https://easyremember.cn/tags/vue/"/>
     
   </entry>
   
@@ -197,7 +257,7 @@
     <link href="https://easyremember.cn/2020/12/07/%E9%9A%8F%E6%83%B3/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E7%BB%8F%E5%85%B8%E9%97%AE%E9%A2%98/"/>
     <id>https://easyremember.cn/2020/12/07/随想/前端面试经典问题/</id>
     <published>2020-12-07T07:55:46.825Z</published>
-    <updated>2021-01-27T14:35:07.133Z</updated>
+    <updated>2021-02-22T12:11:38.882Z</updated>
     
     <summary type="html">
     
@@ -349,66 +409,6 @@
     
     
       <category term="vue" scheme="https://easyremember.cn/tags/vue/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>右键在此打开终端</title>
-    <link href="https://easyremember.cn/2020/10/07/%E8%B5%84%E6%BA%90/%E6%B7%BB%E5%8A%A0%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/"/>
-    <id>https://easyremember.cn/2020/10/07/资源/添加右键菜单/</id>
-    <published>2020-10-07T05:28:25.937Z</published>
-    <updated>2020-10-07T05:31:27.345Z</updated>
-    
-    <summary type="html">
-    
-      通过注册表添加右键打开终端菜单项
-    
-    </summary>
-    
-      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="工具" scheme="https://easyremember.cn/tags/%E5%B7%A5%E5%85%B7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JavaScript自动化测试框架——Jest</title>
-    <link href="https://easyremember.cn/2020/09/27/%E7%AC%94%E8%AE%B0/%E5%89%8D%E7%AB%AF%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7Jest/"/>
-    <id>https://easyremember.cn/2020/09/27/笔记/前端测试工具Jest/</id>
-    <published>2020-09-27T07:24:18.018Z</published>
-    <updated>2020-09-28T02:06:52.639Z</updated>
-    
-    <summary type="html">
-    
-      Jest 是一个令人愉快的 JavaScript 测试框架，专注于简单性。
-    
-    </summary>
-    
-      <category term="笔记" scheme="https://easyremember.cn/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="node" scheme="https://easyremember.cn/tags/node/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Sass学习笔记</title>
-    <link href="https://easyremember.cn/2020/09/23/%E7%AC%94%E8%AE%B0/Sass%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    <id>https://easyremember.cn/2020/09/23/笔记/Sass学习笔记/</id>
-    <published>2020-09-23T09:24:16.818Z</published>
-    <updated>2020-09-23T09:25:20.131Z</updated>
-    
-    <summary type="html">
-    
-      Sass，最稳定、成熟的css拓展语言
-    
-    </summary>
-    
-      <category term="笔记" scheme="https://easyremember.cn/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="css" scheme="https://easyremember.cn/tags/css/"/>
     
   </entry>
   
