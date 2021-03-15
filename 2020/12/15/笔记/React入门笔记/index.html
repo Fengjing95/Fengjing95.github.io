@@ -602,12 +602,38 @@ changeValue() {
   暂无数据
 &lt;/div&gt;
 </code></pre>
-<p>React中的条件渲染是通过js的if语句来控制的</p>
-<pre><code class="jsx">if(this.state.value) {
-  return &lt;div&gt;{this.state.value}&lt;/div&gt;
+<p>React中的条件渲染是通过js的if语句控制变量或者运算符来控制的</p>
+<pre><code class="jsx">// 变量控制
+let data;
+if(this.state.value) {
+  data = &lt;div&gt;{this.state.value}&lt;/div&gt;
 } else {
-  return &lt;div&gt;暂无数据&lt;/div&gt;
+  data = &lt;div&gt;暂无数据&lt;/div&gt;
 }
+return(
+  {data}
+)
+// _______________________
+// &amp;&amp;运算符
+// 因为在 JavaScript 中，true &amp;&amp; expression 总是会返回 expression
+// 而 false &amp;&amp; expression 总是会返回 false
+return (
+  &lt;div&gt;
+    &lt;h1&gt;Hello!&lt;/h1&gt;
+    {unreadMessages.length &gt; 0 &amp;&amp;
+      &lt;h2&gt;
+        You have {unreadMessages.length} unread messages.
+      &lt;/h2&gt;
+    }
+  &lt;/div&gt;
+);
+// ________________________
+// 三目运算符
+return (
+  &lt;div&gt;
+    The user is &lt;b&gt;{isLoggedIn ? &#39;currently&#39; : &#39;not&#39;}&lt;/b&gt; logged in.
+  &lt;/div&gt;
+);
 </code></pre>
 <h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><p>在Vue中通过v-for属性来生成列表</p>
 <pre><code class="vue">&lt;ul&gt;

@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">前端小枫</title>
+  <title itemprop="name">require.context实现自动化导入 | 前端小枫</title>
   
   <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -466,413 +466,178 @@
   </div>
 </header>
 
-      <div class="blank" style="padding-top: 0px;"></div>
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210315185136048.png);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210315185136048.png">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      require.context实现自动化导入</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="">小枫</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2021-3-15<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
 <div id="content" class="site-content">
-  
-  <div class="notice" style="margin-top:60px">
-    <i class="iconfont icon-notification">
-    </i>
-    <div class="notice-content">微信公众号：前端小枫</div>
-  </div>
-  
-  <div class="top-feature-row">
-  <h1 class="fes-title" style="font-family: 'Ubuntu', sans-serif;">
-  <i class="fa fa-anchor" aria-hidden="true">
-  </i>
-  START:DASH!!</h1>
-  
-  <div class="top-feature-v2">
-    <div class="the-feature square from_left_and_right">
-      <a href="/theme-sakura" target="_blank">
-        <div class="img">
-          <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/startdash/sakura.md.png">
-        </div>
-        <div class="info">
-          <h3>Sakura</h3>
-          <p>本站 hexo 主题</p>
-        </div>
-      </a>
-    </div>
-  </div>
-  
-  <div class="top-feature-v2">
-    <div class="the-feature square from_left_and_right">
-      <a href="https://space.bilibili.com/75412375" target="_blank">
-        <div class="img">
-          <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/startdash/bilibili.jpg">
-        </div>
-        <div class="info">
-          <h3>Bilibili</h3>
-          <p>博主的b站</p>
-        </div>
-      </a>
-    </div>
-  </div>
-  
-  <div class="top-feature-v2">
-    <div class="the-feature square from_left_and_right">
-      <a href="/" target="_blank">
-        <div class="img">
-          <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/startdash/wangshiwu.jpg">
-        </div>
-        <div class="info">
-          <h3>前端小枫</h3>
-          <p>技术服务</p>
-        </div>
-      </a>
-    </div>
-  </div>
-  
-</div>
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
-      <h1 class="main-title" style="font-family: 'Ubuntu', sans-serif;">
-      <i class="fa fa-envira" aria-hidden="true"></i>
-      Discovery</h1>
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h3 id="API描述"><a href="#API描述" class="headerlink" title="API描述"></a>API描述</h3><p>先看一眼<a href="https://webpack.docschina.org/api/module-methods/#requirecontext" target="_blank" rel="noopener">官网文档</a></p>
+<pre><code class="javascript">require.context(
+  (directory: String),
+  (includeSubdirs: Boolean) /* 可选的，默认值是 true */,
+  (filter: RegExp) /* 可选的，默认值是 /^\.\/.*$/，所有文件 */,
+  (mode: String)  /* 可选的， &#39;sync&#39; | &#39;eager&#39; | &#39;weak&#39; | &#39;lazy&#39; | &#39;lazy-once&#39;，默认值是 &#39;sync&#39; */
+)
+</code></pre>
+<p>require.context()方法一共可以接收4个参数：</p>
+<ul>
+<li>directory：要加载的目录</li>
+<li>includeSubdirs：是否遍历子目录</li>
+<li>filter：要加载的文件正则匹配</li>
+<li>mode：模式，见<a href="https://webpack.docschina.org/api/module-methods/#magic-comments" target="_blank" rel="noopener">文档</a></li>
+</ul>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ截图20210315111343-0.png" alt="QQ截图20210315111343-0"></p>
+<p>文件目录如图</p>
+<p>require.context()的返回值是一个方法，并且该方法具有三个属性，id、keys、resolve</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ截图20210315110738-1.png" alt="QQ截图20210315110738-1"></p>
+<p>从图中可以看出，id属性的值是由相对路径、模式、以及正则组成的一个字符串，keys和resolve属性都是方法，分别来执行一下</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ截图20210315111148-2.png" alt="QQ截图20210315111148-2"></p>
+<p>keys方法返回的是匹配到的文件名组成的数组，从上面截图可以看到resolve方法需要接受一个参数，我们再来调用一下resolve</p>
+<pre><code class="javascript">console.log(&#39;resolve:&#39;, modulesFile.resolve(modulesFile.keys()[0]));
+console.log(&#39;resolve:&#39;, modulesFile.resolve(&#39;a&#39;));
+</code></pre>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ截图20210315111709-3.png" alt="QQ截图20210315111709-3"></p>
+<p>可以看出resolve的结果是keys中返回结果的某一项的相对路径，并且，参数必须包含在keys返回结果的数组中，否则报错</p>
+<p>前面说到，require.context()返回值的本身也是一个方法也需要接收一个参数，根据上面的req参数推断，这个参数也要在keys返回值的结果之中，再来执行下</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ截图20210315112443-4.png" alt="QQ截图20210315112443-4"></p>
+<p>这里可以看出，执行的结果是一个Module实例（使用.default获取值），因为我在a.js中使用ES6 Module导出的，所以这里是一个模块的引用，如果这里我更换为CommonJS的的导出</p>
+<pre><code class="javascript">// export default {
+//   from: &#39;a.js&#39;
+// }
+module.exports = {
+  from: &#39;a.js&#39;
+}
+</code></pre>
+<p>结果就会变成值的拷贝</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ截图20210315112731-5.png" alt="QQ截图20210315112731-5"></p>
+<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><p>应用场景大多是在导入同一文件夹下的多个文件，举一个简单的例子：Vuex分模块引入时，可以通过require.context来动态引入模块，只需要编写一次代码，不再需要后期过多得维护</p>
+<pre><code class="javascript">const modulesFiles = require.context(&#39;./modules&#39;, false, /\.js$/)
+const modules = modulesFiles.keys().reduce((modulesTemp, currentPath) =&gt; {
+    // 从文件名中去除文件后缀，如./a.js =&gt; a
+    const temp = modulesTemp
+    const moduleName = currentPath.replace(/^\.\/(.*)\.\w+$/, &#39;$1&#39;)
+    const value = modulesFiles(currentPath)
+    temp[moduleName] = value.default
+    return temp
+}, {})
+
+store = new Vuex.Store({
+    modules
+})
+
+export default store
+</code></pre>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+        
+          
+            <div class="post-nepre full next">
+          
+            <a href="/2021/02/20/笔记/TypeScript高级/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210220090547039.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210220090547039.png">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                TypeScript高级使用</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
       
-  <!-- 首页默认取最最新文章集 -->
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "AdzOvpXTwwf3KAX23DOds5C9-gzGzoHsz",
+        appKey: "olX1MHfMtrQcmemwl5lLmu4a",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
 
-  <div class="post-thumb">
-    <a href="/2020/07/23/技术/异步轮询/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200723135235506.png">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-7-23 13:07</div>
-      <a href="/2020/07/23/技术/异步轮询/" class="post-title">
-        <h3>JS异步轮询</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/js/">js<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/技术/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>JS异步深入理解</p>
-        <div class="post-bottom">
-          <a href="/2020/07/23/技术/异步轮询/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg" itemprop="image" alt="小枫" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author">小枫</a>
+            </h3>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/07/23/技术/闭包/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200723133122739.png">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-7-23 13:07</div>
-      <a href="/2020/07/23/技术/闭包/" class="post-title">
-        <h3>JS中的闭包</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/js/">js<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/技术/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>一篇文章带你了解JS闭包</p>
-        <div class="post-bottom">
-          <a href="/2020/07/23/技术/闭包/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/07/22/生活/STDay 2/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200722153529693.png">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-7-22 16:07</div>
-      <a href="/2020/07/22/生活/STDay 2/" class="post-title">
-        <h3>思途实训day2</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/思途实训/">思途实训<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/生活/">生活</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>中享思途实训第二天</p>
-        <div class="post-bottom">
-          <a href="/2020/07/22/生活/STDay 2/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/07/22/生活/STDay 1/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200722153529693.png">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-7-22 15:07</div>
-      <a href="/2020/07/22/生活/STDay 1/" class="post-title">
-        <h3>思途实训day1</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/思途实训/">思途实训<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/生活/">生活</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>中享思途实训第一天</p>
-        <div class="post-bottom">
-          <a href="/2020/07/22/生活/STDay 1/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/07/15/资源/Typora图片自动上传到图床/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/typora-icon.png">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-7-15 19:07</div>
-      <a href="/2020/07/15/资源/Typora图片自动上传到图床/" class="post-title">
-        <h3>Typora图片自动上传到图床</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/工具/">工具<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/技术/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>Typora+picGo+gitee</p>
-        <div class="post-bottom">
-          <a href="/2020/07/15/资源/Typora图片自动上传到图床/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/07/15/笔记/ES6笔记/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/es6.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-7-15 15:07</div>
-      <a href="/2020/07/15/笔记/ES6笔记/" class="post-title">
-        <h3>ES6笔记</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/js/">js<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/笔记/">笔记</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>ECMAScript6学习笔记</p>
-        <div class="post-bottom">
-          <a href="/2020/07/15/笔记/ES6笔记/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/07/14/资源/VS Code 快捷键/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/vscode.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-7-14 15:07</div>
-      <a href="/2020/07/14/资源/VS Code 快捷键/" class="post-title">
-        <h3>VS Code 快捷键</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/工具/">工具<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/技术/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>VSCode常用快捷键汇集</p>
-        <div class="post-bottom">
-          <a href="/2020/07/14/资源/VS Code 快捷键/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/07/14/生活/hello-world/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://ae01.alicdn.com/kf/H4d3fee369ddb41488a102c04471604d2x.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-7-14 15:07</div>
-      <a href="/2020/07/14/生活/hello-world/" class="post-title">
-        <h3>Hello World</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/hello/">hello<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/生活/">生活</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>纪念博客创建</p>
-        <div class="post-bottom">
-          <a href="/2020/07/14/生活/hello-world/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-
-
-    </main>
-      <!-- 首页默认取最最新文章集 -->
-    <!-- 
-      <nav class="navigator">
-        
-        <a class="extend prev" rel="prev" href="/page/7/"><i class="iconfont icon-back"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span>
-      </nav>
-     -->
-  </div>
-  
+        <hr>
+        <p><i class="iconfont icon-write"></i>前端小白</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
 </div>
+
+
 
     </div>    
     <div class="ins-search">

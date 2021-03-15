@@ -611,7 +611,7 @@ storeChange = () =&gt; {
 <pre><code class="js">addItem = () =&gt; {
   if (this.state.input) {
     const action = {
-      type: &#39;addItem&#39;,
+      type: &#39;ADD_ITEM&#39;,
       value: this.state.input
     }
     store.dispatch(action)

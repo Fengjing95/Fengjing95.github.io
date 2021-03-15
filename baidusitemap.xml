@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://easyremember.cn/2021/03/15/%E6%8A%80%E6%9C%AF/require.context%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AF%BC%E5%85%A5/</loc>
+    <lastmod>2021-03-15</lastmod>
+  </url>
+  <url>
+    <loc>https://easyremember.cn/2020/12/30/%E7%AC%94%E8%AE%B0/Redux%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2021-03-01</lastmod>
+  </url>
+  <url>
+    <loc>https://easyremember.cn/2020/12/15/%E7%AC%94%E8%AE%B0/React%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2021-02-27</lastmod>
+  </url>
+  <url>
     <loc>https://easyremember.cn/2020/09/08/%E7%AC%94%E8%AE%B0/webpack/</loc>
     <lastmod>2021-02-23</lastmod>
   </url>
@@ -43,14 +55,6 @@
   <url>
     <loc>https://easyremember.cn/2020/12/31/%E6%8A%80%E6%9C%AF/react%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%80%BC/</loc>
     <lastmod>2020-12-31</lastmod>
-  </url>
-  <url>
-    <loc>https://easyremember.cn/2020/12/30/%E7%AC%94%E8%AE%B0/Redux%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2020-12-30</lastmod>
-  </url>
-  <url>
-    <loc>https://easyremember.cn/2020/12/15/%E7%AC%94%E8%AE%B0/React%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2020-12-17</lastmod>
   </url>
   <url>
     <loc>https://easyremember.cn/2020/12/16/%E7%AC%94%E8%AE%B0/React-Router%E7%AC%94%E8%AE%B0/</loc>
