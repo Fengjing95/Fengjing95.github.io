@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">Vue3的基础API变化 | 前端小枫</title>
+  <title itemprop="name">react生命周期 | 前端小枫</title>
   
   <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -472,11 +472,11 @@
 
   <div class="pattern-center single-center">
     <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://gitee.com/liuhao1108/picGoCDN/raw/master/img/vue-api.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/vue-api.jpg">
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ截图20210317142825-0.png);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ截图20210317142825-0.png">
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      Vue3的基础API变化</h1>
+      react生命周期</h1>
       <p class="entry-census">
         <span>
           <a href="">
@@ -488,7 +488,7 @@
         </span>
         <span class="bull">
         ·</span>
-        2020-9-19<span class="bull">
+        2021-3-17<span class="bull">
         ·</span>
       <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
@@ -502,104 +502,34 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h2 id="setup"><a href="#setup" class="headerlink" title="setup"></a>setup</h2><p>之前已经了解过了setup，是composition-api用来返回数据的，他可以接收两个参数<code>setup(props, context)</code>，第一个参数是Vue2中的props，第二个参数是一个上下文对象，可以调用Vue2中的this上的方法（setup中访问不到this）</p>
-<h2 id="响应式数据"><a href="#响应式数据" class="headerlink" title="响应式数据"></a>响应式数据</h2><p>基础数据使用ref，引用类型使用reactive获得响应式，上一篇已经说过了，本篇不再赘述</p>
-<p>说一下之前没有提到的几个API</p>
-<h3 id="unref"><a href="#unref" class="headerlink" title="unref"></a>unref</h3><p>如果参数是ref产生的响应式数据，返回这个参数的<code>.value</code>，如果不是返回这个参数本身</p>
-<h3 id="isRef"><a href="#isRef" class="headerlink" title="isRef"></a>isRef</h3><p>检查参数是否是ref对象</p>
-<h3 id="toRef"><a href="#toRef" class="headerlink" title="toRef"></a>toRef</h3><p>将reactive创建的响应式对象的某个属性拿出来，赋值给一个变量，效果类似于ref创建了一个响应式数据</p>
-<p>比如</p>
-<pre><code class="js">let data = reactive({
-  name: &quot;张三&quot;,
-  age: 13,
-});
-
-let ageRef = toRef(data, &quot;age&quot;);
-// ageRef.value和data.age访问的是同一属性，改变他们的值都会互相影响
-</code></pre>
+          <p>先来看一下官网的生命周期图谱</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ截图20210317143024-1.png" alt="QQ截图20210317143024-1"></p>
+<p>这是只有常用生命周期的图谱</p>
+<p><img src="https://i.loli.net/2021/03/17/LlTMxhdpEZJNAFI.png" alt="QQ截图20210317143038-2.png"></p>
+<p>这是带有不常用生命周期的图谱</p>
 <blockquote>
-<p>如果 <code>const dom = ref(null)</code>，那么变量dom将会是一个DOM元素的引用（onMounted之后才可以获取），dom.value = document</p>
+<p>注意：我们所说的生命周期只存在于类组件中，函数组件中是没有生命周期的概念的</p>
 </blockquote>
-<h2 id="计算属性"><a href="#计算属性" class="headerlink" title="计算属性"></a>计算属性</h2><p>类似于Vue2的计算属性，composition-api中传入一个函数获得一个制度的计算属性</p>
-<pre><code class="js">let count = ref(1)
-
-const countPro = computed(() =&gt; {
-  return &#39;count:&#39; + count.value
-})
-
-{{countPro}} // count:1
-</code></pre>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200918202844086.png" alt="image-20200918202844086"></p>
-<p>传入get和set方法获得一个可读可写的计算属性</p>
-<pre><code class="js">let  count = ref(1)
-
-const countPro = computed({
-  get: () =&gt; count.value + 1,
-  set: val =&gt; {
-    count.value = val - 1
-  }
-})
-
-countPro.value = 1
-console.log(count.value) // 0
-</code></pre>
-<h2 id="监听器"><a href="#监听器" class="headerlink" title="监听器"></a>监听器</h2><h3 id="监听ref类型数据"><a href="#监听ref类型数据" class="headerlink" title="监听ref类型数据"></a>监听ref类型数据</h3><pre><code class="js">let count = ref(1);
-
-watch(count, (count, prevCount) =&gt; {
-  console.log(&#39;new:&#39;+count);
-  console.log(&#39;old:&#39;+prevCount);
-});
-</code></pre>
-<p>ref类型数据watch方法接收两个参数，第一个参数是要监听的数据；第二个参数是一个函数，这个函数有两个参数，第一个参数是新的值，第二个参数是旧的值</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200918210658809.png" alt="image-20200918210658809"></p>
-<h4 id="监听多个数据源"><a href="#监听多个数据源" class="headerlink" title="监听多个数据源"></a>监听多个数据源</h4><pre><code class="js">watch([count1,count2],
-  ([count1, count2], [prevCount1, prevCount2]) =&gt; {
-    console.log(count1);
-    console.log(count2);
-    console.log(&#39;---------&#39;);
-    console.log(prevCount1);
-    console.log(prevCount2);
-})
-</code></pre>
-<h3 id="监听reactive类型数据"><a href="#监听reactive类型数据" class="headerlink" title="监听reactive类型数据"></a>监听reactive类型数据</h3><pre><code class="js">let data = reactive({
-  name: &quot;张三&quot;,
-  age: 13,
-});
-
-watch(() =&gt; data.age, (age, prevAge) =&gt; {
-  console.log(&quot;new:&quot; + age);
-  console.log(&quot;old:&quot; + prevAge);
-})
-</code></pre>
-<p>reactive类型数据watch方法第一个参数是一个箭头函数，返回reactive响应对象监听的对象</p>
-<h4 id="监听多个数据源-1"><a href="#监听多个数据源-1" class="headerlink" title="监听多个数据源"></a>监听多个数据源</h4><pre><code class="js">watch([
-  () =&gt; data.name,
-  () =&gt; data.age],
-  ([name, age], [prevName, prevAge]) =&gt; {
-    console.log(name);
-    console.log(age);
-    console.log(&#39;---------&#39;);
-    console.log(prevName);
-    console.log(prevAge);
-})
-</code></pre>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200918212659375.png" alt="image-20200918212659375"></p>
-<h3 id="清除监视"><a href="#清除监视" class="headerlink" title="清除监视"></a>清除监视</h3><p>调用watch的返回值可以清除监视器</p>
-<pre><code class="js">// 注册监听器
-const stop = watch(xx, (xx. prevxx) =&gt; {
-  /** XXXX*/
-})
-// 取消监听
-stop()
-</code></pre>
-<h2 id="生命周期钩子"><a href="#生命周期钩子" class="headerlink" title="生命周期钩子"></a>生命周期钩子</h2><p>新版的生命周期只能在<code>setup()</code>函数中使用，变化是将<code>beforeCreate</code>和<code>created</code>合并为setup，其他的生命周期前面加上on，使用方法：向函数内部传箭头函数</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/vue3-lifehooks.jpg" alt="vue3-lifehooks"></p>
-<h2 id="provide-inject"><a href="#provide-inject" class="headerlink" title="provide/inject"></a>provide/inject</h2><p>可以不限层级传递数据，同Vue2中一样，composition-api中使用方法如下（只能在setup函数中使用）</p>
-<pre><code class="js">// 父组件
-provide(&#39;数据key&#39;, &#39;数据value&#39;) // value可以是ref数据
-// 子组件
-const getData = inject(&#39;数据key&#39;)
-</code></pre>
+<p>react的生命周期大致分为三个部分：挂载、更新、卸载，下面来看一下每个部分都有哪些生命周期</p>
+<h3 id="挂载时"><a href="#挂载时" class="headerlink" title="挂载时"></a>挂载时</h3><ul>
+<li>static getDerivedStateFromProps()：会在调用 render 方法之前调用，并且在初始挂载及后续更新时都会被调用。它应返回一个对象来更新 state，如果返回 <code>null</code> 则不更新任何内容。</li>
+<li><del>UNSAFE_componentWillMount</del>：<code>弃用</code>；组件挂载前执行</li>
+<li>componentDidMount：组件挂载之后执行，可以在这里进行网络请求，此时DOM元素已经生成</li>
+</ul>
+<h3 id="更新时"><a href="#更新时" class="headerlink" title="更新时"></a>更新时</h3><ul>
+<li>static getDerivedStateFromProps()：会在调用 render 方法之前调用，并且在初始挂载及后续更新时都会被调用。它应返回一个对象来更新 state，如果返回 <code>null</code> 则不更新任何内容。</li>
+<li>shouldComponentUpdate()：根据的返回值，判断组件的输出是否受当前 state 或 props 更改的影响，返回true则组件更新，返回false组件不更新。这里是性能优化的关键之处，如果不在这里处理组件默认是更新的，父组件更新之后，不论子组件是否发生变化都会重新渲染。</li>
+<li>getSnapshotBeforeUpdate()： 在最近一次渲染输出（提交到 DOM 节点）之前调用，此生命周期的任何返回值将作为参数传递给 componentDidUpdate()</li>
+<li>componentDidUpdate()：更新后会被立即调用。首次渲染不会执行此方法。</li>
+<li><del>UNSAFE_componentWillUpdate</del>：<code>弃用</code>；在更新发生之前执行准备更新的机会。初始渲染不会调用此方法。</li>
+<li><del>UNSAFE_componentWillReceiveProps</del>：<code>弃用</code>；会在已挂载的组件接收新的 props 之前被调用</li>
+</ul>
+<h3 id="卸载时"><a href="#卸载时" class="headerlink" title="卸载时"></a>卸载时</h3><ul>
+<li>componentWillUnmount()：会在组件卸载及销毁之前直接调用，可以在此生命周期解除定时器、监听等</li>
+</ul>
+<blockquote>
+<p>参考：<a href="https://zh-hans.reactjs.org/docs/react-component.html" target="_blank" rel="noopener">React中文文档，React.component</a></p>
+</blockquote>
 
         </div>
         <!-- .entry-content -->
@@ -628,36 +558,19 @@ const getData = inject(&#39;数据key&#39;)
       <div class="toc" style="background: none;"></div>
       <section class="post-squares nextprev">
         
-          
-            <div class="post-nepre half previous">
-          
-            <a href="/2020/09/19/技术/vite运行原理/" rel="prev">
-              <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200919130454056.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200919130454056.png">
-              </div>
-              <span class="label">
-              Previous Post</span>
-              <div class="info">
-                <h3>
-                vite运行原理</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
         
           
-            <div class="post-nepre half next">
+            <div class="post-nepre full next">
           
-            <a href="/2020/09/18/技术/Vue3初体验/" rel="next">
+            <a href="/2021/03/15/技术/require.context实现自动化导入/" rel="next">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200918080313754.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200918080313754.png">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210315185136048.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210315185136048.png">
               </div>
               <span class="label">
               Next Post</span>
               <div class="info">
                 <h3>
-                Vue3初体验</h3>
+                require.context实现自动化导入</h3>
                 <hr>
               </div>
             </a>

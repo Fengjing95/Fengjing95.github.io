@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://easyremember.cn/"/>
-  <updated>2021-03-15T10:54:28.098Z</updated>
+  <updated>2021-03-17T13:21:01.082Z</updated>
   <id>https://easyremember.cn/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>react生命周期</title>
+    <link href="https://easyremember.cn/2021/03/17/%E6%8A%80%E6%9C%AF/react%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/"/>
+    <id>https://easyremember.cn/2021/03/17/技术/react生命周期/</id>
+    <published>2021-03-17T13:20:01.085Z</published>
+    <updated>2021-03-17T13:21:01.082Z</updated>
+    
+    <summary type="html">
+    
+      react类组件生命周期详解
+    
+    </summary>
+    
+      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="react" scheme="https://easyremember.cn/tags/react/"/>
+    
+  </entry>
   
   <entry>
     <title>require.context实现自动化导入</title>
@@ -386,26 +406,6 @@
     </summary>
     
       <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="vue" scheme="https://easyremember.cn/tags/vue/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>uni-app学习笔记（入门）</title>
-    <link href="https://easyremember.cn/2020/11/06/%E7%AC%94%E8%AE%B0/uni-app%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    <id>https://easyremember.cn/2020/11/06/笔记/uni-app学习笔记/</id>
-    <published>2020-11-06T08:42:39.312Z</published>
-    <updated>2020-11-23T00:27:59.626Z</updated>
-    
-    <summary type="html">
-    
-      跨端适配框架uni-app，基于Vue
-    
-    </summary>
-    
-      <category term="笔记" scheme="https://easyremember.cn/categories/%E7%AC%94%E8%AE%B0/"/>
     
     
       <category term="vue" scheme="https://easyremember.cn/tags/vue/"/>
