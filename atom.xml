@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://easyremember.cn/"/>
-  <updated>2021-03-17T13:21:01.082Z</updated>
+  <updated>2021-04-04T02:41:02.125Z</updated>
   <id>https://easyremember.cn/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>HTTP 强缓存和协商缓存</title>
+    <link href="https://easyremember.cn/2021/04/04/%E6%8A%80%E6%9C%AF/HTTP%20%E5%BC%BA%E7%BC%93%E5%AD%98%E5%92%8C%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98/"/>
+    <id>https://easyremember.cn/2021/04/04/技术/HTTP 强缓存和协商缓存/</id>
+    <published>2021-04-04T02:28:13.854Z</published>
+    <updated>2021-04-04T02:41:02.125Z</updated>
+    
+    <summary type="html">
+    
+      HTTP缓存是web性能优化的重要手段
+    
+    </summary>
+    
+      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="计算机网络" scheme="https://easyremember.cn/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
   
   <entry>
     <title>react生命周期</title>
@@ -389,26 +409,6 @@
     
     
       <category term="js" scheme="https://easyremember.cn/tags/js/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>记一次文件上传的曲折历史</title>
-    <link href="https://easyremember.cn/2020/11/08/%E6%8A%80%E6%9C%AF/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
-    <id>https://easyremember.cn/2020/11/08/技术/记一次文件上传/</id>
-    <published>2020-11-08T02:25:12.454Z</published>
-    <updated>2020-11-08T02:28:00.840Z</updated>
-    
-    <summary type="html">
-    
-      使用Vue进行文件切片上传
-    
-    </summary>
-    
-      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="vue" scheme="https://easyremember.cn/tags/vue/"/>
     
   </entry>
   
