@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">Category: 技术 | 前端小枫</title>
+  <title itemprop="name">JavaScript核心原理 | 前端小枫</title>
   
   <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -466,706 +466,339 @@
   </div>
 </header>
 
-      
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
 <div class="pattern-center-blank"></div>
-<div class="pattern-center ">
-  <div class="pattern-attachment-img">
-    <img data-src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/banner/coding.jpg" class="lazyload" onerror="imgError(this,3)" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://gitee.com/liuhao1108/picGoCDN/raw/master/img/封面161769991990811.png);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/封面161769991990811.png">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      JavaScript核心原理</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="">小枫</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2021-4-8<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
   </div>
-  <header class="pattern-header ">
-    <h1 class="cat-title">野生技术协会</h1>
-    <span class="cat-des">
-      <p>Geek – Only for Love</p>
-    </span>
-  </header>
-</div>
+
 <div id="content" class="site-content">
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
-      
-  <!-- 首页默认取最最新文章集 -->
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/09/13/技术/动态组件/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200913111231171.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/09/13/技术/动态组件/">
-    Vue动态组件</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-9-13</div>
-    <p>
-    比较两种动态组件切换的方案</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/09/13/技术/动态组件/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/09/11/技术/created和mounted的区别/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200911161130624.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/09/11/技术/created和mounted的区别/">
-    created和mounted的区别</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-9-11</div>
-    <p>
-    比较created和mounted的区别</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/09/11/技术/created和mounted的区别/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/09/11/技术/defineproperty与Vue2/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200911162126011.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/09/11/技术/defineproperty与Vue2/">
-    Vue2双向绑定原理</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-9-11</div>
-    <p>
-    defineproperty与Vue2</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/09/11/技术/defineproperty与Vue2/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/09/10/技术/git基本操作/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200910135828844.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/09/10/技术/git基本操作/">
-    git入门操作</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-9-10</div>
-    <p>
-    Git日常使用中最常用的操作</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/09/10/技术/git基本操作/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/09/09/技术/webpack工作原理/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200909193637349.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/09/09/技术/webpack工作原理/">
-    webpack工作原理</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-9-9</div>
-    <p>
-    手写webpack核心代码</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/09/09/技术/webpack工作原理/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/09/09/资源/hexo博客SEO优化/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200909112753909.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/09/09/资源/hexo博客SEO优化/">
-    hexo博客SEO优化</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-9-9</div>
-    <p>
-    hexo博客百度收录，SEO优化</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/09/09/资源/hexo博客SEO优化/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/09/07/技术/Vue中的跨域问题/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/vue跨域.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/09/07/技术/Vue中的跨域问题/">
-    Vue中的跨域问题</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-9-7</div>
-    <p>
-    Vue中的跨域问题</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/09/07/技术/Vue中的跨域问题/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/09/07/技术/Socket.IO前端后端一起拿捏/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/socket.io.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/09/07/技术/Socket.IO前端后端一起拿捏/">
-    Socket.IO前端后端一起拿捏</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-9-7</div>
-    <p>
-    前后端使用socket.io</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/09/07/技术/Socket.IO前端后端一起拿捏/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/08/30/技术/Vue组件之slot插槽/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/slots.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/08/30/技术/Vue组件之slot插槽/">
-    Vue插槽组件</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-8-30</div>
-    <p>
-    Vue组件之slot插槽详解</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/08/30/技术/Vue组件之slot插槽/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/08/27/技术/call和apply/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/call.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/08/27/技术/call和apply/">
-    对比call和apply</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-8-27</div>
-    <p>
-    function原型方法call、bind、apply</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/08/27/技术/call和apply/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-
-
-      <div class="clearer">
-      </div>
-    </main>
-    <!-- 
-      <nav class="navigator">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
-        <a class="extend prev" rel="prev" href="/categories/技术/page/2/"><i class="iconfont icon-back"></i></a><a class="page-number" href="/categories/技术/">1</a><a class="page-number" href="/categories/技术/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/categories/技术/page/4/">4</a><a class="page-number" href="/categories/技术/page/5/">5</a><a class="extend next" rel="next" href="/categories/技术/page/4/"><i class="iconfont icon-right"></i></a>
-      </nav>
-     -->
-    
-      <div id="pagination"><a href="/categories/技术/page/4/" class="">Previous</a></div>
-    
-  </div>
+        <div class="entry-content">
+          <h3 id="typeof"><a href="#typeof" class="headerlink" title="typeof"></a>typeof</h3><p>利用typeof判定类型的取值范围是：’undefined’ /‘boolean’ /‘string’ /‘number’ /‘object’ /‘function’ /‘symbol’</p>
+<p>在JavaScript内部使用typeof判断类型依据的是二进制，根据变量的机器码低位1-3位存储其类型信息，有如下规则：</p>
+<ul>
+<li>000：对象</li>
+<li>010：浮点数</li>
+<li>100：字符串</li>
+<li>110：布尔</li>
+<li>1：整数</li>
+</ul>
+<p>这里就引出了JavaScript的经典bug <code>typeof null === &#39;object&#39; // true</code></p>
+<p>因为null的机器码为全0，那自然前三位也是0，所以这里会误判null的类型为object</p>
+<h3 id="instanceof"><a href="#instanceof" class="headerlink" title="instanceof"></a>instanceof</h3><p>instanceof用来判断实例是否属于某种类型，或者实例的祖先属不属于某种类型，翻译一下就是只要右边变量的 <code>prototype</code> 在左边变量的原型链上即可，大致过程如下</p>
+<pre><code class="javascript">function intanceofSelf(son, parent) {
+  if(son === null || parent === null) {
+    return false
+  }
+  let proto = son.__proto__
+  while(1) {
+    if(proto === parent.prototype) {
+      return true
+    }
+    if(proto === null) {
+      return false
+    }
+    proto = proto.__proto__
+  }
+}
+console.log(intanceofSelf([], Array));
+console.log([] instanceof Array);
+</code></pre>
+<p>执行结果如下</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ截图20210406170900.png" alt="QQ截图20210406170900"></p>
+<p>贴一张图来回忆一下原型</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/163a55d5d35b866d.png" alt="163a55d5d35b866d"></p>
+<h3 id="new"><a href="#new" class="headerlink" title="new"></a>new</h3><blockquote>
+<p>new 运算符创建一个用户定义的对象类型的实例或具有构造函数的内置对象类型之一</p>
+</blockquote>
+<p>来看一下真正的new操作之后是什么效果</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210407220837178.png" alt="image-20210407220837178"></p>
+<p>我们班来简单梳理一下new操作符所做的事情：</p>
+<ol>
+<li>创建一个对象</li>
+<li>将构造函数的原型挂载到新对象上</li>
+<li>执行构造函数</li>
+<li>返回新对象</li>
+</ol>
+<p>大体功能已经分析出来了，开始代码实现，由于我们无法实现关键字的形式，我们就以工厂函数的形式来实现new操作</p>
+<pre><code class="javascript">function createNewObj(constructor) {
+  const args = Array.prototype.slice.call(arguments, 1)
+
+  const obj = {}
+  obj.__proto__ = constructor.prototype
+  constructor.apply(obj, args)
+
+  return obj
+}
+
+function Person(name, age) {
+  this.name = name
+  this.age = age
+}
+Person.prototype.getAge = function () {
+  return this.age
+}
+
+let p = createNewObj(Person, &#39;king&#39;, 17)
+console.log(p)
+</code></pre>
+<p>来看一下执行结果，与原生new的效果相同，大功告成</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210407221716441.png" alt="image-20210407221716441"></p>
+<h3 id="call"><a href="#call" class="headerlink" title="call"></a>call</h3><p>call是再Function原型上的方法，它的作用是改变函数执行时的this指向，也就是this绑定规则中的显示绑定</p>
+<p>先来看一下使用示例，理解了使用方法才能去实现它</p>
+<pre><code class="javascript">var foo = {
+    value: 1
+};
+
+function bar() {
+    console.log(this.value);
+}
+
+bar.call(foo); // 1
+</code></pre>
+<p>实现思路：</p>
+<ol>
+<li>将调用方法添加到指定的this上</li>
+<li>执行方法</li>
+<li>删除指定this上的方法</li>
+</ol>
+<p><strong>PS：这里注意call的this指向可以传null，当传值是null的时候，this指向window对象</strong></p>
+<pre><code class="javascript">Function.prototype.callSelf = function(ctx) {
+  ctx = ctx || window
+  const args = Array.from(arguments)
+  args.shift()
+  ctx.fun = this
+  ctx.fun(...args)
+  delete ctx.fun
+}
+const bar = {
+  age: 18
+}
+var age = 17
+function foo(name) {
+  console.log(name)
+  console.log(this.age)
+}
+foo.callSelf(bar, &#39;张三&#39;)
+foo.callSelf(null, &#39;张三&#39;)
+foo(&#39;张三&#39;)
+</code></pre>
+<p>来看一下运行结果（不可以在node环境运行，node环境没有window）</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210407174803830.png" alt="image-20210407174803830"></p>
+<p>可以看到传值为null的时候也实现了绑定为window</p>
+<p><strong>PS：这只是原理上实现，call在ES3就已经实现了，我在代码中使用了多个ES6的方法</strong></p>
+<h3 id="apply"><a href="#apply" class="headerlink" title="apply"></a>apply</h3><p>apply的作用于call一样，唯一的区别在于二者接收的参数，call的参数是this指向+函数参数，apply的参数是this指向+函数参数组成的数组，如<code>foo.call(bar, arg1, arg2)</code>和<code>foo.apply(bar, [arg1, arg2])</code></p>
+<p>那么这里也不再细说apply的原理了，直接上代码</p>
+<pre><code class="javascript">Function.prototype.applySelf = function(ctx, args) {
+  ctx = ctx || window
+  ctx.fun = this
+  ctx.fun(...args)
+  delete ctx.fun
+}
+const bar = {
+  age: 18
+}
+var age = 17
+function foo(name) {
+  console.log(name)
+  console.log(this.age)
+}
+
+foo.applySelf(bar, [&#39;张三&#39;])
+foo.applySelf(null, [&#39;张三&#39;])
+foo(&#39;张三&#39;)
+</code></pre>
+<p>运行结果</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210407202757127.png" alt="image-20210407202757127"></p>
+<h3 id="bind"><a href="#bind" class="headerlink" title="bind"></a>bind</h3><p>bind与apply和call作用大抵相同，区别在于bind返回的是一个可执行函数，看一下MDN上bind的介绍</p>
+<blockquote>
+<p>bind() 方法会创建一个新函数。当这个新函数被调用时，bind() 的第一个参数将作为它运行时的 this，之后的一序列参数将会在传递的实参前传入作为它的参数。</p>
+<p>一个绑定函数也能使用new操作符创建对象：这种行为就像把原函数当成构造器。提供的 this 值被忽略，同时调用时的参数被提供给模拟函数。</p>
+</blockquote>
+<p>那也就是说，bind不再只是this指向的改变，而且要兼顾原型等因素，我们一步一步来</p>
+<p>先来实现返回指定this的函数</p>
+<pre><code class="javascript">Function.prototype.bindSelf = function (ctx) {
+  var _this = this
+  return function () {
+    return _this.apply(ctx)
+  }
+}
+
+var bar = {
+  age: 18
+}
+var age = 19
+
+function foo() {
+  console.log(this.age)
+}
+
+const f = foo.bindSelf(bar)
+f()
+foo()
+</code></pre>
+<p>不要忘了还可以接受参数，这里不再是简单的参数展开，他还可以分批传入（柯里化），如下</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210408083211406.png" alt="image-20210408083211406"></p>
+<p>当然，也不需要太过担心，其实实现也很简单，从两个函数作用域的arguments中提取即可</p>
+<pre><code class="javascript">Function.prototype.bindSelf = function(ctx) {
+  var _this = this
+  var args = Array.prototype.slice.call(arguments, 1)
+  return function() {
+    _this.apply(ctx, args.concat(Array.from(arguments)))
+  }
+}
+
+var bar = {
+  value: 1
+}
+function foo(name, age) {
+  console.log(name)
+  console.log(age)
+  console.log(this.value)
+}
+const f = foo.bindSelf(bar, &#39;king&#39;)
+f(18)
+</code></pre>
+<p>传参的问题解决了，接下来就是最头疼的构造器效果了，我们先来new一下试试，看看缺了什么</p>
+<pre><code class="javascript">const f = foo.bindSelf(bar, &#39;king&#39;)
+const o = new f(17)
+console.log(o)
+// 17
+// 1
+// {}
+const f2 = foo.bind(bar, &#39;king&#39;)
+const o2 = new f2(17)
+console.log(o2)
+// 17
+// undefined
+// foo {}
+//      foo的实例对象
+</code></pre>
+<p>如果你从上面看下来你会知道在执行new操作符的时候会将this指向要创建出来的对象实例，所以原生bind返回的函数在实例化时会找不到value，而我们自定义的bind在执行new操作符的时候this仍然指向bar对象，而且实例的原型链也有问题，所以会分析不出对象实例的类型</p>
+<p>知道了问题所在我们就开始继续优化</p>
+<pre><code class="javascript">Function.prototype.bindSelf = function(ctx) {
+  var _this = this
+  console.log(_this);
+  var args = Array.prototype.slice.call(arguments, 1)
+  var midFun = function() {
+    _this.apply(this instanceof midFun ? this : ctx, args.concat(Array.from(arguments)))
+  }
+  midFun.prototype = this.prototype
+  return midFun
+}
+</code></pre>
+<p>这里我们通过instanceof来判断当前操作是new还是作为普通函数执行。当执行new操作时，this指向对象实例，instanceof的结果为true，保持this指向对象实例；否则就是作为普通函数执行，this指向一开始传进来的上下文。这一段要好好消化一下，比较绕。</p>
+<p>再来执行上面的测试数据，大功告成</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ图片20210408191414.png" alt="QQ图片20210408191414"></p>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+        
+          
+            <div class="post-nepre full next">
+          
+            <a href="/2021/04/04/技术/HTTP 强缓存和协商缓存/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/0.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/0.png">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                HTTP 强缓存和协商缓存</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "AdzOvpXTwwf3KAX23DOds5C9-gzGzoHsz",
+        appKey: "olX1MHfMtrQcmemwl5lLmu4a",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg" itemprop="image" alt="小枫" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author">小枫</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>前端小白</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
 </div>
 
-<!-- 
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/09/13/技术/动态组件/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200913111231171.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/09/13/技术/动态组件/">
-    Vue动态组件</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-9-13</div>
-    <p>
-    比较两种动态组件切换的方案</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/09/13/技术/动态组件/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/09/11/技术/created和mounted的区别/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200911161130624.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/09/11/技术/created和mounted的区别/">
-    created和mounted的区别</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-9-11</div>
-    <p>
-    比较created和mounted的区别</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/09/11/技术/created和mounted的区别/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/09/11/技术/defineproperty与Vue2/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200911162126011.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/09/11/技术/defineproperty与Vue2/">
-    Vue2双向绑定原理</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-9-11</div>
-    <p>
-    defineproperty与Vue2</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/09/11/技术/defineproperty与Vue2/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/09/10/技术/git基本操作/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200910135828844.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/09/10/技术/git基本操作/">
-    git入门操作</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-9-10</div>
-    <p>
-    Git日常使用中最常用的操作</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/09/10/技术/git基本操作/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/09/09/技术/webpack工作原理/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200909193637349.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/09/09/技术/webpack工作原理/">
-    webpack工作原理</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-9-9</div>
-    <p>
-    手写webpack核心代码</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/09/09/技术/webpack工作原理/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/09/09/资源/hexo博客SEO优化/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200909112753909.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/09/09/资源/hexo博客SEO优化/">
-    hexo博客SEO优化</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-9-9</div>
-    <p>
-    hexo博客百度收录，SEO优化</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/09/09/资源/hexo博客SEO优化/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/09/07/技术/Vue中的跨域问题/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/vue跨域.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/09/07/技术/Vue中的跨域问题/">
-    Vue中的跨域问题</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-9-7</div>
-    <p>
-    Vue中的跨域问题</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/09/07/技术/Vue中的跨域问题/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/09/07/技术/Socket.IO前端后端一起拿捏/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/socket.io.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/09/07/技术/Socket.IO前端后端一起拿捏/">
-    Socket.IO前端后端一起拿捏</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-9-7</div>
-    <p>
-    前后端使用socket.io</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/09/07/技术/Socket.IO前端后端一起拿捏/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/08/30/技术/Vue组件之slot插槽/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/slots.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/08/30/技术/Vue组件之slot插槽/">
-    Vue插槽组件</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-8-30</div>
-    <p>
-    Vue组件之slot插槽详解</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/08/30/技术/Vue组件之slot插槽/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/08/27/技术/call和apply/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/call.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/08/27/技术/call和apply/">
-    对比call和apply</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-8-27</div>
-    <p>
-    function原型方法call、bind、apply</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/08/27/技术/call和apply/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
 
- -->
+
     </div>    
     <div class="ins-search">
     <div class="ins-search-mask"></div>

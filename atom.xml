@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://easyremember.cn/"/>
-  <updated>2021-04-04T02:41:02.125Z</updated>
+  <updated>2021-04-08T11:17:50.383Z</updated>
   <id>https://easyremember.cn/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JavaScript核心原理</title>
+    <link href="https://easyremember.cn/2021/04/08/%E6%8A%80%E6%9C%AF/JavaScript%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86/"/>
+    <id>https://easyremember.cn/2021/04/08/技术/JavaScript核心原理/</id>
+    <published>2021-04-08T11:16:28.327Z</published>
+    <updated>2021-04-08T11:17:50.383Z</updated>
+    
+    <summary type="html">
+    
+      手动实现几个JavaScript常用的api
+    
+    </summary>
+    
+      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="js" scheme="https://easyremember.cn/tags/js/"/>
+    
+  </entry>
   
   <entry>
     <title>HTTP 强缓存和协商缓存</title>
@@ -389,26 +409,6 @@
     
     
       <category term="node" scheme="https://easyremember.cn/tags/node/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JavaScript中的数组遍历方法</title>
-    <link href="https://easyremember.cn/2020/11/23/%E6%8A%80%E6%9C%AF/JavaScript%E4%B8%AD%E7%9A%84%E6%95%B0%E7%BB%84%E9%81%8D%E5%8E%86%E6%96%B9%E6%B3%95/"/>
-    <id>https://easyremember.cn/2020/11/23/技术/JavaScript中的数组遍历方法/</id>
-    <published>2020-11-23T00:08:47.874Z</published>
-    <updated>2020-11-23T00:10:09.402Z</updated>
-    
-    <summary type="html">
-    
-      使用Array中的API遍历数组
-    
-    </summary>
-    
-      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="js" scheme="https://easyremember.cn/tags/js/"/>
     
   </entry>
   
