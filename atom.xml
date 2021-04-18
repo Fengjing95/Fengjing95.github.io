@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://easyremember.cn/"/>
-  <updated>2021-04-08T11:17:50.383Z</updated>
+  <updated>2021-04-18T04:11:43.989Z</updated>
   <id>https://easyremember.cn/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue-router实现原理</title>
+    <link href="https://easyremember.cn/2021/04/18/%E6%8A%80%E6%9C%AF/vue-router%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0/"/>
+    <id>https://easyremember.cn/2021/04/18/技术/vue-router简单实现/</id>
+    <published>2021-04-18T02:13:36.328Z</published>
+    <updated>2021-04-18T04:11:43.989Z</updated>
+    
+    <summary type="html">
+    
+      手动实现vue路由原理(hash模式)
+    
+    </summary>
+    
+      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="vue" scheme="https://easyremember.cn/tags/vue/"/>
+    
+  </entry>
   
   <entry>
     <title>JavaScript核心原理</title>
@@ -389,26 +409,6 @@
     
     
       <category term="js" scheme="https://easyremember.cn/tags/js/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>nestjs学习笔记</title>
-    <link href="https://easyremember.cn/2020/11/27/%E7%AC%94%E8%AE%B0/NestJS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    <id>https://easyremember.cn/2020/11/27/笔记/NestJS学习笔记/</id>
-    <published>2020-11-27T13:02:04.459Z</published>
-    <updated>2020-12-05T11:42:36.328Z</updated>
-    
-    <summary type="html">
-    
-      一个完整的开发工具包，用于构建可伸缩的服务器端应用程序。
-    
-    </summary>
-    
-      <category term="笔记" scheme="https://easyremember.cn/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="node" scheme="https://easyremember.cn/tags/node/"/>
     
   </entry>
   

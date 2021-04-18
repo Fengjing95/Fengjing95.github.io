@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">Tag: node | 前端小枫</title>
+  <title itemprop="name">vue-router实现原理 | 前端小枫</title>
   
   <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -466,229 +466,334 @@
   </div>
 </header>
 
-      
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
 <div class="pattern-center-blank"></div>
-<div class="pattern-center ">
-  <div class="pattern-attachment-img">
-    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="node.img" class="lazyload" onerror="imgError(this,3)" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210418101602224.png);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210418101602224.png">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      vue-router实现原理</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="">小枫</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2021-4-18<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
   </div>
-  <header class="pattern-header ">
-    <h1 class="cat-title">node</h1>
-  </header>
-</div>
+
 <div id="content" class="site-content">
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <p>本篇只说原理，不说使用，如果不会使用请移步官网文档</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/1618712677692.jpg" alt="1618712677692"></p>
+<h3 id="任务分析"><a href="#任务分析" class="headerlink" title="任务分析"></a>任务分析</h3><p>在实现之前我们来分析一下需要做的处理是什么，有了大纲才能轻松完成任务</p>
+<ul>
+<li>首先vue-router是一个插件</li>
+<li>其次可以监听路由变化</li>
+<li>然后就是路由配置解析，说白了就是根据路由匹配组件</li>
+<li>还要有全局组件router-link、router-view</li>
+</ul>
+<h3 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h3><p>开发插件的说明在官网也有明确说明，如果你还不知道，我还是推荐你去看一下官网文档的<a href="https://cn.vuejs.org/v2/guide/plugins.html#%E5%BC%80%E5%8F%91%E6%8F%92%E4%BB%B6" target="_blank" rel="noopener">插件部分</a>，如果你实在不想去看文档，那就帮你贴张图吧</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210418105243313.png" alt="image-20210418105243313"></p>
+<p>Vue在使用插件的使用通过<code>Vue.use()</code>来使用插件，会调用插件的install方法，那么我们首选来实现这个install方法</p>
+<pre><code class="javascript">class VueRouter {
+  init() {}
+}
+VueRouter.install = function (Vue) {
+  // 混入，会和vue的生命周期一起执行
+  Vue.mixin({
+    beforeCreate() {
+      // 指向vue实例，根组件执行一次
+      if (this.$options.router) {
+        Vue.prototype.$router = this.$options.router
+        this.$options.router.init()
+      }
+    },
+  })
+}
+Vue.use(VueRouter)
+</code></pre>
+<p>init负责初始化插件，那么现在整体框架已经OK了，在开始的任务大纲里面列出的其他任务就可以方法这里了</p>
+<pre><code class="javascript">class VueRouter {
+  constructor(options) {
+    this.$options = options
+    this.routeMap = {}
+
+    // 利用Vue实现双向绑定
+    this.app = new Vue({
+      data() {
+        return {
+          current: &#39;/&#39;
+        }
+      }
+    })
+  }
+  init() {
+    this.bindEvents()
+    this.createRouteMap()
+    this.initComponents()
+  }
+  bindEvents() {
+
+  }
+  createRouteMap() {
+
+  }
+  initComponents() {
+
+  }
+}
+</code></pre>
+<p>这里利用了Vue来实现路由地址的响应式，这也是为什么vue-router只能用在Vue里面的原因</p>
+<h3 id="监听路由变化"><a href="#监听路由变化" class="headerlink" title="监听路由变化"></a>监听路由变化</h3><p>监听路由变化的过程十分简单，只需要添加一个事件监听器即可</p>
+<pre><code class="javascript">bindEvents() {
+  // 如果不显示绑定this就会指向window
+  window.addEventListener(&#39;load&#39;, this.onHashChange.bind(this))
+  window.addEventListener(&#39;hashchange&#39;, this.onHashChange.bind(this))
+}
+onHashChange() {
+  this.app.current = window.location.hash.slice(1) || &#39;/&#39;
+}
+</code></pre>
+<p>上面的slice是为了去除<code>#</code></p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210418111801695.png" alt="image-20210418111801695"></p>
+<h3 id="配置路由解析"><a href="#配置路由解析" class="headerlink" title="配置路由解析"></a>配置路由解析</h3><p>路由解析的目标就是我们在使用vue-router的时候配置的路由配置文件，如下</p>
+<pre><code class="javascript">new VueRouter ({
+  routes: [
+    { path: &#39;/&#39;, component: Home },
+    { path: &#39;/about&#39;, component: About },
+  ]
+})
+</code></pre>
+<p>那么这里要做的事就是将路由配置中的path和component关联起来</p>
+<pre><code class="javascript">createRouteMap(options) {
+  options.routes.forEach(item =&gt; {
+    this.routeMap[item.path] = item.component
+  })
+}
+</code></pre>
+<h3 id="实现全局组件"><a href="#实现全局组件" class="headerlink" title="实现全局组件"></a>实现全局组件</h3><p>这里可以利用Vue的API——<code>Vue.component</code></p>
+<h4 id="router-link"><a href="#router-link" class="headerlink" title="router-link"></a>router-link</h4><p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210418114305062.png" alt="image-20210418114305062"></p>
+<p>回忆一下我们要怎么使用这个组件，<code>&lt;router-link to=&quot;/link&quot;&gt;跳转&lt;/router-link&gt;</code>，那么我们需要接收一个to属性，然后这个组件会被渲染为a标签</p>
+<pre><code class="javascript">initComponents() {
+  Vue.component(&#39;router-link&#39;, {
+    props: { to: String },
+    render(h) {
+      return h(&#39;a&#39;, {attrs: {href: &quot;#&quot; + this.to}}, [this.$slots.default])
+    }
+  })
+}
+</code></pre>
+<p>这里将to拼接为a标签的href属性，然后将内容通过slot传递</p>
+<h4 id="router-view"><a href="#router-view" class="headerlink" title="router-view"></a>router-view</h4><p>router-view的功能就是渲染，从缓存的路由配置中拿出并渲染匹配当前路由组件</p>
+<pre><code class="javascript">initComponents() {
+    // ···
+  Vue.component(&#39;router-view&#39;, {
+    render: (h) =&gt; {
+      const component = this.routeMap[this.app.current]
+      return h(component)
+    }
+  })
+}
+</code></pre>
+<p>这里注意细节render跟上面link中的形式发生了一些变化，改用了箭头函数，因为这里用到的this，如果不使用箭头函数this指向就会改变</p>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>现在已经完成了上面的内容，我们来测试一下</p>
+<p>在根组件中编写代码</p>
+<pre><code class="html">&lt;div id=&quot;app&quot;&gt;
+  &lt;router-link to=&quot;/&quot;&gt;首页&lt;/router-link&gt;
+  &lt;router-link to=&quot;/about&quot;&gt;关于&lt;/router-link&gt;
+  &lt;router-view&gt;&lt;/router-view&gt;
+&lt;/div&gt;
+</code></pre>
+<p>在main.js中</p>
+<p>引入路由文件并且添加到Vue实例参数中</p>
+<pre><code class="javascript">import Vue from &#39;vue&#39;
+import App from &#39;./App.vue&#39;
+import router from &#39;./myRouter&#39;
+
+new Vue({
+  router,
+  render: h =&gt; h(App),
+}).$mount(&#39;#app&#39;)
+
+</code></pre>
+<p>效果如下</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ录屏20210418115849 00_00_00-00_00_30.gif" alt="QQ录屏20210418115849 00_00_00-00_00_30"></p>
+<p>到现在我们已经实现了hash模式下的vue-router，当然vue-router还有很多内置的API我们不一一讲解，vue-router还有history模式，如果你感兴趣，可以去研究一下</p>
+<p>最后贴一份完整代码</p>
+<pre><code class="javascript">import Vue from &#39;vue&#39;
+import Home from &#39;./views/Home&#39;;
+import About from &#39;./views/About&#39;
+
+class VueRouter {
+  constructor(options) {
+    this.$options = options
+    this.routeMap = {}
+
+    // 利用Vue实现双向绑定
+    this.app = new Vue({
+      data() {
+        return {
+          current: &#39;/&#39;
+        }
+      }
+    })
+  }
+  init() {
+    this.bindEvents()
+    this.createRouteMap(this.$options)
+    this.initComponents()
+  }
+  bindEvents() {
+    // 如果不显示绑定this就会指向window
+    window.addEventListener(&#39;load&#39;, this.onHashChange.bind(this))
+    window.addEventListener(&#39;hashchange&#39;, this.onHashChange.bind(this))
+  }
+  onHashChange() {
+    this.app.current = window.location.hash.slice(1) || &#39;/&#39;
+  }
+  createRouteMap(options) {
+    options.routes.forEach(item =&gt; {
+      this.routeMap[item.path] = item.component
+    })
+  }
+  initComponents() {
+    Vue.component(&#39;router-link&#39;, {
+      props: { to: String },
+      render(h) {
+        return h(&#39;a&#39;, {attrs: {href: &quot;#&quot; + this.to}}, [this.$slots.default])
+      }
+    })
+
+    Vue.component(&#39;router-view&#39;, {
+      render: (h) =&gt; {
+        const component = this.routeMap[this.app.current]
+        return h(component)
+      }
+    })
+  }
+}
+VueRouter.install = function (Vue) {
+  // 混入，会和vue的生命周期一起执行
+  Vue.mixin({
+    beforeCreate() {
+      // 指向vue实例，根组件执行一次
+      if (this.$options.router) {
+        Vue.prototype.$router = this.$options.router
+        this.$options.router.init()
+      }
+    },
+  })
+}
+
+Vue.use(VueRouter)
+
+export default new VueRouter ({
+  routes: [
+    { path: &#39;/&#39;, component: Home },
+    { path: &#39;/about&#39;, component: About },
+  ]
+})
+</code></pre>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+        
+          
+            <div class="post-nepre full next">
+          
+            <a href="/2021/04/08/技术/JavaScript核心原理/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/封面161769991990811.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/封面161769991990811.png">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                JavaScript核心原理</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
       
-  <!-- 首页默认取最最新文章集 -->
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/11/27/笔记/NestJS学习笔记/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20201125184611103.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/11/27/笔记/NestJS学习笔记/">
-    nestjs学习笔记</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-11-27</div>
-    <p>
-    一个完整的开发工具包，用于构建可伸缩的服务器端应用程序。</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/11/27/笔记/NestJS学习笔记/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/09/27/笔记/前端测试工具Jest/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/jest.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/09/27/笔记/前端测试工具Jest/">
-    JavaScript自动化测试框架——Jest</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-9-27</div>
-    <p>
-    Jest 是一个令人愉快的 JavaScript 测试框架，专注于简单性。</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/09/27/笔记/前端测试工具Jest/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/09/09/技术/webpack工作原理/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200909193637349.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/09/09/技术/webpack工作原理/">
-    webpack工作原理</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-9-9</div>
-    <p>
-    手写webpack核心代码</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/09/09/技术/webpack工作原理/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/09/08/笔记/webpack/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200908191056859.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/09/08/笔记/webpack/">
-    webpack笔记</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-9-8</div>
-    <p>
-    Webpack是一个非常流行的前端资源加载/打包工具</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/09/08/笔记/webpack/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/09/08/笔记/pug模板渲染/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/puglog.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/09/08/笔记/pug模板渲染/">
-    pug模板渲染</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-9-8</div>
-    <p>
-    健壮、灵活、功能丰富的HTML模板引擎,专门为 Node.js 平台开发</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/09/08/笔记/pug模板渲染/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/09/07/技术/Socket.IO前端后端一起拿捏/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/socket.io.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/09/07/技术/Socket.IO前端后端一起拿捏/">
-    Socket.IO前端后端一起拿捏</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-9-7</div>
-    <p>
-    前后端使用socket.io</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/09/07/技术/Socket.IO前端后端一起拿捏/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "AdzOvpXTwwf3KAX23DOds5C9-gzGzoHsz",
+        appKey: "olX1MHfMtrQcmemwl5lLmu4a",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
 
-
-      <div class="clearer">
-      </div>
-    </main>
-    <!--  -->
-    
-  </div>
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg" itemprop="image" alt="小枫" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author">小枫</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>前端小白</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
 </div>
+
+
+
     </div>    
     <div class="ins-search">
     <div class="ins-search-mask"></div>
