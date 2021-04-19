@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">Tag: vue | 前端小枫</title>
+  <title itemprop="name">手动实现简易Vuex | 前端小枫</title>
   
   <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -466,135 +466,246 @@
   </div>
 </header>
 
-      
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
 <div class="pattern-center-blank"></div>
-<div class="pattern-center ">
-  <div class="pattern-attachment-img">
-    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/vue-background.jpg" class="lazyload" onerror="imgError(this,3)" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210419075812775.png);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210419075812775.png">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      手动实现简易Vuex</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="">小枫</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2021-4-18<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
   </div>
-  <header class="pattern-header ">
-    <h1 class="cat-title">vue</h1>
-  </header>
-</div>
+
 <div id="content" class="site-content">
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
-      
-  <!-- 首页默认取最最新文章集 -->
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/08/01/随想/Vue子路由常见的问题/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/vue-p.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/08/01/随想/Vue子路由常见的问题/">
-    Vue绑定不到组件</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-8-1</div>
-    <p>
-    探究Vue路由组件绑定失败原因</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/08/01/随想/Vue子路由常见的问题/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/07/31/随想/Vue页面刷新方法/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/vue-p.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/07/31/随想/Vue页面刷新方法/">
-    Vue刷新页面</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-7-31</div>
-    <p>
-    Vue刷新页面的三种方式</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/07/31/随想/Vue页面刷新方法/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/2020/07/31/随想/Vue点击切换导航栏样式/">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
-        </div>
-        <img width="150" height="150" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/vue-p.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
-      </a>
-    </div>
-    <h1 class="entry-title">
-    <a href="/2020/07/31/随想/Vue点击切换导航栏样式/">
-    Vue点击切换导航栏样式</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-    2020-7-31</div>
-    <p>
-    非常简单的切换导航栏样式</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/2020/07/31/随想/Vue点击切换导航栏样式/">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-  
-
-
-      <div class="clearer">
-      </div>
-    </main>
-    <!-- 
-      <nav class="navigator">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
-        <a class="extend prev" rel="prev" href="/tags/vue/page/2/"><i class="iconfont icon-back"></i></a><a class="page-number" href="/tags/vue/">1</a><a class="page-number" href="/tags/vue/page/2/">2</a><span class="page-number current">3</span>
-      </nav>
-     -->
-    
-  </div>
+        <div class="entry-content">
+          <p>同样，这一次我们只讲原理，如果你还不会Vuex的使用，简易移步官网</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/1618712677692.jpg" alt="看文档"></p>
+<h3 id="任务分析"><a href="#任务分析" class="headerlink" title="任务分析"></a>任务分析</h3><p>先来根据Vuex的流程图来看一下我们需要做什么</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210419080742142.png" alt="image-20210419080742142"></p>
+<ul>
+<li>vuex也是一个插件</li>
+<li>实现四个东西：state/mutations/actions/getters</li>
+<li>创建Store</li>
+<li>数据响应式</li>
+</ul>
+<h3 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h3><p>关于插件这里同样不多说，不会的请移步<a href="https://cn.vuejs.org/v2/guide/plugins.html#%E5%BC%80%E5%8F%91%E6%8F%92%E4%BB%B6" target="_blank" rel="noopener">官网</a>，这里依旧贴一张图</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210418105243313.png" alt="cahjian"></p>
+<p>在安装插件时，通过Vue.use触发插件的install方法</p>
+<pre><code class="javascript">function install(_Vue) {
+  Vue = _Vue
+  Vue.mixin({
+    beforeCreate() {
+      // 只有根元素才有store
+      if (this.$options.store) {
+        Vue.prototype.$store = this.$options.store
+      }
+    }
+  })
+}
+</code></pre>
+<p>这里注意只有第一次调用时才给元素添加store，也就是根节点</p>
+<h3 id="四个核心"><a href="#四个核心" class="headerlink" title="四个核心"></a>四个核心</h3><p>首先要有一个可实例化的Store类，这点官网给的实例可以看出来</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210419202657828.png" alt="image-20210419202657828"></p>
+<p>那我们就先创建一个Store类，它接收一个配置对象</p>
+<pre><code class="javascript">class Store {
+  constructor(options) {
+    this.state = new Vue({
+      data() {
+        return { ...options.state}
+      }
+    })
+    this.mutations = options.mutations
+    this.actions = options.actions
+    options.getters &amp;&amp; this.handleGetters(options.getters)
+  }
+}
+</code></pre>
+<p>state负责存储数据，借用Vue实例来实现响应式；mutations用来存储改变state的方法；actions用来存储异步方法，这里注意actions本身并不具备异步特性，仅作为异步方法的容器，他可以调用mutations中的方法；getters可以用来读取state的内容，将结果处理返回</p>
+<pre><code class="javascript">class Store {
+  constructor(options) {
+    this.state = new Vue({
+      data() {
+        return { ...options.state}
+      }
+    })
+    this.mutations = options.mutations
+    this.actions = options.actions
+    options.getters &amp;&amp; this.handleGetters(options.getters)
+  }
+
+  commit = (type, args) =&gt; {
+    this.mutations[type](this.state, args)
+  }
+
+  dispatch = (type, args) =&gt; {
+    this.actions[type]({
+      commit: this.commit,
+      state: this.state
+    }, args)
+  }
+  handleGetters(getters) {
+    this.getters = {}
+    Object.keys(getters).forEach(key =&gt; {
+      Object.defineProperty(this.getters, key, {
+        get: () =&gt; {
+          return getters[key](this.state)
+        }
+      })
+    })
+  }
+}
+</code></pre>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>现在我们已经实现了一个简易版的Vuex，我们接下来进行一下测试</p>
+<p>新建一个store.js，用来实例化store</p>
+<pre><code class="javascript">Vue.use(Vuex)
+
+export default new Vuex.Store({
+  state: {
+    count: 0
+  },
+  mutations: {
+    add(state) {
+      state.count++
+    }
+  },
+  actions: {
+    addAsync({ commit }) {
+      setTimeout(() =&gt; {
+        commit(&#39;add&#39;)
+      }, 1000)
+    }
+  },
+  getters: {
+    getCount(state) {
+      return state.count
+    }
+  }
+})
+</code></pre>
+<p>在main.js中引入store</p>
+<pre><code class="javascript">import store from &#39;./store&#39;
+
+new Vue({
+  store,
+  router,
+  render: h =&gt; h(App),
+}).$mount(&#39;#app&#39;)
+</code></pre>
+<p>编写Vue组件，调用Vuex方法</p>
+<pre><code class="html">&lt;div&gt;
+  {{$store.getters.getCount}}
+  &lt;br /&gt;
+  &lt;button @click=&quot;$store.commit(&#39;add&#39;)&quot;&gt;同步+1&lt;/button&gt;
+  &lt;button @click=&quot;$store.dispatch(&#39;addAsync&#39;)&quot;&gt;延时+1&lt;/button&gt;
+&lt;/div&gt;
+</code></pre>
+<p>测试结果如下</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ录屏20210419203459.gif" alt="QQ录屏20210419203459"></p>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+        
+          
+            <div class="post-nepre full next">
+          
+            <a href="/2021/04/18/技术/vue-router简单实现/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210418101602224.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210418101602224.png">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                vue-router实现原理</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "AdzOvpXTwwf3KAX23DOds5C9-gzGzoHsz",
+        appKey: "olX1MHfMtrQcmemwl5lLmu4a",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg" itemprop="image" alt="小枫" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author">小枫</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>前端小白</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
 </div>
+
+
+
     </div>    
     <div class="ins-search">
     <div class="ins-search-mask"></div>
