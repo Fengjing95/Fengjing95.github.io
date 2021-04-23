@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">手动实现简易Vuex | 前端小枫</title>
+  <title itemprop="name">canvas入门 | 前端小枫</title>
   
   <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -472,11 +472,11 @@
 
   <div class="pattern-center single-center">
     <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210419075812775.png);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210419075812775.png">
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ截图20210420171530.png);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ截图20210420171530.png">
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      手动实现简易Vuex</h1>
+      canvas入门</h1>
       <p class="entry-census">
         <span>
           <a href="">
@@ -488,7 +488,7 @@
         </span>
         <span class="bull">
         ·</span>
-        2021-4-18<span class="bull">
+        2021-4-22<span class="bull">
         ·</span>
       <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
@@ -502,129 +502,401 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <p>同样，这一次我们只讲原理，如果你还不会Vuex的使用，简易移步官网</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/1618712677692.jpg" alt="看文档"></p>
-<h3 id="任务分析"><a href="#任务分析" class="headerlink" title="任务分析"></a>任务分析</h3><p>先来根据Vuex的流程图来看一下我们需要做什么</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210419080742142.png" alt="image-20210419080742142"></p>
+          <h3 id="了解canvas"><a href="#了解canvas" class="headerlink" title="了解canvas"></a>了解canvas</h3><h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><p>canvas是为了解决页面只能显示静态图片而出现的一种可以使用JavaScript绘制的HTML标签，它可以接受两个参数width和height（原来有三个，还有一个<code>moz-opaque</code>控制透明度，已经废弃了）</p>
+<p>注意事项：不同于img标签的自闭和，canvas必须要有闭合标签；能直接在canvas标签上设置宽高尽量直接在标签属性设置宽高，其次可以通过js来设置，尽量不要通过css样式来设置宽高，可能会出现拉伸等情况，这一点<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Tutorial/Basic_usage#%3Ccanvas%3E_%E5%85%83%E7%B4%A0" target="_blank" rel="noopener">MDN</a>也给出了说明</p>
+<blockquote>
+<p><strong>注意:</strong> 如果你绘制出来的图像是扭曲的, 尝试用width和height属性为<code>&lt;canvas&gt;</code>明确规定宽高，而不是使用CSS。</p>
+</blockquote>
+<p>除了canvas之外你可能还会听过svg，svg是一种使用xml定义的<strong>矢量图</strong>，而canvas是使用JavaScript控制绘制出来的<strong>位图</strong></p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/1487709-20190809150321714-50339721.png" alt="1487709-20190809150321714-50339721"></p>
+<p>由于主题是canvas，所以这里我们之说canvas，不聊svg</p>
+<h4 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h4><p>canvas最常用的功能是用来绘制图表，比如我们常用的ECharts图标库底层就是使用的canvas，我手上最近的一个项目中就用到了ECharts</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ截图20210420183619-3.png" alt="QQ截图20210420183619-3"></p>
+<p>这是他的DOM文档体现</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ截图20210420183634-4.png" alt="QQ截图20210420183634-4"></p>
+<p>由于是通过JavaScript驱动绘制的，所以数据都是可以动态传入的，这是静态图片（jpg/png……）所无法比拟的</p>
+<p>此外canvas可以用来制作游戏，这是我以前玩过的魔方游戏（虽然体验完全不如实体）</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ截图20210420184354-5.png" alt="QQ截图20210420184354-5"></p>
+<p>还可以用来做活动页面，很多商家都会用这种形式来做营销活动</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ截图20210420184651-6.png" alt="QQ截图20210420184651-6"></p>
+<p>你可能还会再某些博客中看到这样的特效，他也是canvas实现的</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ截图20210420185247-7.png" alt="QQ截图20210420185247-7"></p>
+<h4 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h4><p>收先需要在HTML文档中声明canvas标签，标签可以添加后备内容，以防止浏览器不兼容canvas，后备内容可以是一串文本、一张图片或者是动态提娜佳的内容</p>
+<pre><code class="html">&lt;canvas id=&quot;canvas&quot;&gt;
+    很遗憾你的浏览器不支持canvas
+&lt;/canvas&gt;
+
+&lt;canvas id=&quot;canvas&quot;&gt;
+    &lt;img src=&quot;./img.png&quot; /&gt;
+&lt;/canvas&gt;
+</code></pre>
+<p>在使用canvas之前，我们需要获取canvas的上下文</p>
+<pre><code class="javascript">const canvas = document.getElementById(&#39;canvas&#39;) 
+// 标注id属性的元素会自动创建全居变量，可以直接使用id操作，但是不推荐
+const context = canvas.getContext(&#39;2d&#39;)
+</code></pre>
+<p>上下文的类型有三种，分别是</p>
 <ul>
-<li>vuex也是一个插件</li>
-<li>实现四个东西：state/mutations/actions/getters</li>
-<li>创建Store</li>
-<li>数据响应式</li>
+<li>2d（本小册所有的示例都是 2d 的）：代表一个二维渲染上下文</li>
+<li>webgl（或”experimental-webgl”）：代表一个三维渲染上下文</li>
+<li>webgl2（或”experimental-webgl2”）：代表一个三维渲染上下文；这种情况下只能在浏览器中实现 WebGL 版本2 (OpenGL ES 3.0)</li>
 </ul>
-<h3 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h3><p>关于插件这里同样不多说，不会的请移步<a href="https://cn.vuejs.org/v2/guide/plugins.html#%E5%BC%80%E5%8F%91%E6%8F%92%E4%BB%B6" target="_blank" rel="noopener">官网</a>，这里依旧贴一张图</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210418105243313.png" alt="cahjian"></p>
-<p>在安装插件时，通过Vue.use触发插件的install方法</p>
-<pre><code class="javascript">function install(_Vue) {
-  Vue = _Vue
-  Vue.mixin({
-    beforeCreate() {
-      // 只有根元素才有store
-      if (this.$options.store) {
-        Vue.prototype.$store = this.$options.store
-      }
-    }
-  })
+<p>在获取路径之后，我们就可以通过上下文的api来进行绘制路径了，比如你可以使用context.arc(x, y, r,angle1, angle2, direction)来绘制一个圆，其中参数的含义为：</p>
+<ul>
+<li>x：圆心x坐标</li>
+<li>y：圆心y坐标</li>
+<li>r：半径</li>
+<li>angle1：起始角度，默认水平向右，也就是三点钟</li>
+<li>angle2：结束角度，从开始角度旋转的度数</li>
+<li>direction：旋转方向，true是逆时针，false是顺时针</li>
+</ul>
+<pre><code class="javascript">context.beginPath();       // 起始一条路径，或重置当前路径
+context.arc(100, 100, 50, 0, Math.PI * 2, true);  // 曲线
+context.closePath();       // 闭合曲线
+context.fillStyle = &#39;rgb(0,0,0)&#39;; // 设置填充样式
+context.fill();            // 填充
+</code></pre>
+<p>效果如下</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/Dingtalk_20210421122914-8.jpg" alt="Dingtalk_20210421122914-8"></p>
+<p>这一节我们大体介绍了canvas的用途，下一节开始我们就开始讲解canvas的具体使用</p>
+<h3 id="canvasAPI（上）"><a href="#canvasAPI（上）" class="headerlink" title="canvasAPI（上）"></a>canvasAPI（上）</h3><p>上一节最后我们说了一个绘制曲线的API——<code>arc</code>（那个API并不是专门用来绘制圆形，只是使用曲线可以绘制圆形），他还有一个兄弟——<code>arcTo（x1, y1, x2, y2, r）</code>，根据当前描点与给定的控制点1连接的直线，和控制点1与控制点2连接的直线，作为使用指定半径的圆的<strong>切线</strong>，画出两条切线之间的弧线路径</p>
+<ul>
+<li>x1：第一个控制点x坐标</li>
+<li>y1：第一个控制点y坐标</li>
+<li>x2：第二个控制点x坐标</li>
+<li>y2：第二个控制点y坐标</li>
+<li>r：曲线半径</li>
+</ul>
+<p>示意图如下</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ截图20210421171144-9.png" alt="QQ截图20210421171144-9"></p>
+<h4 id="路径"><a href="#路径" class="headerlink" title="路径"></a>路径</h4><p>先来熟悉一下必用的路径相关的API</p>
+<ul>
+<li>beginPath()：新建一条路径，生成之后，图形绘制命令被指向到路径上生成路径。</li>
+<li>closePath()：闭合路径之后图形绘制命令又重新指向到上下文中。</li>
+<li>stroke()：通过线条来绘制图形轮廓。</li>
+<li>fill()：通过填充路径的内容区域生成实心的图形。</li>
+</ul>
+<p>接下来从点开始</p>
+<p>moveTo(x, y)——移动当前描点到指定坐标</p>
+<p>然后是线</p>
+<p>lineTo(x, y)——绘制从当前描点到指定点的直线</p>
+<p>到这里我们可以来做一个小练习，绘制一个圆角矩形的一个角</p>
+<p>首先画一条线，然后画一条曲线，然后再画一条直线</p>
+<pre><code class="javascript">ctx.beginPath();
+ctx.moveTo(20, 20)
+ctx.lineTo(60, 20)
+ctx.arcTo(120, 20, 120, 40, 50)
+ctx.lineTo(120, 80)
+ctx.stroke();
+</code></pre>
+<p>这里在绘制曲线的时候要需要计算曲线半径，曲线半径设置错误之后效果体现不出来了</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ截图20210421172354-10.png" alt="QQ截图20210421172354-10"></p>
+<p>绘制矩形，有三个API与绘制矩形有关，分别是：</p>
+<ul>
+<li>fillRect(x, y, width, height)绘制一个填充的矩形</li>
+<li>strokeRect(x, y, width, height)绘制一个矩形的边框</li>
+<li>clearRect(x, y, width, height)清除指定矩形区域，让清除部分完全透明。</li>
+<li>rect(x, y, width, height)绘制一个左上角坐标为（x,y），宽高为width以及height的矩形。</li>
+</ul>
+<p>参数：x——矩形的起点x坐标，y——矩形的起点y坐标，width——矩形的宽，height——矩形的高</p>
+<pre><code class="javascript">ctx.fillRect(25, 25, 100, 100);
+ctx.clearRect(45, 45, 60, 60);
+ctx.strokeRect(50, 50, 50, 50);
+</code></pre>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ截图20210421175716-11.png" alt="QQ截图20210421175716-11"></p>
+<p><strong>注意：重头戏要来了</strong>——二次贝塞尔曲线和三次贝塞尔曲线</p>
+<p>如果你使用过PhotoShop的钢笔工具，你一定不会陌生贝塞尔曲线，放一个<a href="https://www.jianshu.com/p/8f82db9556d2" target="_blank" rel="noopener">简书的链接</a>，如果你对数学感兴趣可以看看</p>
+<ul>
+<li>quadraticCurveTo(cp1x, cp1y, x, y)绘制二次贝塞尔曲线，<code>cp1x,cp1y</code>为一个控制点，<code>x,y为</code>结束点。</li>
+<li>bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y)绘制三次贝塞尔曲线，<code>cp1x,cp1y</code>为控制点一，<code>cp2x,cp2y</code>为控制点二，<code>x,y</code>为结束点。</li>
+</ul>
+<p>这里再贴一张MDN的图片，红点代表控制点，蓝点代表起始点和结束点</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/Canvas_curves-12.png" alt="Canvas_curves-12"></p>
+<p>总之，贝塞尔曲线用于绘制不规则曲线，当然这可能需要你有耐心去计算，因为绘制的曲线没有给我们提供直接的视觉反馈</p>
+<p>有关路径的API基本就是这些，但是在绘制过程中不可能一个路径一个路径地去绘制，canvas也提供了路径服用的方法——Path2D</p>
+<p>Path2D是一个构造函数，可以用来克隆路径，比如</p>
+<pre><code class="javascript">const path1 = new Path2D()
+path1.rect(10, 10, 100,100)
+
+const path2 = new Path2D(path1)
+path2.arc(225, 55, 55, 0, 2 * Math.PI)
+
+ctx.fill(path2);
+</code></pre>
+<p>创建一个路径path1，绘制一个矩形，然后创建一个path2克隆path1，在此基础上绘制一个圆，最后只渲染path2，可以看到path1的内容也有了</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ截图20210422112744-13.png" alt="QQ截图20210422112744-13"></p>
+<h4 id="样式和颜色"><a href="#样式和颜色" class="headerlink" title="样式和颜色"></a>样式和颜色</h4><ul>
+<li><code>fillStyle = color</code>设置图形的填充颜色。</li>
+<li><code>strokeStyle = color</code>设置图形轮廓的颜色。</li>
+</ul>
+<p>color的值跟css色彩的值是一样的，可以是16进制色彩、色彩英文单词、RGB以及RGBA，如</p>
+<pre><code>fillStyle　＝　&#39;red&#39;
+fillStyle　＝　&#39;#409eff&#39;
+fillStyle　＝　&#39;rgb(255, 255, 0)&#39;
+fillStyle　＝　&#39;rgba(255, 255, 255, 0.1)&#39;
+</code></pre><p>rgba的最后一个参数是透明度，除此之外还提供了专门的API来设置透明度，<code>globalAlpha</code> 取值介于0（全透）-1（不透）之间，设置globalAlpha 之后透明度可以叠加，叠加越多透明度越低。</p>
+<p>下面的API可以用来设置线条的样式</p>
+<ul>
+<li><code>lineWidth = value</code>设置线条宽度。</li>
+<li><code>lineCap = type</code>设置线条末端样式。取值有butt（平齐），round（超出圆头）和 square（超出方形）。默认是 butt</li>
+<li><code>lineJoin = type</code>设定线条与线条间接合处的样式。</li>
+<li><p><code>miterLimit = value</code>限制当两条线相交时交接处最大长度；所谓交接处长度（斜接长度）是指线条交接处内角顶点到外角顶点的长度。</p>
+</li>
+<li><p><code>getLineDash()</code>返回一个包含当前虚线样式，长度为非负偶数的数组。</p>
+</li>
+<li><code>setLineDash(segments)</code>设置当前虚线样式。接受一个数组，来指定线段与间隙的交替</li>
+<li><code>lineDashOffset = value</code>设置虚线样式的起始偏移量。</li>
+</ul>
+<p>渐变作为一种比较炫酷的样式当然不能少了</p>
+<ul>
+<li><code>createLinearGradient(x1, y1, x2, y2)</code>createLinearGradient 方法接受 4 个参数，表示渐变的起点 (x1,y1) 与终点 (x2,y2)。</li>
+<li><code>createRadialGradient(x1, y1, r1, x2, y2, r2)</code>createRadialGradient 方法接受 6 个参数，前三个定义一个以 (x1,y1) 为原点，半径为 r1 的圆，后三个参数则定义另一个以 (x2,y2) 为原点，半径为 r2 的圆</li>
+</ul>
+<p>createLinearGradient 是线性渐变，createRadialGradient 是圆形渐变</p>
+<p>在创建渐变对象之后就可以给他上色了，使用<code>gradient.addColorStop(position, color)</code>方法给渐变对象上色，posotion是一个介于0-1的值，0.5表示在正中心渐变</p>
+<pre><code class="javascript">var lineargradient = ctx.createLinearGradient(0,0,150,150);
+lineargradient.addColorStop(0,&#39;white&#39;);
+lineargradient.addColorStop(1,&#39;black&#39;);
+ctx.fillStyle = lineargradient
+ctx.fillRect(10,10,130,130)
+</code></pre>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ截图20210422164110-14.png" alt="QQ截图20210422164110-14"></p>
+<p>阴影也是一个非常好看的效果：</p>
+<ul>
+<li><code>shadowOffsetX = float</code>：shadowOffsetX 用来设定阴影在 X 轴的延伸距离，不受变换矩阵所影响。负值表示阴影会往左延伸，正值则表示会往右延伸，默认为 <code>0</code>。</li>
+<li><code>shadowOffsetY = float</code>：shadowOffsetY用来设定阴影在 Y 轴的延伸距离，不受变换矩阵所影响。负值表示阴影会往上，正值则表示会往下，默认为 <code>0</code>。</li>
+<li><code>shadowBlur = float</code>：shadowBlur 用于设定阴影的模糊程度，默认为 <code>0</code>。</li>
+<li><code>shadowColor = color</code>：shadowColor 用于设定阴影颜色效果，默认是全透明的黑色。</li>
+</ul>
+<p>在我们上一个渐变的基础上加上阴影</p>
+<pre><code class="javascript">ctx.shadowOffsetX = 8;
+ctx.shadowOffsetY = 8;
+ctx.shadowBlur = 2;
+ctx.shadowColor = &quot;rgba(0, 0, 0, 0.5)&quot;;
+</code></pre>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ截图20210422164730-15.png" alt="QQ截图20210422164730-15"></p>
+<p>填充规则fill()，填充我们之前已经用到很多了，他有两个规则，也就是参数<code>nonzero</code>（默认路径内部）和<code>evenodd</code>（路径外部），这是相对于当前路径来说的，在路径嵌套式效果明显</p>
+<h3 id="canvasAPI（下）"><a href="#canvasAPI（下）" class="headerlink" title="canvasAPI（下）"></a>canvasAPI（下）</h3><p>书接上回</p>
+<h4 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h4><p>所有的内容都是手动绘制还是有点麻烦，好在canvas支持导入图片，<code>createPattern(image, type)</code>，该方法接受两个参数。Image 可以是一个 <code>Image</code> 对象的引用，或者另一个 canvas 对象。<code>Type</code> 必须是下面的字符串值之一：<code>repeat</code>，<code>repeat-x</code>，<code>repeat-y</code> 和 <code>no-repeat</code>。</p>
+<p>这里引一张我掘金的头像来做示例，要注意这里需要等待图片加载完之后再渲染</p>
+<pre><code class="javascript">// 创建新 image 对象，用作图案
+var img = new Image();
+img.src = &#39;https://sf6-ttcdn-tos.pstatp.com/img/user-avatar/01434b575492b00010706d94d5b975aa~300x300.image&#39;;
+img.onload = function() {
+
+  // 创建图案
+  var p = ctx.createPattern(img, &#39;no-repeat&#39;);
+  ctx.fillStyle = p;
+  ctx.fillRect(0, 0, 150, 150);
 }
 </code></pre>
-<p>这里注意只有第一次调用时才给元素添加store，也就是根节点</p>
-<h3 id="四个核心"><a href="#四个核心" class="headerlink" title="四个核心"></a>四个核心</h3><p>首先要有一个可实例化的Store类，这点官网给的实例可以看出来</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210419202657828.png" alt="image-20210419202657828"></p>
-<p>那我们就先创建一个Store类，它接收一个配置对象</p>
-<pre><code class="javascript">class Store {
-  constructor(options) {
-    this.state = new Vue({
-      data() {
-        return { ...options.state}
-      }
-    })
-    this.mutations = options.mutations
-    this.actions = options.actions
-    options.getters &amp;&amp; this.handleGetters(options.getters)
-  }
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ截图20210422165755-16.png" alt="QQ截图20210422165755-16"></p>
+<h4 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h4><p>图片都可以渲染那文本不也轻轻松松，canvas 提供了两种方法来渲染文本:</p>
+<ul>
+<li><code>fillText(text, x, y [, maxWidth])</code>在指定的(x,y)位置填充指定的文本，绘制的最大宽度是可选的.</li>
+<li><code>strokeText(text, x, y [, maxWidth])</code>在指定的(x,y)位置绘制文本边框，绘制的最大宽度是可选的.</li>
+</ul>
+<p>根据API的语义就可以知道作用，stroke和fill就是我们前面用的描边和填充</p>
+<p>文本可以设置字体等样式</p>
+<ul>
+<li><code>font = value</code>当前我们用来绘制文本的样式. 这个字符串使用和 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" rel="noopener">CSS</a> <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/font" target="_blank" rel="noopener"><code>font</code></a> 属性相同的语法. 默认的字体是 <code>10px sans-serif</code>。</li>
+<li><code>textAlign = value</code>文本对齐选项. 可选的值包括：<code>start</code>, <code>end</code>, <code>left</code>, <code>right</code> or <code>center</code>. 默认值是 <code>start</code>。</li>
+<li><code>textBaseline = value</code>基线对齐选项. 可选的值包括：<code>top</code>, <code>hanging</code>, <code>middle</code>, <code>alphabetic</code>, <code>ideographic</code>, <code>bottom</code>。默认值是 <code>alphabetic。`</code></li>
+<li><code></code>direction = value<code>文本方向。可能的值包括：</code>ltr<code>,</code>rtl<code>,</code>inherit<code>。默认值是</code>inherit。`</li>
+</ul>
+<p>这些跟css的样式是基本一致的</p>
+<h4 id="移动和缩放"><a href="#移动和缩放" class="headerlink" title="移动和缩放"></a>移动和缩放</h4><p>既然canvas是为了解决动态图片的问题而设计的，那么移动和缩放可以说是动画的基础</p>
+<p>移动很简单，使用translate(x, y)来控制移动，x和y分别就是x轴和y轴的偏移量；</p>
+<p>旋转使用rotate(angle)，接受一个角度参数，沿顺时针方向，旋转点默认是（0，0）点，除非我们使用translate来移动它（比如直接ctx.translate(10, 10)即可）；</p>
+<p>接下来是缩放，scale(x, y)，x和y分别是x轴和y轴方向的所当比例，1为不变，&lt;1是缩小，反之放大；如果出现负数，就是按照所在的轴进行镜像翻转</p>
+<p>如果你熟悉css的transform，那这里应该也很简单，他们很相似。</p>
+<h4 id="蒙版"><a href="#蒙版" class="headerlink" title="蒙版"></a>蒙版</h4><p>关于蒙版内容，放个<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Tutorial/Compositing" target="_blank" rel="noopener">文档</a>在这里吧，说起来太费劲了，如果你用过PhotoShop，你可能会比较好理解</p>
+<h4 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h4><p>关于动画可以使用的方法有三种setTimeout、setInterval、requestAnimationFrame，前两个就是你熟悉的那两个定时器，requestAnimationFrame诉浏览器你希望执行一个动画，并在重绘之前，请求浏览器执行一个特定的函数来更新动画。</p>
+<p>动画的大体过程如下：</p>
+<ul>
+<li>清除上一帧，可以使用的方法很多，最简单的就是清空矩形，长宽为canvas的长宽</li>
+<li>保存canvas状态（样式，变形之类的）,ctx.save()</li>
+<li>绘制图形</li>
+<li>恢复canvas状态,ctx.restore()</li>
+</ul>
+<p>我们这里来做一个小的示例，矩形下落</p>
+<pre><code class="javascript">ctx.beginPath();
+let h = 0
+function down() {
+  h += 1
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillRect(0, h, 100, 100)
+  window.requestAnimationFrame(down)
 }
+down()
 </code></pre>
-<p>state负责存储数据，借用Vue实例来实现响应式；mutations用来存储改变state的方法；actions用来存储异步方法，这里注意actions本身并不具备异步特性，仅作为异步方法的容器，他可以调用mutations中的方法；getters可以用来读取state的内容，将结果处理返回</p>
-<pre><code class="javascript">class Store {
-  constructor(options) {
-    this.state = new Vue({
-      data() {
-        return { ...options.state}
-      }
-    })
-    this.mutations = options.mutations
-    this.actions = options.actions
-    options.getters &amp;&amp; this.handleGetters(options.getters)
-  }
+<p>效果如下</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ录屏20210422174621-17.gif" alt="QQ录屏20210422174621-17"></p>
+<p>那么关于canvas的API我们也已经了解的差不多了，下一节，我们来实现一个五子棋的小游戏</p>
+<h3 id="canvas实战——五子棋"><a href="#canvas实战——五子棋" class="headerlink" title="canvas实战——五子棋"></a>canvas实战——五子棋</h3><p>之前三节我们铺垫了canvas的相关知识，这一节我们来“落地”，实现一个五子棋的小游戏</p>
+<p>开始之前，我们先想一下要做什么：</p>
+<ol>
+<li>首先我们要绘制一个棋盘</li>
+<li>然后要有黑子和白子</li>
+<li>每次落子时判断当前位置是否已经落子，“米”字型方向上是否有五个子，如果满足条件，当前落子一方获胜</li>
+</ol>
+<p>下面马上开始，先做好准备工作，准备一个canvas容器和一个刷新按钮用来重新开盘，然后准备一个结果区显示提示信息</p>
+<pre><code class="html">&lt;canvas id=&quot;canvas&quot; width=&quot;200px&quot; height=&quot;200px&quot;&gt;&lt;/canvas&gt;
+&lt;p class=&quot;result&quot;&gt;&lt;/p&gt;
+&lt;button onclick=&quot;loadPanel(400, 400,30,13)&quot;&gt;刷新&lt;/button&gt;
+</code></pre>
+<h4 id="棋盘"><a href="#棋盘" class="headerlink" title="棋盘"></a>棋盘</h4><p>首先我们来绘制棋盘，这个很简单，循环画直线即可，我们将所有的操作放置在一个函数中，以便重新开局</p>
+<pre><code class="javascript">/**
+ * @param w 棋盘宽度
+ * @param h 棋盘高度
+ * @param cs 格子尺寸
+ * @param ps 棋子半径
+ */
+function loadPanel(w, h, cs, ps) {
+  let i, j, k;
 
-  commit = (type, args) =&gt; {
-    this.mutations[type](this.state, args)
-  }
+  //1)绘制棋盘,边缘应隔开棋子半径的距离
+  cs = cs || 16;//默认格子宽高
+  ps = ps || 4;//棋子半径
+  h = h || w;//高度默认等于宽度
 
-  dispatch = (type, args) =&gt; {
-    this.actions[type]({
-      commit: this.commit,
-      state: this.state
-    }, args)
+  let el = document.getElementById(&#39;canvas&#39;);
+  el.setAttribute(&#39;width&#39;, w + &#39;px&#39;);
+  el.setAttribute(&#39;height&#39;, h + &#39;px&#39;);
+  let context = el.getContext(&quot;2d&quot;);
+  //计算棋盘分割，向下取整
+  let splitX = ~~((w - 2 * ps) / cs), 
+      splitY = ~~((h - 2 * ps) / cs);
+
+  //循环划线
+  context.translate(ps, ps);
+  context.beginPath();
+  context.strokeStyle = &#39;#000&#39;;
+  //垂直线
+  for (i = 0; i &lt; splitX + 1; i++) {
+    context.moveTo(cs * i, 0);
+    context.lineTo(cs * i, splitY * cs);
+    context.stroke();
   }
-  handleGetters(getters) {
-    this.getters = {}
-    Object.keys(getters).forEach(key =&gt; {
-      Object.defineProperty(this.getters, key, {
-        get: () =&gt; {
-          return getters[key](this.state)
+  //水平线
+  for (j = 0; j &lt; splitY + 1; j++) {
+    context.moveTo(0, cs * j);
+    context.lineTo(splitX * cs, cs * j);
+    context.stroke();
+  }
+  context.closePath();
+}
+
+// 绘制棋盘
+loadPanel(400, 400, 30, 13);
+</code></pre>
+<blockquote>
+<p><code>~~</code>作用是向下取整，可以将浮点类型转为整数，字符串类型的数字也可以，但是无法转为数字的结果为0</p>
+</blockquote>
+<p>现在打开浏览器，看一下效果</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210422221727005.png" alt="image-20210422221727005"></p>
+<h4 id="棋子"><a href="#棋子" class="headerlink" title="棋子"></a>棋子</h4><p>棋子的绘制也不难，就是画圆，黑子填充黑色，白子填充白色，然后描个边，相关API之前也有过介绍，我们先在棋盘上绘制两个静态的棋子观察效果</p>
+<pre><code class="javascript">context.beginPath()
+context.arc(cs * 0, cs * 0, ps, 2 * Math.PI, false);
+context.fillStyle = &#39;#fefefe&#39;
+context.fill()
+context.stroke();
+context.closePath()
+
+context.beginPath()
+context.arc(cs * 1, cs * 0, ps, 2 * Math.PI, false);
+context.fillStyle = &#39;#000&#39;
+context.fill()
+context.stroke();
+context.closePath()
+</code></pre>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210422222816357.png" alt="image-20210422222816357"></p>
+<p>效果还不错，但是在下棋时需要鼠标点击，这里的棋子渲染是需要鼠标点击事件来触发的，下面来给canvas添加鼠标点击事件，我们需要获取鼠标的点击坐标，然后计算出他应该落在哪个点，还要循环落子，</p>
+<pre><code class="javascript">let user = 0, colors = [&#39;#000&#39;, &#39;#fefefe&#39;];
+el.addEventListener(&#39;click&#39;, function (e) {
+  let x = e.offsetX,
+    y = e.offsetY,
+    //计算落子范围
+    rx = ~~((x - ps) / cs) + (((x - ps) % cs &lt;= cs / 2) ? 0 : 1),
+    ry = ~~((y - ps) / cs) + (((y - ps) % cs &lt;= cs / 2) ? 0 : 1);
+
+  context.beginPath();
+  context.arc(cs * rx, cs * ry, ps, 2 * Math.PI, false);
+  context.fillStyle = colors[user];
+  context.strokeStyle = &#39;#000&#39;;
+  user ? user = 0 : user = 1;//切换执子者
+  context.fill();
+  context.stroke();
+  context.closePath();
+})
+</code></pre>
+<p>现在我们已经完成了50%了</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ录屏20210422223959.gif" alt="QQ录屏20210422223959"></p>
+<h4 id="胜方判定"><a href="#胜方判定" class="headerlink" title="胜方判定"></a>胜方判定</h4><p>现在进行做事后的一步，判定“米”字方向上是否存在5个同色棋子，我们先来考虑一下答题思路，你先不要往下看，先考虑一下自己的想法</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210422224251852.png" alt="image-20210422224251852"></p>
+<p>好了，现在不管你想没想出来，我来说一下大概思路，首先定义一个对象来存储落子情况，大概的形式是这样的</p>
+<pre><code class="javascript">{
+  &#39;1-1&#39;: 0,
+  &#39;1-2&#39;: 1
+}
+// key是棋盘位置，value是身份
+</code></pre>
+<p>然后使用分别使用[0,1]、[1, 0]、[1, 1]、[1, -1]表示上下、左右、斜向上、斜向下四个方位，待会会分别拿这几个方位来进行遍历，原理大概是这样的</p>
+<p>以[0, 1]为例，在for（let i = 1; i&lt;= 4 ; i++）{}中，分别用0和1去乘以i，然后加上当前点击未知的x或者y坐标，就能够遍历，因为i无论是多少乘0都是0，所以x坐标是不会变的，那么y坐标会遍历上边的四个，如果这四个的都是当前落子选手的即判定为赢，如果找不到就向反方向去找，即循环for（let i = -1; i&gt;= -4 ; i–）{}，如果当前循环结束没有判定胜利再去其他方向重读此步骤</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210422231326458.png" alt="image-20210422231326458"></p>
+<p>计算出坐标来之后在存储落子的对象中寻找落子者，如果是当前落子者就累加，如果遍历结束满足获胜条件游戏结束</p>
+<pre><code class="javascript">let user = 0, colors = [&#39;#000&#39;, &#39;#fefefe&#39;];
+let chks = [[1, 0], [0, 1], [1, 1], [1, -1]]; // 四个方向
+let pieces = {}; // 记录游戏者落子位置
+let successNum = 5;//赢棋标准
+let resultEl = document.querySelector(&#39;.result&#39;);
+
+el.addEventListener(&#39;click&#39;, function (e) {
+  let x = e.offsetX,
+    y = e.offsetY,
+    //计算落子范围
+    rx = ~~((x - ps) / cs) + (((x - ps) % cs &lt;= cs / 2) ? 0 : 1),
+    ry = ~~((y - ps) / cs) + (((y - ps) % cs &lt;= cs / 2) ? 0 : 1);
+
+  context.beginPath();
+  context.arc(cs * rx, cs * ry, ps, 2 * Math.PI, false);
+  context.fillStyle = colors[user];
+  context.strokeStyle = &#39;#000&#39;;
+  user ? user = 0 : user = 1;//切换执子者
+  context.fill();
+  context.stroke();
+  context.closePath();
+
+
+  piece = pieces[rx + &#39;-&#39; + ry] = user;
+
+  for (j = 0; j &lt; chks.length; j++) {
+    let num = 1, chk = chks[j];
+    for (i = 1; i &lt;= 4; i++) {
+      if (pieces[(rx + chk[0] * i) + &#39;-&#39; + (ry + chk[1] * i)] == piece) {
+        num++
+      } else {
+        for (i = -1; i &gt;= -4; i--) {
+          if (pieces[(rx + chk[0] * i) + &#39;-&#39; + (ry + chk[1] * i)] == piece) {
+            num++
+          }
         }
-      })
-    })
-  }
-}
-</code></pre>
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>现在我们已经实现了一个简易版的Vuex，我们接下来进行一下测试</p>
-<p>新建一个store.js，用来实例化store</p>
-<pre><code class="javascript">Vue.use(Vuex)
-
-export default new Vuex.Store({
-  state: {
-    count: 0
-  },
-  mutations: {
-    add(state) {
-      state.count++
+        break
+      }
     }
-  },
-  actions: {
-    addAsync({ commit }) {
-      setTimeout(() =&gt; {
-        commit(&#39;add&#39;)
-      }, 1000)
-    }
-  },
-  getters: {
-    getCount(state) {
-      return state.count
+    if (num == successNum) {
+      status = false
+      resultEl.innerHTML = [&#39;白&#39;, &#39;黑&#39;][user] + &#39;方赢&#39;;
+      break;
     }
   }
 })
 </code></pre>
-<p>在main.js中引入store</p>
-<pre><code class="javascript">import store from &#39;./store&#39;
-
-new Vue({
-  store,
-  router,
-  render: h =&gt; h(App),
-}).$mount(&#39;#app&#39;)
-</code></pre>
-<p>编写Vue组件，调用Vuex方法</p>
-<pre><code class="html">&lt;div&gt;
-  {{$store.getters.getCount}}
-  &lt;br /&gt;
-  &lt;button @click=&quot;$store.commit(&#39;add&#39;)&quot;&gt;同步+1&lt;/button&gt;
-  &lt;button @click=&quot;$store.dispatch(&#39;addAsync&#39;)&quot;&gt;延时+1&lt;/button&gt;
-&lt;/div&gt;
-</code></pre>
-<p>测试结果如下</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ录屏20210419203459.gif" alt="QQ录屏20210419203459"></p>
+<p>然后就完事了</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ录屏20210422232143.gif" alt="QQ录屏20210422232143"></p>
+<p>但是现在还有很多逻辑问题没有解决，游戏结束之后限制不可继续落子，点击位置如果已经有过落子则不可继续落子等这些就当作业留给你吧，其实不难，好好考虑考虑吧</p>
+<p>我最终的实现效果如下</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ录屏20210422232851.gif" alt="QQ录屏20210422232851"></p>
 
         </div>
         <!-- .entry-content -->
@@ -653,36 +925,19 @@ new Vue({
       <div class="toc" style="background: none;"></div>
       <section class="post-squares nextprev">
         
-          
-            <div class="post-nepre half previous">
-          
-            <a href="/2021/04/22/技术/canvas/" rel="prev">
-              <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ截图20210420171530.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ截图20210420171530.png">
-              </div>
-              <span class="label">
-              Previous Post</span>
-              <div class="info">
-                <h3>
-                canvas入门</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
         
           
-            <div class="post-nepre half next">
+            <div class="post-nepre full next">
           
-            <a href="/2021/04/18/技术/vue-router简单实现/" rel="next">
+            <a href="/2021/04/18/技术/vuex简单实现/" rel="next">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210418101602224.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210418101602224.png">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210419075812775.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210419075812775.png">
               </div>
               <span class="label">
               Next Post</span>
               <div class="info">
                 <h3>
-                vue-router实现原理</h3>
+                手动实现简易Vuex</h3>
                 <hr>
               </div>
             </a>

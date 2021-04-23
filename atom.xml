@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://easyremember.cn/"/>
-  <updated>2021-04-19T12:38:28.957Z</updated>
+  <updated>2021-04-23T10:41:05.463Z</updated>
   <id>https://easyremember.cn/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>canvas入门</title>
+    <link href="https://easyremember.cn/2021/04/22/%E6%8A%80%E6%9C%AF/canvas/"/>
+    <id>https://easyremember.cn/2021/04/22/技术/canvas/</id>
+    <published>2021-04-22T13:49:57.433Z</published>
+    <updated>2021-04-23T10:41:05.463Z</updated>
+    
+    <summary type="html">
+    
+      新手能看懂的canvas教程
+    
+    </summary>
+    
+      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="js" scheme="https://easyremember.cn/tags/js/"/>
+    
+  </entry>
   
   <entry>
     <title>手动实现简易Vuex</title>
@@ -389,26 +409,6 @@
     
     
       <category term="react" scheme="https://easyremember.cn/tags/react/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>前端面试经典问题</title>
-    <link href="https://easyremember.cn/2020/12/07/%E9%9A%8F%E6%83%B3/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E7%BB%8F%E5%85%B8%E9%97%AE%E9%A2%98/"/>
-    <id>https://easyremember.cn/2020/12/07/随想/前端面试经典问题/</id>
-    <published>2020-12-07T07:55:46.825Z</published>
-    <updated>2021-02-22T12:11:38.882Z</updated>
-    
-    <summary type="html">
-    
-      前端面试经典问题，持续更新
-    
-    </summary>
-    
-      <category term="随想" scheme="https://easyremember.cn/categories/%E9%9A%8F%E6%83%B3/"/>
-    
-    
-      <category term="悦读" scheme="https://easyremember.cn/tags/%E6%82%A6%E8%AF%BB/"/>
     
   </entry>
   
