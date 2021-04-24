@@ -646,7 +646,7 @@
   </url>
   
   <url>
-    <loc>https://easyremember.cn/client/index.html</loc>
+    <loc>https://easyremember.cn/donate/index.html</loc>
     
     <lastmod>2020-07-13</lastmod>
     
@@ -660,7 +660,7 @@
   </url>
   
   <url>
-    <loc>https://easyremember.cn/donate/index.html</loc>
+    <loc>https://easyremember.cn/client/index.html</loc>
     
     <lastmod>2020-07-13</lastmod>
     
@@ -697,14 +697,14 @@
   </url>
   
   <url>
-    <loc>https://easyremember.cn/tags/Node/</loc>
+    <loc>https://easyremember.cn/tags/express/</loc>
     <lastmod>2021-04-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://easyremember.cn/tags/express/</loc>
+    <loc>https://easyremember.cn/tags/Node/</loc>
     <lastmod>2021-04-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -760,14 +760,14 @@
   </url>
   
   <url>
-    <loc>https://easyremember.cn/tags/%E6%82%A6%E8%AF%BB/</loc>
+    <loc>https://easyremember.cn/tags/css/</loc>
     <lastmod>2021-04-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://easyremember.cn/tags/css/</loc>
+    <loc>https://easyremember.cn/tags/%E6%82%A6%E8%AF%BB/</loc>
     <lastmod>2021-04-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -818,14 +818,14 @@
   </url>
   
   <url>
-    <loc>https://easyremember.cn/categories/%E7%AC%94%E8%AE%B0/</loc>
+    <loc>https://easyremember.cn/categories/%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2021-04-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://easyremember.cn/categories/%E5%B7%A5%E5%85%B7/</loc>
+    <loc>https://easyremember.cn/categories/%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2021-04-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
