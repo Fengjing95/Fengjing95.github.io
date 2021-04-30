@@ -52,7 +52,7 @@
     /*End of Initial Variables*/
   </script>
   <script type="text/javascript">
-    var bg = "https://gitee.com/liuhao1108/picGoCDN/raw/master/img/back1.jpg,https://gitee.com/liuhao1108/picGoCDN/raw/master/img/back2.jpg,https://gitee.com/liuhao1108/picGoCDN/raw/master/img/back3.jpg,https://gitee.com/liuhao1108/picGoCDN/raw/master/img/back4.jpg,https://gitee.com/liuhao1108/picGoCDN/raw/master/img/back5.jpg,https://gitee.com/liuhao1108/picGoCDN/raw/master/img/back6.jpg,https://gitee.com/liuhao1108/picGoCDN/raw/master/img/back7.jpg,https://gitee.com/liuhao1108/picGoCDN/raw/master/img/back8.jpg".split(",");
+    var bg = "https://gitee.com/liuhao1108/picGoCDN/raw/master/img/back7.jpg,https://gitee.com/liuhao1108/picGoCDN/raw/master/img/back8.jpg,https://gitee.com/liuhao1108/picGoCDN/raw/master/img/back11.jpg,https://gitee.com/liuhao1108/picGoCDN/raw/master/img/back12.jpg,https://gitee.com/liuhao1108/picGoCDN/raw/master/img/back13.jpg".split(",");
     var bgindex = Math.floor(Math.random() * bg.length);
     if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
       alert('朋友，IE浏览器未适配哦~');
@@ -357,6 +357,13 @@
                       </li>
                     
                       <li>
+                        <a href="/music/">
+                          <i class="fa fa-headphones" aria-hidden="true"></i>
+                          歌单
+                        </a>
+                      </li>
+                    
+                      <li>
                         <a href="/tags/图集/">
                           <i class="fa fa-photo" aria-hidden="true"></i>
                           图集
@@ -368,10 +375,30 @@
               </li>
             
               <li>
+                <a href="/comment/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+                    留言板
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
                 <a href="/links/">
                   <span class="faa-parent animated-hover">
                     <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
                     友人帐
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/donate/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+                    赞赏
                   </span>
                 </a>
                 
@@ -1001,7 +1028,7 @@ export default function auth(): any {
 
         </div>
         <!-- .entry-content -->
-        <!-- <div class="single-reward">
+        <div class="single-reward">
           <div class="reward-open">赏
             <div class="reward-main">
               <ul class="reward-row">
@@ -1010,7 +1037,7 @@ export default function auth(): any {
               </ul>
             </div>
           </div>
-        </div> -->
+        </div>
         <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
         <footer class="post-footer">
           <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
@@ -1063,6 +1090,20 @@ export default function auth(): any {
         
       </section>
       
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "AdzOvpXTwwf3KAX23DOds5C9-gzGzoHsz",
+        appKey: "olX1MHfMtrQcmemwl5lLmu4a",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
       <section class="author-profile">
         <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
           <a href="" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg" itemprop="image" alt="小枫" height="70" width="70"></a>
@@ -1182,9 +1223,9 @@ export default function auth(): any {
 <script type="text/javascript">
   /* <![CDATA[ */
   if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
-    var Poi = { "pjax": "1", "movies": { "url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.21", "name": "Unbroken.mp4", "live": "close" }, "windowheight": "fixed", "codelamp": "close", "ajaxurl": "", "order": "asc", "formpostion": "bottom" };
+    var Poi = { "pjax": "1", "movies": { "url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2", "name": "Unbroken.mp4", "live": "close" }, "windowheight": "fixed", "codelamp": "close", "ajaxurl": "", "order": "asc", "formpostion": "bottom" };
   } else {
-    var Poi = { "pjax": "1", "movies": { "url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.21", "name": "Unbroken.mp4", "live": "open" }, "windowheight": "auto", "codelamp": "close", "ajaxurl": "", "order": "asc", "formpostion": "bottom" };
+    var Poi = { "pjax": "1", "movies": { "url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2", "name": "Unbroken.mp4", "live": "open" }, "windowheight": "auto", "codelamp": "close", "ajaxurl": "", "order": "asc", "formpostion": "bottom" };
   }
 /* ]]> */
 
@@ -1340,6 +1381,13 @@ export default function auth(): any {
               </li>
             
               <li>
+                <a href="/music/">
+                  <i class="fa fa-headphones" aria-hidden="true"></i>
+                  歌单
+                </a>
+              </li>
+            
+              <li>
                 <a href="/tags/图集/">
                   <i class="fa fa-photo" aria-hidden="true"></i>
                   图集
@@ -1351,10 +1399,30 @@ export default function auth(): any {
       </li>
     
       <li>
+        <a href="/comment/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+            留言板
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
         <a href="/links/">
           <span class="faa-parent animated-hover">
             <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
             友人帐
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/donate/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+            赞赏
           </span>
         </a>
         

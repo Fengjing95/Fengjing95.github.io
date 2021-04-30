@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://easyremember.cn/"/>
-  <updated>2021-04-23T10:41:05.463Z</updated>
+  <updated>2021-04-30T10:45:04.841Z</updated>
   <id>https://easyremember.cn/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Vue组件库开发</title>
+    <link href="https://easyremember.cn/2021/04/27/%E6%8A%80%E6%9C%AF/Vue%E7%BB%84%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
+    <id>https://easyremember.cn/2021/04/27/技术/Vue组件开发/</id>
+    <published>2021-04-27T10:42:53.253Z</published>
+    <updated>2021-04-30T10:45:04.841Z</updated>
+    
+    <summary type="html">
+    
+      Vue组件库开发指北
+    
+    </summary>
+    
+      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="vue" scheme="https://easyremember.cn/tags/vue/"/>
+    
+  </entry>
   
   <entry>
     <title>canvas入门</title>
@@ -386,26 +406,6 @@
     </summary>
     
       <category term="笔记" scheme="https://easyremember.cn/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="react" scheme="https://easyremember.cn/tags/react/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>react配置axios</title>
-    <link href="https://easyremember.cn/2020/12/14/%E6%8A%80%E6%9C%AF/react%E9%85%8D%E7%BD%AEaxios/"/>
-    <id>https://easyremember.cn/2020/12/14/技术/react配置axios/</id>
-    <published>2020-12-14T05:29:32.642Z</published>
-    <updated>2020-12-14T05:40:31.720Z</updated>
-    
-    <summary type="html">
-    
-      react中配置axios进行HTTP请求
-    
-    </summary>
-    
-      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
       <category term="react" scheme="https://easyremember.cn/tags/react/"/>

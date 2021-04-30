@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">Promise学习笔记 | 前端小枫</title>
+  <title itemprop="name">Vue组件库开发 | 前端小枫</title>
   
   <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -462,11 +462,11 @@
 
   <div class="pattern-center single-center">
     <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://gitee.com/liuhao1108/picGoCDN/raw/master/img/Promise_logo.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/Promise_logo.jpg">
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://gitee.com/liuhao1108/picGoCDN/raw/master/img/1619419113164-1.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/1619419113164-1.jpg">
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      Promise学习笔记</h1>
+      Vue组件库开发</h1>
       <p class="entry-census">
         <span>
           <a href="">
@@ -478,7 +478,7 @@
         </span>
         <span class="bull">
         ·</span>
-        2020-8-20<span class="bull">
+        2021-4-27<span class="bull">
         ·</span>
       <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
@@ -492,391 +492,607 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1 id="Promise学习笔记"><a href="#Promise学习笔记" class="headerlink" title="Promise学习笔记"></a>Promise学习笔记</h1><p>参考<a href="https://www.bilibili.com/video/BV1MJ41197Eu" target="_blank" rel="noopener">视频教程</a></p>
-<h2 id="知识铺垫"><a href="#知识铺垫" class="headerlink" title="知识铺垫"></a>知识铺垫</h2><h3 id="函数对象和实例对象"><a href="#函数对象和实例对象" class="headerlink" title="函数对象和实例对象"></a>函数对象和实例对象</h3><ul>
-<li>函数对象：将函数作为对象使用 </li>
-<li>实例对象：new 函数产生的对象(执行构造函数)</li>
-</ul>
-<p>只有在new出实例对象之后，函数才能叫做构造函数</p>
-<pre><code class="js">function Person() {
-
+          <h2 id="技术铺垫"><a href="#技术铺垫" class="headerlink" title="技术铺垫"></a>技术铺垫</h2><p>本节内容以技术铺垫为主，如果你对这里的内容非常自信可以跳到下一节，当然也可以帮我找找错😂</p>
+<h3 id="必要性"><a href="#必要性" class="headerlink" title="必要性"></a>必要性</h3><p>随着Vue在国内市场的占有率越来越高，组件库同时也火了起来，很多公司内部也为了适应其自身业务而开始开发其自有的组件库，我们现在使用的Element UI（饿了么）、Nut UI（京东）等组件库都是大厂开源出来的组件库。与此同时，拥有组件库开发经验也已经成为了我们在应聘面试中的加分项。</p>
+<p>组件库中的组件开发其实给跟我们平常开发组件本质是相同的，只不过我们需要尽可能地考虑到组件的复用性，使组件可以面对多种情况下的业务需求，而且组件库不能和业务耦合，应该和业务完全脱离，即使切换另一种业务也可以使用。</p>
+<h3 id="基础API"><a href="#基础API" class="headerlink" title="基础API"></a>基础API</h3><p>组件的开发脱离不开prop、slot和event这三个API，此外还要考虑组件之间的通信，比如form和form-item、checkbox和checkbox-group等，他们之间其实是有联系的</p>
+<h4 id="prop"><a href="#prop" class="headerlink" title="prop"></a>prop</h4><p>prop在我们平常的开发任务中也是经常使用的一个API，用于子组件接受父组件传递的参数，尽管日常使用，但是还是有人在规范性等方面用得并不是很好。</p>
+<p>抛弃数组写法：虽然支持数组写法，但是官方都不推荐的数组写方法就扔掉吧</p>
+<pre><code class="javascript">// 摒弃吧
+// props: [&#39;status&#39;]
+// 至少也这样吧
+props: {
+    status: String
+    // 等同于
+    // status: {
+    //     type: String
+    // }
 }
-var p = new Person();
-console.log(Person.prototype)
 </code></pre>
-<p>在这段代码中p是实例对象，Person是构造函数，打印Person原型时，Person是函数对象</p>
-<h3 id="回调函数"><a href="#回调函数" class="headerlink" title="回调函数"></a>回调函数</h3><ul>
-<li><p>同步回调：立即执行，完全执行完了才结束，不会放入回调队列</p>
-</li>
-<li><p>异步回调：不会立即执行，放入回调队列中将来执行</p>
-</li>
-</ul>
-<pre><code class="js">const arr = [1, 2, 3];
-arr.forEach(item =&gt; {
-  console.log(item);
-});
-console.log(&#39;foreach之后&#39;);
-
-
-setTimeout(() =&gt; {
-  console.log(&#39;callback&#39;);
-}, 0);
-console.log(&#39;setTime之后&#39;);
-</code></pre>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200819110221552.png" alt="image-20200819110221552"></p>
-<p>上面一段是同步回调，按照顺序执行；下面一段是异步函数，放到队列中执行，主线程执行完毕之后才执行</p>
-<h3 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h3><ul>
-<li><p>错误的类型</p>
-<ul>
-<li>Error: 所有错误的父类型</li>
-<li>ReferenceError: 引用的变量不存在</li>
-<li>TypeError: 数据类型不正确的错误</li>
-<li>RangeError: 数据值不在其所允许的范围内</li>
-<li>SyntaxError: 语法错误</li>
-</ul>
-</li>
-<li><p>错误处理</p>
-<ul>
-<li>捕获错误: try … catch</li>
-<li>抛出错误: throw error</li>
-</ul>
-</li>
-<li><p>错误对象</p>
-<ul>
-<li>message属性: 错误相关信息</li>
-<li>stack属性: 函数调用栈记录信息</li>
-</ul>
-</li>
-</ul>
-<h2 id="Promise理解和使用"><a href="#Promise理解和使用" class="headerlink" title="Promise理解和使用"></a>Promise理解和使用</h2><h3 id="什么是Promise"><a href="#什么是Promise" class="headerlink" title="什么是Promise"></a>什么是Promise</h3><ul>
-<li><p>抽象表达:</p>
-<ul>
-<li>Promise是JS中进行<strong>异步编程</strong>的新的解决方案(旧的是谁？纯回调callback)</li>
-</ul>
-</li>
-<li><p>具体表达:</p>
-<ul>
-<li>从语法上来说: Promise是一个构造函数</li>
-<li>从功能上来说: promise对象用来封装一个异步操作并可以获取其结果</li>
-</ul>
-</li>
-<li><p>promise的状态改变(只有2种结果,，只能改变一次)</p>
-<ul>
-<li>pending变为resolved</li>
-<li>pending变为rejected</li>
-<li>无论成功还是失败都会有一个 结果，成功的称为value，失败的称为reason</li>
-</ul>
-</li>
-<li><p>promise的基本流程(pending，图里面写错了)</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200819155202362.png" alt="image-20200819155202362"></p>
-</li>
-</ul>
-<h3 id="为什么使用Promise"><a href="#为什么使用Promise" class="headerlink" title="为什么使用Promise"></a>为什么使用Promise</h3><ol>
-<li>指定回调函数的方式更加灵活：可以在请求发出甚至结束后指定回调函数</li>
-<li>支持链式调用，可以解决回调地狱问题</li>
-</ol>
-<h3 id="怎么使用Promise"><a href="#怎么使用Promise" class="headerlink" title="怎么使用Promise"></a>怎么使用Promise</h3><p>简单的示例</p>
-<pre><code class="js">const p = new Promise((resolve, reject) =&gt; {
-  const d = Date.now();
-  if (d % 2 === 1) {
-    resolve(&#39;success&#39;)
-  } else {
-    reject(&#39;faild&#39;)
-  }
-})
-p.then(value =&gt; console.log(value), reason =&gt; console.log(reason))
-</code></pre>
-<p>.then()接收两个函数，第一个是成功的回调（onResolved），第二个是失败的回调（onRejected）</p>
-<h4 id="主要API"><a href="#主要API" class="headerlink" title="主要API"></a>主要API</h4><ul>
-<li>Promise构造函数: Promise (excutor) {}</li>
-<li>Promise.prototype.then方法: (onResolved, onRejected) =&gt; {}</li>
-<li>Promise.prototype.catch方法: (onRejected) =&gt; {}，拦截失败操作，返回promise对象，如果catch之前有reject，直接跳到reject，中间所有的.then都不执行</li>
-<li>Promise.resolve方法: (value) =&gt; {}，修改状态为成功</li>
-<li>Promise.reject方法: (reason) =&gt; {}，修改状态为失败</li>
-<li>Promise.all方法: (promises) =&gt; {}，参数为一个可迭代对象，等所有的promise对象都完成之后状态变为resolved，返回结果可迭代对象；如果过有失败结果，状态变为rejected，失败原因是第一个失败的promise对象的结果</li>
-<li>Promise.race方法: (promises) =&gt; {}，参数为一个可迭代对象，如果有任何一个promise解决或者拒绝，返回的promise就会解决或者拒绝</li>
-</ul>
-<h3 id="存在的问题"><a href="#存在的问题" class="headerlink" title="存在的问题"></a>存在的问题</h3><ul>
-<li>改变状态不一定是resolve和reject，也可以发生错误或者抛出异常</li>
-<li>同一个promise对象添加多个.then都会执行</li>
-<li>改变promise状态和指定回调函数谁先谁后<ul>
-<li>正常情况下是先指定回调函数再改变状态</li>
-<li>先改变状态再指定回调：①在执行器中直接调用resolve()/reject()②延迟更长时间才调用then()</li>
-</ul>
-</li>
-<li>什么时候得到数据<ul>
-<li>如果先指定的回调，那当状态发生改变时，回调函数就会调用，得到数据</li>
-<li>如果先改变的状态，那当指定回调时，回调函数就会调用，得到数据</li>
-</ul>
-</li>
-<li>不论成功失败，回调函数永远是异步执行</li>
-<li>.then返回promise的状态——由指定的回调函数执行的结果决定<ul>
-<li>抛出异常，新的promise变为rejected，reason为跑出的异常</li>
-<li>返回的是非promise任意值，状态改为resolved，value是返回值</li>
-<li>返回值是一个新的promise，这个promise的结果就会成为新的promise的结果</li>
-</ul>
-</li>
-</ul>
-<h2 id="自定义Promise"><a href="#自定义Promise" class="headerlink" title="自定义Promise"></a>自定义Promise</h2><h3 id="整体结构"><a href="#整体结构" class="headerlink" title="整体结构"></a>整体结构</h3><p>由于ES6和CommenJS都需要编译才能使用，所以自定义Promise需要使用ES5模块语法（自调用函数）</p>
-<pre><code class="js">(function (window) {
-  /* 
-  Promise：构造函数
-  excutor: 执行器
-  */
-  function Promise(excutor) {
-
-  }
-
-  /* 
-  Promise 原型对象.then
-  指定成功和失败的回调函数
-  返回一个新的Promise
-  */
-  Promise.prototype.then = function (onResolved, onRejected) {
-
-  }
-
-  /*
-  Promise 原型对象.catch
-  指定失败的回调函数
-  返回一个新的Promise
-  */
-  Promise.prototype.catch = function (onRejected) {
-
-  }
-
-  /*
-  Promise 原型对象.resolve
-  返回一个指定value的Promise
-  */
-  Promise.resolve = function (value) {
-
-  }
-
-  /*
-  Promise 原型对象.reject
-  返回一个指定reason的Promise
-  */
-  Promise.reject = function (reason) {
-
-  }
-
-  /*
-  Promise 原型对象.all
-  返回一个Promise，所有promise都成功才成功，一个失败就失败
-  */
-  Promise.all = function (promises) {
-
-  }
-
-  /*
-  Promise 原型对象.race
-  返回一个Promise，由第一个完成的promise决定
-  */
-  Promise.race = function (promises) {
-
-  }
-
-  // 暴露Promise
-  window.Promise = Promise;
-})(window)
-</code></pre>
-<h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><pre><code class="js">/* 
-Promise：构造函数
-excutor: 执行器
-*/
-function Promise(excutor) {
-  this.status = &#39;pending&#39;; // 状态
-  this.data = undefined;  // 数据
-  this.callbacks = [];  // 保存回调函数，结构：{onResolved() {}, onReject() {}}
-  function resolve(value) {
-    // 当前状态不是pending结束
-    if (this.status !== &#39;pending&#39;) {
-      return
-    }
-    // 修改状态
-    this.status = &#39;resolved&#39;;
-    // 保存数据
-    this.data = value;
-    // 立即执行callback
-    if (this.callbacks.length &gt; 0) {
-      this.callbacks.forEach(callbacksObj =&gt; {
-        setTimeout(() =&gt; {  // 异步执行回调
-          callbacksObj.onResolved(value)
-        }, 0)
-      });
-    }
-
-  }
-
-  function reject(reason) {
-    // 当前状态不是pending结束
-    if (this.status !== &#39;pending&#39;) {
-      return
-    }
-    // 修改状态
-    this.status = &#39;rejected&#39;;
-    // 保存数据
-    this.data = value;
-    // 立即执行callback
-    if (this.callbacks.length &gt; 0) {
-      this.callbacks.forEach(callbacksObj =&gt; {
-        setTimeout(() =&gt; {  // 异步执行回调
-          callbacksObj.onRejected(reason)
-        }, 0)
-      });
-    }
-  }
-  // 立即执行excutor
-  try {
-    excutor(resolve, reject);
-  } catch (error) { // 抛出异常变为rejected
-    reject(error);
+<p>键值的写法只是提供了类型限制，除此之外，prop还有其他的属性，比如必填项以及内容验证等；validator的值是一个函数，可以将当前prop接受的值传递给函数，返回值如果是一个失败类型的值就会在控制台抛出异常</p>
+<p>下面的验证规则限制了status必须是’success’, ‘warning’, ‘error’中的一个</p>
+<pre><code class="javascript">props: {
+  status: {
+    type: String,
+    validator: function(prop) {
+      return [
+        &#39;success&#39;,
+        &#39;warning&#39;,
+        &#39;error&#39;
+      ].indexOf(prop) &gt;= 0
+    },
+    default: &#39;success&#39;,
+    required: true,
+    // 一般默认值不会和必填项同时出现
   }
 }
 </code></pre>
-<h3 id="Promise-then-catch"><a href="#Promise-then-catch" class="headerlink" title="Promise.then()/.catch()"></a>Promise.then()/.catch()</h3><p>先来看一下这个例子，将fn赋值给f，两种方法，第二种比第一种简介，在.then内部返回数据时会用到</p>
-<pre><code class="js">function fn() {
-
-}
-var f = function fn() {
-
-}
-var f = fn;
+<p>然后我在使用组件时传入一个错误的值</p>
+<pre><code class="html">&lt;message status=&quot;warning1&quot; /&gt;
 </code></pre>
-<p>正片开始</p>
-<pre><code class="js">  /* 
-  Promise 原型对象.then
-  指定成功和失败的回调函数
-  返回一个新的Promise
-  */
-  Promise.prototype.then = function (onResolved, onRejected) {
-    onResolved = typeof onResolved === &#39;function&#39; ? onResolved : value =&gt; value
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ截图20210426153900-2.png" alt="QQ截图20210426153900-2"></p>
+<p>此外还有一点，<strong>子组件不能直接修改接收的prop值</strong></p>
+<h4 id="slot"><a href="#slot" class="headerlink" title="slot"></a>slot</h4><p>我理解的slot作用就是在子组件中插入父组件的内容，子组件在定义时提供一个插槽，父组件在使用子组件时可以向插槽中插入内容。相当于插座和插头，下面这张图类似于具名插槽，父组件使用的插槽名和子组件中的插槽名不匹配，就无法使用</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ截图20210426160950-3.png" alt="QQ截图20210426160950-3"></p>
+<p>普通的插槽很简单，在子组件中声明插槽，父组件直接添加内容即可，插槽可以设置默认内容，当父组件没有内容传进来时，就会使用默认内容，类似于prop的default属性</p>
+<pre><code class="html">&lt;!-- 父组件 --&gt;
+&lt;message&gt;
+    我是父组件的内容
+&lt;/message&gt;
+&lt;!-- 子组件 --&gt;
+&lt;div&gt;
+    接受插槽：
+    &lt;slot&gt;后备内容&lt;/slot&gt;
+&lt;/div&gt;
+</code></pre>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ截图20210426161838-4.png" alt="QQ截图20210426161838-4"></p>
+<p>在上面我们提到了具名插槽，其实就是为了有多个插槽内容时区分内容。使用方法也很简单，在子组件声明slot时添加name属性即可，父组件在使用时添加v-slot:[name]属性（原来是slot=”name”，已废弃但没有删除，现阶段这样用也可以）</p>
+<pre><code class="html">&lt;!-- 父组件 --&gt;
+&lt;message status=&quot;warning&quot;&gt;
+  &lt;template v-slot:header&gt;我是父组件的头部内容&lt;/template&gt;
+  &lt;template v-slot:footer&gt;我是父组件的底部内容&lt;/template&gt;
+&lt;/message&gt;
+&lt;!-- 子组件 --&gt;
+&lt;div&gt;
+  头部插槽：
+  &lt;slot name=&quot;header&quot;&gt;&lt;/slot&gt;
+  &lt;br /&gt;
+  底部插槽：
+  &lt;slot name=&quot;footer&quot;&gt;&lt;/slot&gt;
+&lt;/div&gt;
+</code></pre>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ截图20210426162400-5.png" alt="QQ截图20210426162400-5"></p>
+<p>不添加name属性时，默认会赋值name=”default”，父组件在使用时不添加v-slot属性默认就是v-slot:default，所以普通插槽也相当于具名插槽，只是默认名。下面两种用法是一样的</p>
+<pre><code class="html">&lt;message status=&quot;warning&quot;&gt;
+  &lt;template v-slot:default&gt;我是父组件的内容&lt;/template&gt;
+&lt;/message&gt;
 
-    onRejected = typeof onRejected === &#39;function&#39; ? onRejected : reason =&gt; {throw reason}
+&lt;message status=&quot;warning&quot;&gt;
+  &lt;template&gt;我是父组件的内容&lt;/template&gt;
+&lt;/message&gt;
+</code></pre>
+<p>还有一种作用域插槽，用简单的话来说就是，在父组件中使用子组件的数据，这里的作用域也就是指的父组件接收子组件作用域</p>
+<p>子组件在声明插槽时绑定一个变量，父组件在使用插槽时使用v-slot=”props”接受这个变量（原来是slot-scope，同样已废弃），然后使用变量我们继续使用上面的例子稍加改造</p>
+<pre><code class="html">&lt;!-- 父组件 --&gt;
+&lt;message status=&quot;warning&quot;&gt;
+  &lt;template v-slot:header=&quot;sonData&quot;&gt;{{sonData.user.name}}今年{{sonData.user.age}}岁了&lt;/template&gt;
+  &lt;template v-slot:footer&gt;我是父组件的底部内容&lt;/template&gt;
+&lt;/message&gt;
+&lt;!-- 子组件 --&gt;
+&lt;div&gt;
+  头部插槽：
+  &lt;slot name=&quot;header&quot; :user=&quot;user&quot;&gt;&lt;/slot&gt;
+  &lt;br /&gt;
+  底部插槽：
+  &lt;slot name=&quot;footer&quot;&gt;&lt;/slot&gt;
+&lt;/div&gt;
+</code></pre>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ截图20210426164339-6.png" alt="QQ截图20210426164339-6"></p>
+<blockquote>
+<p>v-slot指令可以缩写为<code>#</code>，比如v-slot:header可以缩写为#header，默认插槽不可以简写，但是你可以使用#default</p>
+</blockquote>
+<h4 id="event"><a href="#event" class="headerlink" title="event"></a>event</h4><p>事件这一块内容虽然很简单，但说起来比较琐碎，看<a href="https://cn.vuejs.org/v2/guide/events.html" target="_blank" rel="noopener">文档</a>吧😂</p>
+<p>此外你还需要了解组件之间的通信，组件之间的通讯大致有ABCD这几种情况（大体列一下，不展开细说了）</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/3174701-7a15ec352b4e7d84-7.png" alt="3174701-7a15ec352b4e7d84-7"></p>
+<p>AB之间父子关系，AC和AD时祖先和后代的关系，CD之间是兄弟关系</p>
+<ul>
+<li>props/$emit，用于父子之间通信</li>
+<li>$on/$emit，可以在任意组件之间通信</li>
+<li>$children/$parent，可用于父子组件</li>
+<li>$ref，通过标记来获取组件实例</li>
+<li>$attrs/$listeners，attrs包含了父作用域中不被 prop 所识别的属性，listeners包含了父作用域中的 (不含 .native 修饰器的) 事件监听器</li>
+<li>provide/inject，可以在祖孙之间传递数据</li>
+</ul>
+<h2 id="实战一，Form组件"><a href="#实战一，Form组件" class="headerlink" title="实战一，Form组件"></a>实战一，Form组件</h2><p>上一节我们为组件开发做了技术铺垫，这一节开始我们来进入实战环节</p>
+<p>首先我们来实现一套Form组件，如果你使用过市面上比较流行的组件库，你应该知道一套Form组件应该包含这样的内容</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ截图20210427095149-8.png" alt="QQ截图20210427095149-8"></p>
+<p>那么我们首先下一个用例，从用例出发，倒推组件</p>
+<pre><code class="html">&lt;f-form :model=&quot;userForm&quot; :rules=&quot;rules&quot;&gt;
+  &lt;f-form-item label=&quot;用户名&quot; prop=&quot;username&quot;&gt;
+    &lt;f-input v-model=&quot;userForm.username&quot; placeholder=&quot;请输入用户名&quot; /&gt;
+  &lt;/f-form-item&gt;
+  &lt;f-form-item label=&quot;密码&quot; prop=&quot;password&quot;&gt;
+    &lt;f-input type=&quot;password&quot; v-model=&quot;userForm.password&quot; placeholder=&quot;请输入密码&quot; /&gt;
+  &lt;/f-form-item&gt;
+&lt;/f-form&gt;
 
-    const _this = this;
-    // 返回一个新的promise
-    return new Promise((resolve, reject) =&gt; {
-      // 指定调用回调函数
-      function handle(callback) {
-        try {
-          const result = callback(_this.data);
-          if (result instanceof Promise) {  // 类型为promise，结果是这个promise的结果
-            // result.then(
-            //   value =&gt; resolve(value),
-            //   reason =&gt; reject(reason)
-            // )
-            result.then(resolve, reject);
+&lt;script&gt;
+export default {
+  data() {
+    return {
+      userForm: {
+        username: &#39;&#39;,
+        password: &#39;&#39;
+      },
+      rules: {
+        username: [
+          {required: true, message: &#39;请输入用户名&#39;}
+        ],
+        password: [
+          {required: true, message: &#39;请输入密码&#39;}
+        ]
+      }
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<p>从内而外实现，从input开始，然后form-item，最后form，话不多说开搞</p>
+<h3 id="f-input"><a href="#f-input" class="headerlink" title="f-input"></a>f-input</h3><p>首先来输入框，你可能会觉着这东西很简单，但是不要忘了我们之前说的，子组件不能直接修改prop接收的值，所以赶紧抛弃你直接v-model绑定prop的想法。</p>
+<p>如果你不关闭警告你会看到这样的警告</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ截图20210427103333-9.png" alt="QQ截图20210427103333-9"></p>
+<p>这里你需要知道，其实v-model是一个语法糖，下面这两行其实作用是一样的</p>
+<pre><code class="html">1&lt;input v-model=&quot;username&quot; /&gt;
+&lt;br/&gt;
+2&lt;input :value=&quot;username&quot; @input=&quot;username = $event.target.value&quot; /&gt;
+&lt;br/&gt;
+{{username}}
+</code></pre>
+<p>运行一下看下结果</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ录屏20210427104125-10.gif" alt="QQ录屏20210427104125-10"></p>
+<p>所以在f-input中你可以这样来实现绑定的传递</p>
+<pre><code class="html">&lt;template&gt;
+  &lt;div&gt;
+    &lt;input :value=&quot;value&quot; @input=&quot;inputHandler&quot; /&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+  export default {
+    props: {
+      value: {
+        type: String,
+        default: &#39;&#39;
+      }
+    },
+    methods: {
+      inputHandler(e) {
+        this.$emit(&#39;input&#39;, e.target.value)
+      }
+    }
+  }
+&lt;/script&gt;
+</code></pre>
+<p>这时候再去试试，发现已经可以了，控制台也没有报警告</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ录屏20210427104853-11.gif" alt="QQ录屏20210427104853-11"></p>
+<p>然后你又发现了一个问题，设置的<code>placeholder</code>没有生效，因为他被添加到f-input上，而不是f-input里面的input上</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ截图20210427105208-12.png" alt="QQ截图20210427105208-12"></p>
+<p>官网<a href="https://cn.vuejs.org/v2/api/#inheritAttrs" target="_blank" rel="noopener">API文档</a>有这么一段</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ截图20210427105342-13.png" alt="QQ截图20210427105342-13"></p>
+<p>它的作用总结下来就是，如果开启此选项，父组件绑定的属性没有被props接收的，将会存在$attrs里面，可以使用v-bind将$attrs绑定在任意非根组件上，然后把我们的f-input稍加改造</p>
+<pre><code class="html">&lt;template&gt;
+  &lt;div&gt;
+    &lt;input :value=&quot;value&quot; @input=&quot;inputHandler&quot; v-bind=&quot;$attrs&quot; /&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+  export default {
+    inheritAttrs: true,
+    // 省略部分代码
+&lt;/script&gt;
+</code></pre>
+<p>完美，可以看到设置的密码型输入框也已经生效了</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ录屏20210427105835-14.gif" alt="QQ录屏20210427105835-14"></p>
+<h3 id="f-form-item"><a href="#f-form-item" class="headerlink" title="f-form-item"></a>f-form-item</h3><p>到这里就比上面的输入框稍微有点难度了，但也很简单，这里需要实现的点是</p>
+<ul>
+<li>label文本</li>
+<li>给表单组件预留插槽</li>
+<li>按规则校验并提示错误</li>
+</ul>
+<p>前两点都很简单，你应该比较畏惧第三点，其实这个也很简单，有现成的“轮子”——<a href="https://www.npmjs.com/package/async-validator" target="_blank" rel="noopener">async-validator</a>，作为程序员要杜绝重复造轮子😂</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ截图20210427112200-15.png" alt="QQ截图20210427112200-15"></p>
+<p>想一下我们之前的用例中form-item的属性：label和prop，然后配置要接收的参数</p>
+<pre><code class="vue">&lt;template&gt;
+  &lt;div&gt;
+    &lt;label v-if=&quot;label&quot;&gt;{{label}}&lt;/label&gt;
+    &lt;slot&gt;&lt;/slot&gt;
+    &lt;p v-if=&quot;errorMessage&quot;&gt;{{errorMessage}}&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+  export default {
+    props: {
+      label: {
+        type: String,
+        default: &#39;&#39;
+      },
+      prop: {
+        type: String,
+      }
+    },
+    data() {
+      return {
+        errorMessage: &#39;&#39;
+      }
+    },
+  }
+&lt;/script&gt;
+</code></pre>
+<p>这样我们第一步和第二步都完成了，接下来就是validate了，接受的prop的作用就是为了从form组件中绑定的rules中获取需要使用的验证规则，同时也使用prop从form绑定的表单内容中获取当前表单项的值。这里可以使用provide/inject来传递数据</p>
+<pre><code class="vue">&lt;script&gt;
+import Schema from &#39;async-validator&#39;
+  export default {
+    inject: [&#39;form&#39;],
+    props: {
+      label: {
+        type: String,
+        default: &#39;&#39;
+      },
+      prop: {
+        type: String,
+      }
+    },
+    data() {
+      return {
+        errorMessage: &#39;&#39;
+      }
+    },
+    methods: {
+      validate() {
+        const rule = this.form.rules[this.prop]
+        const value = this.form.model[this.prop]
+        // 获取验证规则实例
+        const description = {[this.prop]: rule}
+        const schema = new Schema(description)
+
+        // 使用验证规则实例的验证方法
+        return schema.validate({[this.prop]: value}, (error, field) =&gt; {
+          if(error) {
+            this.errorMessage = error[0].message
+            console.log(`${field}验证未通过`);
           } else {
-            resolve(result);  // 非promise返回结果
+            this.errorMessage = &#39;&#39;
           }
-        } catch (error) { // 抛出异常，失败
-          reject(error);
+        })
+      }
+    },
+  }
+&lt;/script&gt;
+</code></pre>
+<p>然后添加验证事件的监听器，在内部表单项值修改时动态验证</p>
+<pre><code class="vue">mounted() {
+    this.$on(&#39;validate&#39;, this.validate)
+}
+</code></pre>
+<p>再顺便修改一下f-input的内容</p>
+<pre><code class="vue">methods: {
+  inputHandler(e) {
+    this.$emit(&#39;input&#39;, e.target.value)
+    // 通知验证
+    this.$parent.$emit(&#39;validate&#39;)
+  }
+}
+</code></pre>
+<p>OK~~form-item齐活</p>
+<h3 id="f-form"><a href="#f-form" class="headerlink" title="f-form"></a>f-form</h3><p>在完成了form-item和input组件之后，form组件就简简单单了，再来看一下form要做的事</p>
+<ul>
+<li>接收验证规则和表单数据</li>
+<li>给form-item预留插槽</li>
+<li>全局校验方法</li>
+</ul>
+<p>首先我们来实现前两步，很简单，不要忘了之前form-item使用inject接收的数据，这里需要绑定上</p>
+<pre><code class="vue">&lt;template&gt;
+  &lt;div&gt;
+    &lt;slot&gt;&lt;/slot&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+  export default {
+    provide() {
+      return {
+        form: this
+      }
+    },
+    props: {
+      model: {
+        type: Object,
+        required: true
+      },
+      rules: {
+        type: Object
+      }
+    }
+  }
+&lt;/script&gt;
+</code></pre>
+<p>接下来全局的校验，接受一个回调函数，回调函数的参数是一个布尔值，代表校验是否通过，使用Promise.all来执行多个验证器，只要有失败的就返回false</p>
+<pre><code class="javascript">methods: {
+  validate(cb) {
+    const validators = this.$children
+    .filter(item =&gt; item.prop)
+    .map(item =&gt; item.validate())
+
+    Promise.all(validators)
+    .then(() =&gt; cb(true))
+    .catch(() =&gt; cb(false))
+  }
+},
+</code></pre>
+<p>然后在修改一下用例，添加一个提交按钮，绑定全局校验</p>
+<pre><code class="vue">&lt;template&gt;
+  &lt;div&gt;
+    &lt;f-form :model=&quot;userForm&quot; :rules=&quot;rules&quot; ref=&quot;formRef&quot;&gt;
+      &lt;f-form-item label=&quot;用户名&quot; prop=&quot;username&quot;&gt;
+        &lt;f-input v-model=&quot;userForm.username&quot; placeholder=&quot;请输入用户名&quot; /&gt;
+      &lt;/f-form-item&gt;
+      &lt;f-form-item label=&quot;密码&quot; prop=&quot;password&quot;&gt;
+        &lt;f-input type=&quot;password&quot; v-model=&quot;userForm.password&quot; placeholder=&quot;请输入密码&quot; /&gt;
+      &lt;/f-form-item&gt;
+      &lt;button @click=&quot;submit&quot;&gt;提交&lt;/button&gt;
+    &lt;/f-form&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+  // 省略部分代码
+  methods: {
+    submit() {
+      this.$refs.formRef.validate(valid =&gt; {
+        if(valid) {
+          console.log(&#39;通过验证&#39;);
+        } else {
+          console.log(&#39;验证失败&#39;);
         }
-      }
-
-      if (_this.status === PENDING) {
-        _this.callbacks.push({
-          onResolved(value) {
-            handle(onResolved)
-          },
-          onRejected(reason) {
-            handle(onRejected)
-          }
-        })
-      } else if (_this.status === RESOLVED) {
-        setTimeout(() =&gt; {
-          handle(onResolved)
-        })
-      } else {
-        setTimeout(() =&gt; {
-          handle(onRejected)
-        })
-      }
-    })
-
-  }
-
-  /*
-  Promise 原型对象.catch
-  指定失败的回调函数
-  返回一个新的Promise
-  */
-  Promise.prototype.catch = function (onRejected) {
-    return this.then(undefined, onRejected)
-  }
-</code></pre>
-<h3 id="Promise-resolve-reject"><a href="#Promise-resolve-reject" class="headerlink" title="Promise.resolve()/reject()"></a>Promise.resolve()/reject()</h3><pre><code class="js">  /*
-  Promise 原型对象.resolve
-  返回一个指定value的Promise
-  */
-  Promise.resolve = function (value) {
-    // 返回一个成功/失败的promise
-    return new Promise((resolve, reject) =&gt; {
-      if (value instanceof Promise) {
-        value.then(resolve, reject)
-      } else {
-        resolve(value)
-      }
-    })
-  }
-
-  /*
-  Promise 原型对象.reject
-  返回一个指定reason的Promise
-  */
-  Promise.reject = function (reason) {
-    // 返回一个失败的promise
-    return new Promise((resolve, reject) =&gt; {
-      reject(reason);
-    })
-  }
-</code></pre>
-<h3 id="Promise-all-race"><a href="#Promise-all-race" class="headerlink" title="Promise.all()/race()"></a>Promise.all()/race()</h3><pre><code class="js">  /*
-  Promise 原型对象.all
-  返回一个Promise，所有promise都成功才成功，一个失败就失败
-  */
-  Promise.all = function (promises) {
-    const values = new Array(promises.length);  // 保存所有成功的value
-    let resolveCount = 0;  // 计数器，计算成功的数量
-    return new Promise((resolve, reject) =&gt; {
-      // 获取每个promise的结果
-      promises.forEach((p, index) =&gt; {
-        p.then(
-          value =&gt; {
-            resolveCount++;
-            values[index] = value;
-            if (resolveCount === promises.length) { // 所有都完成才会resolve
-              resolve(values)
-            }
-          }, reason =&gt; {
-            reject(reason)
-          }
-        )
       })
-    })
-  }
-
-  /*
-  Promise 原型对象.race
-  返回一个Promise，由第一个完成的promise决定
-  */
-  Promise.race = function (promises) {
-    return new Promise((resolve, reject) =&gt; {
-      promises.forEach((p) =&gt; {
-        p.then(
-          value =&gt; {
-            resolve(value)
-          }, reason =&gt; {
-            reject(reason)
-          }
-        )
-      })
-    })
-  }
+    }
+  },
+}
+&lt;/script&gt;
 </code></pre>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>代码已经上传<a href="https://gitee.com/liuhao1108/toy_promise" target="_blank" rel="noopener">码云</a></p>
+<p>到现在我们就已经<strong>粗略</strong>的完成了一套form组件，当然他的功能并不止于此，这只是起了个头具体功能完善也就不在这里细说了，效果展示如下，样式细节也不在这里扣了</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ录屏20210427164449-16.gif" alt="QQ录屏20210427164449-16"></p>
+<h2 id="实战二，Message组件"><a href="#实战二，Message组件" class="headerlink" title="实战二，Message组件"></a>实战二，Message组件</h2><p>上一节我们实现了写在模板里面的组件，还有一种组件比如message消息提示，它的使用要求比较灵活，不确定在什么组件中出现，所以不能写死在模板中，要使用js动态控制</p>
+<p>这种组件就需要手动地实现挂载与卸载了，在开始之前需要做一下铺垫<a href="https://cn.vuejs.org/v2/api/#Vue-extend" target="_blank" rel="noopener">Vue.extend(options)</a>，创建一个子类包含配置的选项</p>
+<p>首先我们来构建一个消息的模板</p>
+<pre><code class="vue">&lt;template&gt;
+  &lt;div class=&quot;message&quot;&gt;
+    &lt;p&gt;{{ message }}&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default {
+  name: &quot;message&quot;,
+  data() {
+    return {
+      message: &quot;message&quot;,
+    };
+  },
+&lt;/script&gt;
+</code></pre>
+<p>然后再创建一个Message.js，用于渲染这个模板</p>
+<pre><code class="javascript">import Vue from &#39;vue&#39;;
+import Message from &#39;./Message.vue&#39;
+
+export default function() {
+  const MessageConstructor = Vue.extend(Message)
+
+  const component = new MessageConstructor().$mount()
+  document.body.appendChild(component.$el)
+}
+</code></pre>
+<p>上面的最后一段代码，我们调用了 <code>$mount</code> 方法对组件进行了手动渲染，这里渲染之后的结果是一个Node节点，我们需要手动将它插入到document中</p>
+<p>使用组件也很简单，导入并执行这个函数。我们来使用一个按钮触发这个消息渲染</p>
+<pre><code class="vue">&lt;template&gt;
+  &lt;div&gt;
+    &lt;button @click=&quot;alert&quot;&gt;消息&lt;/button&gt;    
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+  import Message from &#39;./Message.js&#39;
+  export default {
+    methods: {
+      alert() {
+        Message()
+      }
+    }
+  }
+&lt;/script&gt;
+</code></pre>
+<p>来看下效果</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ截图20210427174737-19.png" alt="QQ截图20210427174737-19"></p>
+<p>还行，我们来继续完善一下，首先需要自动删除节点，我们要在出现提示之后一定时间内取消展示，思路也很简单，在mounted之后添加一个延时卸载Node节点的方法</p>
+<pre><code class="javascript">mounted() {
+    setTimeout(() =&gt; {
+        // duration 后通过父级移除子元素的方式移除该组件实例和DOM节点
+        this.$destroy(true);
+        this.$el.parentNode.removeChild(this.$el);
+    }, this.duration);
+},
+</code></pre>
+<p>现在我们来考虑一下通过配置控制消息内容</p>
+<ol>
+<li>调用组件时传入一个配置对象</li>
+<li>在创建渲染实例时将参数传递进去，覆盖掉继承来的属性</li>
+</ol>
+<p>对我们的Message.js稍加改造，让参数覆盖data选项</p>
+<pre><code class="javascript">export default function(options) {
+  const MessageConstructor = Vue.extend(Message)
+
+  const component = new MessageConstructor({data: options}).$mount()
+  document.body.appendChild(component.$el)
+}
+</code></pre>
+<p>然后我们来使用一下，配合我们之前的表单校验一起试一下</p>
+<pre><code class="vue">&lt;template&gt;
+  &lt;div id=&quot;app&quot;&gt;
+    &lt;f-form :model=&quot;userForm&quot; :rules=&quot;rules&quot; ref=&quot;formRef&quot;&gt;
+      &lt;f-form-item label=&quot;用户名&quot; prop=&quot;username&quot;&gt;
+        &lt;f-input v-model=&quot;userForm.username&quot; placeholder=&quot;请输入用户名&quot; /&gt;
+      &lt;/f-form-item&gt;
+      &lt;f-form-item label=&quot;密码&quot; prop=&quot;password&quot;&gt;
+        &lt;f-input type=&quot;password&quot; v-model=&quot;userForm.password&quot; placeholder=&quot;请输入密码&quot; /&gt;
+      &lt;/f-form-item&gt;
+      &lt;button @click=&quot;submit&quot;&gt;提交&lt;/button&gt;
+    &lt;/f-form&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import FFormItem from &#39;./components/FFormItem.vue&#39;
+import FInput from &#39;./components/FInput.vue&#39;
+import FForm from &#39;./components/FForm.vue&#39;
+import Message from &#39;./components/Message&#39;
+
+export default {
+  name: &#39;App&#39;,
+  components: {
+    FFormItem,FInput,FForm
+  },
+  data() {
+    return {
+      userForm: {
+        username: &#39;&#39;,
+        password: &#39;&#39;
+      },
+      rules: {
+        username: [
+          {required: true, message: &#39;请输入用户名&#39;, tigger: &#39;blur&#39;}
+        ],
+        password: [
+          {required: true, message: &#39;请输入密码&#39;, tigger: &#39;blur&#39;}
+        ]
+      },
+      username: &#39;&#39;
+    }
+  },
+  methods: {
+    submit() {
+      this.$refs.formRef.validate(valid =&gt; {
+        if(valid) {
+          Message({
+            message: &#39;通过验证&#39;,
+            duration: 5000
+          })
+        } else {
+          Message({
+            message: &#39;验证失败&#39;,
+            duration: 2000
+          })
+        }
+      })
+    },
+  },
+}
+&lt;/script&gt;
+</code></pre>
+<p>可以看到时间、内容都已经生效了</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ录屏20210427180232-20.gif" alt="QQ录屏20210427180232-20"></p>
+<p>然后为了使用方便我们可以在入口文件将Message挂载到Vue的原型上<code>Vue.prototype.$message = Message</code>，，然后其他组件内部再使用时就可以直接this.$message()</p>
+<p>这里我们只实现了一个简单的message，他还可以有很多扩展方向，比如通知类型（根据类型控制message颜色样式不一样）或者内嵌icon等，我们在这就不说了，有了这个结构再去拓展就很简单了</p>
+<h2 id="实战三，树形组件和动态组件"><a href="#实战三，树形组件和动态组件" class="headerlink" title="实战三，树形组件和动态组件"></a>实战三，树形组件和动态组件</h2><p>之前我们介绍了两种类型的组件封装，现在我们来说一下另外一种组件，递归组件。这种组件可用于列表展开、树形表格等</p>
+<h3 id="递归组件"><a href="#递归组件" class="headerlink" title="递归组件"></a>递归组件</h3><p>我们在使用组件时一般都是先使用import导入，然后在components选项中声明，最后在组件中使用；但其实还有一种使用组件的方法，当组件声明了选项name之后就可以使用name调用自身了，这也是递归组件的原理</p>
+<p>但是不可以直接使用，需要有一个限制条件，不然就会调用栈溢出了，比如下面这样</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210427215454844.png" alt="image-20210427215454844"></p>
+<p>我们来实现一个简易的树形组件，用来展开和闭合列表</p>
+<p>首先我们来创建一个模板</p>
+<pre><code class="vue">&lt;template&gt;
+  &lt;li&gt;
+    &lt;div @click=&quot;toggle&quot;&gt;
+      {{model.title}}
+      &lt;span v-if=&quot;isFolder&quot;&gt;[{{open ? '-' : '+'}}]&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/template&gt;
+</code></pre>
+<p>这里只是做示范，在使用外层需要有个ul包裹，当有子组件时会显示<code>+</code>和<code>-</code>，展开式显示<code>-</code>，关闭时显示<code>+</code>，isFolder就是一个计算属性，用来判断有没有子组件，通过事件来控制open的开闭</p>
+<pre><code class="javascript">export default {
+  name: &quot;Tree&quot;,
+  props: {
+    model: {
+      type: Object,
+      required: true,
+    },
+  },
+  data() {
+    return { 
+      open: false 
+    };
+  },
+    computed: {
+    isFolder() {
+      return this.model.children &amp;&amp; this.model.children.length;
+    }
+  },
+  methods: {
+    toggle() {
+      if (this.isFolder) {
+        this.open = !this.open;
+      }
+    },
+  },
+};
+</code></pre>
+<p>我们来添加一下数据来试一下效果</p>
+<pre><code class="vue">&lt;template&gt;
+  &lt;ul&gt;
+    &lt;tree v-for=&quot;(model, index) in treeData&quot; :key=&quot;index&quot; :model=&quot;model&quot;&gt;&lt;/tree&gt;
+  &lt;/ul&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+    export default {
+    data() {
+      return {
+        treeData: [
+        {
+          title: &#39;打野&#39;,
+          children: [
+            {
+              title: &#39;刺客&#39;,
+              children: [
+                {
+                  title: &#39;兰陵王&#39;
+                },{
+                  title: &#39;李白&#39;
+                }
+              ]
+          // ……省略大段数据代码
+      }
+    }
+  }
+&lt;/script&gt;
+</code></pre>
+<p>现在的效果是这样的</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210427230021328.png" alt="image-20210427230021328"></p>
+<p>接下来我们就来注入灵魂，实现组件递归，将tree组件做一下修改</p>
+<pre><code class="vue">&lt;template&gt;
+  &lt;li&gt;
+    &lt;div @click=&quot;toggle&quot;&gt;
+      {{model.title}}
+      &lt;span v-if=&quot;isFolder&quot;&gt;[{{open ? '-' : '+'}}]&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;ul v-show=&quot;open&quot; v-if=&quot;isFolder&quot;&gt;
+      &lt;tree class=&quot;item&quot; v-for=&quot;model in model.children&quot; :model=&quot;model&quot; :key=&quot;model.title&quot;&gt;&lt;/tree&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/template&gt;
+</code></pre>
+<p>然后再看效果</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ录屏20210427230225.gif" alt="QQ录屏20210427230225"></p>
+<p>完成，当然这只是粗略版本，这样拿出去肯定是用不了的，还需要拓展功能调整样式</p>
 
         </div>
         <!-- .entry-content -->
@@ -905,36 +1121,19 @@ var f = fn;
       <div class="toc" style="background: none;"></div>
       <section class="post-squares nextprev">
         
-          
-            <div class="post-nepre half previous">
-          
-            <a href="/2020/08/27/笔记/Axios/" rel="prev">
-              <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/axios.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/axios.jpg">
-              </div>
-              <span class="label">
-              Previous Post</span>
-              <div class="info">
-                <h3>
-                Axios</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
         
           
-            <div class="post-nepre half next">
+            <div class="post-nepre full next">
           
-            <a href="/2020/08/19/技术/原型和原型链/" rel="next">
+            <a href="/2021/04/22/技术/canvas/" rel="next">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200819074604584.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20200819074604584.png">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ截图20210420171530.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ截图20210420171530.png">
               </div>
               <span class="label">
               Next Post</span>
               <div class="info">
                 <h3>
-                原型和原型链</h3>
+                canvas入门</h3>
                 <hr>
               </div>
             </a>
