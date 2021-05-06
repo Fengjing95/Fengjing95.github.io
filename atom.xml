@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://easyremember.cn/"/>
-  <updated>2021-04-30T10:45:04.841Z</updated>
+  <updated>2021-05-06T14:45:43.736Z</updated>
   <id>https://easyremember.cn/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>回头再看——跨域</title>
+    <link href="https://easyremember.cn/2021/05/05/%E6%8A%80%E6%9C%AF/%E5%9B%9E%E5%A4%B4%E5%86%8D%E7%9C%8B%E8%B7%A8%E5%9F%9F/"/>
+    <id>https://easyremember.cn/2021/05/05/技术/回头再看跨域/</id>
+    <published>2021-05-05T05:15:06.456Z</published>
+    <updated>2021-05-06T14:45:43.736Z</updated>
+    
+    <summary type="html">
+    
+      探寻浏览器跨域的奥秘
+    
+    </summary>
+    
+      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="浏览器" scheme="https://easyremember.cn/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>Vue组件库开发</title>
@@ -382,26 +402,6 @@
     <summary type="html">
     
       react-router路由组件的使用
-    
-    </summary>
-    
-      <category term="笔记" scheme="https://easyremember.cn/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="react" scheme="https://easyremember.cn/tags/react/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>React入门笔记</title>
-    <link href="https://easyremember.cn/2020/12/15/%E7%AC%94%E8%AE%B0/React%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/"/>
-    <id>https://easyremember.cn/2020/12/15/笔记/React入门笔记/</id>
-    <published>2020-12-15T14:01:03.039Z</published>
-    <updated>2021-02-27T09:49:17.214Z</updated>
-    
-    <summary type="html">
-    
-      基础的react语法，对比Vue。
     
     </summary>
     
