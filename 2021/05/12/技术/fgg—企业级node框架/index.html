@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">前端小枫</title>
+  <title itemprop="name">fgg-企业级Node框架 | 前端小枫</title>
   
   <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -456,497 +456,476 @@
   </div>
 </header>
 
-      <div class="blank" style="padding-top: 0px;"></div>
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210520233833710.png);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210520233833710.png">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      fgg-企业级Node框架</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="">小枫</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2021-5-12<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
 <div id="content" class="site-content">
-  
-  <div class="notice" style="margin-top:60px">
-    <i class="iconfont icon-notification">
-    </i>
-    <div class="notice-content">微信公众号：前端小枫</div>
-  </div>
-  
-  <div class="top-feature-row">
-  <h1 class="fes-title" style="font-family: 'Ubuntu', sans-serif;">
-  <i class="fa fa-anchor" aria-hidden="true">
-  </i>
-  START:DASH!!</h1>
-  
-  <div class="top-feature-v2">
-    <div class="the-feature square from_left_and_right">
-      <a href="/theme-sakura" target="_blank">
-        <div class="img">
-          <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/startdash/sakura.md.png">
-        </div>
-        <div class="info">
-          <h3>Sakura</h3>
-          <p>本站 hexo 主题</p>
-        </div>
-      </a>
-    </div>
-  </div>
-  
-  <div class="top-feature-v2">
-    <div class="the-feature square from_left_and_right">
-      <a href="https://space.bilibili.com/75412375" target="_blank">
-        <div class="img">
-          <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/startdash/bilibili.jpg">
-        </div>
-        <div class="info">
-          <h3>Bilibili</h3>
-          <p>博主的b站</p>
-        </div>
-      </a>
-    </div>
-  </div>
-  
-  <div class="top-feature-v2">
-    <div class="the-feature square from_left_and_right">
-      <a href="/" target="_blank">
-        <div class="img">
-          <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/startdash/wangshiwu.jpg">
-        </div>
-        <div class="info">
-          <h3>前端小枫</h3>
-          <p>技术服务</p>
-        </div>
-      </a>
-    </div>
-  </div>
-  
-</div>
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
-      <h1 class="main-title" style="font-family: 'Ubuntu', sans-serif;">
-      <i class="fa fa-envira" aria-hidden="true"></i>
-      Discovery</h1>
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <p>众所周知，Egg.js是由阿里开源的一款基于Koa的Node框架，上手也很简单，我们今天就来实现一个“企业级”的Node框架</p>
+<p>如果你没有用过Egg，那么推荐你先去看一下<a href="https://eggjs.org/zh-cn/" target="_blank" rel="noopener">官网文档</a>，或者看我之前的教程，右上角搜索egg关键字应该可以找到。尝试一下编写代码，掌握了使用方法对实现有很大的帮助</p>
+<p><strong>以下内容默认你已经掌握了egg的使用方法</strong></p>
+<h3 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h3><p>作为服务端框架，路由是最基本的功能，egg框架的理念是约定大于配置，即所有的控制器都放在controller目录下、服务层都放在service目录下……</p>
+<p>虽然在egg中，路由是一个单独的文件，但是这里我们也一起放在一个文件夹中，也方便以后分模块维护</p>
+<p>我们先来构思一下整体框架</p>
+<pre><code class="shell">src
+├── routes # 路由
+│   └── index.js
+├── controller # 控制层
+│   └── index.js
+├── service # 服务层
+│   └── index.js
+├── model # 模型
+│   └── user.js
+├── config # 配置
+│   └── index.js
+├── fgg-loader.js # 加载器
+├── fgg.js # fgg构造器
+└── app.js # 程序入口
+</code></pre>
+<p>在布局好整体框架之后我们开始编码，首先我们来实现loader，loader里面有一个load函数，用来加载不同目录下的文件，接收两个参数，一个文件夹名，一个回调函数，通过调函数返回文件名以及文件内容</p>
+<pre><code class="javascript">const fs = require(&#39;fs&#39;)
+const path = require(&#39;path&#39;)
+
+// 读取目录下的文件
+function load(dir, cb) {
+  // 绝对路径
+  const url = path.resolve(__dirname, dir)
+  // 读取文件
+  const files = fs.readdirSync(url)
+  // 遍历文件，解析到路由器
+  files.forEach(fileName =&gt; {
+    fileName = fileName.replace(&#39;.js&#39;, &#39;&#39;)
+    // 导入文件，加载路由文件中导出的routes
+    const file = require(url + &#39;/&#39; + fileName)
+    cb(fileName, file)
+  })
+}
+</code></pre>
+<p>有了load函数我们就用它来加载路由文件</p>
+<pre><code class="javascript">const Router = require(&#39;koa-router&#39;)
+
+function initRouter() {
+  const router = new Router()
+  load(&#39;routes&#39;, (fileName, routes) =&gt; {
+    // 前缀。index下没有前缀，否则文件名为前缀
+    const prefix = fileName === &#39;index&#39; ? &#39;&#39; : &#39;/&#39; + fileName
+    Object.keys(routes).forEach(key =&gt; {
+      const [method, path] = key.split(&#39; &#39;)
+      // 映射路由
+      router[method](prefix + path, routes[key])
+    })
+  })
+  return router
+}
+</code></pre>
+<p>我们这里需要规定路由文件的编写方式如下</p>
+<pre><code class="javascript">module.exports = {
+  &#39;get /&#39;: async ctx =&gt; {
+    ctx.body = &#39;首页&#39;
+  },
+  &#39;get /detail&#39;: async ctx =&gt; {
+    ctx.body = &#39;详情&#39;
+  }
+}
+</code></pre>
+<p>然后我们来看过程</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210518214656581.png" alt="image-20210518214656581"></p>
+<p>通过load函数加载<code>routes</code>目录下的文件，然后遍历读取出来的文件，通过调用回调函数将文件名和文件内容进行处理，如果文件名是index则默认<code>/</code>，否则就是<code>/filename</code>，然后通过解析路由对象属性名来获得HTTPMethod和path，然后将处理路由的中间件绑定在koa-router的实例上，最后返回这个路由实例</p>
+<p>路由加载器我们已经完成了，然后我们来编写fgg的构造函数，因为是基于Koa的框架所以在创建构造函数时需要借助Koa</p>
+<pre><code class="javascript">const Koa = require(&#39;koa&#39;)
+
+const { initRouter } = require(&#39;./fgg-loader&#39;)
+
+class Fgg {
+  constructor(conf) {
+    this.$app = new Koa(conf)
+    this.$router = initRouter()
+    this.$app.use(this.$router.routes())
+  }
+
+  start(port) {
+    this.$app.listen(port, () =&gt; {
+      console.log(`启动成功，端口${port}`)
+    })
+  }
+}
+module.exports = Fgg
+</code></pre>
+<p>最后我们来编写一个入口程序测试一下</p>
+<pre><code class="javascript">const Fgg = require(&#39;./fgg&#39;)
+const app = new Fgg()
+app.start(3000)
+</code></pre>
+<p>看下效果，完成</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210518220153212.png" alt="image-20210518220153212"></p>
+<h3 id="控制器"><a href="#控制器" class="headerlink" title="控制器"></a>控制器</h3><p>在没有引入控制器之前我们的逻辑都放在了routes里面，显然这是不方便的，路由的功能应该只是引导至某一控制器，接下来我们来将控制器逻辑添加到fgg中</p>
+<p>还是我们先定好使用规则，然后倒推实现。控制器依旧是约定在controller中，我们要将所有的controller目录中的控制器绑定到app实例的<code>$controller</code>上</p>
+<p>首先编写路由文件</p>
+<pre><code class="javascript">module.exports = {
+  index: async app =&gt; {
+    app.ctx.body = &#39;首页Ctrl&#39;
+  },
+  detail: async app =&gt; {
+    app.ctx.body = &#39;详情Ctrl&#39;
+  }
+}
+</code></pre>
+<p>这时我们上面的路由需要做一些改动，因为需要在路由中使用app实例寻找controller，所以我们需要将路由文件改成一个函数，返回值一个对象</p>
+<pre><code class="javascript">module.exports = app =&gt; ({
+  &#39;get /&#39;: app.$controller.index.index,
+  &#39;get /detail&#39;: app.$controller.index.detail
+})
+</code></pre>
+<p>然后修改initRouter函数，使它能够解析现在的路由文件，当然我们也可以兼容之前的</p>
+<pre><code class="javascript">function initRouter(app) {
+  const router = new Router()
+  load(&#39;routes&#39;, (fileName, routes) =&gt; {
+    // 前缀。index下没有前缀，否则文件名为前缀
+    const prefix = fileName === &#39;index&#39; ? &#39;&#39; : &#39;/&#39; + fileName
+    // 判断路由文件类型，如果是一个函数就执行，将app传入
+    routes = typeof routes === &#39;function&#39; ? routes(app) : routes 
+    Object.keys(routes).forEach(key =&gt; {
+      const [method, path] = key.split(&#39; &#39;)
+      // 映射路由
+      router[method](prefix + path, async ctx =&gt; {
+        app.ctx = ctx
+        await routes[key](app) // controller需要接收app
+      })
+    })
+  })
+  return router
+}
+</code></pre>
+<p>然后我们来编写<code>initController</code>函数，负责解析控制器，同样使用load函数，将解析出来的控制器对象返回</p>
+<pre><code class="javascript">function initController() {
+  const controllers = {}
+  // 加载controller
+  load(&#39;controller&#39;, (fileName, controller) =&gt; {
+    controllers[fileName] = controller
+  })
+  return controllers
+}
+</code></pre>
+<p>最后修改一下fgg的构造函数</p>
+<pre><code class="javascript">const Koa = require(&#39;koa&#39;)
+
+const { initRouter, initController } = require(&#39;./fgg-loader&#39;)
+
+class Fgg {
+  constructor(conf) {
+    this.$app = new Koa(conf)
+    this.$controller = initController()
+    this.$router = initRouter(this) // 将app实例作为参数
+    this.$app.use(this.$router.routes())
+  }
+
+  start(port) {
+    this.$app.listen(port, () =&gt; {
+      console.log(`启动成功，端口${port}`)
+    })
+  }
+}
+module.exports = Fgg
+</code></pre>
+<p>完事，来看效果</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210518223231018.png" alt="image-20210518223231018"></p>
+<h3 id="服务层"><a href="#服务层" class="headerlink" title="服务层"></a>服务层</h3><p>虽然有了控制层，我们可以将路由的压力分担到控制层，但是所有的逻辑都混在控制层后期维护起来也是一个很头疼的事情，所以我们再抽离出服务层用于查询数据，服务层的使用方法同路由基本一致，跟前面基本一致这里也不再废话了</p>
+<p>一般查询数据库都是异步的，所以我们使用setTimeout+Promise先来模拟一下</p>
+<pre><code class="javascript">// /service/index.js
+const delay = (data, time) =&gt; new Promise(resolve =&gt; {
+  setTimeout(() =&gt; {
+    resolve(data)
+  }, time)
+})
+module.exports = app =&gt; ({
+  getDetail() {
+    return delay(&#39;fgg: 企业级Node框架&#39;, 500)
+  }
+})
+// controller/index.js
+module.exports = {
+  detail: async app =&gt; {
+    app.ctx.body = await app.$service.index.getDetail()
+  }
+}
+</code></pre>
+<p>将service绑定在app.$servcie上，在controller调用service方法，然后又是熟悉的一步——解析service文件</p>
+<pre><code class="javascript">function initService(app) {
+  const services = {}
+  load(&#39;service&#39;, (fileName, service) =&gt; {
+    // 规定service必须是一个函数，接收app参数
+    // （后面需要模型层调用model所以直接就设置成函数形式吧）
+    services[fileName] = service(app)
+  })
+  return services
+}
+</code></pre>
+<p>然后在fgg.js构造函数中添加service</p>
+<pre><code class="javascript">const Koa = require(&#39;koa&#39;)
+
+const { initRouter, initController, initService, loadConfig} = require(&#39;./fgg-loader&#39;)
+
+class Fgg {
+  constructor(conf) {
+    this.$app = new Koa(conf)
+    this.$service = initService(this)
+    this.$controller = initController()
+    this.$router = initRouter(this)
+    this.$app.use(this.$router.routes())
+  }
+
+  start(port) {
+    this.$app.listen(port, () =&gt; {
+      console.log(`启动成功，端口${port}`)
+    })
+  }
+}
+module.exports = Fgg
+</code></pre>
+<p>再来测试一下</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210519230359700.png" alt="image-20210519230359700"></p>
+<h3 id="模型层"><a href="#模型层" class="headerlink" title="模型层"></a>模型层</h3><p>最后就是与数据库的交互了，这里使用Sequelize做底层来实现ORM，需要安装sequelize依赖</p>
+<p>首先在config配置文件中配置好数据库的信息</p>
+<pre><code class="javascript">module.exports = {
+  database: {
+    dialect: &#39;mysql&#39;,
+    host: &#39;localhost&#39;,
+    database: &#39;example&#39;,
+    username: &#39;root&#39;,
+    password: &#39;123456&#39;
+  },
+}
+</code></pre>
+<p>在fgg-loader中加入创建sequelize实例的代码，仍然是约定好的，放在config目录下，如果存在数据库配置就初始化数据库</p>
+<pre><code class="javascript">function loadConfig(app) {
+  app.$model = {}
+  load(&#39;config&#39;, (file, config) =&gt; {
+    // 加载model
+    if (config.database) {
+      // 初始化数据库
+      app.$database = new Sequelize(config.database)
+      // 加载模型
+      load(&#39;model&#39;, (fileName, { schema, options }) =&gt; {
+        app.$model[fileName] = app.$database.define(fileName, schema, options)
+      })
+      app.$database.sync()
+    }
+  })
+}
+</code></pre>
+<p>同时加载model目录下的模型，将定义好的模型挂载到app.$model上</p>
+<p>在构造函数中添加配置解析</p>
+<pre><code class="javascript">const Koa = require(&#39;koa&#39;)
+
+const { initRouter, initController, initService, loadConfig} = require(&#39;./fgg-loader&#39;)
+
+class Fgg {
+  constructor(conf) {
+    this.$app = new Koa(conf)
+    loadConfig(this)
+    this.$service = initService(this)
+    this.$controller = initController()
+    this.$router = initRouter(this)
+    this.$app.use(this.$router.routes())
+  }
+
+  start(port) {
+    this.$app.listen(port, () =&gt; {
+      console.log(`启动成功，端口${port}`)
+    })
+  }
+}
+module.exports = Fgg
+</code></pre>
+<p>模型定义如下（Sequelize的模型定义方式）</p>
+<pre><code class="javascript">const { STRING } = require(&#39;sequelize&#39;)
+
+module.exports = {
+  schema: {
+    name: STRING
+  },
+  options: {
+    timestamps: false
+  }
+}
+</code></pre>
+<p>然后就可以直接使用定义好的模型进行数据库查询</p>
+<pre><code class="javascript">// controller
+module.exports = {
+  index: async app =&gt; {
+    app.ctx.body = await app.$service.index.getUsers()
+  },
+}
+
+// service
+module.exports = app =&gt; ({
+  async getUsers() {
+    // app.$model.user.create({name: &#39;feng&#39;})
+    const res = await app.$model.user.findOne({
+      where:
+        { name: &#39;feng&#39; }
+    })
+    return res
+  }
+})
+</code></pre>
+<p>齐活</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210519233254118.png" alt="image-20210519233254118"></p>
+<h3 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h3><p>中间件的使用我们借助Koa的中间件机制，直接通过use使用中间件，就直接在config中一起加载，将中间件放在middleware属性下</p>
+<pre><code class="javascript">module.exports = {
+  db: {
+    // ……
+  },
+  middleware: [&#39;logger&#39;]
+}
+</code></pre>
+<p>然后添加解析中间件的函数</p>
+<pre><code class="javascript">function loadConfig(app) {
+  app.$model = {}
+  load(&#39;config&#39;, (file, config) =&gt; {
+    // 加载model
+    if (config.db) {
+      // 初始化数据库
+      app.$db = new Sequelize(config.db)
+      // 加载模型
+      load(&#39;model&#39;, (fileName, { schema, options }) =&gt; {
+        app.$model[fileName] = app.$db.define(fileName, schema, options)
+      })
+      app.$db.sync()
+    }
+    // 加载中间件
+    if (config.middleware) {
+      config.middleware.forEach(mid =&gt; {
+        const midPath = path.resolve(__dirname, &quot;middleware&quot;, mid)
+        app.$app.use(require(midPath))
+      })
+    }
+  })
+}
+</code></pre>
+<p>然后中间件的编写就跟我们以前写koa的中间件一样的</p>
+<pre><code class="javascript">module.exports = async (ctx, next) =&gt; {
+  const start = new Date()
+  await next()
+  const time = new Date() - start
+  console.log(
+    `[logger]${start.getHours()}:${start.getMinutes()}:${start.getSeconds()}: ${ctx.method}  ${ctx.path}  ${ctx.status}  ${time}ms`
+  );
+}
+</code></pre>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210520233450827.png" alt="image-20210520233450827"></p>
+<p>一个简易的框架就搭好了</p>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+        
+          
+            <div class="post-nepre full next">
+          
+            <a href="/2021/05/12/技术/梦幻西游官网底部动画复刻/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ录屏20210512213058.gif" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ录屏20210512213058.gif">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                帧动画复刻《梦幻西游》官网小动画</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
       
-  <!-- 首页默认取最最新文章集 -->
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "AdzOvpXTwwf3KAX23DOds5C9-gzGzoHsz",
+        appKey: "olX1MHfMtrQcmemwl5lLmu4a",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
 
-  <div class="post-thumb">
-    <a href="/2021/05/12/技术/fgg—企业级node框架/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210520233833710.png">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2021-5-12 22:05</div>
-      <a href="/2021/05/12/技术/fgg—企业级node框架/" class="post-title">
-        <h3>fgg-企业级Node框架</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/Node/">Node<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/技术/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>手动实现一个简易的Egg框架</p>
-        <div class="post-bottom">
-          <a href="/2021/05/12/技术/fgg—企业级node框架/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg" itemprop="image" alt="小枫" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author">小枫</a>
+            </h3>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2021/05/12/技术/梦幻西游官网底部动画复刻/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ录屏20210512213058.gif">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2021-5-12 19:05</div>
-      <a href="/2021/05/12/技术/梦幻西游官网底部动画复刻/" class="post-title">
-        <h3>帧动画复刻《梦幻西游》官网小动画</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/css/">css<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/技术/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>手撸一个简单的帧动画</p>
-        <div class="post-bottom">
-          <a href="/2021/05/12/技术/梦幻西游官网底部动画复刻/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2021/05/05/技术/回头再看跨域/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210505155318631.png">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2021-5-5 13:05</div>
-      <a href="/2021/05/05/技术/回头再看跨域/" class="post-title">
-        <h3>回头再看——跨域</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/浏览器/">浏览器<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/技术/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>探寻浏览器跨域的奥秘</p>
-        <div class="post-bottom">
-          <a href="/2021/05/05/技术/回头再看跨域/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2021/04/27/技术/Vue组件开发/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/1619419113164-1.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2021-4-27 18:04</div>
-      <a href="/2021/04/27/技术/Vue组件开发/" class="post-title">
-        <h3>Vue组件库开发</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/vue/">vue<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/技术/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>Vue组件库开发指北</p>
-        <div class="post-bottom">
-          <a href="/2021/04/27/技术/Vue组件开发/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2021/04/22/技术/canvas/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/QQ截图20210420171530.png">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2021-4-22 21:04</div>
-      <a href="/2021/04/22/技术/canvas/" class="post-title">
-        <h3>canvas入门</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/js/">js<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/技术/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>新手能看懂的canvas教程</p>
-        <div class="post-bottom">
-          <a href="/2021/04/22/技术/canvas/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2021/04/18/技术/vuex简单实现/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210419075812775.png">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2021-4-18 12:04</div>
-      <a href="/2021/04/18/技术/vuex简单实现/" class="post-title">
-        <h3>手动实现简易Vuex</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/vue/">vue<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/技术/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>探秘Vuex原理，简易实现Vuex</p>
-        <div class="post-bottom">
-          <a href="/2021/04/18/技术/vuex简单实现/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2021/04/18/技术/vue-router简单实现/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210418101602224.png">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2021-4-18 10:04</div>
-      <a href="/2021/04/18/技术/vue-router简单实现/" class="post-title">
-        <h3>vue-router实现原理</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/vue/">vue<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/技术/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>手动实现vue路由原理(hash模式)</p>
-        <div class="post-bottom">
-          <a href="/2021/04/18/技术/vue-router简单实现/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2021/04/17/技术/前端性能优化/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/xingnengyouhua.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2021-4-17 11:04</div>
-      <a href="/2021/04/17/技术/前端性能优化/" class="post-title">
-        <h3>前端性能优化</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/大前端/">大前端<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/技术/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>从网页加载个每个时间段剖析性能优化</p>
-        <div class="post-bottom">
-          <a href="/2021/04/17/技术/前端性能优化/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2021/04/08/技术/JavaScript核心原理/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/封面161769991990811.png">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2021-4-8 19:04</div>
-      <a href="/2021/04/08/技术/JavaScript核心原理/" class="post-title">
-        <h3>JavaScript核心原理</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/js/">js<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/技术/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>手动实现几个JavaScript常用的api</p>
-        <div class="post-bottom">
-          <a href="/2021/04/08/技术/JavaScript核心原理/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2021/04/04/技术/HTTP 强缓存和协商缓存/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/0.png">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2021-4-4 10:04</div>
-      <a href="/2021/04/04/技术/HTTP 强缓存和协商缓存/" class="post-title">
-        <h3>HTTP 强缓存和协商缓存</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/计算机网络/">计算机网络<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/技术/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>HTTP缓存是web性能优化的重要手段</p>
-        <div class="post-bottom">
-          <a href="/2021/04/04/技术/HTTP 强缓存和协商缓存/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-
-
-    </main>
-      <!-- 首页默认取最最新文章集 -->
-    <!-- 
-      <nav class="navigator">
-        
-        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/"><i class="iconfont icon-right"></i></a>
-      </nav>
-     -->
-  </div>
-  
-    <div id="pagination"><a href="/page/2/" class="">Previous</a></div>
-  
+        <hr>
+        <p><i class="iconfont icon-write"></i>前端小白</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
 </div>
+
+
 
     </div>    
     <div class="ins-search">
