@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://easyremember.cn/"/>
-  <updated>2021-05-20T15:38:47.826Z</updated>
+  <updated>2021-05-27T13:43:28.896Z</updated>
   <id>https://easyremember.cn/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>回头再看—Git</title>
+    <link href="https://easyremember.cn/2021/05/22/%E9%9A%8F%E6%83%B3/%E5%9B%9E%E5%A4%B4%E5%86%8D%E7%9C%8B%E2%80%94git/"/>
+    <id>https://easyremember.cn/2021/05/22/随想/回头再看—git/</id>
+    <published>2021-05-22T03:34:22.347Z</published>
+    <updated>2021-05-27T13:43:28.896Z</updated>
+    
+    <summary type="html">
+    
+      进一步了解Git的工作流
+    
+    </summary>
+    
+      <category term="随想" scheme="https://easyremember.cn/categories/%E9%9A%8F%E6%83%B3/"/>
+    
+    
+      <category term="工具" scheme="https://easyremember.cn/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
   
   <entry>
     <title>fgg-企业级Node框架</title>
@@ -58,10 +78,10 @@
   
   <entry>
     <title>回头再看——跨域</title>
-    <link href="https://easyremember.cn/2021/05/05/%E6%8A%80%E6%9C%AF/%E5%9B%9E%E5%A4%B4%E5%86%8D%E7%9C%8B%E8%B7%A8%E5%9F%9F/"/>
-    <id>https://easyremember.cn/2021/05/05/技术/回头再看跨域/</id>
+    <link href="https://easyremember.cn/2021/05/05/%E9%9A%8F%E6%83%B3/%E5%9B%9E%E5%A4%B4%E5%86%8D%E7%9C%8B%E2%80%94%E8%B7%A8%E5%9F%9F/"/>
+    <id>https://easyremember.cn/2021/05/05/随想/回头再看—跨域/</id>
     <published>2021-05-05T05:15:06.456Z</published>
-    <updated>2021-05-06T14:45:43.736Z</updated>
+    <updated>2021-05-23T09:34:06.802Z</updated>
     
     <summary type="html">
     
@@ -69,7 +89,7 @@
     
     </summary>
     
-      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="随想" scheme="https://easyremember.cn/categories/%E9%9A%8F%E6%83%B3/"/>
     
     
       <category term="浏览器" scheme="https://easyremember.cn/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
@@ -389,26 +409,6 @@
     
     
       <category term="css" scheme="https://easyremember.cn/tags/css/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>react组件传值</title>
-    <link href="https://easyremember.cn/2020/12/31/%E6%8A%80%E6%9C%AF/react%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%80%BC/"/>
-    <id>https://easyremember.cn/2020/12/31/技术/react组件传值/</id>
-    <published>2020-12-31T07:17:00.093Z</published>
-    <updated>2020-12-31T07:18:24.013Z</updated>
-    
-    <summary type="html">
-    
-      各种状态下的react组件间的通信。
-    
-    </summary>
-    
-      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="react" scheme="https://easyremember.cn/tags/react/"/>
     
   </entry>
   
