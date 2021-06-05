@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://easyremember.cn/"/>
-  <updated>2021-05-27T13:43:28.896Z</updated>
+  <updated>2021-06-05T00:53:23.162Z</updated>
   <id>https://easyremember.cn/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Nginx学习笔记</title>
+    <link href="https://easyremember.cn/2021/06/03/%E7%AC%94%E8%AE%B0/Nginx/"/>
+    <id>https://easyremember.cn/2021/06/03/笔记/Nginx/</id>
+    <published>2021-06-03T14:11:46.467Z</published>
+    <updated>2021-06-05T00:53:23.162Z</updated>
+    
+    <summary type="html">
+    
+      前端开发者也要学习的Nginx
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://easyremember.cn/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="计算机网络" scheme="https://easyremember.cn/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
   
   <entry>
     <title>回头再看—Git</title>
@@ -389,26 +409,6 @@
     
     
       <category term="悦读" scheme="https://easyremember.cn/tags/%E6%82%A6%E8%AF%BB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>重学flex</title>
-    <link href="https://easyremember.cn/2021/01/05/%E6%8A%80%E6%9C%AF/%E9%87%8D%E5%AD%A6flex/"/>
-    <id>https://easyremember.cn/2021/01/05/技术/重学flex/</id>
-    <published>2021-01-05T07:03:32.209Z</published>
-    <updated>2021-01-05T07:04:40.918Z</updated>
-    
-    <summary type="html">
-    
-      flex弹性盒模型属性
-    
-    </summary>
-    
-      <category term="技术" scheme="https://easyremember.cn/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="css" scheme="https://easyremember.cn/tags/css/"/>
     
   </entry>
   

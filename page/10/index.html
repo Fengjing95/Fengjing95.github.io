@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">回头再看—Git | 前端小枫</title>
+  <title itemprop="name">前端小枫</title>
   
   <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -456,242 +456,126 @@
   </div>
 </header>
 
-      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
-<div class="pattern-center-blank"></div>
-
-  <div class="pattern-center single-center">
-    <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210527214252986.png);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210527214252986.png">
-    </div>
-    <header class="pattern-header single-header">
-      <h1 class="entry-title">
-      回头再看—Git</h1>
-      <p class="entry-census">
-        <span>
-          <a href="">
-            <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg">
-          </a>
-        </span>
-        <span>
-          <a href="">小枫</a>
-        </span>
-        <span class="bull">
-        ·</span>
-        2021-5-22<span class="bull">
-        ·</span>
-      <span id="busuanzi_value_page_pv"></span>次阅读</p>
-    </header>
-  </div>
-
+      <div class="blank" style="padding-top: 0px;"></div>
 <div id="content" class="site-content">
+  
+  <div class="notice" style="margin-top:60px">
+    <i class="iconfont icon-notification">
+    </i>
+    <div class="notice-content">微信公众号：前端小枫</div>
+  </div>
+  
+  <div class="top-feature-row">
+  <h1 class="fes-title" style="font-family: 'Ubuntu', sans-serif;">
+  <i class="fa fa-anchor" aria-hidden="true">
+  </i>
+  START:DASH!!</h1>
+  
+  <div class="top-feature-v2">
+    <div class="the-feature square from_left_and_right">
+      <a href="/theme-sakura" target="_blank">
+        <div class="img">
+          <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/startdash/sakura.md.png">
+        </div>
+        <div class="info">
+          <h3>Sakura</h3>
+          <p>本站 hexo 主题</p>
+        </div>
+      </a>
+    </div>
+  </div>
+  
+  <div class="top-feature-v2">
+    <div class="the-feature square from_left_and_right">
+      <a href="https://space.bilibili.com/75412375" target="_blank">
+        <div class="img">
+          <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/startdash/bilibili.jpg">
+        </div>
+        <div class="info">
+          <h3>Bilibili</h3>
+          <p>博主的b站</p>
+        </div>
+      </a>
+    </div>
+  </div>
+  
+  <div class="top-feature-v2">
+    <div class="the-feature square from_left_and_right">
+      <a href="/" target="_blank">
+        <div class="img">
+          <img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/startdash/wangshiwu.jpg">
+        </div>
+        <div class="info">
+          <h3>前端小枫</h3>
+          <p>技术服务</p>
+        </div>
+      </a>
+    </div>
+  </div>
+  
+</div>
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
-      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
-        <div class="toc"></div>
-        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
-        
-        <div class="entry-content">
-          <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>之前也学习过Git的基本操作，基本可以应付日常工作学习中的大部分场景，其实还有很多高深的Git操作没有去学习，当掌握了这些“骚操作”之后，也能提升我们的工作效率</p>
-<p>开始之前我推荐一下Git的学习资料：</p>
-<ul>
-<li><a href="https://www.liaoxuefeng.com/wiki/896043488029600/" target="_blank" rel="noopener">廖雪峰Git教程</a></li>
-<li><a href="https://learngitbranching.js.org/?locale=zh_CN" target="_blank" rel="noopener">Git分支操作沙盒</a></li>
-<li><a href="https://www.pianshen.com/article/58781070161/" target="_blank" rel="noopener">图解Git</a></li>
-</ul>
-<p>尤其Git沙盒，用闯关的形式教授Git分支的操作，非常有意思，不太喜欢枯燥的文章可以去试一下那个</p>
-<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><p>废话不多说我们直奔主题</p>
-<h4 id="基础篇"><a href="#基础篇" class="headerlink" title="基础篇"></a>基础篇</h4><p>你应该知道每次提交（commit）之后都会产生一个节点，这个节点有唯一的Hash命名，可以通过<code>git log</code>来查看提交的日志</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210523182748117.png" alt="image-20210523182748117"></p>
-<p>基于分支的提交操作，我们需要处理以下步骤：</p>
-<ul>
-<li>新建分支</li>
-<li>切换至新分支</li>
-<li>提交修改</li>
-</ul>
-<pre><code class="shell"> git branch newBranch
- git checkout newBranch
- # 可以合并为一步，git checkout -b newBranch
- # 做一些代码修改
- git add .
- git commit -m &quot;newBranchCommit&quot;
-</code></pre>
-<p>通过分支图我们可以看到当前的分支结构如图所示</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210523183430019.png" alt="image-20210523183430019"></p>
-<p>可能不太明显，此时我们在master分支上再进行一次提交</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210523183717594.png" alt="image-20210523183717594"></p>
-<p>假设此时本期需求已经开发完成，需要将所有的分支合并，我们一共有两种方式来进行合并commit和rebase</p>
-<p>此时大部分情况下会有冲突产生，即合并的两条分支的代码不一致（两人同时新增不同的代码），git会帮我们做出如下改动</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210523184146757.png" alt="image-20210523184146757"></p>
-<p>我们根据需要可以保留任意版本或者全部保留，然后添加暂存—&gt;提交暂存</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210523184359258.png" alt="image-20210523184359258"></p>
-<p>再来看第二种方式rebase，我们先回滚到上一版本，使用命令<code>git reset HEAD~1</code>可以进行版本回滚，最后的数字代表要回滚的步数，不加数字默认为1步</p>
-<p>rebase的原理就是取出一系列的提交记录，“复制”它们，然后在另外一个地方逐个的放下去。</p>
-<pre><code class="shell">git rebase master
-</code></pre>
-<p>此时同样需要解决冲突，解决完成之后一样的添加暂存—&gt;提交暂存，来看一下它与merge的区别</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210523190606337.png" alt="image-20210523190606337"></p>
-<p>在选定rebase目标之后，可以看见我们的分支多了一个<code>REBASE-i</code>，此时出现了冲突，我们需要在解决冲突之后提交一下，然后使用<code>--continue</code>命令来完成rebase，可以看见最后的<code>REBASE-i</code>已经没有了</p>
-<p>它与merge的区别在于可以将分支线性化，不会产生纠缠不清的分支</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210523191057094.png" alt="image-20210523191057094"></p>
-<h4 id="高级篇"><a href="#高级篇" class="headerlink" title="高级篇"></a>高级篇</h4><p>你可能在之前的图片中看到 了HEAD这个指示，HEAD 总是指向当前分支上最近一次提交记录。如果想查看HEAD的指向，可以使用命令<code>cat .git.HEAD</code>来查看，其实就是读取.git隐藏文件夹中的文件</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210523202245858.png" alt="image-20210523202245858"></p>
-<p>如果 HEAD 指向的是一个引用，还可以用 <code>git symbolic-ref HEAD</code> 查看它的指向</p>
-<p>HEAD的意义就在于可以找到分支名无法指向的节点，使用分支名只能找到分支末端的节点</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210523202753820.png" alt="image-20210523202753820"></p>
-<p>再来看分支图，蓝色的小圆圈就是指代的当前HEAD，后面的hash值就是刚才我们切换的节点</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210523202843202.png" alt="image-20210523202843202"></p>
-<p>在使用hash值切换时不需要记住全部的hash，一般人也不会去记，只需要提供不会重复的前几位，Git就会帮我们自动完成。除此之外，还可以使用相对引用之前我们在版本回退的时候已经接触到了<code>~</code>，现在再来加一个<code>^</code>，比如我们当前在main分支上，我们可以使用<code>git checkout master^</code>来切换到master分支当前节点的父级结点，<code>^</code>可以叠加，如<code>master^^</code>代表master分支的父节点的父节点</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210523204526754.png" alt="image-20210523204526754"></p>
-<p>虽然^很方便，但是如果需要操作很多步，那也是很烦人的，所以<code>~</code>就用来简化操作，比如<code>^^^</code>等价于<code>~3</code></p>
-<p>可以使用<code>git branch -f newBranch master~2</code>，将newBranch强制指向master的前两个节点</p>
-<blockquote>
-<p>常用的分支操作：</p>
-<p>git branch -d branchName，删除分支</p>
-<p>git branch -d -r branchName，删除远程分支（需要提交才能生效）</p>
-<p>git branch -D branchName，强制删除分支</p>
-<p>git branch，查看本地分支</p>
-<p>git branch -a，查看所有的远程分支</p>
-<p>git branch -m oldName newName</p>
-</blockquote>
-<p>此外，撤销变更我们之前说过了reset，还有一个revert可以用来撤销变更，区别在于reset是在本地的节点上回滚，只能在本地生效，；如果需要对远程分支产生影响就需要使用revert，revert会将内容回滚之后添加一个新的节点，需要commit提交一下</p>
-<pre><code class="shell">git revert -n 70ed3584
-git commit -m &quot;description&quot;
-</code></pre>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210523215732739.png" alt="image-20210523215732739"></p>
-<h4 id="移动提交记录"><a href="#移动提交记录" class="headerlink" title="移动提交记录"></a>移动提交记录</h4><p>移动提交记录有两种方式，一种是<code>cherry-pick</code>另一种是我们前面的老同学<code>rebase</code>，我们先来看cherry-pick。cherry-pick可以指定版本号抓取提交记录到当前分支，比如下面的例子，我们将newBranch的提交记录抓取到master中</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210523233345459.png" alt="image-20210523233345459"></p>
-<p>使用命令<code>git cherry-pick &lt;提交版本号&gt;</code>，这里版本号就填红框后面的版本号（可以填多个，依次抓取到master上），效果如下</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210523233604342.png" alt="image-20210523233604342"></p>
-<p>再来看一下rebase的效果，添加<code>-i</code>(–interactive)命令，参数有两个起始版本号（不包括）和结束版本号（包括），或者也可以使用引用<code>HEAD~4</code>等</p>
-<pre><code class="shell">git rebase -i startVer overVer
-# 或者 git rebase -i HEAD~4
-</code></pre>
-<p>在键入命令后悔启动类似Vim的编辑器，如下</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210523234816316.png" alt="image-20210523234816316"></p>
-<p>上方会展示要合并的记录，每一行的第一个单词是一个指令，含义如下：</p>
-<ul>
-<li>pick：保留该commit（缩写:p）</li>
-<li>reword：保留该commit，但我需要修改该commit的注释（缩写:r）</li>
-<li>edit：保留该commit, 但我要停下来修改该提交(不仅仅修改注释)（缩写:e）</li>
-<li>squash：将该commit和前一个commit合并（缩写:s）</li>
-<li>fixup：将该commit和前一个commit合并，但我不要保留该提交的注释信息（缩写:f）</li>
-<li><p>exec：执行shell命令（缩写:x）</p>
-</li>
-<li><p>drop：我要丢弃该commit（缩写:d）</p>
-</li>
-</ul>
-<p>注意现在的顺序</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210523235708305.png" alt="image-20210523235708305"></p>
-<p>我们将编辑器中的顺序调换为</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210524000026079.png" alt="image-20210524000026079"></p>
-<p>可以看到已经调换了两个提交记录的位置</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210524000059584.png" alt="image-20210524000059584"></p>
-<h4 id="标记"><a href="#标记" class="headerlink" title="标记"></a>标记</h4><p>在日常的发布中，我们现在大多使用的是CI/CD的流程，配置好打包脚本之后，只需要从git仓库拉取代码之后就可以自动打包发布了</p>
-<p>使用<code>tag</code>命令来进行标识</p>
-<pre><code class="shell">git tag version1
-git tag versino2 hashCode
-</code></pre>
-<p>可以直接打标识，也可以指定某一hash码来打标识</p>
-<p>如果要查看已有的标识可以使用<code>git tag -l</code>命令来查看所有的分支，使用<code>git describe --tags</code>可以查看距离当前提交记录最近的一个tag</p>
-<p>掌握了这些git技能已经可以满足日常的开发了，还需要了解一下远程的操作，这里就不多做说明了</p>
-
-        </div>
-        <!-- .entry-content -->
-        <div class="single-reward">
-          <div class="reward-open">赏
-            <div class="reward-main">
-              <ul class="reward-row">
-                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/donate/AliPayQR.jpg"></li>
-                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/donate/WeChanQR.jpg"></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
-        <footer class="post-footer">
-          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
-          <div class="post-tags">
-          </div>
-          <div class="post-share">
-            <div class="social-share sharehidden share-component"></div>
-            <i class="iconfont show-share icon-forward"></i>
-          </div>
-        </footer><!-- .entry-footer -->
-      </article>
-      <!-- #post-## -->
-      <div class="toc" style="background: none;"></div>
-      <section class="post-squares nextprev">
-        
-          
-            <div class="post-nepre half previous">
-          
-            <a href="/2021/06/03/笔记/Nginx/" rel="prev">
-              <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210603143652082.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210603143652082.png">
-              </div>
-              <span class="label">
-              Previous Post</span>
-              <div class="info">
-                <h3>
-                Nginx学习笔记</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
-        
-          
-            <div class="post-nepre half next">
-          
-            <a href="/2021/05/12/技术/fgg—企业级node框架/" rel="next">
-              <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210520233833710.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210520233833710.png">
-              </div>
-              <span class="label">
-              Next Post</span>
-              <div class="info">
-                <h3>
-                fgg-企业级Node框架</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
-      </section>
+      <h1 class="main-title" style="font-family: 'Ubuntu', sans-serif;">
+      <i class="fa fa-envira" aria-hidden="true"></i>
+      Discovery</h1>
       
-<div id="vcomments"></div>
-<script>
-  window.onload = function(){
-      var valine = new Valine();
-      valine.init({
-        el: '#vcomments',
-        appId: "AdzOvpXTwwf3KAX23DOds5C9-gzGzoHsz",
-        appKey: "olX1MHfMtrQcmemwl5lLmu4a",
-        path: window.location.pathname,
-        placeholder: "你是我一生只会遇见一次的惊喜 ..."
-      })
-  }
-</script>
+  <!-- 首页默认取最最新文章集 -->
+  
+    
+<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
 
-      <section class="author-profile">
-        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
-          <a href="" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/fengjing95/cdn@1.2/img/custom/avatar.jpg" itemprop="image" alt="小枫" height="70" width="70"></a>
-          <div class="meta">
-            <span class="title">Author</span>
-            <h3 itemprop="name">
-            <a href="" itemprop="url" rel="author">小枫</a>
-            </h3>
-          </div>
+  <div class="post-thumb">
+    <a href="/2020/07/14/生活/hello-world/">
+      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://ae01.alicdn.com/kf/H4d3fee369ddb41488a102c04471604d2x.jpg">
+    </a>
+  </div>
+  <div class="post-content-wrap">
+    <div class="post-content">
+      <div class="post-date">
+        <i class="iconfont icon-time">
+        </i>2020-7-14 15:07</div>
+      <a href="/2020/07/14/生活/hello-world/" class="post-title">
+        <h3>Hello World</h3>
+      </a>
+      <div class="post-meta">
+        <span><i class="fa fa-tags"></i>
+        
+            <a href="/tags/hello/">hello<em>·</em></a>
+          
+        </span>
+        <span>
+          <i class="iconfont icon-file"></i>
+          
+            <a href="/categories/生活/">生活</a>
+          
+        </span>
+      </div>
+      <div class="float-content">
+        <p>纪念博客创建</p>
+        <div class="post-bottom">
+          <a href="/2020/07/14/生活/hello-world/" class="button-normal">
+            <i class="iconfont icon-caidan"></i>
+          </a>
         </div>
-        <hr>
-        <p><i class="iconfont icon-write"></i>前端小白</p>
-      </section>
-    </main><!-- #main -->
-  </div><!-- #primary -->
+      </div>
+    </div>
+  </div>
+</article>
+  
+
+
+    </main>
+      <!-- 首页默认取最最新文章集 -->
+    <!-- 
+      <nav class="navigator">
+        
+        <a class="extend prev" rel="prev" href="/page/9/"><i class="iconfont icon-back"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span>
+      </nav>
+     -->
+  </div>
+  
 </div>
-
-
 
     </div>    
     <div class="ins-search">

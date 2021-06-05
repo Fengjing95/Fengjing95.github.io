@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">回头再看—Git | 前端小枫</title>
+  <title itemprop="name">Nginx学习笔记 | 前端小枫</title>
   
   <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -462,11 +462,11 @@
 
   <div class="pattern-center single-center">
     <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210527214252986.png);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210527214252986.png">
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210603143652082.png);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210603143652082.png">
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      回头再看—Git</h1>
+      Nginx学习笔记</h1>
       <p class="entry-census">
         <span>
           <a href="">
@@ -478,7 +478,7 @@
         </span>
         <span class="bull">
         ·</span>
-        2021-5-22<span class="bull">
+        2021-6-3<span class="bull">
         ·</span>
       <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
@@ -492,109 +492,240 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>之前也学习过Git的基本操作，基本可以应付日常工作学习中的大部分场景，其实还有很多高深的Git操作没有去学习，当掌握了这些“骚操作”之后，也能提升我们的工作效率</p>
-<p>开始之前我推荐一下Git的学习资料：</p>
+          <p>Nginx应该都不陌生，作为“上古时期”服务器四大件LNMP（Linux、Nginx、Mysql、PHP）之一，已经证明了它的强大之处，直到今天Nginx仍然有着相当强大的作用与价值。</p>
+<p>那么Nginx能帮我们解决那些问题呢？</p>
 <ul>
-<li><a href="https://www.liaoxuefeng.com/wiki/896043488029600/" target="_blank" rel="noopener">廖雪峰Git教程</a></li>
-<li><a href="https://learngitbranching.js.org/?locale=zh_CN" target="_blank" rel="noopener">Git分支操作沙盒</a></li>
-<li><a href="https://www.pianshen.com/article/58781070161/" target="_blank" rel="noopener">图解Git</a></li>
+<li><p>HTTP服务器：Nginx本身也是一个静态资源的服务器，当只有静态资源的时候，就可以使用Nginx来做服务器。</p>
+</li>
+<li><p>反向代理：反向代理（Reverse Proxy）方式是指以代理服务器来接受internet上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给internet上请求连接的客户端。</p>
+</li>
+<li>负载均衡：负载均衡其意思就是分摊到多个操作单元上进行执行。</li>
+<li>动静分离：把动态请求和静态请求分离开，合适的服务器处理相应的请求，使整个服务器系统的性能、效率更高。</li>
 </ul>
-<p>尤其Git沙盒，用闯关的形式教授Git分支的操作，非常有意思，不太喜欢枯燥的文章可以去试一下那个</p>
-<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><p>废话不多说我们直奔主题</p>
-<h4 id="基础篇"><a href="#基础篇" class="headerlink" title="基础篇"></a>基础篇</h4><p>你应该知道每次提交（commit）之后都会产生一个节点，这个节点有唯一的Hash命名，可以通过<code>git log</code>来查看提交的日志</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210523182748117.png" alt="image-20210523182748117"></p>
-<p>基于分支的提交操作，我们需要处理以下步骤：</p>
-<ul>
-<li>新建分支</li>
-<li>切换至新分支</li>
-<li>提交修改</li>
-</ul>
-<pre><code class="shell"> git branch newBranch
- git checkout newBranch
- # 可以合并为一步，git checkout -b newBranch
- # 做一些代码修改
- git add .
- git commit -m &quot;newBranchCommit&quot;
+<p>在大概了解作用之后我们正式开始学习（Nginx安装不讲，百度上有各种教程）</p>
+<h3 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h3><h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p>开始反向代理之前先来说一下什么是正向代理。由于谷歌已经退出中国市场，所以所有的访问谷歌服务器的请求均会被防火墙拦截下来</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210603155618227.png" alt="image-20210603155618227"></p>
+<p>像这样直接访问是拿不到响应的，这时候我们可以使用代理服务器。假设我们有一个代理服务器（proxy.com）做转发，将我们的所有请求以代理服务器发出，再将收到的响应返回用户，这便是正向代理</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210603160443212.png" alt="image-20210603160443212"></p>
+<p>其实这就是VPN的工作原理，理论上VPN代理可以获取我们发出去的所有请求，所以VPN不可以随便使用，那些免费的VPN风险系数相当大。</p>
+<p>正向代理知道了，那什么是反向代理呢？</p>
+<p>反向代理的过程用户是无感知的，它不像正向代理那样需要用户选择代理服务器，反向代理是服务方自己的代理，暴露出去的是代理服务器地址，从而隐藏了真实的服务器地址，此外可以用来解决跨域问题，反向代理的过程大致如下</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210603172629220.png" alt="image-20210603172629220"></p>
+<p>反向代理最常用的场景就是，你只有一个域名，指向一台主机，然后有两个服务跑在两个端口，我们都知道如果http地址不带端口号默认是80端口，要让这两个服务都跑在主域名下，不带端口号，此时就可以使用反向代理了，通过反向代理，将不同的二级域名映射到不同的端口号上</p>
+<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a><span id="start">配置</span></h4><h5 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h5><p>开始配置之前，我们要先准备一个运行的服务，简要的搭建一个node服务端程序，代码如下</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210604174514800.png" alt="image-20210604174514800"></p>
+<p>运行这个脚本</p>
+<p>如果对nginx配置不熟悉可以看一下后面的<a href="#conf">配置介绍</a></p>
+<h5 id="反代一"><a href="#反代一" class="headerlink" title="反代一"></a>反代一</h5><p>然后我们开始配置反向代理，我们的程序跑在9000端口，我们要直接访问ip地址（默认80端口）</p>
+<pre><code class="nginx">server {
+    listen       80;
+    server_name  127.0.0.1;
+
+    location / {
+        # root   html;
+        # index  index.html index.htm;
+        proxy_pass http://127.0.0.1:9000;
+    }
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   html;
+    }
+}
 </code></pre>
-<p>通过分支图我们可以看到当前的分支结构如图所示</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210523183430019.png" alt="image-20210523183430019"></p>
-<p>可能不太明显，此时我们在master分支上再进行一次提交</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210523183717594.png" alt="image-20210523183717594"></p>
-<p>假设此时本期需求已经开发完成，需要将所有的分支合并，我们一共有两种方式来进行合并commit和rebase</p>
-<p>此时大部分情况下会有冲突产生，即合并的两条分支的代码不一致（两人同时新增不同的代码），git会帮我们做出如下改动</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210523184146757.png" alt="image-20210523184146757"></p>
-<p>我们根据需要可以保留任意版本或者全部保留，然后添加暂存—&gt;提交暂存</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210523184359258.png" alt="image-20210523184359258"></p>
-<p>再来看第二种方式rebase，我们先回滚到上一版本，使用命令<code>git reset HEAD~1</code>可以进行版本回滚，最后的数字代表要回滚的步数，不加数字默认为1步</p>
-<p>rebase的原理就是取出一系列的提交记录，“复制”它们，然后在另外一个地方逐个的放下去。</p>
-<pre><code class="shell">git rebase master
+<p>效果如下</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210604175424249.png" alt="image-20210604175424249"></p>
+<h5 id="反代二"><a href="#反代二" class="headerlink" title="反代二"></a>反代二</h5><p>在现在的开发中，后端一般都是使用微服务架构，不同的服务模块运行在不同的服务器（192.168.1.45、192.168.1.46）或者同一服务器的不同端口下（192.168.1.45:8080、192.168.1.45:8081），我们可以使用nginx反向代理来将不同的服务代理到统一域名的不同路径下（192.168.1.45/module1、192.168.1.45/module2）</p>
+<p>我们需要将原来的node脚本复制一份，端口改为9001，然后运行起来。然后修改nginx.conf</p>
+<pre><code class="nginx">server {
+  listen             80;
+  serve_rname 127.0.0.1
+  location ~ module1 {
+    proxy_pass http://127.0.0.1:9000;
+  }
+  location ~ module2 {
+    proxy_pass http://127.0.0.1:9001;
+  }
+}
 </code></pre>
-<p>此时同样需要解决冲突，解决完成之后一样的添加暂存—&gt;提交暂存，来看一下它与merge的区别</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210523190606337.png" alt="image-20210523190606337"></p>
-<p>在选定rebase目标之后，可以看见我们的分支多了一个<code>REBASE-i</code>，此时出现了冲突，我们需要在解决冲突之后提交一下，然后使用<code>--continue</code>命令来完成rebase，可以看见最后的<code>REBASE-i</code>已经没有了</p>
-<p>它与merge的区别在于可以将分支线性化，不会产生纠缠不清的分支</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210523191057094.png" alt="image-20210523191057094"></p>
-<h4 id="高级篇"><a href="#高级篇" class="headerlink" title="高级篇"></a>高级篇</h4><p>你可能在之前的图片中看到 了HEAD这个指示，HEAD 总是指向当前分支上最近一次提交记录。如果想查看HEAD的指向，可以使用命令<code>cat .git.HEAD</code>来查看，其实就是读取.git隐藏文件夹中的文件</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210523202245858.png" alt="image-20210523202245858"></p>
-<p>如果 HEAD 指向的是一个引用，还可以用 <code>git symbolic-ref HEAD</code> 查看它的指向</p>
-<p>HEAD的意义就在于可以找到分支名无法指向的节点，使用分支名只能找到分支末端的节点</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210523202753820.png" alt="image-20210523202753820"></p>
-<p>再来看分支图，蓝色的小圆圈就是指代的当前HEAD，后面的hash值就是刚才我们切换的节点</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210523202843202.png" alt="image-20210523202843202"></p>
-<p>在使用hash值切换时不需要记住全部的hash，一般人也不会去记，只需要提供不会重复的前几位，Git就会帮我们自动完成。除此之外，还可以使用相对引用之前我们在版本回退的时候已经接触到了<code>~</code>，现在再来加一个<code>^</code>，比如我们当前在main分支上，我们可以使用<code>git checkout master^</code>来切换到master分支当前节点的父级结点，<code>^</code>可以叠加，如<code>master^^</code>代表master分支的父节点的父节点</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210523204526754.png" alt="image-20210523204526754"></p>
-<p>虽然^很方便，但是如果需要操作很多步，那也是很烦人的，所以<code>~</code>就用来简化操作，比如<code>^^^</code>等价于<code>~3</code></p>
-<p>可以使用<code>git branch -f newBranch master~2</code>，将newBranch强制指向master的前两个节点</p>
 <blockquote>
-<p>常用的分支操作：</p>
-<p>git branch -d branchName，删除分支</p>
-<p>git branch -d -r branchName，删除远程分支（需要提交才能生效）</p>
-<p>git branch -D branchName，强制删除分支</p>
-<p>git branch，查看本地分支</p>
-<p>git branch -a，查看所有的远程分支</p>
-<p>git branch -m oldName newName</p>
-</blockquote>
-<p>此外，撤销变更我们之前说过了reset，还有一个revert可以用来撤销变更，区别在于reset是在本地的节点上回滚，只能在本地生效，；如果需要对远程分支产生影响就需要使用revert，revert会将内容回滚之后添加一个新的节点，需要commit提交一下</p>
-<pre><code class="shell">git revert -n 70ed3584
-git commit -m &quot;description&quot;
-</code></pre>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210523215732739.png" alt="image-20210523215732739"></p>
-<h4 id="移动提交记录"><a href="#移动提交记录" class="headerlink" title="移动提交记录"></a>移动提交记录</h4><p>移动提交记录有两种方式，一种是<code>cherry-pick</code>另一种是我们前面的老同学<code>rebase</code>，我们先来看cherry-pick。cherry-pick可以指定版本号抓取提交记录到当前分支，比如下面的例子，我们将newBranch的提交记录抓取到master中</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210523233345459.png" alt="image-20210523233345459"></p>
-<p>使用命令<code>git cherry-pick &lt;提交版本号&gt;</code>，这里版本号就填红框后面的版本号（可以填多个，依次抓取到master上），效果如下</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210523233604342.png" alt="image-20210523233604342"></p>
-<p>再来看一下rebase的效果，添加<code>-i</code>(–interactive)命令，参数有两个起始版本号（不包括）和结束版本号（包括），或者也可以使用引用<code>HEAD~4</code>等</p>
-<pre><code class="shell">git rebase -i startVer overVer
-# 或者 git rebase -i HEAD~4
-</code></pre>
-<p>在键入命令后悔启动类似Vim的编辑器，如下</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210523234816316.png" alt="image-20210523234816316"></p>
-<p>上方会展示要合并的记录，每一行的第一个单词是一个指令，含义如下：</p>
+<p>location配置规则</p>
+<p>location [ = | ~ | ~* | ^~] uri {</p>
+<p>}</p>
 <ul>
-<li>pick：保留该commit（缩写:p）</li>
-<li>reword：保留该commit，但我需要修改该commit的注释（缩写:r）</li>
-<li>edit：保留该commit, 但我要停下来修改该提交(不仅仅修改注释)（缩写:e）</li>
-<li>squash：将该commit和前一个commit合并（缩写:s）</li>
-<li>fixup：将该commit和前一个commit合并，但我不要保留该提交的注释信息（缩写:f）</li>
-<li><p>exec：执行shell命令（缩写:x）</p>
-</li>
-<li><p>drop：我要丢弃该commit（缩写:d）</p>
+<li>=: 用于不含正则表达式的uri前，要求请求字符串与uri严格匹配，如果匹配成功，<pre><code>就停止继续向下搜索并立即处理该请求
+</code></pre></li>
+<li>~: 用于表示uri包含正则表达式，并且区分大小写</li>
+<li>~<em>: 用于表示uri包含正则表达式，并且不区分大小写</em></li>
+<li><em>^~: 用于不含正则表达式的uri前，要求Nginx服务器找到标识uri和请求字符串匹配度最高的location后，立即使用此location处理请求，而不再使用location块中的正则uri和请求字符串做匹配</em></li>
+<li>注意: 如果uri包含正则表达式，则必须要有~或者~*标识。</li>
+</ul>
+</blockquote>
+<p>此时我们分别访问module1和module2</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210604201304520.png" alt="image-20210604201304520"></p>
+<h5 id="反代三"><a href="#反代三" class="headerlink" title="反代三"></a>反代三</h5><p>如果是不同的应用，但我们想用同一个域名，这时候就需要使用二级域名，然后通过反向代理来指向不同的应用</p>
+<p>这里我们需要使用域名，所以在host文件中添加host，文件路径如下（需要管理员权限）</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210604175849584.png" alt="hosts"></p>
+<p>添加如下两条记录</p>
+<pre><code class="nginx">127.0.0.1 www.proxy.com
+127.0.0.1 test.proxy.com
+</code></pre>
+<p>然后修改我们的nginx配置文件，依旧是指向我们之前的两个node服务，区别于的第二个案例的是这里要添加的是两个server，通过server_name来区分虚拟主机</p>
+<pre><code class="nginx">server {
+    listen       80;
+    server_name  www.proxy.com;
+    location / {
+        proxy_redirect off;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_pass http://127.0.0.1:9000;
+    }
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   html;
+    }
+}
+server {
+  listen                 80;
+  server_name   test.proxy.com;
+  location / {
+    proxy_redirect off;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_pass http://127.0.0.1:9001;
+  }
+}
+</code></pre>
+<p>效果如下</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210604202420052.png" alt="image-20210604202420052"></p>
+<h3 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h3><h4 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h4><p>在没有配置负载均衡时我们的服务器网络架构是这样的</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210603194420298.png" alt="image-20210603194420298"></p>
+<p>非常简单，就是接受用户请求然后处理返回，但是当用户量上去之后，一台服务器无法处理大量的请求，这时我们我们想让多台服务器来共同处理，这时就需要<strong>负载均衡</strong>，通过Nginx服务器分发到不同的服务器上，可以根据不同的服务器性能等依据来划分服务器处理的请求数量。</p>
+<p>使用负载均衡后，我们的网络架构如下</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210603194827721.png" alt="image-20210603194827721"></p>
+<p><strong>使用负载均衡时，一般会使用到反向代理</strong></p>
+<blockquote>
+<p>思考题：使用负载均衡后，怎么保持数据库的一致性？</p>
+</blockquote>
+<h4 id="配置-1"><a href="#配置-1" class="headerlink" title="配置"></a>配置</h4><p>这里依旧是使用前面反向代理的两个node程序，分别运行在9000和9001端口</p>
+<p>在配置负载均衡时需要在http下，server同层级使用<code>upstream</code>配置一个服务器列表然后命名，然后在location中添加反向代理的配置<code>http://服务器列表名</code></p>
+<pre><code class="nginx">upstream module {
+  server 127.0.0.1:9000;
+  server 127.0.0.1:9001;
+}
+
+server {
+    listen       80;
+    server_name  127.0.0.1;
+
+    location / {
+        proxy_redirect off;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_pass http://module;
+    }
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   html;
+    }
+}
+</code></pre>
+<p>重新应用配置之后去浏览器访问，可以看见服务器控制台日志如下</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210604215829421.png" alt="image-20210604215829421"></p>
+<p>请求被平均分配到了两台服务器上，这其实是nginx负载均衡的默认策略——轮询，除此之外Nginx还有其他的负载均衡策略</p>
+<ul>
+<li>轮询：默认，将请求按照请求时间平均分配到列表中的服务器上</li>
+<li>权重：使用weight声明权重，权重和访问率成正比，使用权重来解决服务器之间性能不同的差异</li>
+<li>ip_hash：每个请求按访问ip的hash结果分配, 这样每个访客固定访问一个后端服务器,可以解诀session的问题</li>
+<li>fair：（需引入第三方插件）按后端服务器的响应时间来分配请求，响应时间短的优先分配</li>
+</ul>
+<p>四种策略的声明模式如下</p>
+<pre><code class="nginx"># 轮询
+upstream module {
+  server 127.0.0.1:9000;
+  server 127.0.0.1:9001;
+}
+# 权重
+upstream module {
+  server 127.0.0.1:9000 weight=2;
+  server 127.0.0.1:9001 weight=1;
+}
+# ip_hash
+upstream module {
+  ip_hash;
+  server 127.0.0.1:9000;
+  server 127.0.0.1:9001;
+}
+# fair
+upstream module {
+  fair;
+  server 127.0.0.1:9000;
+  server 127.0.0.1:9001;
+}
+</code></pre>
+<h3 id="动静分离"><a href="#动静分离" class="headerlink" title="动静分离"></a>动静分离</h3><h4 id="原理-2"><a href="#原理-2" class="headerlink" title="原理"></a>原理</h4><p>为了加快网站的解析速度，可以把动态页面和静态页面由不同的服务器来解析，加快解析速<br>度。降低原来单个服务器的压力。过程如下</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210603220952303.png" alt="image-20210603220952303"></p>
+<h4 id="配置-2"><a href="#配置-2" class="headerlink" title="配置"></a>配置</h4><p>这里动静分离并不是简单地动态页面和静态页面的分离，而是动态请求和静态请求的分离。这里我们需要重新做一下准备，准备一个文件夹www用于存放静态资源，然后我们所有的请求进行分类，静态资源访问/asserts/xxx，动态请求走/api/xxx</p>
+<pre><code class="nginx">location /api {
+    proxy_redirect off;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_pass http://127.0.0.1:9000;
+}
+location /images/ {
+  root /Nginx/www/; # Window下要用绝对路径
+  autoindex on;
+}
+</code></pre>
+<p>效果如下</p>
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210605084406337.png" alt="image-20210605084406337"></p>
+<p><strong>注意：</strong>这里在配置location中的root时Windows要设置绝对路径，不然会404；在访问文件时查找路径为<code>root+location+文件名</code>，如果不使用此种模式可以设置alias来替换root，在访问文件时就是<code>alias+文件名</code></p>
+<h3 id="配置解析"><a href="#配置解析" class="headerlink" title="配置解析"></a><span id="conf">配置解析</span></h3><p>Nginx的配置文件一共有三个大块</p>
+<ul>
+<li>全局块：设置一些运行指令，例如<code>worker_processes</code>用来设置支持的并发数量</li>
+<li>events块：影响Nginx服务器与用户的网络连接，例如<code>worker_connections</code>用来设置最大连接数</li>
+<li>http(s)块：Nginx配置中最常用的块<ul>
+<li>http全局块：包括文件引入、日志自定义、超时时间等等</li>
+<li>http server块：和虚拟主机有密切关系，一个server块就相当于一个虚拟主机。我们的配置工作主要集中在server块中</li>
+</ul>
 </li>
 </ul>
-<p>注意现在的顺序</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210523235708305.png" alt="image-20210523235708305"></p>
-<p>我们将编辑器中的顺序调换为</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210524000026079.png" alt="image-20210524000026079"></p>
-<p>可以看到已经调换了两个提交记录的位置</p>
-<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210524000059584.png" alt="image-20210524000059584"></p>
-<h4 id="标记"><a href="#标记" class="headerlink" title="标记"></a>标记</h4><p>在日常的发布中，我们现在大多使用的是CI/CD的流程，配置好打包脚本之后，只需要从git仓库拉取代码之后就可以自动打包发布了</p>
-<p>使用<code>tag</code>命令来进行标识</p>
-<pre><code class="shell">git tag version1
-git tag versino2 hashCode
+<p><img src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210604160804717.png" alt="image-20210604160804717"></p>
+<h4 id="server详解"><a href="#server详解" class="headerlink" title="server详解"></a>server详解</h4><p>我们只对最常使用的server块配置项进行介绍，其他部分如有需要可以面向百度/Google</p>
+<ul>
+<li><p>listen：监听的端口</p>
+</li>
+<li><p>server_name：主机名，一般是二级域名</p>
+</li>
+<li><p>location：路径中包含某个设定值就做相应的操作</p>
+<ul>
+<li><p>proxy_pass：设置被代理服务器的端口或套接字，以及URL</p>
+</li>
+<li><p>将代理服务器收到的用户的信息传到真实服务器上</p>
+<ul>
+<li>proxy_set_header Host $host;</li>
+<li>proxy_set_header X-Real-IP $remote_addr;</li>
+<li>proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</li>
+</ul>
+</li>
+<li><pre><code class="nginx"># 查看nginx状态
+location /NginxStatus {
+  stub_status on;
+  access_log on;
+  auth_basic &quot;NginxStatus&quot;;
+  auth_basic_user_file conf/htpasswd; # 需要使用htpasswd生成密码文件
+}
 </code></pre>
-<p>可以直接打标识，也可以指定某一hash码来打标识</p>
-<p>如果要查看已有的标识可以使用<code>git tag -l</code>命令来查看所有的分支，使用<code>git describe --tags</code>可以查看距离当前提交记录最近的一个tag</p>
-<p>掌握了这些git技能已经可以满足日常的开发了，还需要了解一下远程的操作，这里就不多做说明了</p>
+</li>
+<li><p>deny all;禁止访问匹配中的location</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><a href="#start">返回反代配置</a></p>
 
         </div>
         <!-- .entry-content -->
@@ -623,36 +754,19 @@ git tag versino2 hashCode
       <div class="toc" style="background: none;"></div>
       <section class="post-squares nextprev">
         
-          
-            <div class="post-nepre half previous">
-          
-            <a href="/2021/06/03/笔记/Nginx/" rel="prev">
-              <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210603143652082.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210603143652082.png">
-              </div>
-              <span class="label">
-              Previous Post</span>
-              <div class="info">
-                <h3>
-                Nginx学习笔记</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
         
           
-            <div class="post-nepre half next">
+            <div class="post-nepre full next">
           
-            <a href="/2021/05/12/技术/fgg—企业级node框架/" rel="next">
+            <a href="/2021/05/22/随想/回头再看—git/" rel="next">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210520233833710.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210520233833710.png">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210527214252986.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gitee.com/liuhao1108/picGoCDN/raw/master/img/image-20210527214252986.png">
               </div>
               <span class="label">
               Next Post</span>
               <div class="info">
                 <h3>
-                fgg-企业级Node框架</h3>
+                回头再看—Git</h3>
                 <hr>
               </div>
             </a>
